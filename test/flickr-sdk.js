@@ -164,6 +164,24 @@ describe('Flickr SDK', function () {
 	});
 
 	/**
+	 * Test echo
+	 */
+	it('should echo back parameters', function (done) {
+
+		var flickrSDK = new FlickrSDK(flickrAPIConfig);
+
+		flickrSDK
+			.request()
+			.validate()
+			.echo()
+			.then(function (response) {
+				assert.equal(response.body.echo._content, "hello world");
+				done();
+			});
+
+	});
+
+	/**
 	 * Param validation
 	 */
 	describe('param validation', function () {
@@ -285,8 +303,8 @@ describe('Flickr SDK', function () {
 				.request()
 				.media()
 				.post({
-					photo: './test/fixtures/test.png',
-					is_public: 'unicorn' // Not one of the allowed values
+					'photo': './test/fixtures/test.png',
+					'is_public': 'unicorn' // Not one of the allowed values
 				})
 				.then(null, function (err) {
 					assert.equal(err[0], "Param is_public with value unicorn not one of possible options: [0, 1]");

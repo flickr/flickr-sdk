@@ -63,6 +63,28 @@ FlickrRequest.prototype.plugin = function (plugin) {
 	return this;
 };
 
+/**
+ * Group of methods for working with the validation (`test`) endpoints of the Flickr API
+ * @function validate
+ * @memberof! FlickrRequest#
+ * @returns {object} verbs for working with validation
+ */
+FlickrRequest.prototype.validate = function () {
+	var request = this;
+
+	return {
+
+		/**
+		 * Echo a parameter back from the API
+		 * @memberof! FlickrRequest#
+		 * @function validate.echo
+		 * @returns {object} an echo'd response of the input
+		 */
+		echo: function () {
+			return request.sdk.transport.call(request.sdk.findDefinition(apiV1, 'echo'), { 'echo': 'hello world' }, {});
+		}
+	};
+};
 
 /**
  * Group of methods for working with media
