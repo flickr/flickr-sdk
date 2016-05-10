@@ -62,4 +62,20 @@ describe('people', function () {
 
 	});
 
+	it('should get a person\'s information', function (done) {
+
+		var flickrSDK = new FlickrSDK(flickrAPIConfig);
+
+		flickrSDK
+			.request()
+			.people("36521981547@N01")
+			.get()
+			.then(function (response) {
+				assert.equal(typeof response.body.person.id, 'string');
+				assert.equal(typeof response.body.person.username, 'object');
+				done();
+			});
+
+	});
+
 });

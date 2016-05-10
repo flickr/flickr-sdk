@@ -504,6 +504,17 @@ FlickrRequest.prototype.people = function (personID) {
 	return {
 
 		/**
+		 * Gets this person's information
+		 * @memberof! FlickrRequest#
+		 * @function people.people.get
+		 * @param {object} additionalParams - extra data to attach to the API call
+		 * @returns {object} information about the person
+		 */
+		get: function (additionalParams) {
+			return request.sdk.transport.call(request.sdk.findDefinition(apiV1, 'getPersonByID'), { "user_id": personID }, additionalParams);
+		},
+
+		/**
 		 * Group of methods for getting at a people's media
 		 * @memberof! FlickrRequest#
 		 * @function people.media
