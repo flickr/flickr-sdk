@@ -1,6 +1,6 @@
 {
   "name": "flickr-sdk",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "The easiest way to talk to the Flickr API with node.js or a web browser",
   "keywords": [
     "api",
