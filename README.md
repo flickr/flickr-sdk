@@ -11,7 +11,7 @@ Currently we cover the 10 most popular API methods (and some others) but we'll b
 
 ## Install
 
-`npm install flickr`
+`npm install flickr-sdk`
 
 
 
@@ -29,7 +29,7 @@ You'll need to [create an API key for your app](https://www.flickr.com/services/
 ### Setup
 
 ```js
-var Flickr = require('flickr');
+var Flickr = require('flickr-sdk');
 
 var flickr = new Flickr({
 	"apiKey":            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",

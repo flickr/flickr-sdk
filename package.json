@@ -23,7 +23,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:flickr/flickr.git"
+    "url": "git@github.com:flickr/flickr-sdk.git"
   },
   "author": "Jim Whimpey <whimpey@flickr.com>",
   "license": "MIT",
