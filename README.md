@@ -1,6 +1,6 @@
 # Flickr JavaScript SDK
 
-[![Build Status](https://travis-ci.org/flickr/flickr.svg?branch=master)](https://travis-ci.org/flickr/flickr) [![Coverage Status](https://coveralls.io/repos/github/flickr/flickr/badge.svg?branch=master)](https://coveralls.io/github/flickr/flickr?branch=master)
+[![Build Status](https://travis-ci.org/flickr/flickr-sdk.svg?branch=master)](https://travis-ci.org/flickr/flickr-sdk) [![Coverage Status](https://coveralls.io/repos/github/flickr/flickr-sdk/badge.svg?branch=master)](https://coveralls.io/github/flickr/flickr-sdk?branch=master)
 
 The easiest way to talk to the [Flickr API](https://www.flickr.com/services/api/) with node.js or a web browser. Officially supported by the Flickr Front End team.
 
@@ -11,7 +11,7 @@ Currently we cover the 10 most popular API methods (and some others) but we'll b
 
 ## Install
 
-`npm install flickr`
+`npm install flickr-sdk`
 
 
 
@@ -29,7 +29,7 @@ You'll need to [create an API key for your app](https://www.flickr.com/services/
 ### Setup
 
 ```js
-var Flickr = require('flickr');
+var Flickr = require('flickr-sdk');
 
 var flickr = new Flickr({
 	"apiKey":            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
