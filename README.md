@@ -4,7 +4,7 @@
 
 The easiest way to talk to the [Flickr API](https://www.flickr.com/services/api/) with node.js or a web browser. Officially supported by the Flickr Front End team.
 
-Currently we cover the 10 most popular API methods (and some others) but we'll be adding support for more all the time.
+Currently we cover the [10 most popular API methods](https://github.com/flickr/flickr-api-swagger) (and some others) but we'll be adding support for more all the time.
 
 
 
