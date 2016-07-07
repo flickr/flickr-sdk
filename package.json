@@ -52,7 +52,7 @@
     "backo": "^1.1.0",
     "deepmerge": "^0.2.10",
     "except": "^0.1.3",
-    "flickr-api-swagger": "2.3.0",
+    "flickr-api-swagger": "2.2.0",
     "native-promise-only": "^0.8.1",
     "superagent": "1.8.3"
   }
