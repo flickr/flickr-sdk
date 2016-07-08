@@ -3,14 +3,14 @@
 
 var config = {
 	flickrAPIConfig: {
-		"apiKey": "68a62ca6dccd553ca49e069d4b68e92d",
-		"apiSecret": "92158779258d08db",
-		"accessToken": "72157660394259366-112955b6c5659e6b",
-		"accessTokenSecret": "ad7f515fdef310c3"
+		"apiKey": "01234567890123456789012345678901",
+		"apiSecret": "0123456789012345",
+		"accessToken": "01234567890123456-0123456789012345",
+		"accessTokenSecret": "0123456789012345"
 	},
 	flickrAPIConfigNonOAuth: {
-		"apiKey": "68a62ca6dccd553ca49e069d4b68e92d",
-		"apiSecret": "92158779258d08db"
+		"apiKey": "01234567890123456789012345678901",
+		"apiSecret": "0123456789012345"
 	}
 };
 

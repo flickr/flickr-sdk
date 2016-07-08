@@ -70,6 +70,7 @@ FlickrRequest.prototype.groups = require('./lib/sdk/groups');
 FlickrRequest.prototype.albums = require('./lib/sdk/albums');
 FlickrRequest.prototype.galleries = require('./lib/sdk/galleries');
 FlickrRequest.prototype.people = require('./lib/sdk/people');
+FlickrRequest.prototype.auth = require('./lib/sdk/auth');
 
 /**
  * Expose it

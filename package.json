@@ -45,8 +45,7 @@
     "licensify": "^3.1.0",
     "timemachine": "~0.2.6",
     "uglify-js": "^2.6.2",
-    "usertiming": "^0.1.6",
-    "yakbak": "2.4.0"
+    "usertiming": "^0.1.6"
   },
   "dependencies": {
     "backo": "^1.1.0",
