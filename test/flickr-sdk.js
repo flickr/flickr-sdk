@@ -22,20 +22,21 @@ describe('Flickr SDK', function () {
 		var logs = [];
 
 		var flickrSDK = new FlickrSDK(flickrAPIConfig, {
-			logger: {
-				log: function (message) {
-					logs.push(message);
+				logger: {
+					log: function (message) {
+						logs.push(message);
+					}
 				}
-			}
-		});
+			}),
+			groupId = '2377207@N24';
 
 		flickrSDK
 			.request()
-			.groups('2377207@N24')
+			.groups(groupId)
 			.get()
-			.then(function (group) {
-				assert.equal(logs[0].match(/Starting get API call/).length, 1);
-				assert.equal(logs[1].match(/Finished get API call/).length, 1);
+			.then(function (request) {
+				assert.equal(request.body['group_id'], groupId);
+				assert.equal(request.body.method, 'flickr.groups.getInfo');
 				done();
 			});
 
@@ -48,6 +49,7 @@ describe('Flickr SDK', function () {
 
 		var flickrSDK = new FlickrSDK(flickrAPIConfig);
 		var logs = [];
+		var groupId = '2377207@N24';
 
 		flickrSDK
 			.request()
@@ -59,11 +61,12 @@ describe('Flickr SDK', function () {
 					logs.push("response");
 				});
 			})
-			.groups('2377207@N24')
+			.groups(groupId)
 			.get()
-			.then(function (res) {
+			.then(function (request) {
 				assert.equal(logs[0], "request");
 				assert.equal(logs[1], "response");
+				assert.equal(request.body['group_id'], groupId);
 				done();
 			});
 
@@ -147,35 +150,20 @@ describe('Flickr SDK', function () {
 	 */
 	it('should accept additional per request params', function (done) {
 
-		var flickrSDK = new FlickrSDK(flickrAPIConfig);
+		var flickrSDK = new FlickrSDK(flickrAPIConfig),
+			photoId = '21132240942';
 
 		flickrSDK
 			.request()
-			.media('21132240942')
+			.media(photoId)
 			.get({
 				"extras": "sizes",
 				"hermes": 1
 			})
-			.then(function (response) {
-				assert.equal(typeof response.body.photo.sizes.size, "object");
-				done();
-			});
-
-	});
-
-	/**
-	 * Test echo
-	 */
-	it('should echo back parameters', function (done) {
-
-		var flickrSDK = new FlickrSDK(flickrAPIConfig);
-
-		flickrSDK
-			.request()
-			.validate()
-			.echo()
-			.then(function (response) {
-				assert.equal(response.body.echo._content, "hello world");
+			.then(function (request) {
+				assert.equal(request.body['photo_id'], photoId);
+				assert.equal(request.body.extras, "sizes");
+				assert.equal(request.body.hermes, 1);
 				done();
 			});
 
@@ -255,7 +243,7 @@ describe('Flickr SDK', function () {
 
 			flickrSDK
 				.request()
-				.groups('1234') // Fake group ID
+				.groups('badgroup') // Fake group ID
 				.get()
 				.then(null, function (err) {
 					assert.equal(err.message, "Group not found");

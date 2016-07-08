@@ -18,9 +18,8 @@ Currently we cover the [10 most popular API methods](https://github.com/flickr/f
 
 ## What You Need First
 
-You'll need to [create an API key for your app](https://www.flickr.com/services/apps/create/apply/), [get a user to grant your app access to their data](https://www.flickr.com/services/api/auth.oauth.html). Implementing that process and storing a user's oauth token and secret is your job. [Here's a tool](https://github.com/bertrandom/flickr-oauth-dance) that walks you through that process quickly so you can start testing.
-
-
+- You'll need to [create an API key for your app](https://www.flickr.com/services/apps/create/apply/), [get a user to grant your app access to their data](https://www.flickr.com/services/api/auth.oauth.html).
+- Use the [authentication methods](#authentication) to authenticate users
 
 
 ## Implementation
@@ -34,6 +33,9 @@ var Flickr = require('flickr-sdk');
 var flickr = new Flickr({
 	"apiKey":            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
 	"apiSecret":         "xxxxxxxxxxxxxxxx",
+	// you can optionally include these values for testing
+	// with your own account, but DO NOT use them for authenticating
+	// users, see Authentication section below.
 	"accessToken":       "xxxxxxxxxxxxxxxxx-xxxxxxxxxxxxxxxx",
 	"accessTokenSecret": "xxxxxxxxxxxxxxxx"
 });
@@ -48,6 +50,53 @@ All responses are objects with two properties:
 * `body` - containing the data requested
 * `headers` - any meta data returned in the headers from the API
 
+
+### Authentication
+
+The Flickr API uses oauth1 to generate a request token, which can be exchanged for an access token to authenticate your app to access user data.
+
+To generate a request token:
+```js
+flickrSDK
+	.request()
+	.authentication()
+	// Flickr will redirect to this URL when the user authorizes
+	.prepareRequestToken('http://your.domain.com/authed')
+	.then(function (data) {
+		// data will contain a URL that you can direct your user
+		// to so they can authorize your app to access their Flickr data
+		// It will also return a token (part of the URL) and
+		// a token secret (used to exchange the request token for an access token)
+	});
+```
+
+The Flickr API will automatically direct to your `authed` callback route when the user allows you app access.  In the redirect url, there will be a oauth-verifier code and a request token.  You must parse these from the querystring and pass them to your next Flickr SDK call to exchange the request token for an access token:
+
+```js
+flickrSDK
+	.request()
+	.authentication()
+	.authenticateUser(
+		'request-token-in-url-querystring', 'token-secret-from-prepareRequestToken-result', 'oauth-verifier-in-url-querystring'
+	)
+	.then(function (data) {
+
+		// data contains a longer-lasting access token for the user
+	});
+```
+
+Any calls requiring authentication (i.e. accessing private photos) must pass the access token and the token secret to the request method:
+
+```js
+flickrSDK
+	// make the request with the access token and secret
+	.request('access-token', 'token-secret')
+	.media('162347595674')
+	.get()
+	.then(function (responseData) {
+		// responseData contains the photo information for the authenticated user
+	});
+```
 
 
 ### Functions

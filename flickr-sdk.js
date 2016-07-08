@@ -12,8 +12,12 @@ var findDefinition = require('./lib/find-definition.js');
  * @name FlickrRequest
  * @param {object} sdk - This is the instance of the {@link FlickrSDK} holding config and transport
  */
-var FlickrRequest = function (sdk) {
+var FlickrRequest = function (sdk, accessToken, accessTokenSecret) {
 	this.sdk = sdk;
+	this.auth = {
+		accessToken: accessToken,
+		accessTokenSecret: accessTokenSecret
+	};
 };
 
 /**
@@ -35,14 +39,14 @@ var FlickrRequest = function (sdk) {
 var FlickrSDK = function (config, options) {
 
 	// Store config on the SDK
-	this.config = config;
+	this.config = config || {};
 	this.transport = new FlickrTransport(config, options);
 	this.findDefinition = findDefinition;
 
 	// Each time it's called return a new instance
 	return {
-		request: (function () {
-			return new FlickrRequest(this);
+		request: (function (accessToken, accessTokenSecret) {
+			return new FlickrRequest(this, accessToken, accessTokenSecret);
 		}).bind(this)
 	};
 
@@ -70,6 +74,9 @@ FlickrRequest.prototype.groups = require('./lib/sdk/groups');
 FlickrRequest.prototype.albums = require('./lib/sdk/albums');
 FlickrRequest.prototype.galleries = require('./lib/sdk/galleries');
 FlickrRequest.prototype.people = require('./lib/sdk/people');
+
+/* not a namespace so much as a wrapper function for the oauthflow */
+FlickrRequest.prototype.authentication = require('./lib/sdk/auth');
 
 /**
  * Expose it
