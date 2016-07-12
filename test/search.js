@@ -12,22 +12,18 @@ describe('search', function () {
 
 	it('should perform a search query', function (done) {
 
-		var flickrSDK = new FlickrSDK(flickrAPIConfig);
+		var flickrSDK = new FlickrSDK(flickrAPIConfig),
+			searchQuery = "elephants";
 
 		flickrSDK
 			.request()
 			.media()
-			.search("elephants")
+			.search(searchQuery)
 			.get()
-			.then(function (response) {
-
+			.then(function (request) {
 				// Check that we get some results
-				assert.equal(typeof response.body.photos.photo.length, "number");
-				assert.equal(typeof response.body.photos.photo[0].title, "string");
-				assert.equal(typeof response.body.photos.photo[0].id, "string");
-				assert.equal(typeof response.body.photos.photo[0].owner, "string");
-				// Check that we get the total results back
-				assert.equal(typeof response.body.photos.total, "string");
+				assert.equal(request.body.text, searchQuery);
+				assert.equal(request.body.method, "flickr.photos.search");
 				done();
 
 			});
