@@ -11,8 +11,7 @@
   ],
   "main": "flickr-sdk.js",
   "browser": {
-    "flickr-js-sdk": "./build/flickr-js-sdk.min.js",
-    "justified-layout": "./node_modules/justified-layout/lib/index.js"
+    "flickr-js-sdk": "./build/flickr-js-sdk.min.js"
   },
   "scripts": {
     "test": "./script/test.sh",

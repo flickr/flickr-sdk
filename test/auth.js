@@ -55,4 +55,18 @@ describe('auth namespace', function () {
 
 	});
 
+	it('should throw an error if you do not pass a requestTokenVerifier', function (done) {
+
+		var flickrSDK = new FlickrSDK(flickrAPIConfig.flickrAPIConfigNonOAuth); // in prod, the API gives this to us
+
+		flickrSDK
+			.request()
+			.authentication()
+			.authenticateUser(flickrAPIConfig.flickrAPIConfig.accessToken, flickrAPIConfig.flickrAPIConfig.accessTokenSecret)
+			.then(null, function (err) {
+				assert.equal(err.message, 'You must specify the request token verifier.');
+				done();
+			});
+	});
+
 });
