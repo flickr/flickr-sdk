@@ -1,6 +1,6 @@
 {
   "name": "flickr-sdk",
-  "version": "1.2.2",
+  "version": "2.0.0",
   "description": "The easiest way to talk to the Flickr API with node.js or a web browser",
   "keywords": [
     "api",
@@ -45,14 +45,14 @@
     "licensify": "^3.1.0",
     "timemachine": "~0.2.6",
     "uglify-js": "^2.6.2",
-    "usertiming": "^0.1.6",
-    "yakbak": "2.4.0"
+    "usertiming": "^0.1.6"
   },
   "dependencies": {
     "backo": "^1.1.0",
     "deepmerge": "^0.2.10",
     "except": "^0.1.3",
-    "flickr-api-swagger": "2.3.0",
+    "flickr-api-swagger": "2.6.0",
+    "justified-layout": "~1.1.0",
     "native-promise-only": "^0.8.1",
     "superagent": "1.8.3"
   }

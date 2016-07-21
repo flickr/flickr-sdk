@@ -18,13 +18,9 @@ describe('albums', function () {
 			.albums("72157657634723246")
 			.media()
 			.get()
-			.then(function (response) {
-				assert.equal(typeof response.body.photoset, "object");
-				assert.equal(typeof response.body.photoset.id, "string");
-				assert.equal(typeof response.body.photoset.photo, "object");
-				assert.equal(typeof response.body.photoset.title, "string");
-				assert.equal(response.body.photoset.photo.length, 15);
-				assert.equal(response.body.photoset.page, 1);
+			.then(function (request) {
+				assert.equal(typeof request.body['photoset_id'], "string");
+				assert.equal(typeof request.body.method, "string");
 				done();
 			});
 

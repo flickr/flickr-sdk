@@ -1,0 +1,199 @@
+<html>
+<head>
+<!--
+
+/**
+ *
+ * In-Browser FlickrSDK Example
+ *
+ * This example gives you a sample of how the FlickrSDK can be
+ * used in a browser to make (unauthenticated) API calls.
+ *
+ * You can run the example by running this file in a browser
+ *
+ */
+
+ -->
+ <style type="text/css">
+		/* http://meyerweb.com/eric/tools/css/reset/
+		   v2.0 | 20110126
+		   License: none (public domain)
+		*/
+
+		html, body, div, span, applet, object, iframe,
+		h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+		a, abbr, acronym, address, big, cite, code,
+		del, dfn, em, img, ins, kbd, q, s, samp,
+		small, strike, strong, sub, sup, tt, var,
+		b, u, i, center,
+		dl, dt, dd, ol, ul, li,
+		fieldset, form, label, legend,
+		table, caption, tbody, tfoot, thead, tr, th, td,
+		article, aside, canvas, details, embed,
+		figure, figcaption, footer, header, hgroup,
+		menu, nav, output, ruby, section, summary,
+		time, mark, audio, video {
+			margin: 0;
+			padding: 0;
+			border: 0;
+			font-size: 100%;
+			font: inherit;
+			vertical-align: baseline;
+		}
+		/* HTML5 display-role reset for older browsers */
+		article, aside, details, figcaption, figure,
+		footer, header, hgroup, menu, nav, section {
+			display: block;
+		}
+		body {
+			line-height: 1;
+		}
+		ol, ul {
+			list-style: none;
+		}
+		blockquote, q {
+			quotes: none;
+		}
+		blockquote:before, blockquote:after,
+		q:before, q:after {
+			content: '';
+			content: none;
+		}
+		table {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		body {
+			padding-top: 40px;
+			font-size: 14px;
+			font-family: "Helvetica Neue", "Helvetica", sans-serif;
+		}
+		p {
+			margin: 20px;
+			font-size: 14px;
+			font-weight: 400;
+		}
+		input {
+			margin: 20px;
+			font-size: 14px;
+			width: 300px;
+		}
+		label {
+			margin: 0 0 0 20px;
+			width: auto;
+		}
+		h4 {
+			margin: -20px 0 0 20px;
+			padding: 20px 0 10px 0;
+			font-size: 20px;
+			font-weight: bold;
+		}
+		.button, button {
+			display: block;
+			width: 200px;
+			text-decoration: none;
+			text-align: center;
+			padding: 10px;
+			margin: 0 20px 20px 20px;
+			background-color: #ddd;
+			color: black;
+			font-weight: bold;
+			border: 1px solid #444;
+			border-radius: 2px;
+			font-size: 14px;
+		}
+		.button:hover, button:hover {
+			background-color: #999;
+			cursor: pointer;
+		}
+
+		.response img {
+			position: absolute;
+		}
+
+	</style>
+<title>Browser-based Flickr SDK Calls</title>
+<script src="../node_modules/justified-layout/dist/justified-layout.js"></script>
+<script src="../build/flickr-sdk.js"></script>
+</head>
+<body>
+<h4>Browser-based Flickr SDK Calls</h4>
+<p>Enter your api key in order to do an API call.</p>
+
+<label for="api-key">API Key:</label><input id="api-key" type="text" value="">
+<label for="nsid">NSID or pathAlias:</label><input id="nsid" type="text" value="gsfc">
+<button onClick="call();">Get API Response</button>
+<br><br>
+
+
+<script>
+function call() {
+	var FlickrSDK = require('flickr-sdk');
+	var layoutGeometry = require('justified-layout');
+
+	// we only need the api key for in-browser calls because
+	// the browser does not support authenticated calls at this time
+	// ** DO NOT LEAK YOUR API SECRET TO THE BROWSER **
+	var flickrSDK = new FlickrSDK({
+	    "apiKey": document.querySelector('#api-key').value
+	});
+
+	// Make the request to the API
+	flickrSDK
+	.request()
+	.people(document.querySelector('#nsid').value) // ID or path alias
+	.media()
+	.get({
+		'extras': 'url_m'
+	})
+	.then(function (response) {
+		//clear out existing response
+		document.querySelectorAll('.response').forEach(function (node) {
+			node.remove();
+		});
+
+		// create new results container
+		var responseDiv = document.createElement('div');
+		responseDiv.classList.add('response');
+
+		// parse the response and make sure it has photos
+		if (!response.body.photos || !response.body.photos.photo || response.body.photos.length === 0) {
+			responseDiv.innerHTML = 'No photos found for this account.';
+		} else {
+			// Use flickr's justified-layout library
+			// to show the photos
+			// https://github.com/flickr/justified-layout
+			var layout = layoutGeometry(
+				response.body.photos.photo.map(function (photo) {
+					return parseInt(photo['width_m'], 10) / parseInt(photo['height_m'], 10);
+				}),
+				{
+					targetRowHeight: 100,
+					containerWidth: parseInt(window.innerWidth, 10) - 200
+				}
+			);
+
+			var offsetTop = 300;
+
+			// look through the returned photos and throw them into the DOM
+			response.body.photos.photo.forEach(function (photo, index) {
+				var photoElement = document.createElement('img');
+				// see the documentation on how urls are built on flickr
+				// https://www.flickr.com/services/api/misc.urls.html
+				photoElement.src = 'https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}.jpg'.replace('{farm-id}', photo.farm).replace('{server-id}', photo.server).replace('{id}', photo.id).replace('{secret}', photo.secret);
+
+				// positioning
+				photoElement.style.top = layout.boxes[index].top + offsetTop;
+				photoElement.style.width = layout.boxes[index].width;
+				photoElement.style.height = layout.boxes[index].height;
+				photoElement.style.left = layout.boxes[index].left;
+				responseDiv.appendChild(photoElement);
+			});
+		}
+		document.body.appendChild(responseDiv)
+	});
+}
+</script>
+</body>
+</html>

@@ -7,20 +7,24 @@ var assert = require('assert');
 var FlickrSDK = require('../flickr-sdk.js');
 var flickrAPIConfig = require('./config.js').flickrAPIConfig;
 
-describe('galleries', function () {
+describe('validate namespace', function () {
 
-	it('should fetch photos in a gallery', function (done) {
+	this.timeout(10000);
 
-		var flickrSDK = new FlickrSDK(flickrAPIConfig),
-			galleryId = "72157626831167487";
+	/**
+	 * Test echo
+	 */
+	it('should echo back parameters', function (done) {
+
+		var flickrSDK = new FlickrSDK(flickrAPIConfig);
 
 		flickrSDK
 			.request()
-			.galleries(galleryId)
-			.media()
-			.get()
+			.validate()
+			.echo()
 			.then(function (request) {
-				assert.equal(request.body['gallery_id'], galleryId);
+				assert.equal(request.body.echo, "hello world");
+				assert.equal(request.body.method, "flickr.test.echo");
 				done();
 			});
 

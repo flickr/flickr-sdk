@@ -8,18 +8,17 @@ describe('people', function () {
 
 	it('should fetch a person\'s public photostream', function (done) {
 
-		var flickrSDK = new FlickrSDK(flickrAPIConfig);
+		var flickrSDK = new FlickrSDK(flickrAPIConfig),
+			nsid = "40575690@N00";
 
 		flickrSDK
 			.request()
-			.people("40575690@N00")
+			.people(nsid)
 			.media()
 			.get()
-			.then(function (response) {
-				assert.equal(response.body.photos.photo.length, 100);
-				assert.equal(response.body.photos.pages, 29);
-				assert.equal(response.body.photos.page, 1);
-				assert.equal(response.body.photos.perpage, 100);
+			.then(function (request) {
+				assert.equal(request.body['user_id'], nsid);
+				assert.equal(request.body.method, 'flickr.people.getPhotos');
 				done();
 			});
 
@@ -27,18 +26,18 @@ describe('people', function () {
 
 	it('should fetch a person\'s favorite photos', function (done) {
 
-		var flickrSDK = new FlickrSDK(flickrAPIConfig);
+		var flickrSDK = new FlickrSDK(flickrAPIConfig),
+			nsid = "40575690@N00";
 
 		flickrSDK
 			.request()
-			.people("40575690@N00")
+			.people(nsid)
 			.favorites()
 			.media()
 			.get()
-			.then(function (response) {
-				assert.equal(response.body.photos.photo.length, 100);
-				assert.equal(response.body.photos.pages, 7);
-				assert.equal(response.body.photos.page, 1);
+			.then(function (request) {
+				assert.equal(request.body['user_id'], nsid);
+				assert.equal(request.body.method, 'flickr.favorites.getList');
 				done();
 			});
 
@@ -46,17 +45,17 @@ describe('people', function () {
 
 	it('should fetch a person\'s list of albums', function (done) {
 
-		var flickrSDK = new FlickrSDK(flickrAPIConfig);
+		var flickrSDK = new FlickrSDK(flickrAPIConfig),
+			userId = "36521981547@N01";
 
 		flickrSDK
 			.request()
-			.people("36521981547@N01")
+			.people(userId)
 			.albums()
 			.get()
-			.then(function (response) {
-				assert.equal(response.body.photosets.photoset.length, 92);
-				assert.equal(response.body.photosets.perpage, 92);
-				assert.equal(response.body.photosets.page, 1);
+			.then(function (request) {
+				assert.equal(request.body['user_id'], userId);
+				assert.equal(request.body.method, "flickr.photosets.getList");
 				done();
 			});
 
@@ -64,15 +63,16 @@ describe('people', function () {
 
 	it('should get a person\'s information', function (done) {
 
-		var flickrSDK = new FlickrSDK(flickrAPIConfig);
+		var flickrSDK = new FlickrSDK(flickrAPIConfig),
+			nsid = "36521981547@N01";
 
 		flickrSDK
 			.request()
-			.people("36521981547@N01")
+			.people(nsid)
 			.get()
-			.then(function (response) {
-				assert.equal(typeof response.body.person.id, 'string');
-				assert.equal(typeof response.body.person.username, 'object');
+			.then(function (request) {
+				assert.equal(request.body['user_id'], nsid);
+				assert.equal(request.body.method, "flickr.people.getInfo");
 				done();
 			});
 
