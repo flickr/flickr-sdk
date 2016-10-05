@@ -1,0 +1,8 @@
+root = true
+
+[*.{js,md}]
+indent_style = tab
+
+[*.{json,yaml,sh}]
+indent_style = space
+indent_size = 2
