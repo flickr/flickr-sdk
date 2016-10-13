@@ -1,0 +1,68 @@
+{
+  "method": {
+    "name": "flickr.photos.licenses.getInfo",
+    "needslogin": 0,
+    "needssigning": 0,
+    "requiredperms": 0,
+    "description": {
+      "_content": "Fetches a list of available photo licenses for Flickr."
+    },
+    "response": {
+      "_content": "<licenses>\r\n        <license id=\"0\" name=\"All Rights Reserved\" url=\"\" />\r\n\t<license id=\"1\" name=\"Attribution-NonCommercial-ShareAlike License\"\r\n\t\turl=\"http://creativecommons.org/licenses/by-nc-sa/2.0/\" /> \r\n\t<license id=\"2\" name=\"Attribution-NonCommercial License\"\r\n\t\turl=\"http://creativecommons.org/licenses/by-nc/2.0/\" /> \r\n\t<license id=\"3\" name=\"Attribution-NonCommercial-NoDerivs License\"\r\n\t\turl=\"http://creativecommons.org/licenses/by-nc-nd/2.0/\" /> \r\n\t<license id=\"4\" name=\"Attribution License\"\r\n\t\turl=\"http://creativecommons.org/licenses/by/2.0/\" /> \r\n\t<license id=\"5\" name=\"Attribution-ShareAlike License\"\r\n\t\turl=\"http://creativecommons.org/licenses/by-sa/2.0/\" /> \r\n\t<license id=\"6\" name=\"Attribution-NoDerivs License\"\r\n\t\turl=\"http://creativecommons.org/licenses/by-nd/2.0/\" /> \r\n\t<license id=\"7\" name=\"No known copyright restrictions\"\r\n\t\turl=\"http://flickr.com/commons/usage/\" />\r\n        <license id=\"8\" name=\"United States Government Work\"\r\n                url=\"http://www.usa.gov/copyright.shtml\" />\r\n</licenses>"
+    }
+  },
+  "arguments": {
+    "argument": [
+      {
+        "name": "api_key",
+        "optional": 0,
+        "_content": "Your API application key. <a href=\"/services/api/misc.api_keys.html\">See here</a> for more details."
+      }
+    ]
+  },
+  "errors": {
+    "error": [
+      {
+        "code": 100,
+        "message": "Invalid API Key",
+        "_content": "The API key passed was not valid or has expired."
+      },
+      {
+        "code": 105,
+        "message": "Service currently unavailable",
+        "_content": "The requested service is temporarily unavailable."
+      },
+      {
+        "code": 106,
+        "message": "Write operation failed",
+        "_content": "The requested operation failed due to a temporary issue."
+      },
+      {
+        "code": 111,
+        "message": "Format \"xxx\" not found",
+        "_content": "The requested response format was not found."
+      },
+      {
+        "code": 112,
+        "message": "Method \"xxx\" not found",
+        "_content": "The requested method was not found."
+      },
+      {
+        "code": 114,
+        "message": "Invalid SOAP envelope",
+        "_content": "The SOAP envelope send in the request could not be parsed."
+      },
+      {
+        "code": 115,
+        "message": "Invalid XML-RPC Method Call",
+        "_content": "The XML-RPC request document could not be parsed."
+      },
+      {
+        "code": 116,
+        "message": "Bad URL found",
+        "_content": "One or more arguments contained a URL that has been used for abuse on Flickr."
+      }
+    ]
+  },
+  "stat": "ok"
+}

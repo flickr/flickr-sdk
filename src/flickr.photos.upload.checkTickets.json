@@ -1,0 +1,76 @@
+{
+  "method": {
+    "name": "flickr.photos.upload.checkTickets",
+    "needslogin": 0,
+    "needssigning": 0,
+    "requiredperms": 0,
+    "description": {
+      "_content": "Checks the status of one or more asynchronous photo upload tickets."
+    },
+    "response": {
+      "_content": "<uploader>\r\n\t<ticket id=\"128\" complete=\"1\" photoid=\"2995\" />\r\n\t<ticket id=\"129\" complete=\"0\" />\r\n\t<ticket id=\"130\" complete=\"2\" />\r\n\t<ticket id=\"131\" invalid=\"1\" />\r\n</uploader>\r\n"
+    },
+    "explanation": {
+      "_content": "<p>There is one <code>&lt;ticket&gt;</code> element for each ticket id supplied. The <code>id</code> attribute contains the corresponding ticket id. If the ticket wasn't found, the <code>invalid</code> attribute is set. The status of the ticket is passed in the <code>status</code> attribute; 0 means not completed, 1 means completed and 2 means the ticket failed (indicating there was a problem converting the file). When the status is 1, the photo id is passed in the <code>photoid</code> attribute. The photo id can then be used as with the <a href=\"/services/api/upload.api.html\">synchronous upload API</a>."
+    }
+  },
+  "arguments": {
+    "argument": [
+      {
+        "name": "api_key",
+        "optional": 0,
+        "_content": "Your API application key. <a href=\"/services/api/misc.api_keys.html\">See here</a> for more details."
+      },
+      {
+        "name": "tickets",
+        "optional": "0",
+        "_content": "A comma-delimited list of ticket ids"
+      }
+    ]
+  },
+  "errors": {
+    "error": [
+      {
+        "code": 100,
+        "message": "Invalid API Key",
+        "_content": "The API key passed was not valid or has expired."
+      },
+      {
+        "code": 105,
+        "message": "Service currently unavailable",
+        "_content": "The requested service is temporarily unavailable."
+      },
+      {
+        "code": 106,
+        "message": "Write operation failed",
+        "_content": "The requested operation failed due to a temporary issue."
+      },
+      {
+        "code": 111,
+        "message": "Format \"xxx\" not found",
+        "_content": "The requested response format was not found."
+      },
+      {
+        "code": 112,
+        "message": "Method \"xxx\" not found",
+        "_content": "The requested method was not found."
+      },
+      {
+        "code": 114,
+        "message": "Invalid SOAP envelope",
+        "_content": "The SOAP envelope send in the request could not be parsed."
+      },
+      {
+        "code": 115,
+        "message": "Invalid XML-RPC Method Call",
+        "_content": "The XML-RPC request document could not be parsed."
+      },
+      {
+        "code": 116,
+        "message": "Bad URL found",
+        "_content": "One or more arguments contained a URL that has been used for abuse on Flickr."
+      }
+    ]
+  },
+  "stat": "ok"
+}
