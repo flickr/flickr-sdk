@@ -74,7 +74,11 @@ describe('request', function () {
 			api_key: '653e7a6ecc1d528c516cc8f92cf98611',
 			foo: 'bar'
 		})('flickr.test.echo')
-		.use(subjectOAuth('123', '456', '54321'))
+		.use(subjectOAuth({
+			accessToken: '123',
+			accessTokenSecret: '456',
+			apiSecret: '54321'
+		}))
 		.then(function (res) {
 			assert(flickr.isDone(), 'Expected mock to have been called');
 			assert.equal(res.statusCode, 200);
@@ -96,6 +100,54 @@ describe('request', function () {
 			subject({ api_key: undefined });
 		}, function (err) {
 			return err.message === 'Required param api_key missing.';
+		});
+
+	});
+
+	it('throws if oauth config is not provided', function () {
+
+		assert.throws(function () {
+			subject({ api_key: '12345' })
+			.use(subjectOAuth('12345'));
+		}, function (err) {
+			return err.message === 'You must provide a config object for oauth.';
+		});
+
+		assert.throws(function () {
+			subject({ api_key: '12345' })
+			.use(subjectOAuth());
+		}, function (err) {
+			return err.message === 'You must provide a config object for oauth.';
+		});
+
+	});
+
+	it('throws if oauth config is not complete', function () {
+
+		assert.throws(function () {
+			subject({ api_key: '12345' })
+			.use(subjectOAuth({}));
+		}, function (err) {
+			return err.message === 'You must provide an access token for oauth.';
+		});
+
+		assert.throws(function () {
+			subject({ api_key: '12345' })
+			.use(subjectOAuth({
+				accessToken: '123'
+			}));
+		}, function (err) {
+			return err.message === 'You must provide an access token secret for oauth.';
+		});
+
+		assert.throws(function () {
+			subject({ api_key: '12345' })
+			.use(subjectOAuth({
+				accessToken: '123',
+				accessTokenSecret: '456'
+			}));
+		}, function (err) {
+			return err.message === 'You must provide the api secret for oauth.';
 		});
 
 	});

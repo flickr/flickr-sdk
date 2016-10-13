@@ -64,7 +64,21 @@ function addOAuthSignature(req, requestParams) {
  * @returns {Function}
  * @see https://github.com/visionmedia/superagent
  */
-module.exports = function (accessToken, accessTokenSecret, apiSecret) {
+module.exports = function (config) {
+
+	if (!config || typeof config !== 'object') {
+		throw new Error('You must provide a config object for oauth.');
+	}
+	if (!config.accessToken) {
+		throw new Error('You must provide an access token for oauth.');
+	}
+	if (!config.accessTokenSecret) {
+		throw new Error('You must provide an access token secret for oauth.');
+	}
+	if (!config.apiSecret) {
+		throw new Error('You must provide the api secret for oauth.');
+	}
+
 	return function (req) {
 		var queryStringObj = {},
 			queryStrings = req.qsRaw,
@@ -80,9 +94,9 @@ module.exports = function (accessToken, accessTokenSecret, apiSecret) {
 			apiKey: requestParams.api_key,
 			method: req.method,
 			url: req.url,
-			apiSecret: apiSecret,
-			accessToken: accessToken,
-			accessTokenSecret: accessTokenSecret,
+			apiSecret: config.apiSecret,
+			accessToken: config.accessToken,
+			accessTokenSecret: config.accessTokenSecret,
 			queryStringParams: queryStringObj
 		});
 	};
