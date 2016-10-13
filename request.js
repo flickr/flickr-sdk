@@ -52,12 +52,13 @@ module.exports = function createClient(defaults) {
 		throw new Error('Required param api_key missing.');
 	}
 
-	return function (method) {
+	return function (method, args) {
 		return request('GET', 'https://api.flickr.com/services/rest')
 		.query(defaults)
 		.query('method=' + method)
 		.query('format=json')
 		.query('nojsoncallback=1')
+		.query(args)
 		.parse(parseFlickr);
 	};
 
