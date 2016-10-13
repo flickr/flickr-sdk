@@ -1,0 +1,103 @@
+{
+  "method": {
+    "name": "flickr.places.placesForBoundingBox",
+    "needslogin": 0,
+    "needssigning": 0,
+    "requiredperms": 0,
+    "description": {
+      "_content": "Return all the locations of a matching place type for a bounding box.<br /><br />\r\n\r\nThe maximum allowable size of a bounding box (the distance between the SW and NE corners) is governed by the place type you are requesting. Allowable sizes are as follows:\r\n\r\n<ul>\r\n<li><strong>neighbourhood</strong>: 3km (1.8mi)</li>\r\n<li><strong>locality</strong>: 7km (4.3mi)</li>\r\n<li><strong>county</strong>: 50km (31mi)</li>\r\n<li><strong>region</strong>: 200km (124mi)</li>\r\n<li><strong>country</strong>: 500km (310mi)</li>\r\n<li><strong>continent</strong>: 1500km (932mi)</li>\r\n</ul>"
+    },
+    "response": {
+      "_content": "<places place_type=\"neighbourhood\" total=\"21\"\r\n   pages=\"1\" page=\"1\" \r\n   bbox=\"-122.42307100000001,37.773779,-122.381071,37.815779\">\r\n   <place place_id=\".aaSwYSbApnq6seyGw\" woeid=\"23512025\"\r\n      latitude=\"37.788\" longitude=\"-122.412\" \r\n      place_url=\"/United+States/California/San+Francisco/Downtown\"\r\n      place_type=\"neighbourhood\">\r\n      Downtown, San Francisco, CA, US, United States\r\n   </place>\r\n   <place place_id=\"3KymK1GbCZ41eBVBxg\" woeid=\"28288707\"\r\n      latitude=\"37.776\" longitude=\"-122.417\" \r\n      place_url=\"/United+States/California/San+Francisco/Civic+Center\"\r\n      place_type=\"neighbourhood\">\r\n      Civic Center, San Francisco, CA, US, United States\r\n   </place>\r\n   <place place_id=\"9xdhxY.bAptvBjHo\" woeid=\"2379855\"   \r\n      latitude=\"37.796\" longitude=\"-122.407\" \r\n      place_url=\"/United+States/California/San+Francisco/Chinatown\"\r\n      place_type=\"neighbourhood\">\r\n      Chinatown, San Francisco, CA, US, United States\r\n   </place>\r\n   <!-- and so on -->\r\n</places>"
+    }
+  },
+  "arguments": {
+    "argument": [
+      {
+        "name": "api_key",
+        "optional": 0,
+        "_content": "Your API application key. <a href=\"/services/api/misc.api_keys.html\">See here</a> for more details."
+      },
+      {
+        "name": "bbox",
+        "optional": "0",
+        "_content": "A comma-delimited list of 4 values defining the Bounding Box of the area that will be searched. The 4 values represent the bottom-left corner of the box and the top-right corner, minimum_longitude, minimum_latitude, maximum_longitude, maximum_latitude."
+      },
+      {
+        "name": "place_type",
+        "optional": "1",
+        "_content": "The name of place type to using as the starting point to search for places in a bounding box. Valid placetypes are:\r\n\r\n<ul>\r\n<li>neighbourhood</li>\r\n<li>locality</li>\r\n<li>county</li>\r\n<li>region</li>\r\n<li>country</li>\r\n<li>continent</li>\r\n</ul>\r\n<br />\r\n<span style=\"font-style:italic;\">The \"place_type\" argument has been deprecated in favor of the \"place_type_id\" argument. It won't go away but it will not be added to new methods. A complete list of place type IDs is available using the <a href=\"http://www.flickr.com/services/api/flickr.places.getPlaceTypes.html\">flickr.places.getPlaceTypes</a> method. (While optional, you must pass either a valid place type or place type ID.)</span>"
+      },
+      {
+        "name": "place_type_id",
+        "optional": "1",
+        "_content": "The numeric ID for a specific place type to cluster photos by. <br /><br />\r\n\r\nValid place type IDs are :\r\n\r\n<ul>\r\n<li><strong>22</strong>: neighbourhood</li>\r\n<li><strong>7</strong>: locality</li>\r\n<li><strong>8</strong>: region</li>\r\n<li><strong>12</strong>: country</li>\r\n<li><strong>29</strong>: continent</li>\r\n</ul>\r\n<br /><span style=\"font-style:italic;\">(While optional, you must pass either a valid place type or place type ID.)</span>\r\n"
+      }
+    ]
+  },
+  "errors": {
+    "error": [
+      {
+        "code": "1",
+        "message": "Required parameters missing",
+        "_content": "One or more required parameter is missing from the API call."
+      },
+      {
+        "code": "2",
+        "message": "Not a valid bbox",
+        "_content": "The bbox argument was incomplete or incorrectly formatted"
+      },
+      {
+        "code": "3",
+        "message": "Not a valid place type",
+        "_content": "An invalid place type was included with your request."
+      },
+      {
+        "code": "4",
+        "message": "Bounding box exceeds maximum allowable size for place type",
+        "_content": "The bounding box passed along with your request was too large for the request place type."
+      },
+      {
+        "code": 100,
+        "message": "Invalid API Key",
+        "_content": "The API key passed was not valid or has expired."
+      },
+      {
+        "code": 105,
+        "message": "Service currently unavailable",
+        "_content": "The requested service is temporarily unavailable."
+      },
+      {
+        "code": 106,
+        "message": "Write operation failed",
+        "_content": "The requested operation failed due to a temporary issue."
+      },
+      {
+        "code": 111,
+        "message": "Format \"xxx\" not found",
+        "_content": "The requested response format was not found."
+      },
+      {
+        "code": 112,
+        "message": "Method \"xxx\" not found",
+        "_content": "The requested method was not found."
+      },
+      {
+        "code": 114,
+        "message": "Invalid SOAP envelope",
+        "_content": "The SOAP envelope send in the request could not be parsed."
+      },
+      {
+        "code": 115,
+        "message": "Invalid XML-RPC Method Call",
+        "_content": "The XML-RPC request document could not be parsed."
+      },
+      {
+        "code": 116,
+        "message": "Bad URL found",
+        "_content": "One or more arguments contained a URL that has been used for abuse on Flickr."
+      }
+    ]
+  },
+  "stat": "ok"
+}

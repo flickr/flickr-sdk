@@ -1,0 +1,125 @@
+{
+  "method": {
+    "name": "flickr.photos.suggestions.suggestLocation",
+    "needslogin": 1,
+    "needssigning": 1,
+    "requiredperms": "2",
+    "description": {
+      "_content": "Suggest a geotagged location for a photo."
+    }
+  },
+  "arguments": {
+    "argument": [
+      {
+        "name": "api_key",
+        "optional": 0,
+        "_content": "Your API application key. <a href=\"/services/api/misc.api_keys.html\">See here</a> for more details."
+      },
+      {
+        "name": "photo_id",
+        "optional": "0",
+        "_content": "The photo whose location you are suggesting."
+      },
+      {
+        "name": "lat",
+        "optional": "0",
+        "_content": "The latitude whose valid range is -90 to 90. Anything more than 6 decimal places will be truncated."
+      },
+      {
+        "name": "lon",
+        "optional": "0",
+        "_content": "The longitude whose valid range is -180 to 180. Anything more than 6 decimal places will be truncated."
+      },
+      {
+        "name": "accuracy",
+        "optional": "1",
+        "_content": "Recorded accuracy level of the location information. World level is 1, Country is ~3, Region ~6, City ~11, Street ~16. Current range is 1-16. Defaults to 16 if not specified."
+      },
+      {
+        "name": "woe_id",
+        "optional": "1",
+        "_content": "The WOE ID of the location used to build the location hierarchy for the photo."
+      },
+      {
+        "name": "place_id",
+        "optional": "1",
+        "_content": "The Flickr Places ID of the location used to build the location hierarchy for the photo."
+      },
+      {
+        "name": "note",
+        "optional": "1",
+        "_content": "A short note or history to include with the suggestion."
+      }
+    ]
+  },
+  "errors": {
+    "error": [
+      {
+        "code": 95,
+        "message": "SSL is required",
+        "_content": "SSL is required to access the Flickr API."
+      },
+      {
+        "code": 96,
+        "message": "Invalid signature",
+        "_content": "The passed signature was invalid."
+      },
+      {
+        "code": 97,
+        "message": "Missing signature",
+        "_content": "The call required signing but no signature was sent."
+      },
+      {
+        "code": 98,
+        "message": "Login failed / Invalid auth token",
+        "_content": "The login details or auth token passed were invalid."
+      },
+      {
+        "code": 99,
+        "message": "User not logged in / Insufficient permissions",
+        "_content": "The method requires user authentication but the user was not logged in, or the authenticated method call did not have the required permissions."
+      },
+      {
+        "code": 100,
+        "message": "Invalid API Key",
+        "_content": "The API key passed was not valid or has expired."
+      },
+      {
+        "code": 105,
+        "message": "Service currently unavailable",
+        "_content": "The requested service is temporarily unavailable."
+      },
+      {
+        "code": 106,
+        "message": "Write operation failed",
+        "_content": "The requested operation failed due to a temporary issue."
+      },
+      {
+        "code": 111,
+        "message": "Format \"xxx\" not found",
+        "_content": "The requested response format was not found."
+      },
+      {
+        "code": 112,
+        "message": "Method \"xxx\" not found",
+        "_content": "The requested method was not found."
+      },
+      {
+        "code": 114,
+        "message": "Invalid SOAP envelope",
+        "_content": "The SOAP envelope send in the request could not be parsed."
+      },
+      {
+        "code": 115,
+        "message": "Invalid XML-RPC Method Call",
+        "_content": "The XML-RPC request document could not be parsed."
+      },
+      {
+        "code": 116,
+        "message": "Bad URL found",
+        "_content": "One or more arguments contained a URL that has been used for abuse on Flickr."
+      }
+    ]
+  },
+  "stat": "ok"
+}

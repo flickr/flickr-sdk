@@ -1,0 +1,83 @@
+{
+  "method": {
+    "name": "flickr.places.getInfoByUrl",
+    "needslogin": 0,
+    "needssigning": 0,
+    "requiredperms": 0,
+    "description": {
+      "_content": "Lookup information about a place, by its flickr.com/places URL."
+    },
+    "response": {
+      "_content": "<place place_id=\"4hLQygSaBJ92\" woeid=\"3534\"\r\n   latitude=\"45.512\" longitude=\"-73.554\"\r\n   place_url=\"/Canada/Quebec/Montreal\" place_type=\"locality\"\r\n   has_shapedata=\"1\">\r\n   <locality place_id=\"4hLQygSaBJ92\" woeid=\"3534\"\r\n      latitude=\"45.512\" longitude=\"-73.554\"\r\n      place_url=\"/Canada/Quebec/Montreal\">Montreal</locality>\r\n   <county place_id=\"cFBi9x6bCJ8D5rba1g\" woeid=\"29375198\"\r\n      latitude=\"45.551\" longitude=\"-73.600\" \r\n      place_url=\"/cFBi9x6bCJ8D5rba1g\">Montréal</county>\r\n   <region place_id=\"CrZUvXebApjI0.72\" woeid=\"2344924\" \r\n      latitude=\"53.890\" longitude=\"-68.429\"\r\n      place_url=\"/Canada/Quebec\">Quebec</region>\r\n   <country place_id=\"EESRy8qbApgaeIkbsA\" woeid=\"23424775\"\r\n      latitude=\"62.358\" longitude=\"-96.582\" \r\n      place_url=\"/Canada\">Canada</country>\r\n   <shapedata created=\"1223513357\" alpha=\"0.012359619140625\"\r\n      count_points=\"34778\" count_edges=\"52\">\r\n      <polylines>\r\n         <polyline>\r\n            45.427627563477,-73.589645385742 45.428966522217,-73.587898254395, etc...\r\n         </polyline>\r\n      </polylines>\r\n   </shapedata>\r\n</place>"
+    }
+  },
+  "arguments": {
+    "argument": [
+      {
+        "name": "api_key",
+        "optional": 0,
+        "_content": "Your API application key. <a href=\"/services/api/misc.api_keys.html\">See here</a> for more details."
+      },
+      {
+        "name": "url",
+        "optional": "0",
+        "_content": "A flickr.com/places URL in the form of /country/region/city. For example: /Canada/Quebec/Montreal"
+      }
+    ]
+  },
+  "errors": {
+    "error": [
+      {
+        "code": "2",
+        "message": "Place URL required.",
+        "_content": "The flickr.com/places URL was not passed with the API method."
+      },
+      {
+        "code": "3",
+        "message": "Place not found.",
+        "_content": "Unable to find a valid place for the places URL."
+      },
+      {
+        "code": 100,
+        "message": "Invalid API Key",
+        "_content": "The API key passed was not valid or has expired."
+      },
+      {
+        "code": 105,
+        "message": "Service currently unavailable",
+        "_content": "The requested service is temporarily unavailable."
+      },
+      {
+        "code": 106,
+        "message": "Write operation failed",
+        "_content": "The requested operation failed due to a temporary issue."
+      },
+      {
+        "code": 111,
+        "message": "Format \"xxx\" not found",
+        "_content": "The requested response format was not found."
+      },
+      {
+        "code": 112,
+        "message": "Method \"xxx\" not found",
+        "_content": "The requested method was not found."
+      },
+      {
+        "code": 114,
+        "message": "Invalid SOAP envelope",
+        "_content": "The SOAP envelope send in the request could not be parsed."
+      },
+      {
+        "code": 115,
+        "message": "Invalid XML-RPC Method Call",
+        "_content": "The XML-RPC request document could not be parsed."
+      },
+      {
+        "code": 116,
+        "message": "Bad URL found",
+        "_content": "One or more arguments contained a URL that has been used for abuse on Flickr."
+      }
+    ]
+  },
+  "stat": "ok"
+}
