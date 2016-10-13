@@ -11,7 +11,8 @@
   ],
   "main": "index.js",
   "scripts": {
-		"lint": "eslint .",
+    "build": "node script/build > $npm_package_main",
+    "lint": "eslint .",
     "test": "istanbul cover _mocha"
   },
   "repository": {
@@ -25,12 +26,14 @@
   ],
   "license": "MIT",
   "devDependencies": {
+    "ejs": "~2.5.2",
     "es6-promise": "~3.3.1",
     "eslint": "~2.13.1",
     "eslint-config-flickr": "~1.3.1",
     "istanbul": "~0.4.5",
     "mocha": "~3.0.2",
-    "nock": "~8.0.0"
+    "nock": "~8.0.0",
+    "require-dir": "~0.3.1"
   },
   "dependencies": {
     "superagent": "~2.2.0"

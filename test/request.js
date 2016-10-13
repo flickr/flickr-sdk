@@ -1,4 +1,4 @@
-var subject = require('..');
+var subject = require('../request');
 var assert = require('assert');
 var nock = require('nock');
 

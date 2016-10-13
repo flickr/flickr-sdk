@@ -2,7 +2,7 @@
 
 var fs = require('fs');
 var path = require('path');
-var request = require('..')({
+var request = require('../request')({
 	api_key: process.env.FLICKR_API_KEY
 });
 
