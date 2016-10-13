@@ -34,5 +34,5 @@ npm-debug.log
 .DS_Store
 .tm_properties
 
-# Build
-artifacts
+# Generated files
+index.js

@@ -1,0 +1,57 @@
+var createClient = require('./request');
+
+/**
+ * @constructor
+ */
+
+function Flickr(defaults) {
+
+	// allow creating a client without `new`
+	if (!(this instanceof Flickr)) {
+		return new Flickr(defaults);
+	}
+
+	// create a new client and assign it to all of our namespaces
+	<%_ namespaces.forEach(function (ns) { _%>
+	this.<%= ns %>._ =
+	<%_ }); _%>
+	createClient(defaults);
+}
+
+/**
+ * Asserts that `key` is present in `params`.
+ * @param {Object} params
+ * @param {String} key
+ * @throws {Error}
+ */
+
+function assert(params, key) {
+	if (!params.hasOwnProperty(key)) {
+		throw new Error('Missing required parameter "' + key + '"');
+	}
+}
+<% namespaces.forEach(function (ns) { %>
+/**
+ * @namespace flickr.<%= ns %>
+ */
+
+Flickr.prototype.<%= ns %> = {};
+<% getMethodsByNamespace(ns).forEach(function (method) { %>
+/**
+ * <%= method %>
+ * @see https://www.flickr.com/services/api/<%= method %>.html
+ */
+
+Flickr.prototype.<%= ns %>.<%= basename(method) %> = function (args) {
+	<%_ getRequiredArguments(method).forEach(function (arg) { _%>
+	assert(args, '<%= arg %>');
+	<%_ }); _%>
+	return this._('<%= method %>', args);
+};
+<%_ }); _%>
+<% }); %>
+/**
+ * @exports
+ */
+
+module.exports = Flickr;
