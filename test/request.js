@@ -43,22 +43,6 @@ describe('request', function () {
 
 	});
 
-	it('throws if api_key is not provided', function () {
-
-		assert.throws(function () {
-			subject();
-		}, function (err) {
-			return err.message === 'Required param api_key missing.';
-		});
-
-		assert.throws(function () {
-			subject({ api_key: undefined });
-		}, function (err) {
-			return err.message === 'Required param api_key missing.';
-		});
-
-	});
-
 	it('yields an error if stat=fail is returned', function () {
 		var api = nock('https://api.flickr.com')
 		.get('/services/rest')
