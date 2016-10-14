@@ -6,15 +6,11 @@ var nock = require('nock');
 
 describe('oauth', function () {
 
-	afterEach(function () {
-		nock.cleanAll();
-	});
-
 	it('signs an api call', function () {
 		// fixed time to ensure nonce matches test
 		var time = 1305583871;
 		var clock = lolex.install(time * 1000);
-		var flickr = nock('https://api.flickr.com')
+		var api = nock('https://api.flickr.com')
 		.get('/services/rest')
 		.query({
 			api_key: '653e7a6ecc1d528c516cc8f92cf98611',
@@ -43,7 +39,7 @@ describe('oauth', function () {
 		}))
 		.then(function (res) {
 			clock.uninstall();
-			assert(flickr.isDone(), 'Expected mock to have been called');
+			assert(api.isDone(), 'Expected mock to have been called');
 			assert.equal(res.statusCode, 200);
 			assert.equal(res.body.stat, 'ok');
 		});
