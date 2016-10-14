@@ -48,9 +48,6 @@ module.exports = function createClient(defaults) {
 	if (typeof defaults === 'string') {
 		defaults = {api_key: defaults};
 	}
-	if (!defaults.api_key) {
-		throw new Error('Required param api_key missing.');
-	}
 
 	return function (method, args) {
 		return request('GET', 'https://api.flickr.com/services/rest')
