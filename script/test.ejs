@@ -1,7 +1,15 @@
-var flickr = require('..')();
+/* global Promise */
+
+var Flickr = require('..');
 var assert = require('assert');
+var sinon = require('sinon');
 
 describe('<%= method %>', function () {
+	var flickr;
+
+	beforeEach(function () {
+		flickr = new Flickr();
+	});
 
 <%_ Object.keys(args).forEach(function (arg) { _%>
 	it('requires "<%= arg %>"', function () {
@@ -15,6 +23,14 @@ describe('<%= method %>', function () {
 	});
 
 <%_ }); _%>
-	it('calls the correct API method');
+	it('calls the correct API method', function () {
+		var request = sinon.stub(<%= namespace(method) %>, '_').returns(Promise.resolve());
+
+		return <%= method %>(<%- toObject(args) %>)
+		.then(function () {
+			sinon.assert.calledOnce(request);
+			sinon.assert.calledWith(request, '<%= method %>', <%- toObject(args) %>);
+		});
+	});
 
 });

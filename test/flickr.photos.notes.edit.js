@@ -1,7 +1,15 @@
-var flickr = require('..')();
+/* global Promise */
+
+var Flickr = require('..');
 var assert = require('assert');
+var sinon = require('sinon');
 
 describe('flickr.photos.notes.edit', function () {
+	var flickr;
+
+	beforeEach(function () {
+		flickr = new Flickr();
+	});
 
 	it('requires "api_key"', function () {
 
@@ -108,6 +116,26 @@ describe('flickr.photos.notes.edit', function () {
 
 	});
 
-	it('calls the correct API method');
+	it('calls the correct API method', function () {
+		var request = sinon.stub(flickr.photos.notes, '_').returns(Promise.resolve());
+
+		return flickr.photos.notes.edit({ api_key: '_',
+  note_id: '_',
+  note_x: '_',
+  note_y: '_',
+  note_w: '_',
+  note_h: '_',
+  note_text: '_' })
+		.then(function () {
+			sinon.assert.calledOnce(request);
+			sinon.assert.calledWith(request, 'flickr.photos.notes.edit', { api_key: '_',
+  note_id: '_',
+  note_x: '_',
+  note_y: '_',
+  note_w: '_',
+  note_h: '_',
+  note_text: '_' });
+		});
+	});
 
 });

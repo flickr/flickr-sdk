@@ -1,7 +1,15 @@
-var flickr = require('..')();
+/* global Promise */
+
+var Flickr = require('..');
 var assert = require('assert');
+var sinon = require('sinon');
 
 describe('flickr.photos.geo.batchCorrectLocation', function () {
+	var flickr;
+
+	beforeEach(function () {
+		flickr = new Flickr();
+	});
 
 	it('requires "api_key"', function () {
 
@@ -43,6 +51,14 @@ describe('flickr.photos.geo.batchCorrectLocation', function () {
 
 	});
 
-	it('calls the correct API method');
+	it('calls the correct API method', function () {
+		var request = sinon.stub(flickr.photos.geo, '_').returns(Promise.resolve());
+
+		return flickr.photos.geo.batchCorrectLocation({ api_key: '_', lat: '_', lon: '_', accuracy: '_' })
+		.then(function () {
+			sinon.assert.calledOnce(request);
+			sinon.assert.calledWith(request, 'flickr.photos.geo.batchCorrectLocation', { api_key: '_', lat: '_', lon: '_', accuracy: '_' });
+		});
+	});
 
 });
