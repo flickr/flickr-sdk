@@ -1,0 +1,20 @@
+var flickr = require('..')();
+var assert = require('assert');
+
+describe('<%= method %>', function () {
+
+<%_ Object.keys(args).forEach(function (arg) { _%>
+	it('requires "<%= arg %>"', function () {
+
+		assert.throws(function () {
+			<%= method %>(<%- toObject(without(args, arg)) %>);
+		}, function (err) {
+			return err.message === 'Missing required argument "<%= arg %>"';
+		});
+
+	});
+
+<%_ }); _%>
+	it('calls the correct API method');
+
+});

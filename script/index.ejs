@@ -19,15 +19,15 @@ function Flickr(defaults) {
 }
 
 /**
- * Asserts that `key` is present in `params`.
- * @param {Object} params
+ * Asserts that `key` is present in `args`.
+ * @param {Object} args
  * @param {String} key
  * @throws {Error}
  */
 
-function assert(params, key) {
-	if (!params.hasOwnProperty(key)) {
-		throw new Error('Missing required parameter "' + key + '"');
+function assert(args, key) {
+	if (!args.hasOwnProperty(key)) {
+		throw new Error('Missing required argument "' + key + '"');
 	}
 }
 <% namespaces.forEach(function (ns) { %>

@@ -1,0 +1,38 @@
+var flickr = require('..')();
+var assert = require('assert');
+
+describe('flickr.photosets.getContext', function () {
+
+	it('requires "api_key"', function () {
+
+		assert.throws(function () {
+			flickr.photosets.getContext({ photo_id: '_', photoset_id: '_' });
+		}, function (err) {
+			return err.message === 'Missing required argument "api_key"';
+		});
+
+	});
+
+	it('requires "photo_id"', function () {
+
+		assert.throws(function () {
+			flickr.photosets.getContext({ api_key: '_', photoset_id: '_' });
+		}, function (err) {
+			return err.message === 'Missing required argument "photo_id"';
+		});
+
+	});
+
+	it('requires "photoset_id"', function () {
+
+		assert.throws(function () {
+			flickr.photosets.getContext({ api_key: '_', photo_id: '_' });
+		}, function (err) {
+			return err.message === 'Missing required argument "photoset_id"';
+		});
+
+	});
+
+	it('calls the correct API method');
+
+});
