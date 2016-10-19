@@ -46,7 +46,7 @@ Flickr.prototype.<%= ns %>.<%= basename(method) %> = function (args) {
 	<%_ getRequiredArguments(method).forEach(function (arg) { _%>
 	assert(args, '<%= arg %>');
 	<%_ }); _%>
-	return this._('<%= method %>', args);
+	return this._('GET', '<%= method %>', args);
 };
 <%_ }); _%>
 <% }); %>
