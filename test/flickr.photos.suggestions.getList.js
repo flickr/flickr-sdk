@@ -13,6 +13,11 @@ describe('flickr.photos.suggestions.getList', function () {
 
 	});
 
-	it('calls the correct API method');
+	it('returns a Request instance', function () {
+		var req = flickr.photos.suggestions.getList({ api_key: '_' });
+
+		assert.equal(req.method, 'GET');
+		assert.equal(req.url, 'https://api.flickr.com/services/rest');
+	});
 
 });

@@ -108,6 +108,17 @@ describe('flickr.photos.people.editCoords', function () {
 
 	});
 
-	it('calls the correct API method');
+	it('returns a Request instance', function () {
+		var req = flickr.photos.people.editCoords({ api_key: '_',
+  photo_id: '_',
+  user_id: '_',
+  person_x: '_',
+  person_y: '_',
+  person_w: '_',
+  person_h: '_' });
+
+		assert.equal(req.method, 'GET');
+		assert.equal(req.url, 'https://api.flickr.com/services/rest');
+	});
 
 });

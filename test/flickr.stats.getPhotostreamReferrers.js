@@ -33,6 +33,11 @@ describe('flickr.stats.getPhotostreamReferrers', function () {
 
 	});
 
-	it('calls the correct API method');
+	it('returns a Request instance', function () {
+		var req = flickr.stats.getPhotostreamReferrers({ api_key: '_', date: '_', domain: '_' });
+
+		assert.equal(req.method, 'GET');
+		assert.equal(req.url, 'https://api.flickr.com/services/rest');
+	});
 
 });

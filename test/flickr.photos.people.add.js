@@ -33,6 +33,11 @@ describe('flickr.photos.people.add', function () {
 
 	});
 
-	it('calls the correct API method');
+	it('returns a Request instance', function () {
+		var req = flickr.photos.people.add({ api_key: '_', photo_id: '_', user_id: '_' });
+
+		assert.equal(req.method, 'GET');
+		assert.equal(req.url, 'https://api.flickr.com/services/rest');
+	});
 
 });

@@ -43,6 +43,11 @@ describe('flickr.groups.discuss.replies.add', function () {
 
 	});
 
-	it('calls the correct API method');
+	it('returns a Request instance', function () {
+		var req = flickr.groups.discuss.replies.add({ api_key: '_', group_id: '_', topic_id: '_', message: '_' });
+
+		assert.equal(req.method, 'GET');
+		assert.equal(req.url, 'https://api.flickr.com/services/rest');
+	});
 
 });

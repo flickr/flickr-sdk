@@ -23,6 +23,11 @@ describe('flickr.photosets.comments.getList', function () {
 
 	});
 
-	it('calls the correct API method');
+	it('returns a Request instance', function () {
+		var req = flickr.photosets.comments.getList({ api_key: '_', photoset_id: '_' });
+
+		assert.equal(req.method, 'GET');
+		assert.equal(req.url, 'https://api.flickr.com/services/rest');
+	});
 
 });

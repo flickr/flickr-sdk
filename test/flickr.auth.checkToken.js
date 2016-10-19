@@ -23,6 +23,11 @@ describe('flickr.auth.checkToken', function () {
 
 	});
 
-	it('calls the correct API method');
+	it('returns a Request instance', function () {
+		var req = flickr.auth.checkToken({ api_key: '_', auth_token: '_' });
+
+		assert.equal(req.method, 'GET');
+		assert.equal(req.url, 'https://api.flickr.com/services/rest');
+	});
 
 });

@@ -87,6 +87,16 @@ describe('flickr.photos.geo.setPerms', function () {
 
 	});
 
-	it('calls the correct API method');
+	it('returns a Request instance', function () {
+		var req = flickr.photos.geo.setPerms({ api_key: '_',
+  is_public: '_',
+  is_contact: '_',
+  is_friend: '_',
+  is_family: '_',
+  photo_id: '_' });
+
+		assert.equal(req.method, 'GET');
+		assert.equal(req.url, 'https://api.flickr.com/services/rest');
+	});
 
 });

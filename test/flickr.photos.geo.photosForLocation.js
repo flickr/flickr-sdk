@@ -33,6 +33,11 @@ describe('flickr.photos.geo.photosForLocation', function () {
 
 	});
 
-	it('calls the correct API method');
+	it('returns a Request instance', function () {
+		var req = flickr.photos.geo.photosForLocation({ api_key: '_', lat: '_', lon: '_' });
+
+		assert.equal(req.method, 'GET');
+		assert.equal(req.url, 'https://api.flickr.com/services/rest');
+	});
 
 });

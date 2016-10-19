@@ -23,6 +23,11 @@ describe('flickr.people.getPublicPhotos', function () {
 
 	});
 
-	it('calls the correct API method');
+	it('returns a Request instance', function () {
+		var req = flickr.people.getPublicPhotos({ api_key: '_', user_id: '_' });
+
+		assert.equal(req.method, 'GET');
+		assert.equal(req.url, 'https://api.flickr.com/services/rest');
+	});
 
 });

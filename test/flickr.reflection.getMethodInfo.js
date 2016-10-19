@@ -23,6 +23,11 @@ describe('flickr.reflection.getMethodInfo', function () {
 
 	});
 
-	it('calls the correct API method');
+	it('returns a Request instance', function () {
+		var req = flickr.reflection.getMethodInfo({ api_key: '_', method_name: '_' });
+
+		assert.equal(req.method, 'GET');
+		assert.equal(req.url, 'https://api.flickr.com/services/rest');
+	});
 
 });

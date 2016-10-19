@@ -43,6 +43,14 @@ describe('flickr.photosets.editPhotos', function () {
 
 	});
 
-	it('calls the correct API method');
+	it('returns a Request instance', function () {
+		var req = flickr.photosets.editPhotos({ api_key: '_',
+  photoset_id: '_',
+  primary_photo_id: '_',
+  photo_ids: '_' });
+
+		assert.equal(req.method, 'GET');
+		assert.equal(req.url, 'https://api.flickr.com/services/rest');
+	});
 
 });

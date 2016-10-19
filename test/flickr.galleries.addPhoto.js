@@ -33,6 +33,11 @@ describe('flickr.galleries.addPhoto', function () {
 
 	});
 
-	it('calls the correct API method');
+	it('returns a Request instance', function () {
+		var req = flickr.galleries.addPhoto({ api_key: '_', gallery_id: '_', photo_id: '_' });
+
+		assert.equal(req.method, 'GET');
+		assert.equal(req.url, 'https://api.flickr.com/services/rest');
+	});
 
 });
