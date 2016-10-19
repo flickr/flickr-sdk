@@ -26,7 +26,7 @@ describe('flickr.photos.removeTag', function () {
 	it('returns a Request instance', function () {
 		var req = flickr.photos.removeTag({ api_key: '_', tag_id: '_' });
 
-		assert.equal(req.method, 'GET');
+		assert.equal(req.method, 'POST');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');
 	});
 

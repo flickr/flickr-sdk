@@ -117,7 +117,7 @@ describe('flickr.photos.people.editCoords', function () {
   person_w: '_',
   person_h: '_' });
 
-		assert.equal(req.method, 'GET');
+		assert.equal(req.method, 'POST');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');
 	});
 

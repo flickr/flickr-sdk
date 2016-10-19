@@ -60,7 +60,7 @@ describe('flickr.photos.setPerms', function () {
   is_friend: '_',
   is_family: '_' });
 
-		assert.equal(req.method, 'GET');
+		assert.equal(req.method, 'POST');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');
 	});
 

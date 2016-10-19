@@ -36,7 +36,7 @@ describe('flickr.galleries.editMeta', function () {
 	it('returns a Request instance', function () {
 		var req = flickr.galleries.editMeta({ api_key: '_', gallery_id: '_', title: '_' });
 
-		assert.equal(req.method, 'GET');
+		assert.equal(req.method, 'POST');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');
 	});
 

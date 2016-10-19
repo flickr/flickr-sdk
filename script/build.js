@@ -122,6 +122,24 @@ ejs.renderFile(__dirname + '/index.ejs', {
 	},
 
 	/**
+	 * Returns the HTTP verb for this method info. If the method
+	 * needs either "write" or "delete" perms, the verb is POST.
+	 * Otherwise, the verb is GET.
+	 * @param {Object} info
+	 * @returns {String}
+	 */
+
+	getHTTPVerb: function (method) {
+		switch (parseInt(this.methods[method].method.requiredperms, 10)) {
+		case 2: // write
+		case 3: // delete
+			return 'POST';
+		default:
+			return 'GET';
+		}
+	},
+
+	/**
 	 * Returns the method basename of `method`, which is
 	 * everything after the last delimiter.
 	 * @param {String} method

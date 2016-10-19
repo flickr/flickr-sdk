@@ -26,7 +26,7 @@ describe('flickr.groups.leave', function () {
 	it('returns a Request instance', function () {
 		var req = flickr.groups.leave({ api_key: '_', group_id: '_' });
 
-		assert.equal(req.method, 'GET');
+		assert.equal(req.method, 'POST');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');
 	});
 

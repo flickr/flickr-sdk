@@ -95,7 +95,7 @@ describe('flickr.photos.geo.setPerms', function () {
   is_family: '_',
   photo_id: '_' });
 
-		assert.equal(req.method, 'GET');
+		assert.equal(req.method, 'POST');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');
 	});
 

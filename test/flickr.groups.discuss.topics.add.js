@@ -46,7 +46,7 @@ describe('flickr.groups.discuss.topics.add', function () {
 	it('returns a Request instance', function () {
 		var req = flickr.groups.discuss.topics.add({ api_key: '_', group_id: '_', subject: '_', message: '_' });
 
-		assert.equal(req.method, 'GET');
+		assert.equal(req.method, 'POST');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');
 	});
 
