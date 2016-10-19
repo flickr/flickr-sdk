@@ -1,7 +1,15 @@
-var flickr = require('..')();
+/* global Promise */
+
+var Flickr = require('..');
 var assert = require('assert');
+var sinon = require('sinon');
 
 describe('flickr.tags.getMostFrequentlyUsed', function () {
+	var flickr;
+
+	beforeEach(function () {
+		flickr = new Flickr();
+	});
 
 	it('requires "api_key"', function () {
 
@@ -13,6 +21,14 @@ describe('flickr.tags.getMostFrequentlyUsed', function () {
 
 	});
 
-	it('calls the correct API method');
+	it('calls the correct API method', function () {
+		var request = sinon.stub(flickr.tags, '_').returns(Promise.resolve());
+
+		return flickr.tags.getMostFrequentlyUsed({ api_key: '_' })
+		.then(function () {
+			sinon.assert.calledOnce(request);
+			sinon.assert.calledWith(request, 'flickr.tags.getMostFrequentlyUsed', { api_key: '_' });
+		});
+	});
 
 });

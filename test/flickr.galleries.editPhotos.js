@@ -1,7 +1,15 @@
-var flickr = require('..')();
+/* global Promise */
+
+var Flickr = require('..');
 var assert = require('assert');
+var sinon = require('sinon');
 
 describe('flickr.galleries.editPhotos', function () {
+	var flickr;
+
+	beforeEach(function () {
+		flickr = new Flickr();
+	});
 
 	it('requires "api_key"', function () {
 
@@ -43,6 +51,20 @@ describe('flickr.galleries.editPhotos', function () {
 
 	});
 
-	it('calls the correct API method');
+	it('calls the correct API method', function () {
+		var request = sinon.stub(flickr.galleries, '_').returns(Promise.resolve());
+
+		return flickr.galleries.editPhotos({ api_key: '_',
+  gallery_id: '_',
+  primary_photo_id: '_',
+  photo_ids: '_' })
+		.then(function () {
+			sinon.assert.calledOnce(request);
+			sinon.assert.calledWith(request, 'flickr.galleries.editPhotos', { api_key: '_',
+  gallery_id: '_',
+  primary_photo_id: '_',
+  photo_ids: '_' });
+		});
+	});
 
 });

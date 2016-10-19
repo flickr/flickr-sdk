@@ -58,6 +58,10 @@ function without(obj, field) {
 	return ret;
 }
 
+function namespace(method) {
+	return method.split('.').slice(0, -1).join('.');
+}
+
 /**
  * Generate a test for every method
  */
@@ -68,6 +72,7 @@ Object.keys(methods).forEach(function (method) {
 		method: method,
 		args: requiredArguments(methods[method]),
 		without: without,
+		namespace: namespace,
 		toObject: util.inspect
 
 	}, function (err, str) {

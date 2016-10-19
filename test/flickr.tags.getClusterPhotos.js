@@ -1,7 +1,15 @@
-var flickr = require('..')();
+/* global Promise */
+
+var Flickr = require('..');
 var assert = require('assert');
+var sinon = require('sinon');
 
 describe('flickr.tags.getClusterPhotos', function () {
+	var flickr;
+
+	beforeEach(function () {
+		flickr = new Flickr();
+	});
 
 	it('requires "api_key"', function () {
 
@@ -33,6 +41,14 @@ describe('flickr.tags.getClusterPhotos', function () {
 
 	});
 
-	it('calls the correct API method');
+	it('calls the correct API method', function () {
+		var request = sinon.stub(flickr.tags, '_').returns(Promise.resolve());
+
+		return flickr.tags.getClusterPhotos({ api_key: '_', tag: '_', cluster_id: '_' })
+		.then(function () {
+			sinon.assert.calledOnce(request);
+			sinon.assert.calledWith(request, 'flickr.tags.getClusterPhotos', { api_key: '_', tag: '_', cluster_id: '_' });
+		});
+	});
 
 });

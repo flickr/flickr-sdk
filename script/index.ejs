@@ -26,7 +26,7 @@ function Flickr(defaults) {
  */
 
 function assert(args, key) {
-	if (!args.hasOwnProperty(key)) {
+	if (!args || !args.hasOwnProperty(key)) {
 		throw new Error('Missing required argument "' + key + '"');
 	}
 }
