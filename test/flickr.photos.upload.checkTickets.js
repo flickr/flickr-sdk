@@ -23,6 +23,11 @@ describe('flickr.photos.upload.checkTickets', function () {
 
 	});
 
-	it('calls the correct API method');
+	it('returns a Request instance', function () {
+		var req = flickr.photos.upload.checkTickets({ api_key: '_', tickets: '_' });
+
+		assert.equal(req.method, 'GET');
+		assert.equal(req.url, 'https://api.flickr.com/services/rest');
+	});
 
 });

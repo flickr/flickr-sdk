@@ -23,6 +23,11 @@ describe('flickr.places.placesForBoundingBox', function () {
 
 	});
 
-	it('calls the correct API method');
+	it('returns a Request instance', function () {
+		var req = flickr.places.placesForBoundingBox({ api_key: '_', bbox: '_' });
+
+		assert.equal(req.method, 'GET');
+		assert.equal(req.url, 'https://api.flickr.com/services/rest');
+	});
 
 });

@@ -108,6 +108,17 @@ describe('flickr.photos.notes.edit', function () {
 
 	});
 
-	it('calls the correct API method');
+	it('returns a Request instance', function () {
+		var req = flickr.photos.notes.edit({ api_key: '_',
+  note_id: '_',
+  note_x: '_',
+  note_y: '_',
+  note_w: '_',
+  note_h: '_',
+  note_text: '_' });
+
+		assert.equal(req.method, 'GET');
+		assert.equal(req.url, 'https://api.flickr.com/services/rest');
+	});
 
 });

@@ -23,6 +23,11 @@ describe('flickr.urls.lookupUser', function () {
 
 	});
 
-	it('calls the correct API method');
+	it('returns a Request instance', function () {
+		var req = flickr.urls.lookupUser({ api_key: '_', url: '_' });
+
+		assert.equal(req.method, 'GET');
+		assert.equal(req.url, 'https://api.flickr.com/services/rest');
+	});
 
 });

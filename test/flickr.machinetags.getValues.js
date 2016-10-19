@@ -33,6 +33,11 @@ describe('flickr.machinetags.getValues', function () {
 
 	});
 
-	it('calls the correct API method');
+	it('returns a Request instance', function () {
+		var req = flickr.machinetags.getValues({ api_key: '_', namespace: '_', predicate: '_' });
+
+		assert.equal(req.method, 'GET');
+		assert.equal(req.url, 'https://api.flickr.com/services/rest');
+	});
 
 });

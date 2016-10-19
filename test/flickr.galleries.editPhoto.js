@@ -43,6 +43,11 @@ describe('flickr.galleries.editPhoto', function () {
 
 	});
 
-	it('calls the correct API method');
+	it('returns a Request instance', function () {
+		var req = flickr.galleries.editPhoto({ api_key: '_', gallery_id: '_', photo_id: '_', comment: '_' });
+
+		assert.equal(req.method, 'GET');
+		assert.equal(req.url, 'https://api.flickr.com/services/rest');
+	});
 
 });
