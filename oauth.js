@@ -10,10 +10,10 @@ var merge = require('deepmerge');
  * @param {object} params
  * @returns {String}
  */
-function createSignature(method, url, apiSecret, tokenSecret, params) {
 
+function createSignature(method, url, apiSecret, tokenSecret, params) {
 	var baseString = method.toUpperCase() + '&' + encodeURIComponent(url) + '&',
-	    signingKey = apiSecret + "&" + (tokenSecret || '');
+		signingKey = apiSecret + '&' + (tokenSecret || '');
 
 	Object.keys(params).sort().forEach(function (key, i) {
 		baseString += (i > 0) ? encodeURIComponent('&') : '';
@@ -29,8 +29,8 @@ function createSignature(method, url, apiSecret, tokenSecret, params) {
  * @param {object} requestParams
  * @returns {Superagent request}
  */
-function addOAuthSignature(req, requestParams) {
 
+function addOAuthSignature(req, requestParams) {
 	var oauthParams = {
 		oauth_consumer_key: requestParams.apiKey,
 		oauth_token: requestParams.accessToken,
@@ -64,8 +64,8 @@ function addOAuthSignature(req, requestParams) {
  * @returns {Function}
  * @see https://github.com/visionmedia/superagent
  */
-module.exports = function (config) {
 
+module.exports = function (config) {
 	if (!config || typeof config !== 'object') {
 		throw new Error('You must provide a config object for oauth.');
 	}
