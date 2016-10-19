@@ -65,7 +65,7 @@ function inNamespace(ns) {
  */
 
 function required(arg) {
-	return !parseInt(arg.optional, 10);
+	return !parseInt(arg.optional, 10) && arg.name !== 'api_key';
 }
 
 /**

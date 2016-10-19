@@ -41,15 +41,21 @@ function parseFlickr(res, fn) {
  */
 
 module.exports = function createClient(defaults) {
-
 	if (typeof defaults === 'undefined') {
 		defaults = {};
 	}
 	if (typeof defaults === 'string') {
-		defaults = {api_key: defaults};
+		defaults = { api_key: defaults };
 	}
 
 	return function (method, args) {
+		if (typeof args === 'undefined') {
+			args = {};
+		}
+		if (!defaults.api_key && !args.api_key) {
+			throw new Error('Missing required argument "api_key"');
+		}
+
 		return request('GET', 'https://api.flickr.com/services/rest')
 		.query(defaults)
 		.query('method=' + method)
