@@ -15,7 +15,7 @@ describe('request', function () {
 		})
 		.reply(200, {stat: 'ok'});
 
-		return subject('abcd1234')('flickr.test.echo').then(function (res) {
+		return subject('abcd1234')('GET', 'flickr.test.echo').then(function (res) {
 			assert(api.isDone(), 'Expected mock to have been called');
 			assert.equal(res.statusCode, 200);
 			assert.equal(res.body.stat, 'ok');
@@ -35,7 +35,7 @@ describe('request', function () {
 		})
 		.reply(200, {stat: 'ok'});
 
-		return subject({api_key: 'abcd1234', foo: 'bar'})('flickr.test.echo').then(function (res) {
+		return subject({api_key: 'abcd1234', foo: 'bar'})('GET', 'flickr.test.echo').then(function (res) {
 			assert(api.isDone(), 'Expected mock to have been called');
 			assert.equal(res.statusCode, 200);
 			assert.equal(res.body.stat, 'ok');
@@ -58,7 +58,7 @@ describe('request', function () {
 			message: 'Invalid API Key (Key has invalid format)'
 		});
 
-		return subject('abcd1234')('flickr.test.echo').then(function () {
+		return subject('abcd1234')('GET', 'flickr.test.echo').then(function () {
 			throw new Error('Expected errback');
 		}, function (err) {
 			assert(api.isDone(), 'Expected mock to have been called');
@@ -80,7 +80,7 @@ describe('request', function () {
 		})
 		.reply(200, {stat: 'ok'});
 
-		return subject('abcd1234')('flickr.test.echo', {foo: 'bar'}).then(function (res) {
+		return subject('abcd1234')('GET', 'flickr.test.echo', {foo: 'bar'}).then(function (res) {
 			assert(api.isDone(), 'Expected mock to have been called');
 			assert.equal(res.statusCode, 200);
 			assert.equal(res.body.stat, 'ok');
@@ -99,7 +99,7 @@ describe('request', function () {
 		})
 		.reply(200, '{');
 
-		return subject('abcd1234')('flickr.test.echo').then(function () {
+		return subject('abcd1234')('GET', 'flickr.test.echo').then(function () {
 			throw new Error('Expected errback');
 		}, function (err) {
 			assert(api.isDone(), 'Expected mock to have been called');

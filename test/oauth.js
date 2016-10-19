@@ -31,7 +31,7 @@ describe('oauth', function () {
 		return request({
 			api_key: '653e7a6ecc1d528c516cc8f92cf98611',
 			foo: 'bar'
-		})('flickr.test.echo')
+		})('GET', 'flickr.test.echo')
 		.use(subject({
 			accessToken: '123',
 			accessTokenSecret: '456',

@@ -48,7 +48,7 @@ module.exports = function createClient(defaults) {
 		defaults = { api_key: defaults };
 	}
 
-	return function (method, args) {
+	return function (verb, method, args) {
 		if (typeof args === 'undefined') {
 			args = {};
 		}
@@ -56,7 +56,7 @@ module.exports = function createClient(defaults) {
 			throw new Error('Missing required argument "api_key"');
 		}
 
-		return request('GET', 'https://api.flickr.com/services/rest')
+		return request(verb, 'https://api.flickr.com/services/rest')
 		.query(defaults)
 		.query('method=' + method)
 		.query('format=json')
