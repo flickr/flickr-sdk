@@ -46,7 +46,7 @@ describe('flickr.groups.joinRequest', function () {
 	it('returns a Request instance', function () {
 		var req = flickr.groups.joinRequest({ api_key: '_', group_id: '_', message: '_', accept_rules: '_' });
 
-		assert.equal(req.method, 'GET');
+		assert.equal(req.method, 'POST');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');
 	});
 

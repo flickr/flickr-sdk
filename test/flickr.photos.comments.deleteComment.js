@@ -26,7 +26,7 @@ describe('flickr.photos.comments.deleteComment', function () {
 	it('returns a Request instance', function () {
 		var req = flickr.photos.comments.deleteComment({ api_key: '_', comment_id: '_' });
 
-		assert.equal(req.method, 'GET');
+		assert.equal(req.method, 'POST');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');
 	});
 

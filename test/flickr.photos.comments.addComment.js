@@ -36,7 +36,7 @@ describe('flickr.photos.comments.addComment', function () {
 	it('returns a Request instance', function () {
 		var req = flickr.photos.comments.addComment({ api_key: '_', photo_id: '_', comment_text: '_' });
 
-		assert.equal(req.method, 'GET');
+		assert.equal(req.method, 'POST');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');
 	});
 

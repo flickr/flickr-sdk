@@ -36,7 +36,7 @@ describe('flickr.photos.setContentType', function () {
 	it('returns a Request instance', function () {
 		var req = flickr.photos.setContentType({ api_key: '_', photo_id: '_', content_type: '_' });
 
-		assert.equal(req.method, 'GET');
+		assert.equal(req.method, 'POST');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');
 	});
 

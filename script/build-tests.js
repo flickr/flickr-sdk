@@ -21,6 +21,24 @@ function filename(method) {
 }
 
 /**
+ * Returns the HTTP verb for this method info. If the method
+ * needs either "write" or "delete" perms, the verb is POST.
+ * Otherwise, the verb is GET.
+ * @param {Object} info
+ * @returns {String}
+ */
+
+function httpVerb(info) {
+	switch (parseInt(info.method.requiredperms, 10)) {
+	case 2: // write
+	case 3: // delete
+		return 'POST';
+	default:
+		return 'GET';
+	}
+}
+
+/**
  * Returns a hash of the non-optional arguments in `info`
  * to a test-only placeholder truthy value.
  * @param {Object} info
@@ -66,6 +84,7 @@ Object.keys(methods).forEach(function (method) {
 	ejs.renderFile(__dirname + '/test.ejs', {
 
 		method: method,
+		verb: httpVerb(methods[method]),
 		args: requiredArguments(methods[method]),
 		without: without,
 		toObject: util.inspect

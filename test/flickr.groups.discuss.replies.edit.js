@@ -60,7 +60,7 @@ describe('flickr.groups.discuss.replies.edit', function () {
   reply_id: '_',
   message: '_' });
 
-		assert.equal(req.method, 'GET');
+		assert.equal(req.method, 'POST');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');
 	});
 

@@ -36,7 +36,7 @@ describe('flickr.galleries.create', function () {
 	it('returns a Request instance', function () {
 		var req = flickr.galleries.create({ api_key: '_', title: '_', description: '_' });
 
-		assert.equal(req.method, 'GET');
+		assert.equal(req.method, 'POST');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');
 	});
 

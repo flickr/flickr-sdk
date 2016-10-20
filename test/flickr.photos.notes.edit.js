@@ -117,7 +117,7 @@ describe('flickr.photos.notes.edit', function () {
   note_h: '_',
   note_text: '_' });
 
-		assert.equal(req.method, 'GET');
+		assert.equal(req.method, 'POST');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');
 	});
 

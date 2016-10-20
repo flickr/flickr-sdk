@@ -36,7 +36,7 @@ describe('flickr.photosets.removePhoto', function () {
 	it('returns a Request instance', function () {
 		var req = flickr.photosets.removePhoto({ api_key: '_', photoset_id: '_', photo_id: '_' });
 
-		assert.equal(req.method, 'GET');
+		assert.equal(req.method, 'POST');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');
 	});
 

@@ -49,7 +49,7 @@ describe('flickr.galleries.editPhotos', function () {
   primary_photo_id: '_',
   photo_ids: '_' });
 
-		assert.equal(req.method, 'GET');
+		assert.equal(req.method, 'POST');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');
 	});
 
