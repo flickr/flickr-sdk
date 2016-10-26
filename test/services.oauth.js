@@ -13,7 +13,7 @@ describe('services/oauth', function () {
 
 	beforeEach(function () {
 		time.config({
-			dateString: 'October 26, 1985 01:20:00'
+			dateString: 'October 26, 1985 01:20:00 PST'
 		});
 	});
 
@@ -27,13 +27,13 @@ describe('services/oauth', function () {
 			var api = nock('https://www.flickr.com')
 			.get('/services/oauth/request_token')
 			.query({
-				oauth_nonce: '0d6e24f8073fe797e4d0187b95a141543e43698d',
-				oauth_timestamp: 499162800,
+				oauth_nonce: '84145a28b1e2bfec42932a97e7cd658093cc0301',
+				oauth_timestamp: 499166400,
 				oauth_consumer_key: subject.consumerKey,
 				oauth_signature_method: 'HMAC-SHA1',
 				oauth_version: '1.0',
 				oauth_callback: 'https://www.example.com/callback',
-				oauth_signature: 'FCle3acIqKzy9PuPEy7wAFyxH1g='
+				oauth_signature: 'gml5sU1tVCjqEVWufq4a7eHpAZI='
 			})
 			.reply(200, 'oauth_callback_confirmed=true&oauth_token=foo&oauth_token_secret=bar');
 
@@ -57,12 +57,12 @@ describe('services/oauth', function () {
 			.query({
 				oauth_token: 'token',
 				oauth_verifier: 'verfier',
-				oauth_nonce: '0d6e24f8073fe797e4d0187b95a141543e43698d',
-				oauth_timestamp: 499162800,
+				oauth_nonce: '84145a28b1e2bfec42932a97e7cd658093cc0301',
+				oauth_timestamp: 499166400,
 				oauth_consumer_key: subject.consumerKey,
 				oauth_signature_method: 'HMAC-SHA1',
 				oauth_version: '1.0',
-				oauth_signature: 'XgVdlwPEV1+SwJm8D5W8mXSCJOQ='
+				oauth_signature: 'bOpTpeJsYL38EWmISx8BGbgVgSs='
 			})
 			.reply(200, 'fullname=Jamal%20Fanaian&oauth_token=foo&oauth_token_secret=bar&user_nsid=21207597%40N07&username=jamalfanaian');
 
@@ -84,8 +84,8 @@ describe('services/oauth', function () {
 		it('returns OAuth 1.0 params', function () {
 			var params = subject.params();
 
-			assert.equal(params.oauth_nonce, '0d6e24f8073fe797e4d0187b95a141543e43698d');
-			assert.equal(params.oauth_timestamp, 499162800);
+			assert.equal(params.oauth_nonce, '84145a28b1e2bfec42932a97e7cd658093cc0301');
+			assert.equal(params.oauth_timestamp, 499166400);
 			assert.equal(params.oauth_consumer_key, subject.consumerKey);
 			assert.equal(params.oauth_signature_method, 'HMAC-SHA1');
 			assert.equal(params.oauth_version, '1.0');

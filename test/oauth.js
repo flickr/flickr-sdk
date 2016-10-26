@@ -8,7 +8,7 @@ describe('oauth', function () {
 
 	beforeEach(function () {
 		time.config({
-			dateString: 'October 26, 1985 01:20:00'
+			dateString: 'October 26, 1985 01:20:00 PST'
 		});
 	});
 
@@ -22,13 +22,13 @@ describe('oauth', function () {
 		.query({
 			api_key: '653e7a6ecc1d528c516cc8f92cf98611',
 			foo: 'bar',
-			oauth_nonce: '0d6e24f8073fe797e4d0187b95a141543e43698d',
+			oauth_nonce: '84145a28b1e2bfec42932a97e7cd658093cc0301',
 			oauth_consumer_key: 'consumer key',
 			oauth_token: 'oauth token',
 			oauth_version: '1.0',
-			oauth_timestamp: 499162800,
+			oauth_timestamp: 499166400,
 			oauth_signature_method: 'HMAC-SHA1',
-			oauth_signature: 'Qb0EKmHytoAmrzljD5KjeCW5l2s=',
+			oauth_signature: 'SgZUlgoJYgxc4+LNXD7aBVrKZnc=',
 			method: 'flickr.test.echo',
 			format: 'json',
 			nojsoncallback: '1'
