@@ -38,7 +38,8 @@
     "lolex": "^1.5.1",
     "mocha": "~3.0.2",
     "nock": "~8.0.0",
-    "require-dir": "~0.3.1"
+    "require-dir": "~0.3.1",
+    "timemachine": "~0.2.6"
   },
   "dependencies": {
     "deepmerge": "^1.1.1",
