@@ -1,103 +1,29 @@
-var crypto = require('crypto');
-var merge = require('deepmerge');
+var OAuth = require('./services/oauth');
 
 /**
- * Create oauth compliant basestring, signing key, and then signature
- * @param {String} method
- * @param {String} url
- * @param {String} apiSecret
- * @param {String} tokenSecret
- * @param {object} params
- * @returns {String}
- */
-
-function createSignature(method, url, apiSecret, tokenSecret, params) {
-	var baseString = method.toUpperCase() + '&' + encodeURIComponent(url) + '&',
-		signingKey = apiSecret + '&' + (tokenSecret || '');
-
-	Object.keys(params).sort().forEach(function (key, i) {
-		baseString += (i > 0) ? encodeURIComponent('&') : '';
-		baseString += encodeURIComponent(key + '=' + params[key]);
-	});
-
-	return crypto.createHmac('sha1', signingKey).update(baseString).digest('base64');
-}
-
-/**
- * Collects oauth parameters and makes a call to create a signature
- * @param {Superagent request} req
- * @param {object} requestParams
- * @returns {Superagent request}
- */
-
-function addOAuthSignature(req, requestParams) {
-	var oauthParams = {
-		oauth_consumer_key: requestParams.apiKey,
-		oauth_token: requestParams.accessToken,
-		oauth_version: '1.0',
-		oauth_timestamp: Math.round(Date.now() / 1000),
-		oauth_nonce: crypto.createHash('sha1').update(String(Date.now())).digest('hex'),
-		oauth_signature_method: 'HMAC-SHA1'
-	};
-
-	// add query params and then sign
-	return req.query(oauthParams)
-	.query({
-		oauth_signature: encodeURIComponent(
-			createSignature(
-				requestParams.method,
-				requestParams.url,
-				requestParams.apiSecret,
-				requestParams.accessTokenSecret,
-				merge(requestParams.queryStringParams, oauthParams)
-			)
-		)
-	});
-}
-
-/**
- * Creates a superagent plugin to sign API calls using the access token details
- * compliant with oauth 1, which the API expects
- * @param {String} accessToken
- * @param {String} accessTokenSecret
- * @param {String} apiSecret
+ * Creates a superagent plugin to sign API calls using OAuth 1.0.
+ * @param {String} consumerKey
+ * @param {String} consumerSecret
+ * @param {String} oauthToken
+ * @param {String} oauthTokenSecret
  * @returns {Function}
  * @see https://github.com/visionmedia/superagent
+ * @see https://www.flickr.com/services/api/auth.oauth.html#call_api
  */
 
-module.exports = function (config) {
-	if (!config || typeof config !== 'object') {
-		throw new Error('You must provide a config object for oauth.');
+module.exports = function (consumerKey, consumerSecret, oauthToken, oauthTokenSecret) {
+	var oauth = new OAuth(consumerKey, consumerSecret);
+
+	if (!oauthToken) {
+		throw new Error('Missing required argument "oauthToken"');
 	}
-	if (!config.accessToken) {
-		throw new Error('You must provide an access token for oauth.');
-	}
-	if (!config.accessTokenSecret) {
-		throw new Error('You must provide an access token secret for oauth.');
-	}
-	if (!config.apiSecret) {
-		throw new Error('You must provide the api secret for oauth.');
+	if (!oauthTokenSecret) {
+		throw new Error('Missing required argument "oauthTokenSecret"');
 	}
 
 	return function (req) {
-		var queryStringObj = {},
-			queryStrings = req.qsRaw,
-			requestParams = req.qs;
-
-		queryStrings.forEach(function (queryString) {
-			var keyValuePair = queryString.split('=');
-
-			queryStringObj[keyValuePair[0]] = keyValuePair[1];
-		});
-
-		return addOAuthSignature(req, {
-			apiKey: requestParams.api_key,
-			method: req.method,
-			url: req.url,
-			apiSecret: config.apiSecret,
-			accessToken: config.accessToken,
-			accessTokenSecret: config.accessTokenSecret,
-			queryStringParams: queryStringObj
-		});
+		req.query(oauth.params());
+		req.query({ oauth_token: oauthToken });
+		req.use(oauth.sign(oauthTokenSecret));
 	};
 };
