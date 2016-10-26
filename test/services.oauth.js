@@ -28,12 +28,12 @@ describe('services/oauth', function () {
 			.get('/services/oauth/request_token')
 			.query({
 				oauth_nonce: '0d6e24f8073fe797e4d0187b95a141543e43698d',
-				oauth_timestamp: 499162800000,
+				oauth_timestamp: 499162800,
 				oauth_consumer_key: subject.consumerKey,
 				oauth_signature_method: 'HMAC-SHA1',
 				oauth_version: '1.0',
 				oauth_callback: 'https://www.example.com/callback',
-				oauth_signature: 'qQ3gdACX0PrmzVAYIL6NjjrkYMw='
+				oauth_signature: 'FCle3acIqKzy9PuPEy7wAFyxH1g='
 			})
 			.reply(200, 'oauth_callback_confirmed=true&oauth_token=foo&oauth_token_secret=bar');
 
@@ -58,11 +58,11 @@ describe('services/oauth', function () {
 				oauth_token: 'token',
 				oauth_verifier: 'verfier',
 				oauth_nonce: '0d6e24f8073fe797e4d0187b95a141543e43698d',
-				oauth_timestamp: 499162800000,
+				oauth_timestamp: 499162800,
 				oauth_consumer_key: subject.consumerKey,
 				oauth_signature_method: 'HMAC-SHA1',
 				oauth_version: '1.0',
-				oauth_signature: 'Qyhwc9332I2rv4OT/ecfI6yNvAM='
+				oauth_signature: 'XgVdlwPEV1+SwJm8D5W8mXSCJOQ='
 			})
 			.reply(200, 'fullname=Jamal%20Fanaian&oauth_token=foo&oauth_token_secret=bar&user_nsid=21207597%40N07&username=jamalfanaian');
 
@@ -85,7 +85,7 @@ describe('services/oauth', function () {
 			var params = subject.params();
 
 			assert.equal(params.oauth_nonce, '0d6e24f8073fe797e4d0187b95a141543e43698d');
-			assert.equal(params.oauth_timestamp, 499162800000);
+			assert.equal(params.oauth_timestamp, 499162800);
 			assert.equal(params.oauth_consumer_key, subject.consumerKey);
 			assert.equal(params.oauth_signature_method, 'HMAC-SHA1');
 			assert.equal(params.oauth_version, '1.0');

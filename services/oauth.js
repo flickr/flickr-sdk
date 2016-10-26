@@ -141,7 +141,7 @@ OAuth.prototype.parse = request.parse['application/x-www-form-urlencoded'];
 OAuth.prototype.params = function () {
 	return {
 		oauth_nonce: nonce(Date.now()),
-		oauth_timestamp: Date.now(), // FIXME shouldn't this be seconds instead of milliseconds?
+		oauth_timestamp: Math.floor(Date.now() / 1000),
 		oauth_consumer_key: this.consumerKey,
 		oauth_signature_method: 'HMAC-SHA1',
 		oauth_version: '1.0'

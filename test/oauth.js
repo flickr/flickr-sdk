@@ -26,9 +26,9 @@ describe('oauth', function () {
 			oauth_consumer_key: 'consumer key',
 			oauth_token: 'oauth token',
 			oauth_version: '1.0',
-			oauth_timestamp: 499162800000,
+			oauth_timestamp: 499162800,
 			oauth_signature_method: 'HMAC-SHA1',
-			oauth_signature: 'xjtXjnKBkrYycVVHjnsHhS/ACGQ=',
+			oauth_signature: 'Qb0EKmHytoAmrzljD5KjeCW5l2s=',
 			method: 'flickr.test.echo',
 			format: 'json',
 			nojsoncallback: '1'
