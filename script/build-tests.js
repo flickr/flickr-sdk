@@ -49,7 +49,7 @@ function requiredArguments(info) {
 	var obj = {};
 
 	info.arguments.argument.filter(function (arg) {
-		return !parseInt(arg.optional, 10);
+		return !parseInt(arg.optional, 10) && arg.name !== 'api_key';
 	}).forEach(function (arg) {
 		obj[arg.name] = '_';
 	});

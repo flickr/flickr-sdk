@@ -3,18 +3,8 @@ var assert = require('assert');
 
 describe('flickr.photos.getWithGeoData', function () {
 
-	it('requires "api_key"', function () {
-
-		assert.throws(function () {
-			flickr.photos.getWithGeoData({});
-		}, function (err) {
-			return err.message === 'Missing required argument "api_key"';
-		});
-
-	});
-
 	it('returns a Request instance', function () {
-		var req = flickr.photos.getWithGeoData({ api_key: '_' });
+		var req = flickr.photos.getWithGeoData({});
 
 		assert.equal(req.method, 'GET');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');

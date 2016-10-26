@@ -3,20 +3,10 @@ var assert = require('assert');
 
 describe('flickr.photos.transform.rotate', function () {
 
-	it('requires "api_key"', function () {
-
-		assert.throws(function () {
-			flickr.photos.transform.rotate({ photo_id: '_', degrees: '_' });
-		}, function (err) {
-			return err.message === 'Missing required argument "api_key"';
-		});
-
-	});
-
 	it('requires "photo_id"', function () {
 
 		assert.throws(function () {
-			flickr.photos.transform.rotate({ api_key: '_', degrees: '_' });
+			flickr.photos.transform.rotate({ degrees: '_' });
 		}, function (err) {
 			return err.message === 'Missing required argument "photo_id"';
 		});
@@ -26,7 +16,7 @@ describe('flickr.photos.transform.rotate', function () {
 	it('requires "degrees"', function () {
 
 		assert.throws(function () {
-			flickr.photos.transform.rotate({ api_key: '_', photo_id: '_' });
+			flickr.photos.transform.rotate({ photo_id: '_' });
 		}, function (err) {
 			return err.message === 'Missing required argument "degrees"';
 		});
@@ -34,7 +24,7 @@ describe('flickr.photos.transform.rotate', function () {
 	});
 
 	it('returns a Request instance', function () {
-		var req = flickr.photos.transform.rotate({ api_key: '_', photo_id: '_', degrees: '_' });
+		var req = flickr.photos.transform.rotate({ photo_id: '_', degrees: '_' });
 
 		assert.equal(req.method, 'POST');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');

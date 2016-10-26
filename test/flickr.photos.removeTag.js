@@ -3,20 +3,10 @@ var assert = require('assert');
 
 describe('flickr.photos.removeTag', function () {
 
-	it('requires "api_key"', function () {
-
-		assert.throws(function () {
-			flickr.photos.removeTag({ tag_id: '_' });
-		}, function (err) {
-			return err.message === 'Missing required argument "api_key"';
-		});
-
-	});
-
 	it('requires "tag_id"', function () {
 
 		assert.throws(function () {
-			flickr.photos.removeTag({ api_key: '_' });
+			flickr.photos.removeTag({});
 		}, function (err) {
 			return err.message === 'Missing required argument "tag_id"';
 		});
@@ -24,7 +14,7 @@ describe('flickr.photos.removeTag', function () {
 	});
 
 	it('returns a Request instance', function () {
-		var req = flickr.photos.removeTag({ api_key: '_', tag_id: '_' });
+		var req = flickr.photos.removeTag({ tag_id: '_' });
 
 		assert.equal(req.method, 'POST');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');

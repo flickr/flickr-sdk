@@ -3,20 +3,10 @@ var assert = require('assert');
 
 describe('flickr.tags.getClusterPhotos', function () {
 
-	it('requires "api_key"', function () {
-
-		assert.throws(function () {
-			flickr.tags.getClusterPhotos({ tag: '_', cluster_id: '_' });
-		}, function (err) {
-			return err.message === 'Missing required argument "api_key"';
-		});
-
-	});
-
 	it('requires "tag"', function () {
 
 		assert.throws(function () {
-			flickr.tags.getClusterPhotos({ api_key: '_', cluster_id: '_' });
+			flickr.tags.getClusterPhotos({ cluster_id: '_' });
 		}, function (err) {
 			return err.message === 'Missing required argument "tag"';
 		});
@@ -26,7 +16,7 @@ describe('flickr.tags.getClusterPhotos', function () {
 	it('requires "cluster_id"', function () {
 
 		assert.throws(function () {
-			flickr.tags.getClusterPhotos({ api_key: '_', tag: '_' });
+			flickr.tags.getClusterPhotos({ tag: '_' });
 		}, function (err) {
 			return err.message === 'Missing required argument "cluster_id"';
 		});
@@ -34,7 +24,7 @@ describe('flickr.tags.getClusterPhotos', function () {
 	});
 
 	it('returns a Request instance', function () {
-		var req = flickr.tags.getClusterPhotos({ api_key: '_', tag: '_', cluster_id: '_' });
+		var req = flickr.tags.getClusterPhotos({ tag: '_', cluster_id: '_' });
 
 		assert.equal(req.method, 'GET');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');

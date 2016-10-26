@@ -3,20 +3,10 @@ var assert = require('assert');
 
 describe('flickr.favorites.remove', function () {
 
-	it('requires "api_key"', function () {
-
-		assert.throws(function () {
-			flickr.favorites.remove({ photo_id: '_' });
-		}, function (err) {
-			return err.message === 'Missing required argument "api_key"';
-		});
-
-	});
-
 	it('requires "photo_id"', function () {
 
 		assert.throws(function () {
-			flickr.favorites.remove({ api_key: '_' });
+			flickr.favorites.remove({});
 		}, function (err) {
 			return err.message === 'Missing required argument "photo_id"';
 		});
@@ -24,7 +14,7 @@ describe('flickr.favorites.remove', function () {
 	});
 
 	it('returns a Request instance', function () {
-		var req = flickr.favorites.remove({ api_key: '_', photo_id: '_' });
+		var req = flickr.favorites.remove({ photo_id: '_' });
 
 		assert.equal(req.method, 'POST');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');

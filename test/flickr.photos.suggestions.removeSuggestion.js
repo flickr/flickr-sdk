@@ -3,20 +3,10 @@ var assert = require('assert');
 
 describe('flickr.photos.suggestions.removeSuggestion', function () {
 
-	it('requires "api_key"', function () {
-
-		assert.throws(function () {
-			flickr.photos.suggestions.removeSuggestion({ suggestion_id: '_' });
-		}, function (err) {
-			return err.message === 'Missing required argument "api_key"';
-		});
-
-	});
-
 	it('requires "suggestion_id"', function () {
 
 		assert.throws(function () {
-			flickr.photos.suggestions.removeSuggestion({ api_key: '_' });
+			flickr.photos.suggestions.removeSuggestion({});
 		}, function (err) {
 			return err.message === 'Missing required argument "suggestion_id"';
 		});
@@ -24,7 +14,7 @@ describe('flickr.photos.suggestions.removeSuggestion', function () {
 	});
 
 	it('returns a Request instance', function () {
-		var req = flickr.photos.suggestions.removeSuggestion({ api_key: '_', suggestion_id: '_' });
+		var req = flickr.photos.suggestions.removeSuggestion({ suggestion_id: '_' });
 
 		assert.equal(req.method, 'POST');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');

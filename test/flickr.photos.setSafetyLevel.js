@@ -3,20 +3,10 @@ var assert = require('assert');
 
 describe('flickr.photos.setSafetyLevel', function () {
 
-	it('requires "api_key"', function () {
-
-		assert.throws(function () {
-			flickr.photos.setSafetyLevel({ photo_id: '_' });
-		}, function (err) {
-			return err.message === 'Missing required argument "api_key"';
-		});
-
-	});
-
 	it('requires "photo_id"', function () {
 
 		assert.throws(function () {
-			flickr.photos.setSafetyLevel({ api_key: '_' });
+			flickr.photos.setSafetyLevel({});
 		}, function (err) {
 			return err.message === 'Missing required argument "photo_id"';
 		});
@@ -24,7 +14,7 @@ describe('flickr.photos.setSafetyLevel', function () {
 	});
 
 	it('returns a Request instance', function () {
-		var req = flickr.photos.setSafetyLevel({ api_key: '_', photo_id: '_' });
+		var req = flickr.photos.setSafetyLevel({ photo_id: '_' });
 
 		assert.equal(req.method, 'POST');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');

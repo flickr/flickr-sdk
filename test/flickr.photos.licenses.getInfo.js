@@ -3,18 +3,8 @@ var assert = require('assert');
 
 describe('flickr.photos.licenses.getInfo', function () {
 
-	it('requires "api_key"', function () {
-
-		assert.throws(function () {
-			flickr.photos.licenses.getInfo({});
-		}, function (err) {
-			return err.message === 'Missing required argument "api_key"';
-		});
-
-	});
-
 	it('returns a Request instance', function () {
-		var req = flickr.photos.licenses.getInfo({ api_key: '_' });
+		var req = flickr.photos.licenses.getInfo({});
 
 		assert.equal(req.method, 'GET');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');

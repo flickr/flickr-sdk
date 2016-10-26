@@ -3,20 +3,10 @@ var assert = require('assert');
 
 describe('flickr.people.findByEmail', function () {
 
-	it('requires "api_key"', function () {
-
-		assert.throws(function () {
-			flickr.people.findByEmail({ find_email: '_' });
-		}, function (err) {
-			return err.message === 'Missing required argument "api_key"';
-		});
-
-	});
-
 	it('requires "find_email"', function () {
 
 		assert.throws(function () {
-			flickr.people.findByEmail({ api_key: '_' });
+			flickr.people.findByEmail({});
 		}, function (err) {
 			return err.message === 'Missing required argument "find_email"';
 		});
@@ -24,7 +14,7 @@ describe('flickr.people.findByEmail', function () {
 	});
 
 	it('returns a Request instance', function () {
-		var req = flickr.people.findByEmail({ api_key: '_', find_email: '_' });
+		var req = flickr.people.findByEmail({ find_email: '_' });
 
 		assert.equal(req.method, 'GET');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');
