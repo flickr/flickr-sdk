@@ -52,9 +52,6 @@ module.exports = function createClient(defaults) {
 		if (typeof args === 'undefined') {
 			args = {};
 		}
-		if (!defaults.api_key && !args.api_key) {
-			throw new Error('Missing required argument "api_key"');
-		}
 
 		return request(verb, 'https://api.flickr.com/services/rest')
 		.query(defaults)

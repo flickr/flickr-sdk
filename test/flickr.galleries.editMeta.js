@@ -3,20 +3,10 @@ var assert = require('assert');
 
 describe('flickr.galleries.editMeta', function () {
 
-	it('requires "api_key"', function () {
-
-		assert.throws(function () {
-			flickr.galleries.editMeta({ gallery_id: '_', title: '_' });
-		}, function (err) {
-			return err.message === 'Missing required argument "api_key"';
-		});
-
-	});
-
 	it('requires "gallery_id"', function () {
 
 		assert.throws(function () {
-			flickr.galleries.editMeta({ api_key: '_', title: '_' });
+			flickr.galleries.editMeta({ title: '_' });
 		}, function (err) {
 			return err.message === 'Missing required argument "gallery_id"';
 		});
@@ -26,7 +16,7 @@ describe('flickr.galleries.editMeta', function () {
 	it('requires "title"', function () {
 
 		assert.throws(function () {
-			flickr.galleries.editMeta({ api_key: '_', gallery_id: '_' });
+			flickr.galleries.editMeta({ gallery_id: '_' });
 		}, function (err) {
 			return err.message === 'Missing required argument "title"';
 		});
@@ -34,7 +24,7 @@ describe('flickr.galleries.editMeta', function () {
 	});
 
 	it('returns a Request instance', function () {
-		var req = flickr.galleries.editMeta({ api_key: '_', gallery_id: '_', title: '_' });
+		var req = flickr.galleries.editMeta({ gallery_id: '_', title: '_' });
 
 		assert.equal(req.method, 'POST');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');

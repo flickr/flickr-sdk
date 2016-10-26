@@ -3,26 +3,10 @@ var assert = require('assert');
 
 describe('flickr.photos.notes.add', function () {
 
-	it('requires "api_key"', function () {
-
-		assert.throws(function () {
-			flickr.photos.notes.add({ photo_id: '_',
-  note_x: '_',
-  note_y: '_',
-  note_w: '_',
-  note_h: '_',
-  note_text: '_' });
-		}, function (err) {
-			return err.message === 'Missing required argument "api_key"';
-		});
-
-	});
-
 	it('requires "photo_id"', function () {
 
 		assert.throws(function () {
-			flickr.photos.notes.add({ api_key: '_',
-  note_x: '_',
+			flickr.photos.notes.add({ note_x: '_',
   note_y: '_',
   note_w: '_',
   note_h: '_',
@@ -36,8 +20,7 @@ describe('flickr.photos.notes.add', function () {
 	it('requires "note_x"', function () {
 
 		assert.throws(function () {
-			flickr.photos.notes.add({ api_key: '_',
-  photo_id: '_',
+			flickr.photos.notes.add({ photo_id: '_',
   note_y: '_',
   note_w: '_',
   note_h: '_',
@@ -51,8 +34,7 @@ describe('flickr.photos.notes.add', function () {
 	it('requires "note_y"', function () {
 
 		assert.throws(function () {
-			flickr.photos.notes.add({ api_key: '_',
-  photo_id: '_',
+			flickr.photos.notes.add({ photo_id: '_',
   note_x: '_',
   note_w: '_',
   note_h: '_',
@@ -66,8 +48,7 @@ describe('flickr.photos.notes.add', function () {
 	it('requires "note_w"', function () {
 
 		assert.throws(function () {
-			flickr.photos.notes.add({ api_key: '_',
-  photo_id: '_',
+			flickr.photos.notes.add({ photo_id: '_',
   note_x: '_',
   note_y: '_',
   note_h: '_',
@@ -81,8 +62,7 @@ describe('flickr.photos.notes.add', function () {
 	it('requires "note_h"', function () {
 
 		assert.throws(function () {
-			flickr.photos.notes.add({ api_key: '_',
-  photo_id: '_',
+			flickr.photos.notes.add({ photo_id: '_',
   note_x: '_',
   note_y: '_',
   note_w: '_',
@@ -96,8 +76,7 @@ describe('flickr.photos.notes.add', function () {
 	it('requires "note_text"', function () {
 
 		assert.throws(function () {
-			flickr.photos.notes.add({ api_key: '_',
-  photo_id: '_',
+			flickr.photos.notes.add({ photo_id: '_',
   note_x: '_',
   note_y: '_',
   note_w: '_',
@@ -109,8 +88,7 @@ describe('flickr.photos.notes.add', function () {
 	});
 
 	it('returns a Request instance', function () {
-		var req = flickr.photos.notes.add({ api_key: '_',
-  photo_id: '_',
+		var req = flickr.photos.notes.add({ photo_id: '_',
   note_x: '_',
   note_y: '_',
   note_w: '_',
