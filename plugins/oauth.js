@@ -1,4 +1,4 @@
-var OAuth = require('./services/oauth');
+var OAuth = require('../services/oauth');
 
 /**
  * Creates a superagent plugin to sign API calls using OAuth 1.0.

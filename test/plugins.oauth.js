@@ -1,10 +1,10 @@
-var subject = require('../oauth');
+var subject = require('../plugins/oauth');
 var request = require('../request');
 var assert = require('assert');
 var time = require('timemachine');
 var nock = require('nock');
 
-describe('oauth', function () {
+describe('plugins/oauth', function () {
 
 	beforeEach(function () {
 		time.config({
