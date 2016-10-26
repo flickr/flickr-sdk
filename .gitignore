@@ -30,9 +30,5 @@ build
 node_modules
 npm-debug.log
 
-# Crap
-.DS_Store
-.tm_properties
-
 # Generated files
-index.js
+services/rest.js
