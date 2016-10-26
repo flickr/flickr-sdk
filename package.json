@@ -12,7 +12,9 @@
   "main": "index.js",
   "files": [
     "index.js",
-    "request.js"
+    "request.js",
+    "plugins",
+    "services"
   ],
   "scripts": {
     "build": "node script/build > $npm_package_main",
