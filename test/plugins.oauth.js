@@ -1,5 +1,5 @@
 var subject = require('../plugins/oauth');
-var request = require('../request');
+var flickr = require('..')();
 var assert = require('assert');
 var time = require('timemachine');
 var nock = require('nock');
@@ -20,25 +20,21 @@ describe('plugins/oauth', function () {
 		var api = nock('https://api.flickr.com')
 		.get('/services/rest')
 		.query({
-			api_key: '653e7a6ecc1d528c516cc8f92cf98611',
-			foo: 'bar',
 			oauth_nonce: '84145a28b1e2bfec42932a97e7cd658093cc0301',
 			oauth_consumer_key: 'consumer key',
 			oauth_token: 'oauth token',
 			oauth_version: '1.0',
 			oauth_timestamp: 499166400,
 			oauth_signature_method: 'HMAC-SHA1',
-			oauth_signature: 'SgZUlgoJYgxc4+LNXD7aBVrKZnc=',
+			oauth_signature: '24FqVjB0tvdn3AQDjfXYQI8WyRI=',
 			method: 'flickr.test.echo',
+			foo: 'bar',
 			format: 'json',
 			nojsoncallback: '1'
 		})
 		.reply(200, {stat: 'ok'});
 
-		return request({
-			api_key: '653e7a6ecc1d528c516cc8f92cf98611',
-			foo: 'bar'
-		})('GET', 'flickr.test.echo')
+		return flickr.test.echo({ foo: 'bar' })
 		.use(subject('consumer key', 'consumer secret', 'oauth token', 'oauth token secret'))
 		.then(function (res) {
 			assert(api.isDone(), 'Expected mock to have been called');
