@@ -1,32 +1,33 @@
 var subject = require('../plugins/oauth');
+var OAuth = require('../services/oauth');
 var flickr = require('..')();
 var assert = require('assert');
-var time = require('timemachine');
+var sinon = require('sinon');
 var nock = require('nock');
 
 describe('plugins/oauth', function () {
+	var sandbox;
 
 	beforeEach(function () {
-		time.config({
-			dateString: 'October 26, 1985 01:20:00 PST'
-		});
+		sandbox = sinon.sandbox.create();
+		sandbox.stub(OAuth.prototype, 'timestamp').returns(499166400);
 	});
 
 	afterEach(function () {
-		time.reset();
+		sandbox.restore();
 	});
 
 	it('signs an api call', function () {
 		var api = nock('https://api.flickr.com')
 		.get('/services/rest')
 		.query({
-			oauth_nonce: '84145a28b1e2bfec42932a97e7cd658093cc0301',
+			oauth_nonce: '2114a105bc84fafbd4a05333b0b7f836c5dba8db',
 			oauth_consumer_key: 'consumer key',
 			oauth_token: 'oauth token',
 			oauth_version: '1.0',
 			oauth_timestamp: 499166400,
 			oauth_signature_method: 'HMAC-SHA1',
-			oauth_signature: '24FqVjB0tvdn3AQDjfXYQI8WyRI=',
+			oauth_signature: 'a8DFIqDyb0o1tnB2XeqM85RFz6o=',
 			method: 'flickr.test.echo',
 			foo: 'bar',
 			format: 'json',
