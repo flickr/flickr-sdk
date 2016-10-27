@@ -11,6 +11,7 @@ describe('plugins/oauth', function () {
 	beforeEach(function () {
 		sandbox = sinon.sandbox.create();
 		sandbox.stub(OAuth.prototype, 'timestamp').returns(499166400);
+		sandbox.stub(OAuth.prototype, 'nonce').returns('p2m2bnHdXVIsQH0FUv0oN9XrJU57ak7dSSpHU36mn4k=');
 	});
 
 	afterEach(function () {
@@ -21,13 +22,13 @@ describe('plugins/oauth', function () {
 		var api = nock('https://api.flickr.com')
 		.get('/services/rest')
 		.query({
-			oauth_nonce: '2114a105bc84fafbd4a05333b0b7f836c5dba8db',
+			oauth_nonce: 'p2m2bnHdXVIsQH0FUv0oN9XrJU57ak7dSSpHU36mn4k=',
 			oauth_consumer_key: 'consumer key',
 			oauth_token: 'oauth token',
 			oauth_version: '1.0',
 			oauth_timestamp: 499166400,
 			oauth_signature_method: 'HMAC-SHA1',
-			oauth_signature: 'a8DFIqDyb0o1tnB2XeqM85RFz6o=',
+			oauth_signature: '5WSz6hwZ6F8jbeYv3eyErif1ySo=',
 			method: 'flickr.test.echo',
 			foo: 'bar',
 			format: 'json',

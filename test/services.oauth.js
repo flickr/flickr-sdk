@@ -10,6 +10,7 @@ describe('services/oauth', function () {
 	beforeEach(function () {
 		subject = new OAuth('consumer key', 'consumer secret');
 		sinon.stub(subject, 'timestamp').returns(499166400);
+		sinon.stub(subject, 'nonce').returns('p2m2bnHdXVIsQH0FUv0oN9XrJU57ak7dSSpHU36mn4k=');
 	});
 
 	describe('#request', function () {
@@ -18,13 +19,13 @@ describe('services/oauth', function () {
 			var api = nock('https://www.flickr.com')
 			.get('/services/oauth/request_token')
 			.query({
-				oauth_nonce: '2114a105bc84fafbd4a05333b0b7f836c5dba8db',
+				oauth_nonce: 'p2m2bnHdXVIsQH0FUv0oN9XrJU57ak7dSSpHU36mn4k=',
 				oauth_timestamp: 499166400,
 				oauth_consumer_key: subject.consumerKey,
 				oauth_signature_method: 'HMAC-SHA1',
 				oauth_version: '1.0',
 				oauth_callback: 'https://www.example.com/callback',
-				oauth_signature: 'n9Lnt7f7j9LrDJ0U6X30SSHSmW4='
+				oauth_signature: 'JC6IWgvysQg30vh3Xk6TjARQWps='
 			})
 			.reply(200, 'oauth_callback_confirmed=true&oauth_token=foo&oauth_token_secret=bar');
 
@@ -48,12 +49,12 @@ describe('services/oauth', function () {
 			.query({
 				oauth_token: 'token',
 				oauth_verifier: 'verfier',
-				oauth_nonce: '2114a105bc84fafbd4a05333b0b7f836c5dba8db',
+				oauth_nonce: 'p2m2bnHdXVIsQH0FUv0oN9XrJU57ak7dSSpHU36mn4k=',
 				oauth_timestamp: 499166400,
 				oauth_consumer_key: subject.consumerKey,
 				oauth_signature_method: 'HMAC-SHA1',
 				oauth_version: '1.0',
-				oauth_signature: 'kdVh2jMIk5AGoN/63AGQ4kexpSg='
+				oauth_signature: '7+3k1AWzUyxOoNO4rymh0Txz5FA='
 			})
 			.reply(200, 'fullname=Jamal%20Fanaian&oauth_token=foo&oauth_token_secret=bar&user_nsid=21207597%40N07&username=jamalfanaian');
 
@@ -82,12 +83,32 @@ describe('services/oauth', function () {
 
 	});
 
+	describe('#nonce', function () {
+
+		beforeEach(function () {
+			sinon.restore(subject.nonce);
+		});
+
+		it('returns a string', function () {
+			assert.equal(typeof subject.nonce(), 'string');
+		});
+
+		it('returns 32 bytes of data', function () {
+			assert.equal(Buffer.byteLength(subject.nonce(), 'base64'), 32);
+		});
+
+		it('does not return the same nonce twice', function () {
+			assert.notEqual(subject.nonce(), subject.nonce());
+		});
+
+	});
+
 	describe('#params', function () {
 
 		it('returns OAuth 1.0 params', function () {
 			var params = subject.params();
 
-			assert.equal(params.oauth_nonce, '2114a105bc84fafbd4a05333b0b7f836c5dba8db');
+			assert.equal(params.oauth_nonce, 'p2m2bnHdXVIsQH0FUv0oN9XrJU57ak7dSSpHU36mn4k=');
 			assert.equal(params.oauth_timestamp, 499166400);
 			assert.equal(params.oauth_consumer_key, subject.consumerKey);
 			assert.equal(params.oauth_signature_method, 'HMAC-SHA1');

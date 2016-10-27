@@ -2,19 +2,6 @@ var request = require('superagent');
 var crypto = require('crypto');
 
 /**
- * Returns a nonce for the timestamp `time`. OAuth 1.0 defines a
- * nonce as a value unique to a given timestamp.
- * @param {Number} time
- * @returns {String}
- * @see https://oauth.net/core/1.0a/#nonce
- * @private
- */
-
-function nonce(time) {
-	return crypto.createHash('sha1').update(String(time)).digest('hex');
-}
-
-/**
  * Returns the HMAC-SHA1 digest of `text` and `key` in baset64 encoding.
  * @param {String} text
  * @param {String} key
@@ -143,17 +130,26 @@ OAuth.prototype.timestamp = function () {
 };
 
 /**
+ * Generates a pseudo-random string. OAuth 1.0 defines a
+ * nonce as a value unique within a given timestamp in seconds.
+ * @returns {String}
+ * @see https://oauth.net/core/1.0a/#nonce
+ */
+
+OAuth.prototype.nonce = function () {
+	return crypto.pseudoRandomBytes(32).toString('base64');
+};
+
+/**
  * Creates an object with the standard OAuth 1.0 query params
  * for this instance.
  * @returns {Object}
  */
 
 OAuth.prototype.params = function () {
-	var timestamp = this.timestamp();
-
 	return {
-		oauth_nonce: nonce(timestamp),
-		oauth_timestamp: timestamp,
+		oauth_nonce: this.nonce(),
+		oauth_timestamp: this.timestamp(),
 		oauth_consumer_key: this.consumerKey,
 		oauth_signature_method: 'HMAC-SHA1',
 		oauth_version: '1.0'
