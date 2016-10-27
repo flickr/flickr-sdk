@@ -6,7 +6,10 @@
 
 ### getting a public photo
 ```
-flickrSDK({ api_key: 'abcd1234', photo_id: '12345678'})('flickr.photos.getInfo')
+var Flickr = require('flickrSDK');
+var flickr = new Flickr({ api_key: 'abcd1234' });
+
+flickr.photos.getInfo({ photo: '123456789' })
 .then(function (res) {
 	// get the photo data off res
 });
@@ -14,11 +17,14 @@ flickrSDK({ api_key: 'abcd1234', photo_id: '12345678'})('flickr.photos.getInfo')
 
 ### getting a private photo
 ```
-require('flickrSDK')({ api_key: 'abcd1234', photo_id: '987654321'})('flickr.photos.getInfo')
-.use(require('flickrSDK/oauth')({
+var Flickr = require('flickrSDK');
+var flickr = new Flickr({ api_key: 'abcd1234', api_secret: '54321' });
+var oauthPlugin = require('flickrSDK/plugins/oauth');
+
+flickr.photos.getInfo({ photo: '123456789' })
+.use(oauthPlugin({
 	accessToken: '123',
-	accessTokenSecret: '456',
-	apiSecret: '54321'
+	accessTokenSecret: '456'
 }))
 .then(function (res) {
 	// get the photo data off res
