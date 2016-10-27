@@ -1,44 +1,41 @@
 var subject = require('../plugins/oauth');
-var request = require('../request');
+var OAuth = require('../services/oauth');
+var flickr = require('..')();
 var assert = require('assert');
-var time = require('timemachine');
+var sinon = require('sinon');
 var nock = require('nock');
 
 describe('plugins/oauth', function () {
+	var sandbox;
 
 	beforeEach(function () {
-		time.config({
-			dateString: 'October 26, 1985 01:20:00 PST'
-		});
+		sandbox = sinon.sandbox.create();
+		sandbox.stub(OAuth.prototype, 'timestamp').returns(499166400);
 	});
 
 	afterEach(function () {
-		time.reset();
+		sandbox.restore();
 	});
 
 	it('signs an api call', function () {
 		var api = nock('https://api.flickr.com')
 		.get('/services/rest')
 		.query({
-			api_key: '653e7a6ecc1d528c516cc8f92cf98611',
-			foo: 'bar',
-			oauth_nonce: '84145a28b1e2bfec42932a97e7cd658093cc0301',
+			oauth_nonce: '2114a105bc84fafbd4a05333b0b7f836c5dba8db',
 			oauth_consumer_key: 'consumer key',
 			oauth_token: 'oauth token',
 			oauth_version: '1.0',
 			oauth_timestamp: 499166400,
 			oauth_signature_method: 'HMAC-SHA1',
-			oauth_signature: 'SgZUlgoJYgxc4+LNXD7aBVrKZnc=',
+			oauth_signature: 'a8DFIqDyb0o1tnB2XeqM85RFz6o=',
 			method: 'flickr.test.echo',
+			foo: 'bar',
 			format: 'json',
 			nojsoncallback: '1'
 		})
 		.reply(200, {stat: 'ok'});
 
-		return request({
-			api_key: '653e7a6ecc1d528c516cc8f92cf98611',
-			foo: 'bar'
-		})('GET', 'flickr.test.echo')
+		return flickr.test.echo({ foo: 'bar' })
 		.use(subject('consumer key', 'consumer secret', 'oauth token', 'oauth token secret'))
 		.then(function (res) {
 			assert(api.isDone(), 'Expected mock to have been called');

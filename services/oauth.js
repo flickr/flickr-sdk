@@ -133,15 +133,27 @@ OAuth.prototype.verify = function (oauthToken, oauthVerifier, tokenSecret) {
 OAuth.prototype.parse = request.parse['application/x-www-form-urlencoded'];
 
 /**
+ * Returns the number of seconds since January 1, 1970 00:00:00 GMT.
+ * @returns {Number}
+ * @see https://oauth.net/core/1.0a/#nonce
+ */
+
+OAuth.prototype.timestamp = function () {
+	return Math.floor(Date.now() / 1000);
+};
+
+/**
  * Creates an object with the standard OAuth 1.0 query params
  * for this instance.
  * @returns {Object}
  */
 
 OAuth.prototype.params = function () {
+	var timestamp = this.timestamp();
+
 	return {
-		oauth_nonce: nonce(Date.now()),
-		oauth_timestamp: Math.floor(Date.now() / 1000),
+		oauth_nonce: nonce(timestamp),
+		oauth_timestamp: timestamp,
 		oauth_consumer_key: this.consumerKey,
 		oauth_signature_method: 'HMAC-SHA1',
 		oauth_version: '1.0'
