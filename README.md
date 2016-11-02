@@ -5,7 +5,7 @@
 ## use
 
 ### getting a public photo
-```
+```js
 var Flickr = require('flickr-sdk');
 var flickr = new Flickr({ api_key: 'abcd1234' });
 
@@ -16,6 +16,10 @@ flickr.photos.getInfo({ photo: '123456789' })
 ```
 
 See the [Example Repo](https://github.com/flickr/flickr-sdk-examples) for more examples, including searching and authenticating.
+
+### docs
+[Flickr API Docs](https://www.flickr.com/services/api)
+[Flickr Feed Docs](https://www.flickr.com/services/feeds/)
 
 ## troubleshooting
 
