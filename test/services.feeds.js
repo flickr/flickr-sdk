@@ -142,7 +142,7 @@ describe('services/feeds', function () {
 		});
 	});
 
-	describe('faves', function () {
+	describe('favePhotos', function () {
 
 		it('makes the correct call', function () {
 			var api = nock('https://www.flickr.com')
@@ -153,7 +153,7 @@ describe('services/feeds', function () {
 			})
 			.reply(200, 'fave-photos');
 
-			return subject.faves({ id: '1234' }).then(function (res) {
+			return subject.favePhotos({ id: '1234' }).then(function (res) {
 				assert(api.isDone());
 				assert.equal(res.statusCode, 200);
 				assert.equal(res.text, 'fave-photos');
@@ -169,7 +169,7 @@ describe('services/feeds', function () {
 			})
 			.reply(200, 'fave-photos');
 
-			return subject.faves({ nsid: '1234' }).then(function (res) {
+			return subject.favePhotos({ nsid: '1234' }).then(function (res) {
 				assert(api.isDone());
 				assert.equal(res.statusCode, 200);
 				assert.equal(res.text, 'fave-photos');
@@ -186,7 +186,7 @@ describe('services/feeds', function () {
 			})
 			.reply(200, 'fave-photos');
 
-			return subject.faves({
+			return subject.favePhotos({
 				id: '1234',
 				lang: 'fr-fr',
 				format: 'atom'
@@ -200,9 +200,9 @@ describe('services/feeds', function () {
 		it('requires an id or nsid', function () {
 
 			assert.throws(function () {
-				subject.faves();
+				subject.favePhotos();
 			}, function (err) {
-				return err.message === 'Missing required argument "nsid"';
+				return err.message === 'Missing required arguments "id", "nsid"';
 			});
 		});
 	});
