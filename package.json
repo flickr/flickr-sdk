@@ -14,7 +14,8 @@
     "index.js",
     "request.js",
     "plugins",
-    "services"
+    "services",
+    "validate.js"
   ],
   "scripts": {
     "build": "node script/build > services/rest.js",
