@@ -1,4 +1,5 @@
 var createClient = require('../request');
+var validate = require('../validate');
 
 /**
  * @constructor
@@ -18,18 +19,6 @@ function Flickr(defaults) {
 	createClient(defaults);
 }
 
-/**
- * Asserts that `key` is present in `args`.
- * @param {Object} args
- * @param {String} key
- * @throws {Error}
- */
-
-function assert(args, key) {
-	if (!args.hasOwnProperty(key)) {
-		throw new Error('Missing required argument "' + key + '"');
-	}
-}
 <% namespaces.forEach(function (ns) { %>
 /**
  * @namespace flickr.<%= ns %>
@@ -44,7 +33,7 @@ Flickr.prototype.<%= ns %> = {};
 
 Flickr.prototype.<%= ns %>.<%= basename(method) %> = function (args) {
 	<%_ getRequiredArguments(method).forEach(function (arg) { _%>
-	assert(args, '<%= arg %>');
+	validate(args, '<%= arg %>');
 	<%_ }); _%>
 	return this._('<%= getHTTPVerb(method) %>', '<%= method %>', args);
 };

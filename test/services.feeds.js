@@ -202,7 +202,7 @@ describe('services/feeds', function () {
 			assert.throws(function () {
 				subject.favePhotos();
 			}, function (err) {
-				return err.message === 'Missing required arguments "id", "nsid"';
+				return err.message === 'Missing required argument, you must provide one of the following: "id", "nsid"';
 			});
 		});
 	});
