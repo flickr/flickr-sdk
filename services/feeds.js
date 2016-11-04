@@ -1,5 +1,5 @@
 var request = require('superagent');
-var assert = require('../assert');
+var validate = require('../validate');
 
 /**
  * @constructor
@@ -29,7 +29,7 @@ Feeds.prototype.publicPhotos = function (args) {
  */
 
 Feeds.prototype.friendsPhotos = function (args) {
-	assert(args, 'user_id');
+	validate(args, 'user_id');
 	return request('GET', 'https://www.flickr.com/services/feeds/photos_friends.gne')
 	.query(this.defaults)
 	.query(args);
@@ -46,7 +46,7 @@ Feeds.prototype.favePhotos = function (args) {
 	 * later changed to support `nsid`
 	 * This allows us to check both, and fail if neither is specified
 	 */
-	assert(args, 'id', 'nsid');
+	validate(args, ['id', 'nsid']);
 	return request('GET', 'https://www.flickr.com/services/feeds/photos_faves.gne')
 	.query(this.defaults)
 	.query(args);
@@ -58,7 +58,7 @@ Feeds.prototype.favePhotos = function (args) {
  */
 
 Feeds.prototype.groupDiscussions = function (args) {
-	assert(args, 'id');
+	validate(args, 'id');
 	return request('GET', 'https://www.flickr.com/services/feeds/groups_discuss.gne')
 	.query(this.defaults)
 	.query(args);
@@ -70,7 +70,7 @@ Feeds.prototype.groupDiscussions = function (args) {
  */
 
 Feeds.prototype.groupPool = function (args) {
-	assert(args, 'id');
+	validate(args, 'id');
 	return request('GET', 'https://www.flickr.com/services/feeds/groups_pool.gne')
 	.query(this.defaults)
 	.query(args);
@@ -93,7 +93,7 @@ Feeds.prototype.forum = function (args) {
  */
 
 Feeds.prototype.recentActivity = function (args) {
-	assert(args, 'user_id');
+	validate(args, 'user_id');
 	return request('GET', 'https://www.flickr.com/services/feeds/activity.gne')
 	.query(this.defaults)
 	.query(args);
@@ -105,7 +105,7 @@ Feeds.prototype.recentActivity = function (args) {
  */
 
 Feeds.prototype.recentComments = function (args) {
-	assert(args, 'user_id');
+	validate(args, 'user_id');
 	return request('GET', 'https://www.flickr.com/services/feeds/photos_comments.gne')
 	.query(this.defaults)
 	.query(args);
