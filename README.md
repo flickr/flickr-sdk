@@ -5,25 +5,21 @@
 ## use
 
 ### getting a public photo
-```
-flickrSDK({ api_key: 'abcd1234', photo_id: '12345678'})('flickr.photos.getInfo')
+```js
+var Flickr = require('flickr-sdk');
+var flickr = new Flickr({ api_key: 'abcd1234' });
+
+flickr.photos.getInfo({ photo: '123456789' })
 .then(function (res) {
 	// get the photo data off res
 });
 ```
 
-### getting a private photo
-```
-require('flickrSDK')({ api_key: 'abcd1234', photo_id: '987654321'})('flickr.photos.getInfo')
-.use(require('flickrSDK/oauth')({
-	accessToken: '123',
-	accessTokenSecret: '456',
-	apiSecret: '54321'
-}))
-.then(function (res) {
-	// get the photo data off res
-});
-```
+See the [Example Repo](https://github.com/flickr/flickr-sdk-examples) for more examples, including searching and authenticating.
+
+### docs
+[Flickr API Docs](https://www.flickr.com/services/api)
+[Flickr Feed Docs](https://www.flickr.com/services/feeds/)
 
 ## troubleshooting
 
