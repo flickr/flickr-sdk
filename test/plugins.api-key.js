@@ -1,5 +1,5 @@
 var subject = require('../plugins/api-key');
-var request = require('superagent');
+var Flickr = require('..');
 var assert = require('assert');
 var nock = require('nock');
 
@@ -25,14 +25,19 @@ describe('plugins/api-key', function () {
 		var api = nock('https://api.flickr.com')
 		.get('/services/rest')
 		.query({
-			api_key: 'api key'
+			api_key: 'api key',
+			method: 'flickr.test.echo',
+			foo: 'bar',
+			format: 'json',
+			nojsoncallback: '1'
 		})
 		.reply(200, {
 			stat: 'ok'
 		});
 
-		return request('GET', 'https://api.flickr.com/services/rest')
-		.use(subject('api key'))
+		var flickr = new Flickr(subject('api key'));
+
+		return flickr.test.echo({ foo: 'bar' })
 		.then(function (res) {
 			assert(api.isDone(), 'Expected mock to have been called');
 			assert.equal(res.statusCode, 200);

@@ -3,20 +3,21 @@ var validate = require('../validate');
 
 /**
  * @constructor
+ * @param {Function} auth
  */
 
-function Flickr(defaults) {
+function Flickr(auth) {
 
 	// allow creating a client without `new`
 	if (!(this instanceof Flickr)) {
-		return new Flickr(defaults);
+		return new Flickr(auth);
 	}
 
 	// create a new client and assign it to all of our namespaces
 	<%_ namespaces.forEach(function (ns) { _%>
 	this.<%= ns %>._ =
 	<%_ }); _%>
-	createClient(defaults);
+	createClient(auth);
 }
 
 <% namespaces.forEach(function (ns) { %>

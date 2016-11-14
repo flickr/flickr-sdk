@@ -1,6 +1,6 @@
 var subject = require('../plugins/oauth');
 var OAuth = require('../services/oauth');
-var flickr = require('..')();
+var Flickr = require('..');
 var assert = require('assert');
 var sinon = require('sinon');
 var nock = require('nock');
@@ -36,8 +36,9 @@ describe('plugins/oauth', function () {
 		})
 		.reply(200, {stat: 'ok'});
 
+		var flickr = new Flickr(subject('consumer key', 'consumer secret', 'oauth token', 'oauth token secret'));
+
 		return flickr.test.echo({ foo: 'bar' })
-		.use(subject('consumer key', 'consumer secret', 'oauth token', 'oauth token secret'))
 		.then(function (res) {
 			assert(api.isDone(), 'Expected mock to have been called');
 			assert.equal(res.statusCode, 200);
