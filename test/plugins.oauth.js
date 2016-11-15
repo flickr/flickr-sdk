@@ -38,7 +38,8 @@ describe('plugins/oauth', function () {
 
 		var flickr = new Flickr(subject('consumer key', 'consumer secret', 'oauth token', 'oauth token secret'));
 
-		return flickr.test.echo({ foo: 'bar' })
+		return flickr.test.echo()
+		.query({ foo: 'bar' })
 		.then(function (res) {
 			assert(api.isDone(), 'Expected mock to have been called');
 			assert.equal(res.statusCode, 200);
