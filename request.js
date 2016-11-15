@@ -4,20 +4,16 @@ var json = require('./plugins/json');
 /**
  * Creates a new Flickr API client. This "client" is a factory
  * method that creates a new superagent request pre-configured
- * for talking to the Flickr API. You must pass your `api_key`
- * either as a string or as a field on a hash of default query
- * string params.
- * @param {(String|Object)} defaults
+ * for talking to the Flickr API. You must pass an "auth"
+ * supergent plugin.
+ * @param {Function} auth
  * @returns {Function}
  * @see https://github.com/visionmedia/superagent
  */
 
-module.exports = function createClient(defaults) {
-	if (typeof defaults === 'undefined') {
-		defaults = {};
-	}
-	if (typeof defaults === 'string') {
-		defaults = { api_key: defaults };
+module.exports = function createClient(auth) {
+	if (typeof auth !== 'function') {
+		throw new Error('Missing auth superagent plugin');
 	}
 
 	return function (verb, method, args) {
@@ -27,9 +23,9 @@ module.exports = function createClient(defaults) {
 
 		return request(verb, 'https://api.flickr.com/services/rest')
 		.query('method=' + method)
+		.query(args)
 		.use(json)
-		.query(defaults)
-		.query(args);
+		.use(auth);
 	};
 
 };

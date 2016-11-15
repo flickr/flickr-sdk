@@ -1,4 +1,4 @@
-var flickr = require('..')();
+var flickr = require('..')(function auth() { /* noop */ });
 var assert = require('assert');
 
 describe('flickr.photos.getPerms', function () {

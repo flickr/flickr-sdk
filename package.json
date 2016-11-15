@@ -19,6 +19,7 @@
   ],
   "scripts": {
     "build": "node script/build > services/rest.js",
+    "build-tests": "node script/build-tests",
     "lint": "eslint .",
     "test": "istanbul cover _mocha"
   },
