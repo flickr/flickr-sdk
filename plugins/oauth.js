@@ -22,8 +22,16 @@ module.exports = function (consumerKey, consumerSecret, oauthToken, oauthTokenSe
 	}
 
 	return function (req) {
+		// we need to overwrite .end to make sure we
+		// sign the request at the last possible moment
+		var _end = req.end;
+
+		req.end = function (fn) {
+			this.use(oauth.sign(oauthTokenSecret));
+			_end.call(this, fn);
+		};
+
 		req.query(oauth.params());
 		req.query({ oauth_token: oauthToken });
-		req.use(oauth.sign(oauthTokenSecret));
 	};
 };
