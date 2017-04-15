@@ -1,6 +1,22 @@
 # flickr-sdk
 
-> TODO everything
+## install
+
+`npm install flickr-sdk`
+
+## build from source
+
+Run `make` after cloning the repo to install pre-commit/pre-push hooks.
+
+Run `npm install` to install all the dependencies.
+
+Run `npm run build` to build the SDK.
+
+## tests
+
+Run `npm test` to execute the test suite.
+
+Run `npm run coverage` to execute the test suite with code coverage statistics.
 
 ## use
 
