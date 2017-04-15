@@ -62,7 +62,8 @@ describe('services/feeds', function () {
 			var api = nock('https://www.flickr.com')
 			.get('/services/feeds/photos_public.gne')
 			.query({
-				format: 'json'
+				format: 'json',
+				nojsoncallback: 1
 			})
 			.reply(200, 'public-photos');
 
@@ -100,7 +101,8 @@ describe('services/feeds', function () {
 			.get('/services/feeds/photos_friends.gne')
 			.query({
 				user_id: '1234',
-				format: 'json'
+				format: 'json',
+				nojsoncallback: 1
 			})
 			.reply(200, 'friends-photos');
 
@@ -149,7 +151,8 @@ describe('services/feeds', function () {
 			.get('/services/feeds/photos_faves.gne')
 			.query({
 				id: '1234',
-				format: 'json'
+				format: 'json',
+				nojsoncallback: 1
 			})
 			.reply(200, 'fave-photos');
 
@@ -165,7 +168,8 @@ describe('services/feeds', function () {
 			.get('/services/feeds/photos_faves.gne')
 			.query({
 				nsid: '1234',
-				format: 'json'
+				format: 'json',
+				nojsoncallback: 1
 			})
 			.reply(200, 'fave-photos');
 
@@ -214,7 +218,8 @@ describe('services/feeds', function () {
 			.get('/services/feeds/groups_discuss.gne')
 			.query({
 				id: '1234',
-				format: 'json'
+				format: 'json',
+				nojsoncallback: 1
 			})
 			.reply(200, 'groups-discuss');
 
@@ -263,7 +268,8 @@ describe('services/feeds', function () {
 			.get('/services/feeds/groups_pool.gne')
 			.query({
 				id: '1234',
-				format: 'json'
+				format: 'json',
+				nojsoncallback: 1
 			})
 			.reply(200, 'groups-pool');
 
@@ -311,7 +317,8 @@ describe('services/feeds', function () {
 			var api = nock('https://www.flickr.com')
 			.get('/services/feeds/forums.gne')
 			.query({
-				format: 'json'
+				format: 'json',
+				nojsoncallback: 1
 			})
 			.reply(200, 'forum');
 
@@ -349,7 +356,8 @@ describe('services/feeds', function () {
 			.get('/services/feeds/activity.gne')
 			.query({
 				user_id: '1234',
-				format: 'json'
+				format: 'json',
+				nojsoncallback: 1
 			})
 			.reply(200, 'recent-activity');
 
@@ -398,7 +406,8 @@ describe('services/feeds', function () {
 			.get('/services/feeds/photos_comments.gne')
 			.query({
 				user_id: '1234',
-				format: 'json'
+				format: 'json',
+				nojsoncallback: 1
 			})
 			.reply(200, 'recent-comments');
 

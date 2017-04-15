@@ -24,7 +24,7 @@ module.exports = function createClient(auth) {
 		return request(verb, 'https://api.flickr.com/services/rest')
 		.query('method=' + method)
 		.query(args)
-		.use(json)
+		.use(json())
 		.use(auth);
 	};
 
