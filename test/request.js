@@ -65,7 +65,7 @@ describe('request', function () {
 
 	});
 
-	it('yields an error if json parsing fails', function () {
+	it('yields a SyntaxError if JSON parsing fails', function () {
 		var api = nock('https://api.flickr.com')
 		.get('/services/rest')
 		.query({
@@ -79,7 +79,7 @@ describe('request', function () {
 			throw new Error('Expected errback');
 		}, function (err) {
 			assert(api.isDone(), 'Expected mock to have been called');
-			assert.equal(err.message, 'Unexpected end of input');
+			assert.equal(err.name, 'SyntaxError');
 		});
 
 	});
