@@ -17,6 +17,8 @@ function Flickr(auth) {
 	<%_ namespaces.forEach(function (ns) { _%>
 	this.<%= ns %>._ =
 	<%_ }); _%>
+	// create passthrough for future/undocumented endpoints
+	this._ =
 	createClient(auth);
 }
 
@@ -40,6 +42,7 @@ Flickr.prototype.<%= ns %>.<%= basename(method) %> = function (args) {
 };
 <%_ }); _%>
 <% }); %>
+
 /**
  * @exports
  */

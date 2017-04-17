@@ -55,6 +55,7 @@ request('flickr.reflection.getMethods').then(function (res) {
 }).then(function (methods) {
 	return Promise.all(methods.map(info));
 }).catch(function (err) {
+	// eslint-disable-next-line no-console
 	console.error(err);
 	process.exit(err.code || 1);
 });
