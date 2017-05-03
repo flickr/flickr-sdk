@@ -4,7 +4,7 @@ var nock = require('nock');
 
 describe('request', function () {
 
-	it('accepts api_key as a string', function () {
+	it('adds default query string arguments', function () {
 		var api = nock('https://api.flickr.com')
 		.get('/services/rest')
 		.query({
@@ -34,6 +34,31 @@ describe('request', function () {
 		.reply(200, {stat: 'ok'});
 
 		return subject('GET', 'flickr.test.echo', {foo: 'bar'}).then(function (res) {
+			assert(api.isDone(), 'Expected mock to have been called');
+			assert.equal(res.statusCode, 200);
+			assert.equal(res.body.stat, 'ok');
+		});
+
+	});
+
+	it('joins "extras" if passed as an array', function () {
+		var api = nock('https://api.flickr.com')
+		.get('/services/rest')
+		.query({
+			method: 'flickr.test.echo',
+			format: 'json',
+			nojsoncallback: 1,
+			extras: 'foo,bar,baz'
+		})
+		.reply(200, {stat: 'ok'});
+
+		return subject('GET', 'flickr.test.echo', {
+			extras: [
+				'foo',
+				'bar',
+				'baz'
+			]
+		}).then(function (res) {
 			assert(api.isDone(), 'Expected mock to have been called');
 			assert.equal(res.statusCode, 200);
 			assert.equal(res.body.stat, 'ok');
