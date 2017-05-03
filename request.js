@@ -21,6 +21,13 @@ module.exports = function createClient(auth) {
 			args = {};
 		}
 
+		// the API expects the "extras" param to be a
+		// comma-separated list, so if we are given an
+		// array we should join it
+		if (Array.isArray(args.extras)) {
+			args.extras = args.extras.join(',');
+		}
+
 		return request(verb, 'https://api.flickr.com/services/rest')
 		.query('method=' + method)
 		.query(args)
