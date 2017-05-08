@@ -37,12 +37,6 @@ See the [Example Repo](https://github.com/flickr/flickr-sdk-examples) for more e
 [Flickr API Docs](https://www.flickr.com/services/api)
 [Flickr Feed Docs](https://www.flickr.com/services/feeds/)
 
-## troubleshooting
-
-##### ReferenceError: Promise is not defined
-
-superagent's Promise support assumes a Promise implementation is available globally. If you are using node 0.10, you will have to polyfill the global Promise manually.
-
 ## license
 
 Code licensed under the MIT license. See LICENSE file for terms.
