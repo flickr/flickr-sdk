@@ -6,11 +6,3 @@ node_js:
 - '0.10'
 script:
 - npm run build
-deploy:
-  provider: npm
-  email: jimwhimpey@me.com
-  api_key:
-    secure: GlnDVCp7xdM/YYWP+qdVkTc3e6s+UfdBeYTH224j+lKE166b8RPDxqtOmQGhRSJaaFLqBrWjCsRYDJ3UyCeuimgxbnJ51gnqf4vrEFc3avACvpxGTYxAm6sdOMz2OCe74MmwdjjH7RM803RcSNBaE8+ydd9bWF70kCtfWNeOZR1tY5wsPAvMJyi0Y6zD44/0ZhHV+hYfUykZ1kJ2CXVQNEP68pgPBnsg7PZQEGeLglH/1URMSor7GQMQs2Sr16JtcE1udf8j0rPmpwU/dg672b6vICUxhXd0/u0CUe7ZgDQPIzMnf1/IQVBT4VUksslaAEhhCGR1nXwjy2PXe/bxzMzC7ajAf7qU2KDVJZfz+f1mlXNX9N2LaQVpIoyXIZH7jTQ3Kq2YXNYOV0QGBn9rCdAv5BgEJLHO7L110DpWGdq/Hfzo0FljPNuaqt+/Os9mLzrGejisXP/0xvx5ub+40kphR5GWWIDnZTNiPdBednnBi6naS2rVlblprYmEWOGAYcaCoFHVRa8mG3Gj5x/VYGxa9jc/tYuvtaFE6f8qXSqBLXAEEaVdow0aknOrpfdZPAPSU04xzz4bcGr/0mRgfObaJbOBujfsnO77QOvLfyxSEUf+ueipMMyUvXP8GZK9+jByXXw1upCbow5N1Vu4rex+C+6E6IvNzNxlF5+SVV8=
-  on:
-    tags: true
-    repo: flickr/flickr-sdk
