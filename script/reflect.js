@@ -2,15 +2,8 @@
 
 var fs = require('fs');
 var path = require('path');
-var request = require('../request')({
-	api_key: process.env.FLICKR_API_KEY
-});
-
-/**
- * Polyfill Promise in environments that need it
- */
-
-require('es6-promise').polyfill();
+var auth = require('../plugins/api-key');
+var request = require('../request')(auth(process.env.FLICKR_API_KEY));
 
 /**
  * Get the destination filename for `method`
@@ -39,7 +32,7 @@ function stringify(obj) {
  */
 
 function info(method) {
-	return request('flickr.reflection.getMethodInfo')
+	return request('GET', 'flickr.reflection.getMethodInfo')
 	.query('method_name=' + method._content)
 	.then(function (res) {
 		fs.writeFileSync(filename(method._content), stringify(res.body));
@@ -50,7 +43,7 @@ function info(method) {
  * Get info for every method and write them all to disk
  */
 
-request('flickr.reflection.getMethods').then(function (res) {
+request('GET', 'flickr.reflection.getMethods').then(function (res) {
 	return res.body.methods.method;
 }).then(function (methods) {
 	return Promise.all(methods.map(info));

@@ -18,6 +18,7 @@
     "validate.js"
   ],
   "scripts": {
+    "reflect": "node script/reflect",
     "build": "node script/build > services/rest.js",
     "build-tests": "node script/build-tests",
     "lint": "eslint .",
