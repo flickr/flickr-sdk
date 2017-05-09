@@ -258,6 +258,11 @@
         "_content": "The request contained contradictory arguments."
       },
       {
+        "code": "19",
+        "message": "Similarity search invalid.",
+        "_content": "The similarity_id param contains an invalid photo id or the viewer does not have permission to view the photo."
+      },
+      {
         "code": "20",
         "message": "Excessive photo offset in search",
         "_content": "The search requested photos beyond an allowable offset. Reduce the page number or number of results per page for this search."
