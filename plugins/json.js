@@ -28,8 +28,17 @@ function parseFlickr(res, fn) {
 	});
 }
 
-module.exports = function (req) {
-	req.query('format=json');
-	req.query('nojsoncallback=1');
-	req.parse(parseFlickr);
+module.exports = function (options) {
+	options = options || {};
+	options.raw = !!options.raw;
+
+	return function (req) {
+		req.query('format=json');
+		req.query('nojsoncallback=1');
+
+		// we don't always need the parsing, i.e. feeds
+		if (!options.raw) {
+			req.parse(parseFlickr);
+		}
+	};
 };

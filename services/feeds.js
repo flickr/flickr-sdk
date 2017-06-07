@@ -1,5 +1,6 @@
 var request = require('superagent');
 var validate = require('../validate');
+var json = require('../plugins/json');
 
 /**
  * @constructor
@@ -13,14 +14,33 @@ function Feeds(defaults) {
 }
 
 /**
+ * Wrapper function to be more DRY and to add plugins
+ */
+function feedRequest(verb, path, args) {
+	var req = request(verb, path)
+	.query(this.defaults)
+	.query(args);
+
+	// if we're sending json, use the json plugin for Flickr
+	if (req.qs.format === 'json') {
+		// superagent will add the format twice if we don't explicitly remove it
+		delete req.qs.format;
+
+		req.use(json({ raw: true }))
+		// feeds use a non-standard json return type
+		.parse['application/json; charset=utf-8'] = JSON.parse;
+	}
+
+	return req;
+}
+
+/**
  * Public Photos & Videos
  * @see https://www.flickr.com/services/feeds/docs/photos_public/
  */
 
 Feeds.prototype.publicPhotos = function (args) {
-	return request('GET', 'https://www.flickr.com/services/feeds/photos_public.gne')
-	.query(this.defaults)
-	.query(args);
+	return feedRequest.call(this, 'GET', 'https://www.flickr.com/services/feeds/photos_public.gne', args);
 };
 
 /**
@@ -30,9 +50,7 @@ Feeds.prototype.publicPhotos = function (args) {
 
 Feeds.prototype.friendsPhotos = function (args) {
 	validate(args, 'user_id');
-	return request('GET', 'https://www.flickr.com/services/feeds/photos_friends.gne')
-	.query(this.defaults)
-	.query(args);
+	return feedRequest.call(this, 'GET', 'https://www.flickr.com/services/feeds/photos_friends.gne', args);
 };
 
 /**
@@ -47,9 +65,7 @@ Feeds.prototype.favePhotos = function (args) {
 	 * This allows us to check both, and fail if neither is specified
 	 */
 	validate(args, ['id', 'nsid']);
-	return request('GET', 'https://www.flickr.com/services/feeds/photos_faves.gne')
-	.query(this.defaults)
-	.query(args);
+	return feedRequest.call(this, 'GET', 'https://www.flickr.com/services/feeds/photos_faves.gne', args);
 };
 
 /**
@@ -59,9 +75,7 @@ Feeds.prototype.favePhotos = function (args) {
 
 Feeds.prototype.groupDiscussions = function (args) {
 	validate(args, 'id');
-	return request('GET', 'https://www.flickr.com/services/feeds/groups_discuss.gne')
-	.query(this.defaults)
-	.query(args);
+	return feedRequest.call(this, 'GET', 'https://www.flickr.com/services/feeds/groups_discuss.gne', args);
 };
 
 /**
@@ -71,9 +85,7 @@ Feeds.prototype.groupDiscussions = function (args) {
 
 Feeds.prototype.groupPool = function (args) {
 	validate(args, 'id');
-	return request('GET', 'https://www.flickr.com/services/feeds/groups_pool.gne')
-	.query(this.defaults)
-	.query(args);
+	return feedRequest.call(this, 'GET', 'https://www.flickr.com/services/feeds/groups_pool.gne', args);
 };
 
 /**
@@ -82,9 +94,7 @@ Feeds.prototype.groupPool = function (args) {
  */
 
 Feeds.prototype.forum = function (args) {
-	return request('GET', 'https://www.flickr.com/services/feeds/forums.gne')
-	.query(this.defaults)
-	.query(args);
+	return feedRequest.call(this, 'GET', 'https://www.flickr.com/services/feeds/forums.gne', args);
 };
 
 /**
@@ -94,9 +104,7 @@ Feeds.prototype.forum = function (args) {
 
 Feeds.prototype.recentActivity = function (args) {
 	validate(args, 'user_id');
-	return request('GET', 'https://www.flickr.com/services/feeds/activity.gne')
-	.query(this.defaults)
-	.query(args);
+	return feedRequest.call(this, 'GET', 'https://www.flickr.com/services/feeds/activity.gne', args);
 };
 
 /**
@@ -106,9 +114,7 @@ Feeds.prototype.recentActivity = function (args) {
 
 Feeds.prototype.recentComments = function (args) {
 	validate(args, 'user_id');
-	return request('GET', 'https://www.flickr.com/services/feeds/photos_comments.gne')
-	.query(this.defaults)
-	.query(args);
+	return feedRequest.call(this, 'GET', 'https://www.flickr.com/services/feeds/photos_comments.gne', args);
 };
 
 /**
