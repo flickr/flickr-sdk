@@ -1,6 +1,6 @@
 {
   "name": "flickr-sdk",
-  "version": "3.0.0-alpha.1",
+  "version": "3.0.0-alpha.2",
   "description": "Almost certainly the best Flickr API client in the world for node and the browser",
   "keywords": [
     "flickr",
@@ -17,6 +17,10 @@
     "services",
     "validate.js"
   ],
+  "browser": {
+    "./plugins/oauth.js": "./plugins/oauth-browser.js",
+    "./services/oauth.js": "./services/oauth-browser.js"
+  },
   "scripts": {
     "reflect": "node script/reflect",
     "build": "node script/build > services/rest.js",
