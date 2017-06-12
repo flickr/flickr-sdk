@@ -4,6 +4,27 @@ var nock = require('nock');
 
 describe('request', function () {
 
+	it('adds default request headers', function () {
+		var api = nock('https://api.flickr.com', {
+			reqheaders: {
+				'X-Flickr-API-Method': 'flickr.test.echo'
+			}
+		})
+		.get('/services/rest')
+		.query({
+			method: 'flickr.test.echo',
+			format: 'json',
+			nojsoncallback: 1
+		})
+		.reply(200, {stat: 'ok'});
+
+		return subject('GET', 'flickr.test.echo').then(function (res) {
+			assert(api.isDone(), 'Expected mock to have been called');
+			assert.equal(res.statusCode, 200);
+			assert.equal(res.body.stat, 'ok');
+		});
+	});
+
 	it('adds default query string arguments', function () {
 		var api = nock('https://api.flickr.com')
 		.get('/services/rest')
