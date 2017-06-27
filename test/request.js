@@ -1,133 +1,87 @@
-var subject = require('../request')(function auth() { /* noop */ });
+var subject = require('../request');
+var Request = require('superagent').Request;
 var assert = require('assert');
-var nock = require('nock');
+var parse = require('url').parse;
 
-describe('request', function () {
+describe('request factory', function () {
 
-	it('adds default request headers', function () {
-		var api = nock('https://api.flickr.com', {
-			reqheaders: {
-				'X-Flickr-API-Method': 'flickr.test.echo'
-			}
-		})
-		.get('/services/rest')
-		.query({
-			method: 'flickr.test.echo',
-			format: 'json',
-			nojsoncallback: 1
-		})
-		.reply(200, {stat: 'ok'});
-
-		return subject('GET', 'flickr.test.echo').then(function (res) {
-			assert(api.isDone(), 'Expected mock to have been called');
-			assert.equal(res.statusCode, 200);
-			assert.equal(res.body.stat, 'ok');
+	it('requires an auth function to be passed', function () {
+		assert.throws(function () {
+			subject();
+		}, function (err) {
+			return err.message === 'Missing auth superagent plugin';
 		});
 	});
 
+});
+
+describe('request', function () {
+	var request = subject(function auth() { /* noop for tests */ });
+
+	it('returns a superagent Request', function () {
+		assert(request('GET', 'flickr.test.echo') instanceof Request);
+	});
+
+	it('adds default request headers', function () {
+		var req = request('GET', 'flickr.test.echo').request();
+
+		/*
+			TODO user-agent
+		*/
+
+		assert.equal(req.getHeader('x-flickr-api-method'), 'flickr.test.echo');
+	});
+
+	it('uses the correct path', function () {
+		var req = request('GET', 'flickr.test.echo');
+		var url = parse(req.url);
+
+		assert.equal(url.pathname, '/services/rest');
+	});
+
+	it('uses the correct host', function () {
+		var req = request('GET', 'flickr.test.echo');
+		var url = parse(req.url);
+
+		assert.equal(url.host, 'api.flickr.com');
+	});
+
+	it('can provide the host as an option');
+
 	it('adds default query string arguments', function () {
-		var api = nock('https://api.flickr.com')
-		.get('/services/rest')
-		.query({
-			method: 'flickr.test.echo',
-			format: 'json',
-			nojsoncallback: 1
-		})
-		.reply(200, {stat: 'ok'});
+		var req = request('GET', 'flickr.test.echo').request();
+		var url = parse(req.path, true);
 
-		return subject('GET', 'flickr.test.echo').then(function (res) {
-			assert(api.isDone(), 'Expected mock to have been called');
-			assert.equal(res.statusCode, 200);
-			assert.equal(res.body.stat, 'ok');
-		});
-
+		assert.equal(url.query.method, 'flickr.test.echo');
+		assert.equal(url.query.format, 'json');
+		assert.equal(url.query.nojsoncallback, '1');
 	});
 
 	it('adds additional query string arguments', function () {
-		var api = nock('https://api.flickr.com')
-		.get('/services/rest')
-		.query({
-			method: 'flickr.test.echo',
-			format: 'json',
-			nojsoncallback: 1,
-			foo: 'bar'
-		})
-		.reply(200, {stat: 'ok'});
+		var req = request('GET', 'flickr.test.echo', { foo: 'bar' }).request();
+		var url = parse(req.path, true);
 
-		return subject('GET', 'flickr.test.echo', {foo: 'bar'}).then(function (res) {
-			assert(api.isDone(), 'Expected mock to have been called');
-			assert.equal(res.statusCode, 200);
-			assert.equal(res.body.stat, 'ok');
-		});
-
+		assert.equal(url.query.method, 'flickr.test.echo');
+		assert.equal(url.query.format, 'json');
+		assert.equal(url.query.nojsoncallback, '1');
+		assert.equal(url.query.foo, 'bar');
 	});
 
 	it('joins "extras" if passed as an array', function () {
-		var api = nock('https://api.flickr.com')
-		.get('/services/rest')
-		.query({
-			method: 'flickr.test.echo',
-			format: 'json',
-			nojsoncallback: 1,
-			extras: 'foo,bar,baz'
-		})
-		.reply(200, {stat: 'ok'});
-
-		return subject('GET', 'flickr.test.echo', {
+		var req = request('GET', 'flickr.test.echo', {
 			extras: [
 				'foo',
 				'bar',
 				'baz'
 			]
-		}).then(function (res) {
-			assert(api.isDone(), 'Expected mock to have been called');
-			assert.equal(res.statusCode, 200);
-			assert.equal(res.body.stat, 'ok');
-		});
+		}).request();
 
-	});
+		var url = parse(req.path, true);
 
-	it('yields an error if stat=fail is returned', function () {
-		var api = nock('https://api.flickr.com')
-		.get('/services/rest')
-		.query({
-			method: 'flickr.test.echo',
-			format: 'json',
-			nojsoncallback: 1
-		})
-		.reply(200, {
-			stat: 'fail',
-			code: 100,
-			message: 'Invalid API Key (Key has invalid format)'
-		});
-
-		return subject('GET', 'flickr.test.echo').then(function () {
-			throw new Error('Expected errback');
-		}, function (err) {
-			assert(api.isDone(), 'Expected mock to have been called');
-			assert.equal(err.message, 'Invalid API Key (Key has invalid format)');
-			assert.equal(err.code, 100);
-		});
-
-	});
-
-	it('yields a SyntaxError if JSON parsing fails', function () {
-		var api = nock('https://api.flickr.com')
-		.get('/services/rest')
-		.query({
-			method: 'flickr.test.echo',
-			format: 'json',
-			nojsoncallback: 1
-		})
-		.reply(200, '{');
-
-		return subject('GET', 'flickr.test.echo').then(function () {
-			throw new Error('Expected errback');
-		}, function (err) {
-			assert(api.isDone(), 'Expected mock to have been called');
-			assert.equal(err.name, 'SyntaxError');
-		});
-
+		assert.equal(url.query.method, 'flickr.test.echo');
+		assert.equal(url.query.format, 'json');
+		assert.equal(url.query.nojsoncallback, '1');
+		assert.equal(url.query.extras, 'foo,bar,baz');
 	});
 
 });
