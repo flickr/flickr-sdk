@@ -11,10 +11,16 @@ var json = require('./plugins/json');
  * @see https://github.com/visionmedia/superagent
  */
 
-module.exports = function createClient(auth) {
+module.exports = function createClient(auth, opts) {
+	var host;
+
 	if (typeof auth !== 'function') {
 		throw new Error('Missing auth superagent plugin');
 	}
+
+	// options
+	opts = opts || {};
+	host = opts.host || 'api.flickr.com';
 
 	return function (verb, method, args) {
 		if (typeof args === 'undefined') {
@@ -28,7 +34,7 @@ module.exports = function createClient(auth) {
 			args.extras = args.extras.join(',');
 		}
 
-		return request(verb, 'https://api.flickr.com/services/rest')
+		return request(verb, 'https://' + host + '/services/rest')
 		.query('method=' + method)
 		.query(args)
 		.set('X-Flickr-API-Method', method)
