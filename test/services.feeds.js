@@ -1,138 +1,85 @@
-var Feeds = require('../services/feeds');
+var Subject = require('../services/feeds');
+var Request = require('superagent').Request;
 var assert = require('assert');
-var nock = require('nock');
+var parse = require('url').parse;
 
 describe('services/feeds', function () {
 	var subject;
 
 	beforeEach(function () {
-		subject = new Feeds();
+		subject = new Subject();
 	});
 
-	describe('constructor', function () {
-		it('should set global format and lang', function () {
-
-			var api = nock('https://www.flickr.com')
-			.get('/services/feeds/photos_public.gne')
-			.query({
-				format: 'lol',
-				lang: 'fr-fr'
-			})
-			.reply(200);
-
-			subject = new Feeds({
-				lang: 'fr-fr',
-				format: 'lol'
-			});
-
-			return subject.publicPhotos().then(function (res) {
-				assert(api.isDone());
-				assert.equal(res.statusCode, 200);
-			});
-		});
-
-		it('should set global format and lang but override with request', function () {
-
-			var api = nock('https://www.flickr.com')
-			.get('/services/feeds/photos_public.gne')
-			.query({
-				format: 'atom',
-				lang: 'fr-ca'
-			})
-			.reply(200);
-
-			subject = new Feeds({
-				lang: 'fr-fr',
-				format: 'lol'
-			});
-
-			return subject.publicPhotos({
-				format: 'atom',
-				lang: 'fr-ca'
-			}).then(function (res) {
-				assert(api.isDone());
-				assert.equal(res.statusCode, 200);
-			});
-		});
+	it('returns a superagent Request', function () {
+		assert(subject._('photos_public') instanceof Request);
 	});
 
-	describe('publicPhotos', function () {
+	/*
+		TODO user-agent
+	*/
 
-		it('makes the correct call', function () {
-			var api = nock('https://www.flickr.com')
-			.get('/services/feeds/photos_public.gne')
-			.query({
-				format: 'json'
-			})
-			.reply(200, 'public-photos');
+	it('adds default request headers');
 
-			return subject.publicPhotos().then(function (res) {
-				assert(api.isDone());
-				assert.equal(res.statusCode, 200);
-				assert.equal(res.text, 'public-photos');
-			});
-		});
+	it('uses the correct path', function () {
+		var req = subject._('photos_public');
+		var url = parse(req.url);
 
-		it('can specify custom lang and format', function () {
-			var api = nock('https://www.flickr.com')
-			.get('/services/feeds/photos_public.gne')
-			.query({
-				format: 'atom',
-				lang: 'fr-fr'
-			})
-			.reply(200, 'public-photos');
-
-			return subject.publicPhotos({
-				lang: 'fr-fr',
-				format: 'atom'
-			 }).then(function (res) {
-				assert(api.isDone());
-				assert.equal(res.statusCode, 200);
-				assert.equal(res.text, 'public-photos');
-			});
-		});
+		assert.equal(url.pathname, '/services/feeds/photos_public.gne');
 	});
 
-	describe('friendsPhotos', function () {
+	it('uses the correct host', function () {
+		var req = subject._('photos_public');
+		var url = parse(req.url);
 
-		it('makes the correct call', function () {
-			var api = nock('https://www.flickr.com')
-			.get('/services/feeds/photos_friends.gne')
-			.query({
-				user_id: '1234',
-				format: 'json'
-			})
-			.reply(200, 'friends-photos');
+		assert.equal(url.host, 'www.flickr.com');
+	});
 
-			return subject.friendsPhotos({ user_id: '1234' }).then(function (res) {
-				assert(api.isDone());
-				assert.equal(res.statusCode, 200);
-				assert.equal(res.text, 'friends-photos');
-			});
+	it('adds default query string arguments', function () {
+		var req = subject._('photos_public').request();
+		var url = parse(req.path, true);
+
+		assert.equal(url.query.format, 'json');
+	});
+
+	it('overrides default query string arguments', function () {
+		var req, url;
+
+		subject = new Subject({
+			lang: 'fr-fr',
+			format: 'atom'
 		});
 
-		it('can specify custom lang and format', function () {
-			var api = nock('https://www.flickr.com')
-			.get('/services/feeds/photos_friends.gne')
-			.query({
-				user_id: '1234',
-				format: 'atom',
-				lang: 'fr-fr'
-			})
-			.reply(200, 'friends-photos');
+		req = subject._('photos_public').request();
+		url = parse(req.path, true);
 
-			return subject.friendsPhotos({
-				user_id: '1234',
-				lang: 'fr-fr',
-				format: 'atom'
-			 }).then(function (res) {
-				assert(api.isDone());
-				assert.equal(res.statusCode, 200);
-				assert.equal(res.text, 'friends-photos');
-			});
+		assert.equal(url.query.lang, 'fr-fr');
+		assert.equal(url.query.format, 'atom');
+	});
+
+	it('adds additional query string arguments', function () {
+		var req = subject._('photos_public', { format: 'lol' }).request();
+		var url = parse(req.path, true);
+
+		assert.equal(url.query.format, 'lol');
+	});
+
+	describe('#publicPhotos', function () {
+
+		it('returns a Request instance', function () {
+			var req = subject.publicPhotos({ lang: 'fr-fr' });
+
+			assert(req instanceof Request);
+			assert.equal(req.method, 'GET');
+			assert.equal(req.url, 'https://www.flickr.com/services/feeds/photos_public.gne');
+			assert.equal(req.qs.format, 'json');
+			assert.equal(req.qs.lang, 'fr-fr');
 		});
 
-		it('requires a user_id', function () {
+	});
+
+	describe('#friendsPhotos', function () {
+
+		it('requires "user_id"', function () {
 
 			assert.throws(function () {
 				subject.friendsPhotos();
@@ -140,304 +87,140 @@ describe('services/feeds', function () {
 				return err.message === 'Missing required argument "user_id"';
 			});
 		});
+
+		it('returns a Request instance', function () {
+			var req = subject.friendsPhotos({ user_id: '1234' });
+
+			assert(req instanceof Request);
+			assert.equal(req.method, 'GET');
+			assert.equal(req.url, 'https://www.flickr.com/services/feeds/photos_friends.gne');
+			assert.equal(req.qs.format, 'json');
+			assert.equal(req.qs.user_id, '1234');
+		});
+
 	});
 
-	describe('favePhotos', function () {
+	describe('#favePhotos', function () {
 
-		it('makes the correct call', function () {
-			var api = nock('https://www.flickr.com')
-			.get('/services/feeds/photos_faves.gne')
-			.query({
-				id: '1234',
-				format: 'json'
-			})
-			.reply(200, 'fave-photos');
-
-			return subject.favePhotos({ id: '1234' }).then(function (res) {
-				assert(api.isDone());
-				assert.equal(res.statusCode, 200);
-				assert.equal(res.text, 'fave-photos');
-			});
-		});
-
-		it('makes the correct call with nsid', function () {
-			var api = nock('https://www.flickr.com')
-			.get('/services/feeds/photos_faves.gne')
-			.query({
-				nsid: '1234',
-				format: 'json'
-			})
-			.reply(200, 'fave-photos');
-
-			return subject.favePhotos({ nsid: '1234' }).then(function (res) {
-				assert(api.isDone());
-				assert.equal(res.statusCode, 200);
-				assert.equal(res.text, 'fave-photos');
-			});
-		});
-
-		it('can specify custom lang and format', function () {
-			var api = nock('https://www.flickr.com')
-			.get('/services/feeds/photos_faves.gne')
-			.query({
-				id: '1234',
-				format: 'atom',
-				lang: 'fr-fr'
-			})
-			.reply(200, 'fave-photos');
-
-			return subject.favePhotos({
-				id: '1234',
-				lang: 'fr-fr',
-				format: 'atom'
-			 }).then(function (res) {
-				assert(api.isDone());
-				assert.equal(res.statusCode, 200);
-				assert.equal(res.text, 'fave-photos');
-			});
-		});
-
-		it('requires an id or nsid', function () {
-
+		it('requires "id" or "nsid"', function () {
 			assert.throws(function () {
 				subject.favePhotos();
 			}, function (err) {
 				return err.message === 'Missing required argument, you must provide one of the following: "id", "nsid"';
 			});
 		});
+
+		it('returns a Request instance', function () {
+			var req = subject.favePhotos({ id: '1234' });
+
+			assert(req instanceof Request);
+			assert.equal(req.method, 'GET');
+			assert.equal(req.url, 'https://www.flickr.com/services/feeds/photos_faves.gne');
+			assert.equal(req.qs.format, 'json');
+			assert.equal(req.qs.id, '1234');
+		});
+
 	});
 
-	describe('groupDiscussions', function () {
+	describe('#groupDiscussions', function () {
 
-		it('makes the correct call', function () {
-			var api = nock('https://www.flickr.com')
-			.get('/services/feeds/groups_discuss.gne')
-			.query({
-				id: '1234',
-				format: 'json'
-			})
-			.reply(200, 'groups-discuss');
-
-			return subject.groupDiscussions({ id: '1234' }).then(function (res) {
-				assert(api.isDone());
-				assert.equal(res.statusCode, 200);
-				assert.equal(res.text, 'groups-discuss');
-			});
-		});
-
-		it('can specify custom lang and format', function () {
-			var api = nock('https://www.flickr.com')
-			.get('/services/feeds/groups_discuss.gne')
-			.query({
-				id: '1234',
-				format: 'atom',
-				lang: 'fr-fr'
-			})
-			.reply(200, 'groups-discuss');
-
-			return subject.groupDiscussions({
-				id: '1234',
-				lang: 'fr-fr',
-				format: 'atom'
-			 }).then(function (res) {
-				assert(api.isDone());
-				assert.equal(res.statusCode, 200);
-				assert.equal(res.text, 'groups-discuss');
-			});
-		});
-
-		it('requires a user_id', function () {
-
+		it('requires "user_id"', function () {
 			assert.throws(function () {
 				subject.groupDiscussions();
 			}, function (err) {
 				return err.message === 'Missing required argument "id"';
 			});
 		});
+
+		it('returns a Request instance', function () {
+			var req = subject.groupDiscussions({ id: '1234' });
+
+			assert(req instanceof Request);
+			assert.equal(req.method, 'GET');
+			assert.equal(req.url, 'https://www.flickr.com/services/feeds/groups_discuss.gne');
+			assert.equal(req.qs.format, 'json');
+			assert.equal(req.qs.id, '1234');
+		});
+
 	});
 
-	describe('groupPool', function () {
+	describe('#groupPool', function () {
 
-		it('makes the correct call', function () {
-			var api = nock('https://www.flickr.com')
-			.get('/services/feeds/groups_pool.gne')
-			.query({
-				id: '1234',
-				format: 'json'
-			})
-			.reply(200, 'groups-pool');
-
-			return subject.groupPool({ id: '1234' }).then(function (res) {
-				assert(api.isDone());
-				assert.equal(res.statusCode, 200);
-				assert.equal(res.text, 'groups-pool');
-			});
-		});
-
-		it('can specify custom lang and format', function () {
-			var api = nock('https://www.flickr.com')
-			.get('/services/feeds/groups_pool.gne')
-			.query({
-				id: '1234',
-				format: 'atom',
-				lang: 'fr-fr'
-			})
-			.reply(200, 'groups-pool');
-
-			return subject.groupPool({
-				id: '1234',
-				lang: 'fr-fr',
-				format: 'atom'
-			 }).then(function (res) {
-				assert(api.isDone());
-				assert.equal(res.statusCode, 200);
-				assert.equal(res.text, 'groups-pool');
-			});
-		});
-
-		it('requires a user_id', function () {
-
+		it('requires "user_id"', function () {
 			assert.throws(function () {
 				subject.groupPool();
 			}, function (err) {
 				return err.message === 'Missing required argument "id"';
 			});
 		});
+
+		it('returns a Request instance', function () {
+			var req = subject.groupPool({ id: '1234' });
+
+			assert(req instanceof Request);
+			assert.equal(req.method, 'GET');
+			assert.equal(req.url, 'https://www.flickr.com/services/feeds/groups_pool.gne');
+			assert.equal(req.qs.format, 'json');
+			assert.equal(req.qs.id, '1234');
+		});
+
 	});
 
-	describe('forum', function () {
+	describe('#forum', function () {
 
-		it('makes the correct call', function () {
-			var api = nock('https://www.flickr.com')
-			.get('/services/feeds/forums.gne')
-			.query({
-				format: 'json'
-			})
-			.reply(200, 'forum');
+		it('returns a Request instance', function () {
+			var req = subject.forum({ id: '1234' });
 
-			return subject.forum().then(function (res) {
-				assert(api.isDone());
-				assert.equal(res.statusCode, 200);
-				assert.equal(res.text, 'forum');
-			});
+			assert(req instanceof Request);
+			assert.equal(req.method, 'GET');
+			assert.equal(req.url, 'https://www.flickr.com/services/feeds/forums.gne');
+			assert.equal(req.qs.format, 'json');
 		});
 
-		it('can specify custom lang and format', function () {
-			var api = nock('https://www.flickr.com')
-			.get('/services/feeds/forums.gne')
-			.query({
-				format: 'atom',
-				lang: 'fr-fr'
-			})
-			.reply(200, 'forum');
-
-			return subject.forum({
-				lang: 'fr-fr',
-				format: 'atom'
-			 }).then(function (res) {
-				assert(api.isDone());
-				assert.equal(res.statusCode, 200);
-				assert.equal(res.text, 'forum');
-			});
-		});
 	});
 
-	describe('recentActivity', function () {
+	describe('#recentActivity', function () {
 
-		it('makes the correct call', function () {
-			var api = nock('https://www.flickr.com')
-			.get('/services/feeds/activity.gne')
-			.query({
-				user_id: '1234',
-				format: 'json'
-			})
-			.reply(200, 'recent-activity');
-
-			return subject.recentActivity({ user_id: '1234' }).then(function (res) {
-				assert(api.isDone());
-				assert.equal(res.statusCode, 200);
-				assert.equal(res.text, 'recent-activity');
-			});
-		});
-
-		it('can specify custom lang and format', function () {
-			var api = nock('https://www.flickr.com')
-			.get('/services/feeds/activity.gne')
-			.query({
-				user_id: '1234',
-				format: 'atom',
-				lang: 'fr-fr'
-			})
-			.reply(200, 'recent-activity');
-
-			return subject.recentActivity({
-				user_id: '1234',
-				lang: 'fr-fr',
-				format: 'atom'
-			 }).then(function (res) {
-				assert(api.isDone());
-				assert.equal(res.statusCode, 200);
-				assert.equal(res.text, 'recent-activity');
-			});
-		});
-
-		it('requires a user_id', function () {
-
+		it('requires "user_id"', function () {
 			assert.throws(function () {
 				subject.recentActivity();
 			}, function (err) {
 				return err.message === 'Missing required argument "user_id"';
 			});
 		});
+
+		it('returns a Request instance', function () {
+			var req = subject.recentActivity({ user_id: '1234' });
+
+			assert(req instanceof Request);
+			assert.equal(req.method, 'GET');
+			assert.equal(req.url, 'https://www.flickr.com/services/feeds/activity.gne');
+			assert.equal(req.qs.format, 'json');
+			assert.equal(req.qs.user_id, '1234');
+		});
+
 	});
 
-	describe('recentComments', function () {
+	describe('#recentComments', function () {
 
-		it('makes the correct call', function () {
-			var api = nock('https://www.flickr.com')
-			.get('/services/feeds/photos_comments.gne')
-			.query({
-				user_id: '1234',
-				format: 'json'
-			})
-			.reply(200, 'recent-comments');
-
-			return subject.recentComments({ user_id: '1234' }).then(function (res) {
-				assert(api.isDone());
-				assert.equal(res.statusCode, 200);
-				assert.equal(res.text, 'recent-comments');
-			});
-		});
-
-		it('can specify custom lang and format', function () {
-			var api = nock('https://www.flickr.com')
-			.get('/services/feeds/photos_comments.gne')
-			.query({
-				user_id: '1234',
-				format: 'atom',
-				lang: 'fr-fr'
-			})
-			.reply(200, 'recent-comments');
-
-			return subject.recentComments({
-				user_id: '1234',
-				lang: 'fr-fr',
-				format: 'atom'
-			 }).then(function (res) {
-				assert(api.isDone());
-				assert.equal(res.statusCode, 200);
-				assert.equal(res.text, 'recent-comments');
-			});
-		});
-
-		it('requires a user_id', function () {
-
+		it('requires "user_id"', function () {
 			assert.throws(function () {
 				subject.recentComments();
 			}, function (err) {
 				return err.message === 'Missing required argument "user_id"';
 			});
 		});
+
+		it('returns a Request instance', function () {
+			var req = subject.recentComments({ user_id: '1234' });
+
+			assert(req instanceof Request);
+			assert.equal(req.method, 'GET');
+			assert.equal(req.url, 'https://www.flickr.com/services/feeds/photos_comments.gne');
+			assert.equal(req.qs.format, 'json');
+			assert.equal(req.qs.user_id, '1234');
+		});
+
 	});
 
 });
