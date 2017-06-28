@@ -1,5 +1,6 @@
 var request = require('superagent');
 var json = require('./plugins/json');
+var apiKey = require('./plugins/api-key');
 
 /**
  * Creates a new Flickr API client. This "client" is a factory
@@ -12,6 +13,13 @@ var json = require('./plugins/json');
  */
 
 module.exports = function createClient(auth) {
+
+	if (typeof auth === 'object') {
+		// turn the api_key and api_secret params
+		// into a simple auth plugin
+		auth = apiKey(auth);
+	}
+
 	if (typeof auth !== 'function') {
 		throw new Error('Missing auth superagent plugin');
 	}
