@@ -13,6 +13,16 @@ describe('request factory', function () {
 		});
 	});
 
+	it('can provide the host as an option', function () {
+		var request = subject(function auth() { /* noop for tests */ }, {
+			host: 'www.flickr.com'
+		});
+		var req = request('GET', 'flickr.test.echo');
+		var url = parse(req.url);
+
+		assert.equal(url.host, 'www.flickr.com');
+	});
+
 });
 
 describe('request', function () {
@@ -45,8 +55,6 @@ describe('request', function () {
 
 		assert.equal(url.host, 'api.flickr.com');
 	});
-
-	it('can provide the host as an option');
 
 	it('adds default query string arguments', function () {
 		var req = request('GET', 'flickr.test.echo').request();
