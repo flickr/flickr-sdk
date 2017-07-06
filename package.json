@@ -57,7 +57,7 @@
     "sinon": "~1.17.6"
   },
   "dependencies": {
-    "superagent": "^3.5.2"
+    "superagent": "^3.5.3-beta.2"
   },
   "bugs": {
     "url": "https://github.com/flickr/flickr-sdk/issues"

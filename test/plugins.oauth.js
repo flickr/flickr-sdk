@@ -1,5 +1,5 @@
 var subject = require('../plugins/oauth');
-var OAuth = require('../services/oauth');
+var OAuth = require('../lib/oauth');
 var Flickr = require('..');
 var assert = require('assert');
 var sinon = require('sinon');
