@@ -1,4 +1,4 @@
-var subject = require('../validate');
+var subject = require('../lib/validate');
 var assert = require('assert');
 
 describe('validate', function () {

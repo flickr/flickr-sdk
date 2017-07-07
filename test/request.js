@@ -1,4 +1,4 @@
-var subject = require('../request');
+var subject = require('../lib/request');
 var Request = require('superagent').Request;
 var assert = require('assert');
 var parse = require('url').parse;
