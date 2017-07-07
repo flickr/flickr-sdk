@@ -1,5 +1,5 @@
 var request = require('superagent');
-var validate = require('../validate');
+var validate = require('../lib/validate');
 
 /**
  * @constructor
