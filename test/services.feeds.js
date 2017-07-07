@@ -39,21 +39,20 @@ describe('services/feeds', function () {
 		var url = parse(req.path, true);
 
 		assert.equal(url.query.format, 'json');
+		assert.equal(url.query.nojsoncallback, '1');
 	});
 
 	it('overrides default query string arguments', function () {
 		var req, url;
 
 		subject = new Subject({
-			lang: 'fr-fr',
-			format: 'atom'
+			lang: 'fr-fr'
 		});
 
 		req = subject._('photos_public').request();
 		url = parse(req.path, true);
 
 		assert.equal(url.query.lang, 'fr-fr');
-		assert.equal(url.query.format, 'atom');
 	});
 
 	it('adds additional query string arguments', function () {
@@ -72,6 +71,7 @@ describe('services/feeds', function () {
 			assert.equal(req.method, 'GET');
 			assert.equal(req.url, 'https://www.flickr.com/services/feeds/photos_public.gne');
 			assert.equal(req.qs.format, 'json');
+			assert.equal(req.qs.nojsoncallback, '1');
 			assert.equal(req.qs.lang, 'fr-fr');
 		});
 
@@ -95,6 +95,7 @@ describe('services/feeds', function () {
 			assert.equal(req.method, 'GET');
 			assert.equal(req.url, 'https://www.flickr.com/services/feeds/photos_friends.gne');
 			assert.equal(req.qs.format, 'json');
+			assert.equal(req.qs.nojsoncallback, '1');
 			assert.equal(req.qs.user_id, '1234');
 		});
 
@@ -117,6 +118,7 @@ describe('services/feeds', function () {
 			assert.equal(req.method, 'GET');
 			assert.equal(req.url, 'https://www.flickr.com/services/feeds/photos_faves.gne');
 			assert.equal(req.qs.format, 'json');
+			assert.equal(req.qs.nojsoncallback, '1');
 			assert.equal(req.qs.id, '1234');
 		});
 
@@ -139,6 +141,7 @@ describe('services/feeds', function () {
 			assert.equal(req.method, 'GET');
 			assert.equal(req.url, 'https://www.flickr.com/services/feeds/groups_discuss.gne');
 			assert.equal(req.qs.format, 'json');
+			assert.equal(req.qs.nojsoncallback, '1');
 			assert.equal(req.qs.id, '1234');
 		});
 
@@ -161,6 +164,7 @@ describe('services/feeds', function () {
 			assert.equal(req.method, 'GET');
 			assert.equal(req.url, 'https://www.flickr.com/services/feeds/groups_pool.gne');
 			assert.equal(req.qs.format, 'json');
+			assert.equal(req.qs.nojsoncallback, '1');
 			assert.equal(req.qs.id, '1234');
 		});
 
@@ -175,6 +179,7 @@ describe('services/feeds', function () {
 			assert.equal(req.method, 'GET');
 			assert.equal(req.url, 'https://www.flickr.com/services/feeds/forums.gne');
 			assert.equal(req.qs.format, 'json');
+			assert.equal(req.qs.nojsoncallback, '1');
 		});
 
 	});
@@ -196,6 +201,7 @@ describe('services/feeds', function () {
 			assert.equal(req.method, 'GET');
 			assert.equal(req.url, 'https://www.flickr.com/services/feeds/activity.gne');
 			assert.equal(req.qs.format, 'json');
+			assert.equal(req.qs.nojsoncallback, '1');
 			assert.equal(req.qs.user_id, '1234');
 		});
 
@@ -218,6 +224,7 @@ describe('services/feeds', function () {
 			assert.equal(req.method, 'GET');
 			assert.equal(req.url, 'https://www.flickr.com/services/feeds/photos_comments.gne');
 			assert.equal(req.qs.format, 'json');
+			assert.equal(req.qs.nojsoncallback, '1');
 			assert.equal(req.qs.user_id, '1234');
 		});
 

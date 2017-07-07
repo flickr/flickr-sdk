@@ -7,11 +7,8 @@ var validate = require('../validate');
  */
 
 function Feeds(args) {
-
 	// default arguments
-	this._args = args || {
-		format: 'json'
-	};
+	this._args = Object.assign({ format: 'json', nojsoncallback: 1 }, args);
 }
 
 /**
