@@ -77,4 +77,12 @@ describe('services/oauth', function () {
 
 	});
 
+	describe('#plugin', function () {
+
+		it('returns a function', function () {
+			assert.equal(typeof subject.plugin('foo', 'bar'), 'function');
+		});
+
+	});
+
 });
