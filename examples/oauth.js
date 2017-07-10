@@ -40,7 +40,7 @@ function getRequestToken(req, res) {
 
 		// redirect the user to flickr and ask them to authorize your app
 		res.statusCode = 302;
-		res.setHeader('location', 'https://www.flickr.com/services/oauth/authorize?perms=read&oauth_token=' + requestToken);
+		res.setHeader('location', oauth.authorizeUrl(requestToken));
 		res.end();
 
 	}).catch(function (err) {

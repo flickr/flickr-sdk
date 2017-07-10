@@ -47,6 +47,46 @@ describe('services/oauth', function () {
 
 	});
 
+	describe('#authorizeUrl', function () {
+
+		it('returns the authorize url for a token', function () {
+			assert.equal(
+				subject.authorizeUrl('token'),
+				'https://www.flickr.com/services/oauth/authorize?perms=read&oauth_token=token'
+			);
+		});
+
+		it('can specify "read" perms', function () {
+			assert.equal(
+				subject.authorizeUrl('token', 'read'),
+				'https://www.flickr.com/services/oauth/authorize?perms=read&oauth_token=token'
+			);
+		});
+
+		it('can specify "write" perms', function () {
+			assert.equal(
+				subject.authorizeUrl('token', 'write'),
+				'https://www.flickr.com/services/oauth/authorize?perms=write&oauth_token=token'
+			);
+		});
+
+		it('can specify "delete" perms', function () {
+			assert.equal(
+				subject.authorizeUrl('token', 'delete'),
+				'https://www.flickr.com/services/oauth/authorize?perms=delete&oauth_token=token'
+			);
+		});
+
+		it('throws if an invalid perm is passed', function () {
+			assert.throws(function () {
+				subject.authorizeUrl('token', 'fnord');
+			}, function (err) {
+				return err.message === 'Unknown oauth perms "fnord"';
+			});
+		});
+
+	});
+
 	describe('#verify', function () {
 
 		it('makes the correct API call', function () {

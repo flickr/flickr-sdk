@@ -39,6 +39,32 @@ OAuth.prototype.request = function (oauthCallback) {
 };
 
 /**
+ * Returns the authorization url for `requestToken`. You may also pass
+ * the `perms` your app is requesting as `read` (the default), `write`,
+ * or `delete`.
+ * @param {String} requestToken
+ * @param {String} perms
+ * @returns {String}
+ * @static
+ * @see https://www.flickr.com/services/api/auth.oauth.html#authorization
+ */
+
+OAuth.prototype.authorizeUrl = function (requestToken, perms) {
+	if (typeof perms !== 'string') {
+		perms = 'read';
+	}
+
+	switch (perms) {
+	case 'read':
+	case 'write':
+	case 'delete':
+		return 'https://www.flickr.com/services/oauth/authorize?perms=' + perms + '&oauth_token=' + encodeURIComponent(requestToken);
+	default:
+		throw new Error('Unknown oauth perms "' + perms + '"');
+	}
+};
+
+/**
  * Verify an OAuth token using the verifier and token secret.
  * @param {String} oauthToken
  * @param {String} oauthVerifier
