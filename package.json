@@ -12,10 +12,9 @@
   "main": "index.js",
   "files": [
     "index.js",
-    "request.js",
+    "lib",
     "plugins",
-    "services",
-    "validate.js"
+    "services"
   ],
   "browser": {
     "./plugins/oauth.js": "./plugins/oauth-browser.js",
