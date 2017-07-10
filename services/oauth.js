@@ -70,6 +70,17 @@ OAuth.prototype.verify = function (oauthToken, oauthVerifier, tokenSecret) {
 OAuth.prototype.parse = request.parse['application/x-www-form-urlencoded'];
 
 /**
+ * Returns an oauth plugin for this consumer key and secret.
+ * @param {String} oauthToken
+ * @param {String} oauthTokenSecret
+ * @returns {Function}
+ */
+
+OAuth.prototype.plugin = function (oauthToken, oauthTokenSecret) {
+	return oauth(this.consumerKey, this.consumerSecret, oauthToken, oauthTokenSecret);
+};
+
+/**
  * @module services/oauth
  */
 
