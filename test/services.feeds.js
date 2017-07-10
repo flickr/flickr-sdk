@@ -1,5 +1,5 @@
 var Subject = require('../services/feeds');
-var Request = require('superagent').Request;
+var Request = require('../lib/request').Request;
 var assert = require('assert');
 var parse = require('url').parse;
 
