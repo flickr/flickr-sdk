@@ -26,30 +26,34 @@ module.exports = function (consumerKey, consumerSecret, oauthToken, oauthTokenSe
 	}
 
 	return function (req) {
-		// we need to overwrite _finalizeQueryString to make sure we
+		// we need to overwrite .end to make sure we
 		// sign the request at the last possible moment
-		var _finalizeQueryString = req._finalizeQueryString;
+		var _end = req.end;
 
-		req._finalizeQueryString = function () {
-			// call the original, this.url now has all of the query
-			// string parameters appended
-			_finalizeQueryString.call(this);
+		req.end = function (fn) {
 
 			// sign the url with token secret unless it was
 			// explicitly omitted
 			if (oauthTokenSecret !== false) {
-				this.url = oauth.sign(this.method, this.url, oauthTokenSecret);
+				this.param({
+					oauth_signature: oauth.signature(this.method, this.url, this.params, oauthTokenSecret)
+				});
 			} else {
-				this.url = oauth.sign(this.method, this.url);
+				this.param({
+					oauth_signature: oauth.signature(this.method, this.url, this.params)
+				});
 			}
+
+			// call the original
+			_end.call(this, fn);
 		};
 
 		// always add our oauth params
-		req.query(oauth.params());
+		req.param(oauth.params());
 
 		// add the oauth token unless explicitly omitted
 		if (oauthToken !== false) {
-			req.query({ oauth_token: oauthToken });
+			req.param({ oauth_token: oauthToken });
 		}
 
 	};

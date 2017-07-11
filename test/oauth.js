@@ -82,31 +82,15 @@ describe('oauth', function () {
 	describe('#signature', function () {
 
 		it('returns the signature without a token secret', function () {
-			var signature = subject.signature('GET', 'http://www.example.com?foo=123&bar=456');
+			var signature = subject.signature('GET', 'http://www.example.com', { foo: '123', bar: '456' });
 
 			assert.equal(signature, 'lNBTzyWRRHBuoXmgK13Nht5oiKs=');
 		});
 
 		it('returns the signature with a token secret', function () {
-			var signature = subject.signature('GET', 'http://www.example.com?foo=123&bar=456', 'keyboard cat');
+			var signature = subject.signature('GET', 'http://www.example.com', { foo: '123', bar: '456' }, 'keyboard cat');
 
 			assert.equal(signature, 'pytjoWTzMmvq13/Bai9YVX1tV9c=');
-		});
-
-	});
-
-	describe('#sign', function () {
-
-		it('signs the url without a token secret', function () {
-			var url = subject.sign('GET', 'http://www.example.com?foo=123&bar=456');
-
-			assert.equal(url, 'http://www.example.com?foo=123&bar=456&oauth_signature=lNBTzyWRRHBuoXmgK13Nht5oiKs%3D');
-		});
-
-		it('signs the url with a token secret', function () {
-			var url = subject.sign('GET', 'http://www.example.com?foo=123&bar=456', 'keyboard cat');
-
-			assert.equal(url, 'http://www.example.com?foo=123&bar=456&oauth_signature=pytjoWTzMmvq13%2FBai9YVX1tV9c%3D');
 		});
 
 	});
