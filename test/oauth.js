@@ -79,6 +79,32 @@ describe('oauth', function () {
 
 	});
 
+	describe('#tokenSecret', function () {
+
+		it('creates the correct string without a token secret', function () {
+			assert.equal(subject.signingKey(), 'consumer%20secret&');
+		});
+
+		it('creates the correct string with a token secret', function () {
+			assert.equal(subject.signingKey('keyboard cat'), 'consumer%20secret&keyboard%20cat');
+		});
+
+	});
+
+	describe('#baseString', function () {
+
+		it('creates the correct base string for the method, url and params', function () {
+			assert.equal(
+				subject.baseString('GET', 'http://www.example.com', {
+					foo: '123',
+					bar: '456'
+				}),
+				'GET&http%3A%2F%2Fwww.example.com&bar%3D456%26foo%3D123'
+			);
+		});
+
+	});
+
 	describe('#signature', function () {
 
 		it('returns the signature without a token secret', function () {
