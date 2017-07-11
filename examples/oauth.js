@@ -38,9 +38,10 @@ function getRequestToken(req, res) {
 		// store the request token and secret in the database
 		db.oauth.set(requestToken, requestTokenSecret);
 
-		// redirect the user to flickr and ask them to authorize your app
+		// redirect the user to flickr and ask them to authorize your app.
+		// perms default to "read", but you may specify "write" or "delete".
 		res.statusCode = 302;
-		res.setHeader('location', oauth.authorizeUrl(requestToken));
+		res.setHeader('location', oauth.authorizeUrl(requestToken, 'write'));
 		res.end();
 
 	}).catch(function (err) {
@@ -76,6 +77,10 @@ function verifyRequestToken(req, res, query) {
 
 		// we no longer need the request token and secret so we can delete them
 		db.oauth.delete(requestToken);
+
+		// log our oauth token and secret for debugging
+		console.log('oauth token:', oauthToken);
+		console.log('oauth token secret:', oauthTokenSecret);
 
 		// create a new Flickr API client using the oauth plugin
 		flickr = new Flickr(oauth.plugin(
