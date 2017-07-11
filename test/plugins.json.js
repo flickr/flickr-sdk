@@ -1,5 +1,5 @@
 var subject = require('../plugins/json');
-var request = require('superagent');
+var request = require('../lib/request');
 var assert = require('assert');
 var nock = require('nock');
 
