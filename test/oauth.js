@@ -79,6 +79,43 @@ describe('oauth', function () {
 
 	});
 
+	describe('#tokenSecret', function () {
+
+		it('creates the correct string without a token secret', function () {
+			assert.equal(subject.signingKey(), 'consumer%20secret&');
+		});
+
+		it('creates the correct string with a token secret', function () {
+			assert.equal(subject.signingKey('keyboard cat'), 'consumer%20secret&keyboard%20cat');
+		});
+
+	});
+
+	describe('#baseString', function () {
+
+		it('creates the correct base string for the method, url and params', function () {
+			assert.equal(
+				subject.baseString('GET', 'http://www.example.com', {
+					foo: '123',
+					bar: '456'
+				}),
+				'GET&http%3A%2F%2Fwww.example.com&bar%3D456%26foo%3D123'
+			);
+		});
+
+		it('encodes params following RFC3986', function () {
+			assert.equal(
+				subject.baseString('GET', 'http://www.example.com', {
+					foo: '!\'()*'
+				}),
+				// params get double-encoded, once when stringifying the
+				// query string and again when encoded into the base string
+				'GET&http%3A%2F%2Fwww.example.com&foo%3D%2521%2527%2528%2529%252A'
+			);
+		});
+
+	});
+
 	describe('#signature', function () {
 
 		it('returns the signature without a token secret', function () {
