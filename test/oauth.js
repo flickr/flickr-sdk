@@ -103,6 +103,17 @@ describe('oauth', function () {
 			);
 		});
 
+		it('encodes params following RFC3986', function () {
+			assert.equal(
+				subject.baseString('GET', 'http://www.example.com', {
+					foo: '!\'()*'
+				}),
+				// params get double-encoded, once when stringifying the
+				// query string and again when encoded into the base string
+				'GET&http%3A%2F%2Fwww.example.com&foo%3D%2521%2527%2528%2529%252A'
+			);
+		});
+
 	});
 
 	describe('#signature', function () {
