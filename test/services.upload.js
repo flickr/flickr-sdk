@@ -1,0 +1,72 @@
+var Subject = require('../services/upload');
+var Request = require('../lib/request').Request;
+var assert = require('assert');
+var sinon = require('sinon');
+var parse = require('url').parse;
+
+describe('services/upload', function () {
+
+	function auth() { /* noop for tests */ }
+
+	it('is a superagent Request', function () {
+		assert(new Subject(auth) instanceof Request);
+	});
+
+	/*
+		TODO user-agent
+	*/
+
+	it('adds default request headers');
+
+	it('uses the correct method', function () {
+		var req = new Subject(auth);
+
+		assert.equal(req.method, 'POST');
+	});
+
+	it('uses the correct path', function () {
+		var req = new Subject(auth);
+		var url = parse(req.url);
+
+		assert.equal(url.pathname, '/services/upload');
+	});
+
+	it('uses the correct host', function () {
+		var req = new Subject(auth);
+		var url = parse(req.url);
+
+		assert.equal(url.host, 'up.flickr.com');
+	});
+
+	it('requires an auth function to be passed', function () {
+		assert.throws(function () {
+			var req = new Subject(); // eslint-disable-line no-unused-vars
+		}, function (err) {
+			return err.message === 'Missing auth superagent plugin';
+		});
+	});
+
+	it('attaches the photo', function () {
+		var spy = sinon.spy(Request.prototype, 'attach');
+		var req = new Subject(auth, 'fnord.png');
+
+		sinon.assert.calledOnce(spy);
+		sinon.assert.calledWith(spy, 'photo', 'fnord.png');
+		sinon.assert.calledOn(spy, req);
+
+		sinon.restore(spy);
+	});
+
+	it('adds optional arguments as fields', function () {
+		var spy = sinon.stub(Request.prototype, 'field');
+		var obj = { title: 'Works on MY machine!' };
+		var req = new Subject(auth, 'fnord.png', obj);
+
+		sinon.assert.calledOnce(spy);
+		sinon.assert.calledWith(spy, obj);
+		sinon.assert.calledOn(spy, req);
+
+		sinon.restore(spy);
+	});
+
+});
