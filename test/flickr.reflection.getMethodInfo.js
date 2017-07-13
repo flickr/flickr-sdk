@@ -14,7 +14,9 @@ describe('flickr.reflection.getMethodInfo', function () {
 	});
 
 	it('returns a Request instance', function () {
-		var req = flickr.reflection.getMethodInfo({ method_name: '_' });
+		var req = flickr.reflection.getMethodInfo({
+			method_name: '_'
+		});
 
 		assert.equal(req.method, 'GET');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');

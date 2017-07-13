@@ -6,11 +6,13 @@ describe('flickr.photos.people.editCoords', function () {
 	it('requires "photo_id"', function () {
 
 		assert.throws(function () {
-			flickr.photos.people.editCoords({ user_id: '_',
-  person_x: '_',
-  person_y: '_',
-  person_w: '_',
-  person_h: '_' });
+			flickr.photos.people.editCoords({
+				user_id: '_',
+				person_x: '_',
+				person_y: '_',
+				person_w: '_',
+				person_h: '_'
+			});
 		}, function (err) {
 			return err.message === 'Missing required argument "photo_id"';
 		});
@@ -20,11 +22,13 @@ describe('flickr.photos.people.editCoords', function () {
 	it('requires "user_id"', function () {
 
 		assert.throws(function () {
-			flickr.photos.people.editCoords({ photo_id: '_',
-  person_x: '_',
-  person_y: '_',
-  person_w: '_',
-  person_h: '_' });
+			flickr.photos.people.editCoords({
+				photo_id: '_',
+				person_x: '_',
+				person_y: '_',
+				person_w: '_',
+				person_h: '_'
+			});
 		}, function (err) {
 			return err.message === 'Missing required argument "user_id"';
 		});
@@ -34,11 +38,13 @@ describe('flickr.photos.people.editCoords', function () {
 	it('requires "person_x"', function () {
 
 		assert.throws(function () {
-			flickr.photos.people.editCoords({ photo_id: '_',
-  user_id: '_',
-  person_y: '_',
-  person_w: '_',
-  person_h: '_' });
+			flickr.photos.people.editCoords({
+				photo_id: '_',
+				user_id: '_',
+				person_y: '_',
+				person_w: '_',
+				person_h: '_'
+			});
 		}, function (err) {
 			return err.message === 'Missing required argument "person_x"';
 		});
@@ -48,11 +54,13 @@ describe('flickr.photos.people.editCoords', function () {
 	it('requires "person_y"', function () {
 
 		assert.throws(function () {
-			flickr.photos.people.editCoords({ photo_id: '_',
-  user_id: '_',
-  person_x: '_',
-  person_w: '_',
-  person_h: '_' });
+			flickr.photos.people.editCoords({
+				photo_id: '_',
+				user_id: '_',
+				person_x: '_',
+				person_w: '_',
+				person_h: '_'
+			});
 		}, function (err) {
 			return err.message === 'Missing required argument "person_y"';
 		});
@@ -62,11 +70,13 @@ describe('flickr.photos.people.editCoords', function () {
 	it('requires "person_w"', function () {
 
 		assert.throws(function () {
-			flickr.photos.people.editCoords({ photo_id: '_',
-  user_id: '_',
-  person_x: '_',
-  person_y: '_',
-  person_h: '_' });
+			flickr.photos.people.editCoords({
+				photo_id: '_',
+				user_id: '_',
+				person_x: '_',
+				person_y: '_',
+				person_h: '_'
+			});
 		}, function (err) {
 			return err.message === 'Missing required argument "person_w"';
 		});
@@ -76,11 +86,13 @@ describe('flickr.photos.people.editCoords', function () {
 	it('requires "person_h"', function () {
 
 		assert.throws(function () {
-			flickr.photos.people.editCoords({ photo_id: '_',
-  user_id: '_',
-  person_x: '_',
-  person_y: '_',
-  person_w: '_' });
+			flickr.photos.people.editCoords({
+				photo_id: '_',
+				user_id: '_',
+				person_x: '_',
+				person_y: '_',
+				person_w: '_'
+			});
 		}, function (err) {
 			return err.message === 'Missing required argument "person_h"';
 		});
@@ -88,12 +100,14 @@ describe('flickr.photos.people.editCoords', function () {
 	});
 
 	it('returns a Request instance', function () {
-		var req = flickr.photos.people.editCoords({ photo_id: '_',
-  user_id: '_',
-  person_x: '_',
-  person_y: '_',
-  person_w: '_',
-  person_h: '_' });
+		var req = flickr.photos.people.editCoords({
+			photo_id: '_',
+			user_id: '_',
+			person_x: '_',
+			person_y: '_',
+			person_w: '_',
+			person_h: '_'
+		});
 
 		assert.equal(req.method, 'POST');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');

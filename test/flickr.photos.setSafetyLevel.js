@@ -14,7 +14,9 @@ describe('flickr.photos.setSafetyLevel', function () {
 	});
 
 	it('returns a Request instance', function () {
-		var req = flickr.photos.setSafetyLevel({ photo_id: '_' });
+		var req = flickr.photos.setSafetyLevel({
+			photo_id: '_'
+		});
 
 		assert.equal(req.method, 'POST');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');

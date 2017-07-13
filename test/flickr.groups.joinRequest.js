@@ -6,7 +6,10 @@ describe('flickr.groups.joinRequest', function () {
 	it('requires "group_id"', function () {
 
 		assert.throws(function () {
-			flickr.groups.joinRequest({ message: '_', accept_rules: '_' });
+			flickr.groups.joinRequest({
+				message: '_',
+				accept_rules: '_'
+			});
 		}, function (err) {
 			return err.message === 'Missing required argument "group_id"';
 		});
@@ -16,7 +19,10 @@ describe('flickr.groups.joinRequest', function () {
 	it('requires "message"', function () {
 
 		assert.throws(function () {
-			flickr.groups.joinRequest({ group_id: '_', accept_rules: '_' });
+			flickr.groups.joinRequest({
+				group_id: '_',
+				accept_rules: '_'
+			});
 		}, function (err) {
 			return err.message === 'Missing required argument "message"';
 		});
@@ -26,7 +32,10 @@ describe('flickr.groups.joinRequest', function () {
 	it('requires "accept_rules"', function () {
 
 		assert.throws(function () {
-			flickr.groups.joinRequest({ group_id: '_', message: '_' });
+			flickr.groups.joinRequest({
+				group_id: '_',
+				message: '_'
+			});
 		}, function (err) {
 			return err.message === 'Missing required argument "accept_rules"';
 		});
@@ -34,7 +43,11 @@ describe('flickr.groups.joinRequest', function () {
 	});
 
 	it('returns a Request instance', function () {
-		var req = flickr.groups.joinRequest({ group_id: '_', message: '_', accept_rules: '_' });
+		var req = flickr.groups.joinRequest({
+			group_id: '_',
+			message: '_',
+			accept_rules: '_'
+		});
 
 		assert.equal(req.method, 'POST');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');

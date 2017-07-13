@@ -14,7 +14,9 @@ describe('flickr.favorites.getPublicList', function () {
 	});
 
 	it('returns a Request instance', function () {
-		var req = flickr.favorites.getPublicList({ user_id: '_' });
+		var req = flickr.favorites.getPublicList({
+			user_id: '_'
+		});
 
 		assert.equal(req.method, 'GET');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');

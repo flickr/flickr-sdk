@@ -14,7 +14,9 @@ describe('flickr.auth.getToken', function () {
 	});
 
 	it('returns a Request instance', function () {
-		var req = flickr.auth.getToken({ frob: '_' });
+		var req = flickr.auth.getToken({
+			frob: '_'
+		});
 
 		assert.equal(req.method, 'GET');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');

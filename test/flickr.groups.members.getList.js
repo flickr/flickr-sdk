@@ -14,7 +14,9 @@ describe('flickr.groups.members.getList', function () {
 	});
 
 	it('returns a Request instance', function () {
-		var req = flickr.groups.members.getList({ group_id: '_' });
+		var req = flickr.groups.members.getList({
+			group_id: '_'
+		});
 
 		assert.equal(req.method, 'GET');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');

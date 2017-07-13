@@ -14,7 +14,9 @@ describe('flickr.photos.setDates', function () {
 	});
 
 	it('returns a Request instance', function () {
-		var req = flickr.photos.setDates({ photo_id: '_' });
+		var req = flickr.photos.setDates({
+			photo_id: '_'
+		});
 
 		assert.equal(req.method, 'POST');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');

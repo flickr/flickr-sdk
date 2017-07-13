@@ -6,11 +6,13 @@ describe('flickr.photos.notes.add', function () {
 	it('requires "photo_id"', function () {
 
 		assert.throws(function () {
-			flickr.photos.notes.add({ note_x: '_',
-  note_y: '_',
-  note_w: '_',
-  note_h: '_',
-  note_text: '_' });
+			flickr.photos.notes.add({
+				note_x: '_',
+				note_y: '_',
+				note_w: '_',
+				note_h: '_',
+				note_text: '_'
+			});
 		}, function (err) {
 			return err.message === 'Missing required argument "photo_id"';
 		});
@@ -20,11 +22,13 @@ describe('flickr.photos.notes.add', function () {
 	it('requires "note_x"', function () {
 
 		assert.throws(function () {
-			flickr.photos.notes.add({ photo_id: '_',
-  note_y: '_',
-  note_w: '_',
-  note_h: '_',
-  note_text: '_' });
+			flickr.photos.notes.add({
+				photo_id: '_',
+				note_y: '_',
+				note_w: '_',
+				note_h: '_',
+				note_text: '_'
+			});
 		}, function (err) {
 			return err.message === 'Missing required argument "note_x"';
 		});
@@ -34,11 +38,13 @@ describe('flickr.photos.notes.add', function () {
 	it('requires "note_y"', function () {
 
 		assert.throws(function () {
-			flickr.photos.notes.add({ photo_id: '_',
-  note_x: '_',
-  note_w: '_',
-  note_h: '_',
-  note_text: '_' });
+			flickr.photos.notes.add({
+				photo_id: '_',
+				note_x: '_',
+				note_w: '_',
+				note_h: '_',
+				note_text: '_'
+			});
 		}, function (err) {
 			return err.message === 'Missing required argument "note_y"';
 		});
@@ -48,11 +54,13 @@ describe('flickr.photos.notes.add', function () {
 	it('requires "note_w"', function () {
 
 		assert.throws(function () {
-			flickr.photos.notes.add({ photo_id: '_',
-  note_x: '_',
-  note_y: '_',
-  note_h: '_',
-  note_text: '_' });
+			flickr.photos.notes.add({
+				photo_id: '_',
+				note_x: '_',
+				note_y: '_',
+				note_h: '_',
+				note_text: '_'
+			});
 		}, function (err) {
 			return err.message === 'Missing required argument "note_w"';
 		});
@@ -62,11 +70,13 @@ describe('flickr.photos.notes.add', function () {
 	it('requires "note_h"', function () {
 
 		assert.throws(function () {
-			flickr.photos.notes.add({ photo_id: '_',
-  note_x: '_',
-  note_y: '_',
-  note_w: '_',
-  note_text: '_' });
+			flickr.photos.notes.add({
+				photo_id: '_',
+				note_x: '_',
+				note_y: '_',
+				note_w: '_',
+				note_text: '_'
+			});
 		}, function (err) {
 			return err.message === 'Missing required argument "note_h"';
 		});
@@ -76,11 +86,13 @@ describe('flickr.photos.notes.add', function () {
 	it('requires "note_text"', function () {
 
 		assert.throws(function () {
-			flickr.photos.notes.add({ photo_id: '_',
-  note_x: '_',
-  note_y: '_',
-  note_w: '_',
-  note_h: '_' });
+			flickr.photos.notes.add({
+				photo_id: '_',
+				note_x: '_',
+				note_y: '_',
+				note_w: '_',
+				note_h: '_'
+			});
 		}, function (err) {
 			return err.message === 'Missing required argument "note_text"';
 		});
@@ -88,12 +100,14 @@ describe('flickr.photos.notes.add', function () {
 	});
 
 	it('returns a Request instance', function () {
-		var req = flickr.photos.notes.add({ photo_id: '_',
-  note_x: '_',
-  note_y: '_',
-  note_w: '_',
-  note_h: '_',
-  note_text: '_' });
+		var req = flickr.photos.notes.add({
+			photo_id: '_',
+			note_x: '_',
+			note_y: '_',
+			note_w: '_',
+			note_h: '_',
+			note_text: '_'
+		});
 
 		assert.equal(req.method, 'POST');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');
