@@ -14,7 +14,9 @@ describe('flickr.places.resolvePlaceId', function () {
 	});
 
 	it('returns a Request instance', function () {
-		var req = flickr.places.resolvePlaceId({ place_id: '_' });
+		var req = flickr.places.resolvePlaceId({
+			place_id: '_'
+		});
 
 		assert.equal(req.method, 'GET');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');

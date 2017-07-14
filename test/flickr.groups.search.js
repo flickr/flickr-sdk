@@ -14,7 +14,9 @@ describe('flickr.groups.search', function () {
 	});
 
 	it('returns a Request instance', function () {
-		var req = flickr.groups.search({ text: '_' });
+		var req = flickr.groups.search({
+			text: '_'
+		});
 
 		assert.equal(req.method, 'GET');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');

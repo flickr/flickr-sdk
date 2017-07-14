@@ -7,7 +7,7 @@ describe('<%= method %>', function () {
 	it('requires "<%= arg %>"', function () {
 
 		assert.throws(function () {
-			<%= method %>(<%- toObject(without(args, arg)) %>);
+			<%= method %>(<%- toObject(without(args, arg), 3) %>);
 		}, function (err) {
 			return err.message === 'Missing required argument "<%= arg %>"';
 		});
@@ -16,7 +16,7 @@ describe('<%= method %>', function () {
 
 <%_ }); _%>
 	it('returns a Request instance', function () {
-		var req = <%= method %>(<%- toObject(args) %>);
+		var req = <%= method %>(<%- toObject(args, 2) %>);
 
 		assert.equal(req.method, '<%= verb %>');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');

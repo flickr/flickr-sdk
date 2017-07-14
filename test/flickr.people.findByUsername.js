@@ -14,7 +14,9 @@ describe('flickr.people.findByUsername', function () {
 	});
 
 	it('returns a Request instance', function () {
-		var req = flickr.people.findByUsername({ username: '_' });
+		var req = flickr.people.findByUsername({
+			username: '_'
+		});
 
 		assert.equal(req.method, 'GET');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');

@@ -14,7 +14,9 @@ describe('flickr.stats.getPhotostreamDomains', function () {
 	});
 
 	it('returns a Request instance', function () {
-		var req = flickr.stats.getPhotostreamDomains({ date: '_' });
+		var req = flickr.stats.getPhotostreamDomains({
+			date: '_'
+		});
 
 		assert.equal(req.method, 'GET');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');

@@ -33,10 +33,10 @@ function stringify(obj) {
 
 function info(method) {
 	return request('GET', 'flickr.reflection.getMethodInfo')
-	.query('method_name=' + method._content)
-	.then(function (res) {
-		fs.writeFileSync(filename(method._content), stringify(res.body));
-	});
+		.query('method_name=' + method._content)
+		.then(function (res) {
+			fs.writeFileSync(filename(method._content), stringify(res.body));
+		});
 }
 
 /**

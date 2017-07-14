@@ -14,7 +14,9 @@ describe('flickr.tags.getListPhoto', function () {
 	});
 
 	it('returns a Request instance', function () {
-		var req = flickr.tags.getListPhoto({ photo_id: '_' });
+		var req = flickr.tags.getListPhoto({
+			photo_id: '_'
+		});
 
 		assert.equal(req.method, 'GET');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');

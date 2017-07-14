@@ -23,26 +23,26 @@ describe('plugins/api-key', function () {
 
 	it('signs an api call', function () {
 		var api = nock('https://api.flickr.com')
-		.get('/services/rest')
-		.query({
-			api_key: 'api key',
-			method: 'flickr.test.echo',
-			foo: 'bar',
-			format: 'json',
-			nojsoncallback: '1'
-		})
-		.reply(200, {
-			stat: 'ok'
-		});
+			.get('/services/rest')
+			.query({
+				api_key: 'api key',
+				method: 'flickr.test.echo',
+				foo: 'bar',
+				format: 'json',
+				nojsoncallback: '1'
+			})
+			.reply(200, {
+				stat: 'ok'
+			});
 
 		var flickr = new Flickr(subject('api key'));
 
 		return flickr.test.echo({ foo: 'bar' })
-		.then(function (res) {
-			assert(api.isDone(), 'Expected mock to have been called');
-			assert.equal(res.statusCode, 200);
-			assert.equal(res.body.stat, 'ok');
-		});
+			.then(function (res) {
+				assert(api.isDone(), 'Expected mock to have been called');
+				assert.equal(res.statusCode, 200);
+				assert.equal(res.body.stat, 'ok');
+			});
 
 	});
 

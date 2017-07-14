@@ -6,7 +6,9 @@ describe('flickr.stats.getPhotosetReferrers', function () {
 	it('requires "date"', function () {
 
 		assert.throws(function () {
-			flickr.stats.getPhotosetReferrers({ domain: '_' });
+			flickr.stats.getPhotosetReferrers({
+				domain: '_'
+			});
 		}, function (err) {
 			return err.message === 'Missing required argument "date"';
 		});
@@ -16,7 +18,9 @@ describe('flickr.stats.getPhotosetReferrers', function () {
 	it('requires "domain"', function () {
 
 		assert.throws(function () {
-			flickr.stats.getPhotosetReferrers({ date: '_' });
+			flickr.stats.getPhotosetReferrers({
+				date: '_'
+			});
 		}, function (err) {
 			return err.message === 'Missing required argument "domain"';
 		});
@@ -24,7 +28,10 @@ describe('flickr.stats.getPhotosetReferrers', function () {
 	});
 
 	it('returns a Request instance', function () {
-		var req = flickr.stats.getPhotosetReferrers({ date: '_', domain: '_' });
+		var req = flickr.stats.getPhotosetReferrers({
+			date: '_',
+			domain: '_'
+		});
 
 		assert.equal(req.method, 'GET');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');

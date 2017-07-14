@@ -28,9 +28,9 @@ function OAuth(consumerKey, consumerSecret) {
 
 OAuth.prototype.request = function (oauthCallback) {
 	return request('GET', 'https://www.flickr.com/services/oauth/request_token')
-	.query({ oauth_callback: oauthCallback })
-	.parse(this.parse)
-	.use(oauth(this.consumerKey, this.consumerSecret, false, false));
+		.query({ oauth_callback: oauthCallback })
+		.parse(this.parse)
+		.use(oauth(this.consumerKey, this.consumerSecret, false, false));
 
 	/*
 		TODO 'https://www.flickr.com/services/oauth/authorize?oauth_token=' + res.body.oauth_token
@@ -76,9 +76,9 @@ OAuth.prototype.authorizeUrl = function (requestToken, perms) {
 
 OAuth.prototype.verify = function (oauthToken, oauthVerifier, tokenSecret) {
 	return request('GET', 'https://www.flickr.com/services/oauth/access_token')
-	.query({ oauth_verifier: oauthVerifier })
-	.parse(this.parse)
-	.use(oauth(this.consumerKey, this.consumerSecret, oauthToken, tokenSecret));
+		.query({ oauth_verifier: oauthVerifier })
+		.parse(this.parse)
+		.use(oauth(this.consumerKey, this.consumerSecret, oauthToken, tokenSecret));
 
 	/*
 		TODO hand back a new Flickr instance with the oauth plugin set up?

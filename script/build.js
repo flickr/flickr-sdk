@@ -88,10 +88,10 @@ ejs.renderFile(__dirname + '/rest.ejs', {
 
 	get namespaces() {
 		return Object.keys(this.methods)
-		.map(namespace)
-		.reduce(parts, [])
-		.reduce(uniq, [])
-		.sort();
+			.map(namespace)
+			.reduce(parts, [])
+			.reduce(uniq, [])
+			.sort();
 	},
 
 	/**
@@ -113,12 +113,12 @@ ejs.renderFile(__dirname + '/rest.ejs', {
 
 	getRequiredArguments: function (method) {
 		return this.methods[method]
-		.arguments
-		.argument
-		.filter(required)
-		.map(function (arg) {
-			return arg.name;
-		});
+			.arguments
+			.argument
+			.filter(required)
+			.map(function (arg) {
+				return arg.name;
+			});
 	},
 
 	/**

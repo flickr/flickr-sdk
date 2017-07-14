@@ -6,7 +6,9 @@ describe('flickr.photos.setTags', function () {
 	it('requires "photo_id"', function () {
 
 		assert.throws(function () {
-			flickr.photos.setTags({ tags: '_' });
+			flickr.photos.setTags({
+				tags: '_'
+			});
 		}, function (err) {
 			return err.message === 'Missing required argument "photo_id"';
 		});
@@ -16,7 +18,9 @@ describe('flickr.photos.setTags', function () {
 	it('requires "tags"', function () {
 
 		assert.throws(function () {
-			flickr.photos.setTags({ photo_id: '_' });
+			flickr.photos.setTags({
+				photo_id: '_'
+			});
 		}, function (err) {
 			return err.message === 'Missing required argument "tags"';
 		});
@@ -24,7 +28,10 @@ describe('flickr.photos.setTags', function () {
 	});
 
 	it('returns a Request instance', function () {
-		var req = flickr.photos.setTags({ photo_id: '_', tags: '_' });
+		var req = flickr.photos.setTags({
+			photo_id: '_',
+			tags: '_'
+		});
 
 		assert.equal(req.method, 'POST');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');

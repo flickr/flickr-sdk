@@ -20,8 +20,8 @@ function Feeds(args) {
 
 Feeds.prototype._ = function (feed, args) {
 	return request('GET', 'https://www.flickr.com/services/feeds/' + feed + '.gne')
-	.query(this._args)
-	.query(args);
+		.query(this._args)
+		.query(args);
 };
 
 /**

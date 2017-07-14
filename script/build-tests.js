@@ -1,5 +1,6 @@
+var stringify = require('stringify-object');
+var indent = require('indent-string');
 var path = require('path');
-var util = require('util');
 var ejs = require('ejs');
 var fs = require('fs');
 
@@ -87,7 +88,9 @@ Object.keys(methods).forEach(function (method) {
 		verb: httpVerb(methods[method]),
 		args: requiredArguments(methods[method]),
 		without: without,
-		toObject: util.inspect
+		toObject: function (obj, n) {
+			return indent(stringify(obj), n, '\t').trimLeft();
+		}
 
 	}, function (err, str) {
 		if (err) {

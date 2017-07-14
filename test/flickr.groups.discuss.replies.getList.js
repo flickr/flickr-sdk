@@ -6,7 +6,10 @@ describe('flickr.groups.discuss.replies.getList', function () {
 	it('requires "group_id"', function () {
 
 		assert.throws(function () {
-			flickr.groups.discuss.replies.getList({ topic_id: '_', per_page: '_' });
+			flickr.groups.discuss.replies.getList({
+				topic_id: '_',
+				per_page: '_'
+			});
 		}, function (err) {
 			return err.message === 'Missing required argument "group_id"';
 		});
@@ -16,7 +19,10 @@ describe('flickr.groups.discuss.replies.getList', function () {
 	it('requires "topic_id"', function () {
 
 		assert.throws(function () {
-			flickr.groups.discuss.replies.getList({ group_id: '_', per_page: '_' });
+			flickr.groups.discuss.replies.getList({
+				group_id: '_',
+				per_page: '_'
+			});
 		}, function (err) {
 			return err.message === 'Missing required argument "topic_id"';
 		});
@@ -26,7 +32,10 @@ describe('flickr.groups.discuss.replies.getList', function () {
 	it('requires "per_page"', function () {
 
 		assert.throws(function () {
-			flickr.groups.discuss.replies.getList({ group_id: '_', topic_id: '_' });
+			flickr.groups.discuss.replies.getList({
+				group_id: '_',
+				topic_id: '_'
+			});
 		}, function (err) {
 			return err.message === 'Missing required argument "per_page"';
 		});
@@ -34,7 +43,11 @@ describe('flickr.groups.discuss.replies.getList', function () {
 	});
 
 	it('returns a Request instance', function () {
-		var req = flickr.groups.discuss.replies.getList({ group_id: '_', topic_id: '_', per_page: '_' });
+		var req = flickr.groups.discuss.replies.getList({
+			group_id: '_',
+			topic_id: '_',
+			per_page: '_'
+		});
 
 		assert.equal(req.method, 'GET');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');

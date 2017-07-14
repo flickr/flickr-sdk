@@ -14,7 +14,9 @@ describe('flickr.testimonials.deleteTestimonial', function () {
 	});
 
 	it('returns a Request instance', function () {
-		var req = flickr.testimonials.deleteTestimonial({ testimonial_id: '_' });
+		var req = flickr.testimonials.deleteTestimonial({
+			testimonial_id: '_'
+		});
 
 		assert.equal(req.method, 'POST');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');

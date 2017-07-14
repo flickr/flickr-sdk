@@ -14,7 +14,9 @@ describe('flickr.tags.getClusters', function () {
 	});
 
 	it('returns a Request instance', function () {
-		var req = flickr.tags.getClusters({ tag: '_' });
+		var req = flickr.tags.getClusters({
+			tag: '_'
+		});
 
 		assert.equal(req.method, 'GET');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');

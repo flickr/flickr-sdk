@@ -14,7 +14,9 @@ describe('flickr.cameras.getBrandModels', function () {
 	});
 
 	it('returns a Request instance', function () {
-		var req = flickr.cameras.getBrandModels({ brand: '_' });
+		var req = flickr.cameras.getBrandModels({
+			brand: '_'
+		});
 
 		assert.equal(req.method, 'GET');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');

@@ -36,11 +36,11 @@ function createClient(auth, opts) {
 		}
 
 		return request(verb, 'https://' + host + '/services/rest')
-		.query('method=' + method)
-		.query(args)
-		.set('X-Flickr-API-Method', method)
-		.use(json)
-		.use(auth);
+			.query('method=' + method)
+			.query(args)
+			.set('X-Flickr-API-Method', method)
+			.use(json)
+			.use(auth);
 	};
 
 }
@@ -61,9 +61,8 @@ function Flickr(auth, opts) {
 	<%_ namespaces.forEach(function (ns) { _%>
 	this.<%= ns %>._ =
 	<%_ }); _%>
-	// create passthrough for future/undocumented endpoints
-	this._ =
-	createClient(auth, opts);
+	this._ = // create passthrough for future/undocumented endpoints
+		createClient(auth, opts);
 }
 
 <% namespaces.forEach(function (ns) { %>

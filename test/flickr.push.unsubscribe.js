@@ -6,7 +6,10 @@ describe('flickr.push.unsubscribe', function () {
 	it('requires "topic"', function () {
 
 		assert.throws(function () {
-			flickr.push.unsubscribe({ callback: '_', verify: '_' });
+			flickr.push.unsubscribe({
+				callback: '_',
+				verify: '_'
+			});
 		}, function (err) {
 			return err.message === 'Missing required argument "topic"';
 		});
@@ -16,7 +19,10 @@ describe('flickr.push.unsubscribe', function () {
 	it('requires "callback"', function () {
 
 		assert.throws(function () {
-			flickr.push.unsubscribe({ topic: '_', verify: '_' });
+			flickr.push.unsubscribe({
+				topic: '_',
+				verify: '_'
+			});
 		}, function (err) {
 			return err.message === 'Missing required argument "callback"';
 		});
@@ -26,7 +32,10 @@ describe('flickr.push.unsubscribe', function () {
 	it('requires "verify"', function () {
 
 		assert.throws(function () {
-			flickr.push.unsubscribe({ topic: '_', callback: '_' });
+			flickr.push.unsubscribe({
+				topic: '_',
+				callback: '_'
+			});
 		}, function (err) {
 			return err.message === 'Missing required argument "verify"';
 		});
@@ -34,7 +43,11 @@ describe('flickr.push.unsubscribe', function () {
 	});
 
 	it('returns a Request instance', function () {
-		var req = flickr.push.unsubscribe({ topic: '_', callback: '_', verify: '_' });
+		var req = flickr.push.unsubscribe({
+			topic: '_',
+			callback: '_',
+			verify: '_'
+		});
 
 		assert.equal(req.method, 'GET');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');

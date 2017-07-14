@@ -14,7 +14,9 @@ describe('flickr.photosets.delete', function () {
 	});
 
 	it('returns a Request instance', function () {
-		var req = flickr.photosets.delete({ photoset_id: '_' });
+		var req = flickr.photosets.delete({
+			photoset_id: '_'
+		});
 
 		assert.equal(req.method, 'POST');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');

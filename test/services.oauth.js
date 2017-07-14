@@ -23,17 +23,17 @@ describe('services/oauth', function () {
 
 		it('makes the correct API call', function () {
 			var api = nock('https://www.flickr.com')
-			.get('/services/oauth/request_token')
-			.query({
-				oauth_nonce: 'p2m2bnHdXVIsQH0FUv0oN9XrJU57ak7dSSpHU36mn4k=',
-				oauth_timestamp: 499166400,
-				oauth_consumer_key: subject.consumerKey,
-				oauth_signature_method: 'HMAC-SHA1',
-				oauth_version: '1.0',
-				oauth_callback: 'https://www.example.com/callback',
-				oauth_signature: 'JC6IWgvysQg30vh3Xk6TjARQWps='
-			})
-			.reply(200, 'oauth_callback_confirmed=true&oauth_token=foo&oauth_token_secret=bar');
+				.get('/services/oauth/request_token')
+				.query({
+					oauth_nonce: 'p2m2bnHdXVIsQH0FUv0oN9XrJU57ak7dSSpHU36mn4k=',
+					oauth_timestamp: 499166400,
+					oauth_consumer_key: subject.consumerKey,
+					oauth_signature_method: 'HMAC-SHA1',
+					oauth_version: '1.0',
+					oauth_callback: 'https://www.example.com/callback',
+					oauth_signature: 'JC6IWgvysQg30vh3Xk6TjARQWps='
+				})
+				.reply(200, 'oauth_callback_confirmed=true&oauth_token=foo&oauth_token_secret=bar');
 
 			return subject.request('https://www.example.com/callback').then(function (res) {
 				assert(api.isDone());
@@ -91,18 +91,18 @@ describe('services/oauth', function () {
 
 		it('makes the correct API call', function () {
 			var api = nock('https://www.flickr.com')
-			.get('/services/oauth/access_token')
-			.query({
-				oauth_token: 'token',
-				oauth_verifier: 'verfier',
-				oauth_nonce: 'p2m2bnHdXVIsQH0FUv0oN9XrJU57ak7dSSpHU36mn4k=',
-				oauth_timestamp: 499166400,
-				oauth_consumer_key: subject.consumerKey,
-				oauth_signature_method: 'HMAC-SHA1',
-				oauth_version: '1.0',
-				oauth_signature: '7+3k1AWzUyxOoNO4rymh0Txz5FA='
-			})
-			.reply(200, 'fullname=Jamal%20Fanaian&oauth_token=foo&oauth_token_secret=bar&user_nsid=21207597%40N07&username=jamalfanaian');
+				.get('/services/oauth/access_token')
+				.query({
+					oauth_token: 'token',
+					oauth_verifier: 'verfier',
+					oauth_nonce: 'p2m2bnHdXVIsQH0FUv0oN9XrJU57ak7dSSpHU36mn4k=',
+					oauth_timestamp: 499166400,
+					oauth_consumer_key: subject.consumerKey,
+					oauth_signature_method: 'HMAC-SHA1',
+					oauth_version: '1.0',
+					oauth_signature: '7+3k1AWzUyxOoNO4rymh0Txz5FA='
+				})
+				.reply(200, 'fullname=Jamal%20Fanaian&oauth_token=foo&oauth_token_secret=bar&user_nsid=21207597%40N07&username=jamalfanaian');
 
 			return subject.verify('token', 'verfier', 'tokenSecret').then(function (res) {
 				assert(api.isDone());

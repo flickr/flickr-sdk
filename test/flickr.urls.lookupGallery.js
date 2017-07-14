@@ -14,7 +14,9 @@ describe('flickr.urls.lookupGallery', function () {
 	});
 
 	it('returns a Request instance', function () {
-		var req = flickr.urls.lookupGallery({ url: '_' });
+		var req = flickr.urls.lookupGallery({
+			url: '_'
+		});
 
 		assert.equal(req.method, 'GET');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');

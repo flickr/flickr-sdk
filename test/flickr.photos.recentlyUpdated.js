@@ -14,7 +14,9 @@ describe('flickr.photos.recentlyUpdated', function () {
 	});
 
 	it('returns a Request instance', function () {
-		var req = flickr.photos.recentlyUpdated({ min_date: '_' });
+		var req = flickr.photos.recentlyUpdated({
+			min_date: '_'
+		});
 
 		assert.equal(req.method, 'GET');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');

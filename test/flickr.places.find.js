@@ -14,7 +14,9 @@ describe('flickr.places.find', function () {
 	});
 
 	it('returns a Request instance', function () {
-		var req = flickr.places.find({ query: '_' });
+		var req = flickr.places.find({
+			query: '_'
+		});
 
 		assert.equal(req.method, 'GET');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');

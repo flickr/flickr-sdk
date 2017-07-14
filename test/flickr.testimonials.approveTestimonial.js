@@ -14,7 +14,9 @@ describe('flickr.testimonials.approveTestimonial', function () {
 	});
 
 	it('returns a Request instance', function () {
-		var req = flickr.testimonials.approveTestimonial({ testimonial_id: '_' });
+		var req = flickr.testimonials.approveTestimonial({
+			testimonial_id: '_'
+		});
 
 		assert.equal(req.method, 'POST');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');

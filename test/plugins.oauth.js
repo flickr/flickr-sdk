@@ -20,31 +20,31 @@ describe('plugins/oauth', function () {
 
 	it('signs an api call', function () {
 		var api = nock('https://api.flickr.com')
-		.get('/services/rest')
-		.query({
-			oauth_nonce: 'p2m2bnHdXVIsQH0FUv0oN9XrJU57ak7dSSpHU36mn4k=',
-			oauth_consumer_key: 'consumer key',
-			oauth_token: 'oauth token',
-			oauth_version: '1.0',
-			oauth_timestamp: 499166400,
-			oauth_signature_method: 'HMAC-SHA1',
-			oauth_signature: '5WSz6hwZ6F8jbeYv3eyErif1ySo=',
-			method: 'flickr.test.echo',
-			foo: 'bar',
-			format: 'json',
-			nojsoncallback: '1'
-		})
-		.reply(200, {stat: 'ok'});
+			.get('/services/rest')
+			.query({
+				oauth_nonce: 'p2m2bnHdXVIsQH0FUv0oN9XrJU57ak7dSSpHU36mn4k=',
+				oauth_consumer_key: 'consumer key',
+				oauth_token: 'oauth token',
+				oauth_version: '1.0',
+				oauth_timestamp: 499166400,
+				oauth_signature_method: 'HMAC-SHA1',
+				oauth_signature: '5WSz6hwZ6F8jbeYv3eyErif1ySo=',
+				method: 'flickr.test.echo',
+				foo: 'bar',
+				format: 'json',
+				nojsoncallback: '1'
+			})
+			.reply(200, {stat: 'ok'});
 
 		var flickr = new Flickr(subject('consumer key', 'consumer secret', 'oauth token', 'oauth token secret'));
 
 		return flickr.test.echo()
-		.query({ foo: 'bar' })
-		.then(function (res) {
-			assert(api.isDone(), 'Expected mock to have been called');
-			assert.equal(res.statusCode, 200);
-			assert.equal(res.body.stat, 'ok');
-		});
+			.query({ foo: 'bar' })
+			.then(function (res) {
+				assert(api.isDone(), 'Expected mock to have been called');
+				assert.equal(res.statusCode, 200);
+				assert.equal(res.body.stat, 'ok');
+			});
 
 	});
 

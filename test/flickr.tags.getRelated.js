@@ -14,7 +14,9 @@ describe('flickr.tags.getRelated', function () {
 	});
 
 	it('returns a Request instance', function () {
-		var req = flickr.tags.getRelated({ tag: '_' });
+		var req = flickr.tags.getRelated({
+			tag: '_'
+		});
 
 		assert.equal(req.method, 'GET');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');
