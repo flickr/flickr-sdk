@@ -7,35 +7,35 @@ describe('plugins/json', function () {
 
 	function createMockResponse() {
 		return nock('https://api.flickr.com')
-		.get('/services/rest')
-		.query({
-			format: 'json',
-			nojsoncallback: 1
-		});
+			.get('/services/rest')
+			.query({
+				format: 'json',
+				nojsoncallback: 1
+			});
 	}
 
 	it('parses a json response', function () {
 		var api = createMockResponse().reply(200, '{"stat":"ok"}');
 
 		return request('GET', 'https://api.flickr.com/services/rest')
-		.use(subject)
-		.then(function (res) {
-			assert(api.isDone(), 'Expected mock to have been called');
-			assert.deepEqual(res.body, { stat: 'ok' });
-		});
+			.use(subject)
+			.then(function (res) {
+				assert(api.isDone(), 'Expected mock to have been called');
+				assert.deepEqual(res.body, { stat: 'ok' });
+			});
 	});
 
 	it('yields a SyntaxError if JSON parsing fails', function () {
 		var api = createMockResponse().reply(200, '{');
 
 		return request('GET', 'https://api.flickr.com/services/rest')
-		.use(subject)
-		.then(function () {
-			throw new Error('Expected errback');
-		}, function (err) {
-			assert(api.isDone(), 'Expected mock to have been called');
-			assert.equal(err.name, 'SyntaxError');
-		});
+			.use(subject)
+			.then(function () {
+				throw new Error('Expected errback');
+			}, function (err) {
+				assert(api.isDone(), 'Expected mock to have been called');
+				assert.equal(err.name, 'SyntaxError');
+			});
 
 	});
 
@@ -47,14 +47,14 @@ describe('plugins/json', function () {
 		});
 
 		return request('GET', 'https://api.flickr.com/services/rest')
-		.use(subject)
-		.then(function () {
-			throw new Error('Expected errback');
-		}, function (err) {
-			assert(api.isDone(), 'Expected mock to have been called');
-			assert.equal(err.message, 'Invalid API Key (Key has invalid format)');
-			assert.equal(err.code, 100);
-		});
+			.use(subject)
+			.then(function () {
+				throw new Error('Expected errback');
+			}, function (err) {
+				assert(api.isDone(), 'Expected mock to have been called');
+				assert.equal(err.message, 'Invalid API Key (Key has invalid format)');
+				assert.equal(err.code, 100);
+			});
 
 	});
 
