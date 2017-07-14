@@ -1,4 +1,9 @@
 /**
+ * Copyright 2017 Yahoo Holdings.
+ * Licensed under the terms of the MIT license. Please see LICENSE file in the project root for terms.
+ */
+
+/**
  * Creates a superagent plugin that adds your Flickr API key
  * to a request. You may pass your API key as a string, or
  * in an object with an "api_key" field.
