@@ -1,3 +1,9 @@
+# examples!
+
+### flickr.photos.getInfo
+
+TODO
+
 ### feeds
 
 TODO

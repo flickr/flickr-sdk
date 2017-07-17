@@ -6,10 +6,32 @@
 var Request = require('../lib/request').Request;
 
 /**
+ * Creates a new Upload service instance. Since the Upload API only
+ * does one thing (upload files), an Upload instance is simply
+ * a Request subclass.
+ *
+ * You **must** pass an authentication plugin as the first parameter.
+ * If you're using OAuth, we have a [convenience method][#TODO]
+ * to create a plugin function.
+ *
+ * ``` js
+ * var upload = new Flickr.Upload(auth, 'upload.png', {
+ *   title: 'Works on MY machine!'
+ * });
+ *
+ * upload.then(function (res) {
+ *   console.log('yay!', res.body);
+ * }).catch(function (err) {
+ *   console.error('bonk', err);
+ * });
+ * ```
+ *
  * @param {Function} auth
  * @param {String|fs.ReadStream|Buffer} file
  * @param {Object} args
  * @constructor
+ * @api public
+ * @see https://www.flickr.com/services/api/upload.api.html
  */
 
 function Upload(auth, file, args) {

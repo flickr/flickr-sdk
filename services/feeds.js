@@ -7,8 +7,18 @@ var request = require('../lib/request');
 var validate = require('../lib/validate');
 
 /**
+ * Creates a new Feeds service instance. You can use this instance
+ * to explore and retrieve public Flickr API data.
+ *
+ * ``` js
+ * var feeds = new Flickr.Feeds();
+ * ```
+ *
  * @constructor
- * @param {Object} args
+ * @param {Object} args - Arguments that will be passed along with every feed request
+ * @param {String} args.format - The feed response format
+ * @param {String} args.lang - The language to request for the feed
+ * @api public
  */
 
 function Feeds(args) {
@@ -30,9 +40,11 @@ Feeds.prototype._ = function (feed, args) {
 };
 
 /**
- * Public Photos & Videos
+ * Returns a list of public content matching some criteria.
+ *
  * @param {Object} args
  * @returns {Request}
+ * @api public
  * @see https://www.flickr.com/services/feeds/docs/photos_public/
  */
 
@@ -41,9 +53,12 @@ Feeds.prototype.publicPhotos = function (args) {
 };
 
 /**
- * Friends' Feed
+ * Returns a list of public content from the contacts, friends & family of a given person.
+ *
  * @param {Object} args
+ * @param {Number|String} args.user_id - The user ID of the user to fetch friends' photos and videos for.
  * @returns {Request}
+ * @api public
  * @see https://www.flickr.com/services/feeds/docs/photos_friends/
  */
 
@@ -54,9 +69,12 @@ Feeds.prototype.friendsPhotos = function (args) {
 };
 
 /**
- * Favorite Photos Feed
+ * Returns a list of public favorites for a given user.
+ *
  * @param {Object} args
+ * @param {Number|String} id - A single user ID. This specifies a user to fetch for.
  * @returns {Request}
+ * @api public
  * @see https://www.flickr.com/services/feeds/docs/photos_faves/
  */
 
@@ -70,9 +88,12 @@ Feeds.prototype.favePhotos = function (args) {
 };
 
 /**
- * Group Discussion Feed
+ * Returns a list of recent discussions in a given group.
+ *
  * @param {Object} args
+ * @param {Number} args.id - The ID of the group to fetch discussions for.
  * @returns {Request}
+ * @api public
  * @see https://www.flickr.com/services/feeds/docs/groups_discuss/
  */
 
@@ -83,9 +104,12 @@ Feeds.prototype.groupDiscussions = function (args) {
 };
 
 /**
- * Group Pool Feed
+ * Returns a list of things recently added to the pool of a given group.
+ *
  * @param {Object} args
+ * @param {Number} args.id - The ID of the group to fetch for.
  * @returns {Request}
+ * @api public
  * @see https://www.flickr.com/services/feeds/docs/groups_pool/
  */
 
@@ -96,9 +120,11 @@ Feeds.prototype.groupPool = function (args) {
 };
 
 /**
- * Forum Discussion Feed
+ * Returns a list of recent topics from the forum.
+ *
  * @param {Object} args
  * @returns {Request}
+ * @api public
  * @see https://www.flickr.com/services/feeds/docs/forums/
  */
 
@@ -107,9 +133,12 @@ Feeds.prototype.forum = function (args) {
 };
 
 /**
- * Recent Activity on Your Photostream (erroneously named, includes sets)
+ * Returns a list of recent comments on photostream and sets belonging to a given user.
+ *
  * @param {Object} args
+ * @param {Number|String} args.user_id - The user ID to fetch recent activity for.
  * @returns {Request}
+ * @api public
  * @see https://www.flickr.com/services/feeds/docs/activity/
  */
 
@@ -120,9 +149,12 @@ Feeds.prototype.recentActivity = function (args) {
 };
 
 /**
- * Recent Comments Feed
+ * Returns a list of recent comments that have been commented on by a given person.
+ *
  * @param {Object} args
+ * @param {Number|String} args.user_id - The user ID to fetch recent comments for.
  * @returns {Request}
+ * @api public
  * @see https://www.flickr.com/services/feeds/docs/photos_comments/
  */
 
