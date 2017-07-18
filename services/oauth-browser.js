@@ -14,8 +14,7 @@ function OAuth() {
 	throw new Error('OAuth 1.0 is not supported in the browser');
 }
 
-/**
- * @module services/oauth-browser
- */
+// also throw for static methods
+OAuth.createPlugin = OAuth;
 
 module.exports = OAuth;

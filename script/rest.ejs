@@ -57,7 +57,7 @@ function createClient(auth, opts) {
  * You **must** pass a superagent plugin as the first parameter. For
  * methods that don't require authentication, this plugin can simply
  * add your API key to the request params. For methods that require
- * authentication, use the OAuth plugin.
+ * authentication, use the [OAuth plugin]{@link Flickr.OAuth.createPlugin}.
  *
  * All of the [REST API][services/api] methods are available on the
  * Flickr prototype. Each method accepts a single parameter which
@@ -97,10 +97,9 @@ function createClient(auth, opts) {
  *
  * @example <caption>Authenticate as a user with the OAuth plugin</caption>
  *
- * var flickr = new Flickr((new Flickr.OAuth(
+ * var flickr = new Flickr(Flickr.OAuth.createPlugin(
  *   process.env.FLICKR_CONSUMER_KEY,
- *   process.env.FLICKR_CONSUMER_SECRET
- * )).plugin(
+ *   process.env.FLICKR_CONSUMER_SECRET,
  *   process.env.FLICKR_OAUTH_TOKEN,
  *   process.env.FLICKR_OAUTH_TOKEN_SECRET
  * ));

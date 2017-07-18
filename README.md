@@ -33,10 +33,13 @@ var Flickr = require('flickr-sdk');
     * [new Flickr(auth)](#new_Flickr_new)
     * [.OAuth](#Flickr.OAuth)
         * [new OAuth(consumerKey, consumerSecret)](#new_Flickr.OAuth_new)
-        * [.request(oauthCallback)](#Flickr.OAuth+request) ⇒ <code>Request</code>
-        * [.authorizeUrl(requestToken, [perms])](#Flickr.OAuth+authorizeUrl) ⇒ <code>String</code>
-        * [.verify(oauthToken, oauthVerifier, tokenSecret)](#Flickr.OAuth+verify) ⇒ <code>Request</code>
-        * [.plugin(oauthToken, oauthTokenSecret)](#Flickr.OAuth+plugin) ⇒ <code>function</code>
+        * _instance_
+            * [.request(oauthCallback)](#Flickr.OAuth+request) ⇒ <code>Request</code>
+            * [.authorizeUrl(requestToken, [perms])](#Flickr.OAuth+authorizeUrl) ⇒ <code>String</code>
+            * [.verify(oauthToken, oauthVerifier, tokenSecret)](#Flickr.OAuth+verify) ⇒ <code>Request</code>
+            * [.plugin(oauthToken, oauthTokenSecret)](#Flickr.OAuth+plugin) ⇒ <code>function</code>
+        * _static_
+            * [.createPlugin(consumerKey, consumerSecret, oauthToken, oauthTokenSecret)](#Flickr.OAuth.createPlugin) ⇒ <code>function</code>
     * [.Upload](#Flickr.Upload)
         * [new Upload(auth, file, [args])](#new_Flickr.Upload_new)
     * [.Feeds](#Flickr.Feeds)
@@ -58,7 +61,7 @@ Creates a new Flickr REST API client.
 You **must** pass a superagent plugin as the first parameter. For
 methods that don't require authentication, this plugin can simply
 add your API key to the request params. For methods that require
-authentication, use the OAuth plugin.
+authentication, use the [OAuth plugin](#Flickr.OAuth.createPlugin).
 
 All of the [REST API][services/api] methods are available on the
 Flickr prototype. Each method accepts a single parameter which
@@ -103,10 +106,9 @@ flickr.photos.search({
 **Example** *(Authenticate as a user with the OAuth plugin)*  
 ```js
 
-var flickr = new Flickr((new Flickr.OAuth(
+var flickr = new Flickr(Flickr.OAuth.createPlugin(
   process.env.FLICKR_CONSUMER_KEY,
-  process.env.FLICKR_CONSUMER_SECRET
-)).plugin(
+  process.env.FLICKR_CONSUMER_SECRET,
   process.env.FLICKR_OAUTH_TOKEN,
   process.env.FLICKR_OAUTH_TOKEN_SECRET
 ));
@@ -124,10 +126,13 @@ flickr.test.login().then(function (res) {
 
 * [.OAuth](#Flickr.OAuth)
     * [new OAuth(consumerKey, consumerSecret)](#new_Flickr.OAuth_new)
-    * [.request(oauthCallback)](#Flickr.OAuth+request) ⇒ <code>Request</code>
-    * [.authorizeUrl(requestToken, [perms])](#Flickr.OAuth+authorizeUrl) ⇒ <code>String</code>
-    * [.verify(oauthToken, oauthVerifier, tokenSecret)](#Flickr.OAuth+verify) ⇒ <code>Request</code>
-    * [.plugin(oauthToken, oauthTokenSecret)](#Flickr.OAuth+plugin) ⇒ <code>function</code>
+    * _instance_
+        * [.request(oauthCallback)](#Flickr.OAuth+request) ⇒ <code>Request</code>
+        * [.authorizeUrl(requestToken, [perms])](#Flickr.OAuth+authorizeUrl) ⇒ <code>String</code>
+        * [.verify(oauthToken, oauthVerifier, tokenSecret)](#Flickr.OAuth+verify) ⇒ <code>Request</code>
+        * [.plugin(oauthToken, oauthTokenSecret)](#Flickr.OAuth+plugin) ⇒ <code>function</code>
+    * _static_
+        * [.createPlugin(consumerKey, consumerSecret, oauthToken, oauthTokenSecret)](#Flickr.OAuth.createPlugin) ⇒ <code>function</code>
 
 <a name="new_Flickr.OAuth_new"></a>
 
@@ -249,6 +254,30 @@ var flickr = new Flickr(oauth.plugin(
   oauthTokenSecret
 ));
 ```
+<a name="Flickr.OAuth.createPlugin"></a>
+
+#### OAuth.createPlugin(consumerKey, consumerSecret, oauthToken, oauthTokenSecret) ⇒ <code>function</code>
+Returns an oauth plugin for this consumer key, consumer secret,
+oauth token and oauth token secret,
+
+**Kind**: static method of [<code>OAuth</code>](#Flickr.OAuth)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| consumerKey | <code>String</code> | The application's API key |
+| consumerSecret | <code>String</code> | The application's API secret |
+| oauthToken | <code>String</code> | The OAuth token |
+| oauthTokenSecret | <code>String</code> | The OAuth token secret |
+
+**Example**  
+```js
+var flickr = new Flickr(Flickr.OAuth.createPlugin(
+  process.env.FLICKR_CONSUMER_KEY,
+  process.env.FLICKR_CONSUMER_SECRET,
+  process.env.FLICKR_OAUTH_TOKEN,
+  process.env.FLICKR_OAUTH_TOKEN_SECRET
+));
+```
 <a name="Flickr.Upload"></a>
 
 ### Flickr.Upload
@@ -261,9 +290,9 @@ Creates a new Upload service instance. Since the Upload API only
 does one thing (upload files), an Upload instance is simply
 a Request subclass.
 
-You **must** pass an authentication plugin as the first parameter.
-If you're using OAuth, we have a [convenience method][#TODO]
-to create a plugin function.
+The Upload endpoint requires authentication. You should pass a configured
+instance of the [OAuth plugin](#Flickr.OAuth.createPlugin) to upload
+photos on behalf of another user.
 
 
 | Param | Type |
