@@ -11,10 +11,9 @@ var Flickr = require('..');
 // oauth token and secret.
 // https://www.flickr.com/services/apps/create/apply/?
 
-var auth = (new Flickr.OAuth(
+var auth = Flickr.OAuth.createPlugin(
 	process.env.FLICKR_CONSUMER_KEY,
-	process.env.FLICKR_CONSUMER_SECRET
-)).plugin(
+	process.env.FLICKR_CONSUMER_SECRET,
 	process.env.FLICKR_OAUTH_TOKEN,
 	process.env.FLICKR_OAUTH_TOKEN_SECRET
 );

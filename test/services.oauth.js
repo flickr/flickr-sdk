@@ -125,4 +125,12 @@ describe('services/oauth', function () {
 
 	});
 
+	describe('.createPlugin', function () {
+
+		it('returns a function', function () {
+			assert.equal(typeof Subject.createPlugin('key', 'secret', 'foo', 'bar'), 'function');
+		});
+
+	});
+
 });

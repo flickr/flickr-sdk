@@ -169,4 +169,35 @@ OAuth.prototype.plugin = function (oauthToken, oauthTokenSecret) {
 	return oauth(this.consumerKey, this.consumerSecret, oauthToken, oauthTokenSecret);
 };
 
+/**
+ * Returns an oauth plugin for this consumer key, consumer secret,
+ * oauth token and oauth token secret,
+ *
+ * @static
+ * @param {String} consumerKey - The application's API key
+ * @param {String} consumerSecret - The application's API secret
+ * @param {String} oauthToken - The OAuth token
+ * @param {String} oauthTokenSecret - The OAuth token secret
+ * @returns {Function}
+ *
+ * @example
+ *
+ * var flickr = new Flickr(Flickr.OAuth.createPlugin(
+ *   process.env.FLICKR_CONSUMER_KEY,
+ *   process.env.FLICKR_CONSUMER_SECRET,
+ *   process.env.FLICKR_OAUTH_TOKEN,
+ *   process.env.FLICKR_OAUTH_TOKEN_SECRET
+ * ));
+ */
+
+OAuth.createPlugin = function (consumerKey, consumerSecret, oauthToken, oauthTokenSecret) {
+	return (new this(
+		consumerKey,
+		consumerSecret
+	)).plugin(
+		oauthToken,
+		oauthTokenSecret
+	);
+};
+
 module.exports = OAuth;

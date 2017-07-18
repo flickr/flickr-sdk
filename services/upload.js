@@ -10,9 +10,9 @@ var Request = require('../lib/request').Request;
  * does one thing (upload files), an Upload instance is simply
  * a Request subclass.
  *
- * You **must** pass an authentication plugin as the first parameter.
- * If you're using OAuth, we have a [convenience method][#TODO]
- * to create a plugin function.
+ * The Upload endpoint requires authentication. You should pass a configured
+ * instance of the [OAuth plugin]{@link Flickr.OAuth.createPlugin} to upload
+ * photos on behalf of another user.
  *
  * @param {Function} auth
  * @param {String|fs.ReadStream|Buffer} file
