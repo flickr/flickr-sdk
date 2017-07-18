@@ -51,8 +51,21 @@ function createClient(auth, opts) {
 }
 
 /**
+ * Creates a new Flickr REST API client.
+ *
+ * You **must** pass an authentication plugin as the first parameter.
+ * If you're using OAuth, we have a [convenience method][#TODO]
+ * to create a plugin function.
+ *
+ * ``` js
+ * var flickr = new Flickr(req => req.query({
+ *   api_key: process.env.FLICKR_API_KEY
+ * }));
+ * ```
+ *
  * @constructor
  * @param {Function} auth
+ * @api public
  */
 
 function Flickr(auth, opts) {
