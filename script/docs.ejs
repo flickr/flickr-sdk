@@ -1,0 +1,40 @@
+# <%= package.name %>
+
+<%= package.description %>
+
+## install
+
+```
+$ npm install <%= package.name %>
+```
+
+## usage
+
+<%= package.name %> is based on [superagent][] and all methods that make API calls will return a superagent Request instance configured for the request. This means that you can do anything with Flickr requests that you can do with superagent.
+
+The Flickr API is divided into several services:
+
+- The [REST API][services/api] service, which provides access to Flickr data
+- The [OAuth][services/oauth] service, which authenticates users via OAuth 1.0
+- The [Feeds][services/feeds] service, which provides feeds of public Flickr data
+- The [Upload][services/upload] service, where you can upload photos!
+
+**Example**
+
+``` js
+var Flickr = require('<%= package.name %>');
+```
+<%- docs %>
+
+## license
+
+Code licensed under the MIT license. See LICENSE file for terms.
+
+[api keys]: https://www.flickr.com/services/api/misc.api_keys.html
+[services/api]: https://www.flickr.com/services/api/
+[services/oauth]: https://www.flickr.com/services/api/auth.oauth.html
+[services/feeds]: https://www.flickr.com/services/feeds/
+[services/upload]: https://www.flickr.com/services/api/upload.api.html
+[flickr.photos.getInfo]: https://www.flickr.com/services/api/flickr.photos.getInfo.html
+[flickr.photos.search]: https://www.flickr.com/services/api/flickr.photos.search.html
+[superagent]: https://github.com/visionmedia/superagent/

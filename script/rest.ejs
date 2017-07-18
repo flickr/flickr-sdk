@@ -1,4 +1,4 @@
-/**
+/*!
  * Copyright 2017 Yahoo Holdings.
  * Licensed under the terms of the MIT license. Please see LICENSE file in the project root for terms.
  */
@@ -14,6 +14,7 @@ var json = require('../plugins/json');
  * supergent plugin.
  * @param {Function} auth
  * @returns {Function}
+ * @private
  * @see https://github.com/visionmedia/superagent
  */
 
@@ -53,19 +54,62 @@ function createClient(auth, opts) {
 /**
  * Creates a new Flickr REST API client.
  *
- * You **must** pass an authentication plugin as the first parameter.
- * If you're using OAuth, we have a [convenience method][#TODO]
- * to create a plugin function.
+ * You **must** pass a superagent plugin as the first parameter. For
+ * methods that don't require authentication, this plugin can simply
+ * add your API key to the request params. For methods that require
+ * authentication, use the OAuth plugin.
  *
- * ``` js
- * var flickr = new Flickr(req => req.query({
- *   api_key: process.env.FLICKR_API_KEY
- * }));
- * ```
+ * All of the [REST API][services/api] methods are available on the
+ * Flickr prototype. Each method accepts a single parameter which
+ * is an optional hash of arguments. Refer to the [REST API][services/api]
+ * docs for the full list of methods and their supported arguments.
  *
  * @constructor
- * @param {Function} auth
- * @api public
+ * @param {Function} auth An authentication plugin function
+ *
+ * @example <caption>Get info about a public photo with your API key</caption>
+ *
+ * var flickr = new Flickr(res => res.query({
+ *   api_key: process.env.FLICKR_API_KEY
+ * }));
+ *
+ * flickr.photos.getInfo({
+ *   photo_id: 25825763 // sorry, @dokas
+ * }).then(function (res) {
+ *   console.log('yay!', res.body);
+ * }).catch(function (err) {
+ *   console.error('bonk', err);
+ * });
+ *
+ * @example <caption>Searching for public photos with your API key</caption>
+ *
+ * var flickr = new Flickr(res => res.query({
+ *   api_key: process.env.FLICKR_API_KEY
+ * }));
+ *
+ * flickr.photos.search({
+ *   photo_id: 25825763 // sorry, @dokas
+ * }).then(function (res) {
+ *   console.log('yay!', res.body);
+ * }).catch(function (err) {
+ *   console.error('bonk', err);
+ * });
+ *
+ * @example <caption>Authenticate as a user with the OAuth plugin</caption>
+ *
+ * var flickr = new Flickr((new Flickr.OAuth(
+ *   process.env.FLICKR_CONSUMER_KEY,
+ *   process.env.FLICKR_CONSUMER_SECRET
+ * )).plugin(
+ *   process.env.FLICKR_OAUTH_TOKEN,
+ *   process.env.FLICKR_OAUTH_TOKEN_SECRET
+ * ));
+ *
+ * flickr.test.login().then(function (res) {
+ *   console.log('yay!', res.body);
+ * }).catch(function (err) {
+ *   console.error('bonk', err);
+ * });
  */
 
 function Flickr(auth, opts) {
@@ -85,13 +129,17 @@ function Flickr(auth, opts) {
 
 <% namespaces.forEach(function (ns) { %>
 /**
- * @namespace flickr.<%= ns %>
+ * @type {Object}
+ * @ignore
  */
 
 Flickr.prototype.<%= ns %> = {};
 <% getMethodsByNamespace(ns).forEach(function (method) { %>
 /**
  * <%= method %>
+ * @param {Object} [args]
+ * @returns {Request}
+ * @ignore
  * @see https://www.flickr.com/services/api/<%= method %>.html
  */
 
@@ -103,9 +151,5 @@ Flickr.prototype.<%= ns %>.<%= basename(method) %> = function (args) {
 };
 <%_ }); _%>
 <% }); %>
-
-/**
- * @exports
- */
 
 module.exports = Flickr;

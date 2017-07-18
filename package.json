@@ -25,7 +25,7 @@
     "build": "node script/build > services/rest.js",
     "build-tests": "node script/build-tests",
     "lint": "eslint .",
-    "docs": "verb",
+    "docs": "node script/docs > README.md",
     "test": "mocha",
     "coverage": "nyc mocha"
   },
@@ -52,14 +52,13 @@
     "eslint-config-flickr": "~1.3.1",
     "eslint-plugin-header": "^1.0.0",
     "indent-string": "^3.1.0",
+    "jsdoc-to-markdown": "^3.0.0",
     "mocha": "~3.0.2",
     "nock": "~8.0.0",
     "nyc": "^10.3.2",
     "require-dir": "~0.3.1",
     "sinon": "~1.17.6",
-    "stringify-object": "^3.2.0",
-    "verb": "^0.8.10",
-    "verb-cli": "^0.7.4"
+    "stringify-object": "^3.2.0"
   },
   "dependencies": {
     "superagent": "^3.5.3-beta.2"
