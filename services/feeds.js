@@ -10,15 +10,15 @@ var validate = require('../lib/validate');
  * Creates a new Feeds service instance. You can use this instance
  * to explore and retrieve public Flickr API data.
  *
- * ``` js
- * var feeds = new Flickr.Feeds();
- * ```
- *
  * @constructor
- * @param {Object} args - Arguments that will be passed along with every feed request
- * @param {String} args.format - The feed response format
- * @param {String} args.lang - The language to request for the feed
- * @api public
+ * @param {Object} [args] Arguments that will be passed along with every feed request
+ * @param {String} [args.format=json] The feed response format
+ * @param {String} [args.lang=en-us] The language to request for the feed
+ * @memberof Flickr
+ *
+ * @example
+ *
+ * var feeds = new Flickr.Feeds();
  */
 
 function Feeds(args) {
@@ -29,8 +29,9 @@ function Feeds(args) {
 /**
  * Factory method to create a new request for a feed.
  * @param {String} feed
- * @param {Object} args
+ * @param {Object} [args]
  * @returns {Request}
+ * @private
  */
 
 Feeds.prototype._ = function (feed, args) {
@@ -42,9 +43,8 @@ Feeds.prototype._ = function (feed, args) {
 /**
  * Returns a list of public content matching some criteria.
  *
- * @param {Object} args
+ * @param {Object} [args]
  * @returns {Request}
- * @api public
  * @see https://www.flickr.com/services/feeds/docs/photos_public/
  */
 
@@ -56,9 +56,8 @@ Feeds.prototype.publicPhotos = function (args) {
  * Returns a list of public content from the contacts, friends & family of a given person.
  *
  * @param {Object} args
- * @param {Number|String} args.user_id - The user ID of the user to fetch friends' photos and videos for.
+ * @param {Number|String} args.user_id The user ID of the user to fetch friends' photos and videos for.
  * @returns {Request}
- * @api public
  * @see https://www.flickr.com/services/feeds/docs/photos_friends/
  */
 
@@ -72,9 +71,8 @@ Feeds.prototype.friendsPhotos = function (args) {
  * Returns a list of public favorites for a given user.
  *
  * @param {Object} args
- * @param {Number|String} id - A single user ID. This specifies a user to fetch for.
+ * @param {Number|String} args.id A single user ID. This specifies a user to fetch for.
  * @returns {Request}
- * @api public
  * @see https://www.flickr.com/services/feeds/docs/photos_faves/
  */
 
@@ -91,9 +89,8 @@ Feeds.prototype.favePhotos = function (args) {
  * Returns a list of recent discussions in a given group.
  *
  * @param {Object} args
- * @param {Number} args.id - The ID of the group to fetch discussions for.
+ * @param {Number} args.id The ID of the group to fetch discussions for.
  * @returns {Request}
- * @api public
  * @see https://www.flickr.com/services/feeds/docs/groups_discuss/
  */
 
@@ -107,9 +104,8 @@ Feeds.prototype.groupDiscussions = function (args) {
  * Returns a list of things recently added to the pool of a given group.
  *
  * @param {Object} args
- * @param {Number} args.id - The ID of the group to fetch for.
+ * @param {Number} args.id The ID of the group to fetch for.
  * @returns {Request}
- * @api public
  * @see https://www.flickr.com/services/feeds/docs/groups_pool/
  */
 
@@ -122,9 +118,8 @@ Feeds.prototype.groupPool = function (args) {
 /**
  * Returns a list of recent topics from the forum.
  *
- * @param {Object} args
+ * @param {Object} [args]
  * @returns {Request}
- * @api public
  * @see https://www.flickr.com/services/feeds/docs/forums/
  */
 
@@ -136,9 +131,8 @@ Feeds.prototype.forum = function (args) {
  * Returns a list of recent comments on photostream and sets belonging to a given user.
  *
  * @param {Object} args
- * @param {Number|String} args.user_id - The user ID to fetch recent activity for.
+ * @param {Number|String} args.user_id The user ID to fetch recent activity for.
  * @returns {Request}
- * @api public
  * @see https://www.flickr.com/services/feeds/docs/activity/
  */
 
@@ -152,9 +146,8 @@ Feeds.prototype.recentActivity = function (args) {
  * Returns a list of recent comments that have been commented on by a given person.
  *
  * @param {Object} args
- * @param {Number|String} args.user_id - The user ID to fetch recent comments for.
+ * @param {Number|String} args.user_id The user ID to fetch recent comments for.
  * @returns {Request}
- * @api public
  * @see https://www.flickr.com/services/feeds/docs/photos_comments/
  */
 
@@ -163,9 +156,5 @@ Feeds.prototype.recentComments = function (args) {
 
 	return this._('photos_comments', args);
 };
-
-/**
- * @module services/feeds
- */
 
 module.exports = Feeds;

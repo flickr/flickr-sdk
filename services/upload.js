@@ -14,7 +14,14 @@ var Request = require('../lib/request').Request;
  * If you're using OAuth, we have a [convenience method][#TODO]
  * to create a plugin function.
  *
- * ``` js
+ * @param {Function} auth
+ * @param {String|fs.ReadStream|Buffer} file
+ * @param {Object} [args]
+ * @constructor
+ * @memberof Flickr
+ *
+ * @example
+ *
  * var upload = new Flickr.Upload(auth, 'upload.png', {
  *   title: 'Works on MY machine!'
  * });
@@ -24,13 +31,7 @@ var Request = require('../lib/request').Request;
  * }).catch(function (err) {
  *   console.error('bonk', err);
  * });
- * ```
  *
- * @param {Function} auth
- * @param {String|fs.ReadStream|Buffer} file
- * @param {Object} args
- * @constructor
- * @api public
  * @see https://www.flickr.com/services/api/upload.api.html
  */
 
@@ -51,9 +52,5 @@ function Upload(auth, file, args) {
 }
 
 Upload.prototype = Object.create(Request.prototype);
-
-/**
- * @module services/upload
- */
 
 module.exports = Upload;
