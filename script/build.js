@@ -122,17 +122,36 @@ ejs.renderFile(__dirname + '/rest.ejs', {
 	},
 
 	/**
+	 * Returns the level of perms required for this method.
+	 * @param {String} method
+	 * @returns {String}
+	 */
+
+	getPerms: function (method) {
+		switch (parseInt(this.methods[method].method.requiredperms, 10)) {
+		case 1:
+			return 'read';
+		case 2:
+			return 'write';
+		case 3:
+			return 'delete';
+		default:
+			return 'none';
+		}
+	},
+
+	/**
 	 * Returns the HTTP verb for this method info. If the method
 	 * needs either "write" or "delete" perms, the verb is POST.
 	 * Otherwise, the verb is GET.
-	 * @param {Object} info
+	 * @param {String} method
 	 * @returns {String}
 	 */
 
 	getHTTPVerb: function (method) {
-		switch (parseInt(this.methods[method].method.requiredperms, 10)) {
-		case 2: // write
-		case 3: // delete
+		switch (this.getPerms(method)) {
+		case 'write':
+		case 'delete':
 			return 'POST';
 		default:
 			return 'GET';
@@ -148,6 +167,16 @@ ejs.renderFile(__dirname + '/rest.ejs', {
 
 	basename: function (method) {
 		return method.split('.').pop();
+	},
+
+	/**
+	 * Returns the Flickr API documentation url for `method`.
+	 * @param {String} method
+	 * @returns {String}
+	 */
+
+	getDocsURL: function (method) {
+		return 'https://www.flickr.com/services/api/' + method + '.html';
 	}
 
 }, function (err, str) {
