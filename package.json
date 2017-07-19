@@ -1,6 +1,6 @@
 {
   "name": "flickr-sdk",
-  "version": "3.0.0-alpha.4",
+  "version": "3.0.0-alpha.5",
   "description": "Almost certainly the best Flickr API client in the world for node and the browser",
   "keywords": [
     "flickr",
@@ -27,7 +27,8 @@
     "build-docs": "node script/build-docs > README.md",
     "lint": "eslint .",
     "test": "mocha",
-    "coverage": "nyc mocha"
+    "coverage": "nyc mocha",
+    "prepublish": "npm run build-rest && npm run build-docs"
   },
   "repository": {
     "type": "git",
