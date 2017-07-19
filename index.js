@@ -9,3 +9,4 @@ exports = module.exports = require('./services/rest');
 exports.OAuth = require('./services/oauth');
 exports.Feeds = require('./services/feeds');
 exports.Upload = require('./services/upload');
+exports.Replace = require('./services/replace');
