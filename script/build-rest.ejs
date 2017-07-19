@@ -22,7 +22,7 @@ function createClient(auth, opts) {
 	var host;
 
 	if (typeof auth !== 'function') {
-		throw new Error('Missing auth superagent plugin');
+		throw new Error('Missing required argument "auth"');
 	}
 
 	// options

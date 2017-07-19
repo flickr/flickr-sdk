@@ -40,7 +40,7 @@ function Upload(auth, file, args) {
 	Request.call(this, 'POST', 'https://up.flickr.com/services/upload');
 
 	if (typeof auth !== 'function') {
-		throw new Error('Missing auth superagent plugin');
+		throw new Error('Missing required argument "auth"');
 	}
 
 	if (typeof args === 'undefined') {
