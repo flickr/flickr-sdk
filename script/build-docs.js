@@ -14,7 +14,7 @@ jsdoc.render({
 }).then(function (docs) {
 
 	return new Promise(function (resolve, reject) {
-		ejs.renderFile(__dirname + '/docs.ejs', {
+		ejs.renderFile(__dirname + '/build-docs.ejs', {
 			package: package,
 			docs: docs
 		}, function (err, str) {

@@ -24,8 +24,8 @@
     "reflect": "node script/reflect",
     "build": "node script/build > services/rest.js",
     "build-tests": "node script/build-tests",
+    "build-docs": "node script/build-docs > README.md",
     "lint": "eslint .",
-    "docs": "node script/docs > README.md",
     "test": "mocha",
     "coverage": "nyc mocha"
   },
