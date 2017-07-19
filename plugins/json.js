@@ -34,7 +34,7 @@ function parseFlickr(res, fn) {
 }
 
 module.exports = function (req) {
-	req.query('format=json');
-	req.query('nojsoncallback=1');
+	req.query({ format: 'json' });
+	req.query({ nojsoncallback: 1 });
 	req.parse(parseFlickr);
 };

@@ -35,6 +35,11 @@ describe('flickr.photosets.comments.addComment', function () {
 
 		assert.equal(req.method, 'POST');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');
+		assert.equal(req.qs.format, 'json');
+		assert.equal(req.qs.nojsoncallback, '1');
+		assert.equal(req.qs.method, 'flickr.photosets.comments.addComment');
+		assert.equal(req.qs.photoset_id, '_');
+		assert.equal(req.qs.comment_text, '_');
 	});
 
 });

@@ -35,6 +35,11 @@ describe('flickr.groups.discuss.topics.getInfo', function () {
 
 		assert.equal(req.method, 'GET');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');
+		assert.equal(req.qs.format, 'json');
+		assert.equal(req.qs.nojsoncallback, '1');
+		assert.equal(req.qs.method, 'flickr.groups.discuss.topics.getInfo');
+		assert.equal(req.qs.group_id, '_');
+		assert.equal(req.qs.topic_id, '_');
 	});
 
 });

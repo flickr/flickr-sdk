@@ -111,6 +111,15 @@ describe('flickr.photos.notes.add', function () {
 
 		assert.equal(req.method, 'POST');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');
+		assert.equal(req.qs.format, 'json');
+		assert.equal(req.qs.nojsoncallback, '1');
+		assert.equal(req.qs.method, 'flickr.photos.notes.add');
+		assert.equal(req.qs.photo_id, '_');
+		assert.equal(req.qs.note_x, '_');
+		assert.equal(req.qs.note_y, '_');
+		assert.equal(req.qs.note_w, '_');
+		assert.equal(req.qs.note_h, '_');
+		assert.equal(req.qs.note_text, '_');
 	});
 
 });

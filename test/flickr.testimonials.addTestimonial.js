@@ -35,6 +35,11 @@ describe('flickr.testimonials.addTestimonial', function () {
 
 		assert.equal(req.method, 'POST');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');
+		assert.equal(req.qs.format, 'json');
+		assert.equal(req.qs.nojsoncallback, '1');
+		assert.equal(req.qs.method, 'flickr.testimonials.addTestimonial');
+		assert.equal(req.qs.user_id, '_');
+		assert.equal(req.qs.testimonial_text, '_');
 	});
 
 });

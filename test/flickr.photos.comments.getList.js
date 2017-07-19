@@ -20,6 +20,10 @@ describe('flickr.photos.comments.getList', function () {
 
 		assert.equal(req.method, 'GET');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');
+		assert.equal(req.qs.format, 'json');
+		assert.equal(req.qs.nojsoncallback, '1');
+		assert.equal(req.qs.method, 'flickr.photos.comments.getList');
+		assert.equal(req.qs.photo_id, '_');
 	});
 
 });
