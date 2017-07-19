@@ -89,6 +89,14 @@ describe('flickr.photos.geo.setPerms', function () {
 
 		assert.equal(req.method, 'POST');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');
+		assert.equal(req.qs.format, 'json');
+		assert.equal(req.qs.nojsoncallback, '1');
+		assert.equal(req.qs.method, 'flickr.photos.geo.setPerms');
+		assert.equal(req.qs.is_public, '_');
+		assert.equal(req.qs.is_contact, '_');
+		assert.equal(req.qs.is_friend, '_');
+		assert.equal(req.qs.is_family, '_');
+		assert.equal(req.qs.photo_id, '_');
 	});
 
 });

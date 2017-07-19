@@ -111,6 +111,15 @@ describe('flickr.photos.people.editCoords', function () {
 
 		assert.equal(req.method, 'POST');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');
+		assert.equal(req.qs.format, 'json');
+		assert.equal(req.qs.nojsoncallback, '1');
+		assert.equal(req.qs.method, 'flickr.photos.people.editCoords');
+		assert.equal(req.qs.photo_id, '_');
+		assert.equal(req.qs.user_id, '_');
+		assert.equal(req.qs.person_x, '_');
+		assert.equal(req.qs.person_y, '_');
+		assert.equal(req.qs.person_w, '_');
+		assert.equal(req.qs.person_h, '_');
 	});
 
 });

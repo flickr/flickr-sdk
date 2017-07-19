@@ -35,6 +35,11 @@ describe('flickr.stats.getCollectionReferrers', function () {
 
 		assert.equal(req.method, 'GET');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');
+		assert.equal(req.qs.format, 'json');
+		assert.equal(req.qs.nojsoncallback, '1');
+		assert.equal(req.qs.method, 'flickr.stats.getCollectionReferrers');
+		assert.equal(req.qs.date, '_');
+		assert.equal(req.qs.domain, '_');
 	});
 
 });

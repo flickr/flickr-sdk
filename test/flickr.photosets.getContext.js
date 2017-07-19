@@ -35,6 +35,11 @@ describe('flickr.photosets.getContext', function () {
 
 		assert.equal(req.method, 'GET');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');
+		assert.equal(req.qs.format, 'json');
+		assert.equal(req.qs.nojsoncallback, '1');
+		assert.equal(req.qs.method, 'flickr.photosets.getContext');
+		assert.equal(req.qs.photo_id, '_');
+		assert.equal(req.qs.photoset_id, '_');
 	});
 
 });

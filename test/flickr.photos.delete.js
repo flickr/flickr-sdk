@@ -20,6 +20,10 @@ describe('flickr.photos.delete', function () {
 
 		assert.equal(req.method, 'POST');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');
+		assert.equal(req.qs.format, 'json');
+		assert.equal(req.qs.nojsoncallback, '1');
+		assert.equal(req.qs.method, 'flickr.photos.delete');
+		assert.equal(req.qs.photo_id, '_');
 	});
 
 });

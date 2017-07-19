@@ -51,6 +51,12 @@ describe('flickr.photos.geo.batchCorrectLocation', function () {
 
 		assert.equal(req.method, 'POST');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');
+		assert.equal(req.qs.format, 'json');
+		assert.equal(req.qs.nojsoncallback, '1');
+		assert.equal(req.qs.method, 'flickr.photos.geo.batchCorrectLocation');
+		assert.equal(req.qs.lat, '_');
+		assert.equal(req.qs.lon, '_');
+		assert.equal(req.qs.accuracy, '_');
 	});
 
 });

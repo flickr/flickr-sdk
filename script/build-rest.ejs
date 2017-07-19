@@ -42,7 +42,7 @@ function createClient(auth, opts) {
 		}
 
 		return request(verb, 'https://' + host + '/services/rest')
-			.query('method=' + method)
+			.query({ method: method })
 			.query(args)
 			.set('X-Flickr-API-Method', method)
 			.use(json)

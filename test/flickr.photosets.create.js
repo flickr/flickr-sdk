@@ -35,6 +35,11 @@ describe('flickr.photosets.create', function () {
 
 		assert.equal(req.method, 'POST');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');
+		assert.equal(req.qs.format, 'json');
+		assert.equal(req.qs.nojsoncallback, '1');
+		assert.equal(req.qs.method, 'flickr.photosets.create');
+		assert.equal(req.qs.title, '_');
+		assert.equal(req.qs.primary_photo_id, '_');
 	});
 
 });

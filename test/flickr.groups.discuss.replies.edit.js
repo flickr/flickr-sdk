@@ -69,6 +69,13 @@ describe('flickr.groups.discuss.replies.edit', function () {
 
 		assert.equal(req.method, 'POST');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');
+		assert.equal(req.qs.format, 'json');
+		assert.equal(req.qs.nojsoncallback, '1');
+		assert.equal(req.qs.method, 'flickr.groups.discuss.replies.edit');
+		assert.equal(req.qs.group_id, '_');
+		assert.equal(req.qs.topic_id, '_');
+		assert.equal(req.qs.reply_id, '_');
+		assert.equal(req.qs.message, '_');
 	});
 
 });
