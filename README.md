@@ -266,7 +266,7 @@ docs for the full list of methods and their supported arguments.
             * [.plugin(oauthToken, oauthTokenSecret)](#Flickr.OAuth+plugin) ⇒ <code>function</code>
         * _static_
             * [.createPlugin(consumerKey, consumerSecret, oauthToken, oauthTokenSecret)](#Flickr.OAuth.createPlugin) ⇒ <code>function</code>
-    * [.Upload](#Flickr.Upload)
+    * [.Upload](#Flickr.Upload) ⇐ <code>Request</code>
         * [new Upload(auth, file, [args])](#new_Flickr.Upload_new)
     * [.Feeds](#Flickr.Feeds)
         * [new Feeds([args])](#new_Flickr.Feeds_new)
@@ -501,8 +501,9 @@ var flickr = new Flickr(Flickr.OAuth.createPlugin(
 ```
 <a name="Flickr.Upload"></a>
 
-### Flickr.Upload
+### Flickr.Upload ⇐ <code>Request</code>
 **Kind**: static class of [<code>Flickr</code>](#Flickr)  
+**Extends**: <code>Request</code>  
 **See**: https://www.flickr.com/services/api/upload.api.html  
 <a name="new_Flickr.Upload_new"></a>
 

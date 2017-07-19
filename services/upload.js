@@ -18,6 +18,7 @@ var Request = require('../lib/request').Request;
  * @param {String|fs.ReadStream|Buffer} file
  * @param {Object} [args]
  * @constructor
+ * @extends Request
  * @memberof Flickr
  *
  * @example

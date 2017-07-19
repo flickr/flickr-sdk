@@ -82,7 +82,7 @@ function without(obj, field) {
  */
 
 Object.keys(methods).forEach(function (method) {
-	ejs.renderFile(__dirname + '/test.ejs', {
+	ejs.renderFile(__dirname + '/build-tests.ejs', {
 
 		method: method,
 		verb: httpVerb(methods[method]),
