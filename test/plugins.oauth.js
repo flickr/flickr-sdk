@@ -18,6 +18,36 @@ describe('plugins/oauth', function () {
 		sandbox.restore();
 	});
 
+	it('throws if required parameters are not provided', function () {
+		assert.throws(function () {
+			subject();
+		}, function (err) {
+			return err.message === 'Missing required argument "consumerKey"';
+		});
+
+		assert.throws(function () {
+			subject('consumer key');
+		}, function (err) {
+			return err.message === 'Missing required argument "consumerSecret"';
+		});
+
+		assert.throws(function () {
+			subject('consumer key', 'consumer secret');
+		}, function (err) {
+			return err.message === 'Missing required argument "oauthToken"';
+		});
+
+		assert.throws(function () {
+			subject('consumer key', 'consumer secret', 'oauth token');
+		}, function (err) {
+			return err.message === 'Missing required argument "oauthTokenSecret"';
+		});
+
+		assert.doesNotThrow(function () {
+			subject('consumer key', 'consumer secret', 'oauth token', 'oauth token secret');
+		});
+	});
+
 	it('signs an api call', function () {
 		var api = nock('https://api.flickr.com')
 			.get('/services/rest')
@@ -45,34 +75,6 @@ describe('plugins/oauth', function () {
 				assert.equal(res.statusCode, 200);
 				assert.equal(res.body.stat, 'ok');
 			});
-
-	});
-
-	it('throws if required parameters are not provided', function () {
-
-		assert.throws(function () {
-			subject();
-		}, function (err) {
-			return err.message === 'Missing required argument "consumerKey"';
-		});
-
-		assert.throws(function () {
-			subject('consumer key');
-		}, function (err) {
-			return err.message === 'Missing required argument "consumerSecret"';
-		});
-
-		assert.throws(function () {
-			subject('consumer key', 'consumer secret');
-		}, function (err) {
-			return err.message === 'Missing required argument "oauthToken"';
-		});
-
-		assert.throws(function () {
-			subject('consumer key', 'consumer secret', 'oauth token');
-		}, function (err) {
-			return err.message === 'Missing required argument "oauthTokenSecret"';
-		});
 
 	});
 

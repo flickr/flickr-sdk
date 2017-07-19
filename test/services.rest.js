@@ -6,26 +6,32 @@ var parse = require('url').parse;
 describe('services/rest', function () {
 	var subject;
 
+	function auth() { /* noop for tests */ }
+
 	beforeEach(function () {
-		subject = new Subject(function auth() { /* noop for tests */ });
+		subject = new Subject(auth);
 	});
 
 	it('returns a superagent Request', function () {
-		assert(subject._('photos_public') instanceof Request);
+		assert(subject._('flickr.test.echo') instanceof Request);
 	});
 
-	it('requires an auth function to be passed', function () {
+	it('throws if required parameters are not provided', function () {
 		assert.throws(function () {
-			subject = new Subject();
+			new Subject(); // eslint-disable-line no-new
 		}, function (err) {
-			return err.message === 'Missing auth superagent plugin';
+			return err.message === 'Missing required argument "auth"';
+		});
+
+		assert.doesNotThrow(function () {
+			new Subject(auth); // eslint-disable-line no-new
 		});
 	});
 
 	it('can provide the host as an option', function () {
 		var req, url;
 
-		subject = new Subject(function auth() { /* noop for tests */ }, {
+		subject = new Subject(auth, {
 			host: 'www.flickr.com'
 		});
 

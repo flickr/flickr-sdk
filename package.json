@@ -25,10 +25,11 @@
     "build-rest": "node script/build-rest > services/rest.js",
     "build-tests": "node script/build-tests",
     "build-docs": "node script/build-docs > README.md",
+    "build": "npm run build-rest && npm run build-docs",
     "lint": "eslint .",
     "test": "mocha",
     "coverage": "nyc mocha",
-    "prepublish": "npm run build-rest && npm run build-docs"
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",

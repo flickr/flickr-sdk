@@ -19,6 +19,24 @@ describe('services/oauth', function () {
 		sandbox.restore();
 	});
 
+	it('throws if required parameters are not provided', function () {
+		assert.throws(function () {
+			new Subject(); // eslint-disable-line no-new
+		}, function (err) {
+			return err.message === 'Missing required argument "consumerKey"';
+		});
+
+		assert.throws(function () {
+			new Subject('consumer key'); // eslint-disable-line no-new
+		}, function (err) {
+			return err.message === 'Missing required argument "consumerSecret"';
+		});
+
+		assert.doesNotThrow(function () {
+			new Subject('consumer key', 'consumer secret'); // eslint-disable-line no-new
+		});
+	});
+
 	describe('#request', function () {
 
 		it('makes the correct API call', function () {

@@ -12,6 +12,18 @@ describe('services/upload', function () {
 		assert(new Subject(auth) instanceof Request);
 	});
 
+	it('throws if required parameters are not provided', function () {
+		assert.throws(function () {
+			new Subject(); // eslint-disable-line no-new
+		}, function (err) {
+			return err.message === 'Missing required argument "auth"';
+		});
+
+		assert.doesNotThrow(function () {
+			new Subject(auth); // eslint-disable-line no-new
+		});
+	});
+
 	/*
 		TODO user-agent
 	*/
@@ -36,14 +48,6 @@ describe('services/upload', function () {
 		var url = parse(req.url);
 
 		assert.equal(url.host, 'up.flickr.com');
-	});
-
-	it('requires an auth function to be passed', function () {
-		assert.throws(function () {
-			var req = new Subject(); // eslint-disable-line no-unused-vars
-		}, function (err) {
-			return err.message === 'Missing auth superagent plugin';
-		});
 	});
 
 	it('attaches the photo', function () {
