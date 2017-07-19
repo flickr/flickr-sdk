@@ -4,5 +4,7 @@ node_js:
 - '5.0'
 - '4.0'
 before_script:
-- npm run build
+- npm run build-rest
+- npm run build-docs
+- npm run build-tests
 - npm run lint
