@@ -72,7 +72,7 @@ function required(arg) {
  * Render the client file
  */
 
-ejs.renderFile(__dirname + '/rest.ejs', {
+ejs.renderFile(__dirname + '/build-rest.ejs', {
 
 	/**
 	 * All available method info responses

@@ -3,7 +3,7 @@
 set -ex
 
 node package.json
-npm run build
+npm run build-rest
 npm run build-docs
 npm run build-tests
 npm run lint
