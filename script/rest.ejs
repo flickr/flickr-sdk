@@ -115,7 +115,7 @@ function createClient(auth, opts) {
  * | Method | Permissions | Required Arguments |
  * | --- | --- | --- |
 <%_ namespaces.forEach(function (ns) { _%>
-<% getMethodsByNamespace(ns).forEach(function (method) { %>
+<%_ getMethodsByNamespace(ns).forEach(function (method) { _%>
  * | [<%= method %>](<%= getDocsURL(method) %>) | <%= getPerms(method) %> | <%= getRequiredArguments(method).map(s => '`' + s + '`').join(', ') %> |
 <%_ }); _%>
 <%_ }); _%>
