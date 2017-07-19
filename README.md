@@ -268,6 +268,8 @@ docs for the full list of methods and their supported arguments.
             * [.createPlugin(consumerKey, consumerSecret, oauthToken, oauthTokenSecret)](#Flickr.OAuth.createPlugin) ⇒ <code>function</code>
     * [.Upload](#Flickr.Upload) ⇐ <code>Request</code>
         * [new Upload(auth, file, [args])](#new_Flickr.Upload_new)
+    * [.Replace](#Flickr.Replace) ⇐ <code>Request</code>
+        * [new Replace(auth, photoID, file, [args])](#new_Flickr.Replace_new)
     * [.Feeds](#Flickr.Feeds)
         * [new Feeds([args])](#new_Flickr.Feeds_new)
         * [.publicPhotos([args])](#Flickr.Feeds+publicPhotos) ⇒ <code>Request</code>
@@ -530,6 +532,43 @@ var upload = new Flickr.Upload(auth, 'upload.png', {
 });
 
 upload.then(function (res) {
+  console.log('yay!', res.body);
+}).catch(function (err) {
+  console.error('bonk', err);
+});
+```
+<a name="Flickr.Replace"></a>
+
+### Flickr.Replace ⇐ <code>Request</code>
+**Kind**: static class of [<code>Flickr</code>](#Flickr)  
+**Extends**: <code>Request</code>  
+**See**: https://www.flickr.com/services/api/replace.api.html  
+<a name="new_Flickr.Replace_new"></a>
+
+#### new Replace(auth, photoID, file, [args])
+Creates a new Replace service instance. Since the Replace API only
+does one thing (replace files), an Replace instance is simply
+a Request subclass.
+
+The Replace endpoint requires authentication. You should pass a configured
+instance of the [OAuth plugin](#Flickr.OAuth.createPlugin) to replace
+photos on behalf of another user.
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| auth | <code>function</code> |  |
+| photoID | <code>Number</code> \| <code>String</code> | The ID of the photo to replace |
+| file | <code>String</code> \| <code>fs.ReadStream</code> \| <code>Buffer</code> |  |
+| [args] | <code>Object</code> |  |
+
+**Example**  
+```js
+var replace = new Flickr.Replace(auth, 41234567890, 'replace.png', {
+  title: 'Now in pink!'
+});
+
+replace.then(function (res) {
   console.log('yay!', res.body);
 }).catch(function (err) {
   console.error('bonk', err);

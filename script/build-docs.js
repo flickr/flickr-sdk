@@ -8,6 +8,7 @@ jsdoc.render({
 		'services/rest.js',
 		'services/oauth.js',
 		'services/upload.js',
+		'services/replace.js',
 		'services/feeds.js'
 	],
 	'no-cache': true
