@@ -8,6 +8,10 @@ describe('services/upload', function () {
 
 	function auth() { /* noop for tests */ }
 
+	it('does not require "new"', function () {
+		assert(Subject(auth) instanceof Subject);
+	});
+
 	it('is a superagent Request', function () {
 		assert(new Subject(auth) instanceof Request);
 	});

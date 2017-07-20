@@ -37,6 +37,12 @@ var Request = require('../lib/request').Request;
  */
 
 function Upload(auth, file, args) {
+
+	// allow creating a client without `new`
+	if (!(this instanceof Upload)) {
+		return new Upload(auth, file, args);
+	}
+
 	Request.call(this, 'POST', 'https://up.flickr.com/services/upload');
 
 	if (typeof auth !== 'function') {

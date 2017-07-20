@@ -12,6 +12,10 @@ describe('services/rest', function () {
 		subject = new Subject(auth);
 	});
 
+	it('does not require "new"', function () {
+		assert(Subject(auth) instanceof Subject);
+	});
+
 	it('returns a superagent Request', function () {
 		assert(subject._('flickr.test.echo') instanceof Request);
 	});

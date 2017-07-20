@@ -19,6 +19,10 @@ describe('services/oauth', function () {
 		sandbox.restore();
 	});
 
+	it('does not require "new"', function () {
+		assert(Subject('consumer key', 'consumer secret') instanceof Subject);
+	});
+
 	it('throws if required parameters are not provided', function () {
 		assert.throws(function () {
 			new Subject(); // eslint-disable-line no-new

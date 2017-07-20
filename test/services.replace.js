@@ -8,6 +8,10 @@ describe('services/replace', function () {
 
 	function auth() { /* noop for tests */ }
 
+	it('does not require "new"', function () {
+		assert(Subject(auth, 41234567890) instanceof Subject);
+	});
+
 	it('is a superagent Request', function () {
 		assert(new Subject(auth, 41234567890) instanceof Request);
 	});
