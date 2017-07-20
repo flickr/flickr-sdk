@@ -10,6 +10,10 @@ describe('services/feeds', function () {
 		subject = new Subject();
 	});
 
+	it('does not require "new"', function () {
+		assert(Subject() instanceof Subject);
+	});
+
 	it('returns a superagent Request', function () {
 		assert(subject._('photos_public') instanceof Request);
 	});

@@ -28,12 +28,19 @@ var oauth = require('../plugins/oauth');
  */
 
 function OAuth(consumerKey, consumerSecret) {
+
+	// allow creating a client without `new`
+	if (!(this instanceof OAuth)) {
+		return new OAuth(consumerKey, consumerSecret);
+	}
+
 	if (!consumerKey) {
 		throw new Error('Missing required argument "consumerKey"');
 	}
 	if (!consumerSecret) {
 		throw new Error('Missing required argument "consumerSecret"');
 	}
+
 	this.consumerKey = consumerKey;
 	this.consumerSecret = consumerSecret;
 }

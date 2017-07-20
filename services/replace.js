@@ -38,6 +38,12 @@ var Request = require('../lib/request').Request;
  */
 
 function Replace(auth, photoID, file, args) {
+
+	// allow creating a client without `new`
+	if (!(this instanceof Replace)) {
+		return new Replace(auth, photoID, file, args);
+	}
+
 	Request.call(this, 'POST', 'https://up.flickr.com/services/replace');
 
 	if (typeof auth !== 'function') {

@@ -22,6 +22,12 @@ var validate = require('../lib/validate');
  */
 
 function Feeds(args) {
+
+	// allow creating a client without `new`
+	if (!(this instanceof Feeds)) {
+		return new Feeds(args);
+	}
+
 	// default arguments
 	this._args = Object.assign({ format: 'json', nojsoncallback: 1 }, args);
 }
