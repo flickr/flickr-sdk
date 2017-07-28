@@ -286,22 +286,20 @@ docs for the full list of methods and their supported arguments.
 ### new Flickr(auth)
 Creates a new Flickr REST API client.
 
-You **must** pass a superagent plugin as the first parameter. For
-methods that don't require authentication, this plugin can simply
-add your API key to the request params. For methods that require
-authentication, use the [OAuth plugin](#Flickr.OAuth.createPlugin).
+You **must** pass a superagent plugin or your API key as the first
+parameter. For methods that don't require authentication, you can simply
+provide your API key. For methods that do require authentication,
+use the [OAuth plugin](#Flickr.OAuth.createPlugin).
 
 
 | Param | Type | Description |
 | --- | --- | --- |
-| auth | <code>function</code> | An authentication plugin function |
+| auth | <code>function</code> \| <code>String</code> | An authentication plugin function or an API key |
 
 **Example** *(Get info about a public photo with your API key)*  
 ```js
 
-var flickr = new Flickr(res => res.query({
-  api_key: process.env.FLICKR_API_KEY
-}));
+var flickr = new Flickr(process.env.FLICKR_API_KEY);
 
 flickr.photos.getInfo({
   photo_id: 25825763 // sorry, @dokas
@@ -314,9 +312,7 @@ flickr.photos.getInfo({
 **Example** *(Searching for public photos with your API key)*  
 ```js
 
-var flickr = new Flickr(res => res.query({
-  api_key: process.env.FLICKR_API_KEY
-}));
+var flickr = new Flickr(process.env.FLICKR_API_KEY);
 
 flickr.photos.search({
   photo_id: 25825763 // sorry, @dokas
