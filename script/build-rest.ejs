@@ -64,7 +64,7 @@ function createClient(auth, opts) {
  *
  * @example <caption>Get info about a public photo with your API key</caption>
  *
- * var flickr = new Flickr(res => res.query({
+ * var flickr = new Flickr(req => req.query({
  *   api_key: process.env.FLICKR_API_KEY
  * }));
  *
@@ -78,7 +78,7 @@ function createClient(auth, opts) {
  *
  * @example <caption>Searching for public photos with your API key</caption>
  *
- * var flickr = new Flickr(res => res.query({
+ * var flickr = new Flickr(req => req.query({
  *   api_key: process.env.FLICKR_API_KEY
  * }));
  *

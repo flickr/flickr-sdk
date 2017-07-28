@@ -10,7 +10,7 @@ var Flickr = require('..');
 // resource that doesn't require user authentication, we can
 // simply pass our API key as a query param.
 
-var flickr = new Flickr(res => res.query({
+var flickr = new Flickr(req => req.query({
 	api_key: process.env.FLICKR_API_KEY
 }));
 

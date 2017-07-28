@@ -299,7 +299,7 @@ authentication, use the [OAuth plugin](#Flickr.OAuth.createPlugin).
 **Example** *(Get info about a public photo with your API key)*  
 ```js
 
-var flickr = new Flickr(res => res.query({
+var flickr = new Flickr(req => req.query({
   api_key: process.env.FLICKR_API_KEY
 }));
 
@@ -314,7 +314,7 @@ flickr.photos.getInfo({
 **Example** *(Searching for public photos with your API key)*  
 ```js
 
-var flickr = new Flickr(res => res.query({
+var flickr = new Flickr(req => req.query({
   api_key: process.env.FLICKR_API_KEY
 }));
 
