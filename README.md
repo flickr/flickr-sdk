@@ -315,7 +315,7 @@ flickr.photos.getInfo({
 var flickr = new Flickr(process.env.FLICKR_API_KEY);
 
 flickr.photos.search({
-  photo_id: 25825763 // sorry, @dokas
+  text: 'doggo'
 }).then(function (res) {
   console.log('yay!', res.body);
 }).catch(function (err) {
