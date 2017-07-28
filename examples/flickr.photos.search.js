@@ -15,7 +15,7 @@ var flickr = new Flickr(process.env.FLICKR_API_KEY);
 // call the flickr.photos.search API method and search the photos!
 
 flickr.photos.search({
-	text: 'kitteh'
+	text: 'doggo'
 }).then(function (res) {
 	console.log('yay!', res.body.photos.photo);
 }).catch(function (err) {
