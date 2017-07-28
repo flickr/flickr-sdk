@@ -8,11 +8,9 @@ var Flickr = require('..');
 
 // create a new Flickr API client. since we're requesting a
 // resource that doesn't require user authentication, we can
-// simply pass our API key as a query param.
+// just use our API key.
 
-var flickr = new Flickr(req => req.query({
-	api_key: process.env.FLICKR_API_KEY
-}));
+var flickr = new Flickr(process.env.FLICKR_API_KEY);
 
 // call the flickr.photos.getInfo API method and request photo data!
 

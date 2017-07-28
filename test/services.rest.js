@@ -30,6 +30,11 @@ describe('services/rest', function () {
 		assert.doesNotThrow(function () {
 			new Subject(auth); // eslint-disable-line no-new
 		});
+
+		// allow passing an api key string for auth
+		assert.doesNotThrow(function () {
+			new Subject('abcd1234'); // eslint-disable-line no-new
+		});
 	});
 
 	it('can provide the host as an option', function () {
@@ -86,6 +91,17 @@ describe('services/rest', function () {
 		assert.equal(url.query.format, 'json');
 		assert.equal(url.query.nojsoncallback, '1');
 		assert.equal(url.query.foo, 'bar');
+	});
+
+	it('adds the api_key query string param if a string is passed for auth', function () {
+		var req, url;
+
+		subject = new Subject('abcd1234');
+
+		req = subject._('GET', 'flickr.test.echo').request();
+		url = parse(req.path, true);
+
+		assert.equal(url.query.api_key, 'abcd1234');
 	});
 
 	it('joins "extras" if passed as an array', function () {

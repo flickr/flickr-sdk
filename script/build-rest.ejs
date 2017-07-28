@@ -8,6 +8,18 @@ var validate = require('../lib/validate');
 var json = require('../plugins/json');
 
 /**
+ * Creates a superagent plugin that simply adds api_key to
+ * the query string of every request.
+ * @param {String} str
+ * @returns {Function}
+ * @private
+ */
+
+function createAPIKeyPlugin(str) {
+	return req => req.query({ api_key: str });
+}
+
+/**
  * Creates a new Flickr API client. This "client" is a factory
  * method that creates a new superagent request pre-configured
  * for talking to the Flickr API. You must pass an "auth"
@@ -20,6 +32,11 @@ var json = require('../plugins/json');
 
 function createClient(auth, opts) {
 	var host;
+
+	// allow passing just an api key instead of a function
+	if (typeof auth === 'string') {
+		auth = createAPIKeyPlugin(auth);
+	}
 
 	if (typeof auth !== 'function') {
 		throw new Error('Missing required argument "auth"');
@@ -54,19 +71,17 @@ function createClient(auth, opts) {
 /**
  * Creates a new Flickr REST API client.
  *
- * You **must** pass a superagent plugin as the first parameter. For
- * methods that don't require authentication, this plugin can simply
- * add your API key to the request params. For methods that require
- * authentication, use the [OAuth plugin]{@link Flickr.OAuth.createPlugin}.
+ * You **must** pass a superagent plugin or your API key as the first
+ * parameter. For methods that don't require authentication, you can simply
+ * provide your API key. For methods that do require authentication,
+ * use the [OAuth plugin]{@link Flickr.OAuth.createPlugin}.
  *
  * @constructor
- * @param {Function} auth An authentication plugin function
+ * @param {Function|String} auth An authentication plugin function or an API key
  *
  * @example <caption>Get info about a public photo with your API key</caption>
  *
- * var flickr = new Flickr(req => req.query({
- *   api_key: process.env.FLICKR_API_KEY
- * }));
+ * var flickr = new Flickr(process.env.FLICKR_API_KEY);
  *
  * flickr.photos.getInfo({
  *   photo_id: 25825763 // sorry, @dokas
@@ -78,9 +93,7 @@ function createClient(auth, opts) {
  *
  * @example <caption>Searching for public photos with your API key</caption>
  *
- * var flickr = new Flickr(req => req.query({
- *   api_key: process.env.FLICKR_API_KEY
- * }));
+ * var flickr = new Flickr(process.env.FLICKR_API_KEY);
  *
  * flickr.photos.search({
  *   photo_id: 25825763 // sorry, @dokas
