@@ -2,6 +2,7 @@
 
 var fs = require('fs');
 var path = require('path');
+var limit = require('p-limit')(2); // concurrency
 var flickr = require('..')(process.env.FLICKR_API_KEY);
 
 /**
@@ -31,12 +32,13 @@ function stringify(obj) {
  */
 
 function info(method) {
-	return flickr.reflection.getMethodInfo({
+	return limit(() => flickr.reflection.getMethodInfo({
 		method_name: method._content
 	}).then(function (res) {
 		fs.writeFileSync(filename(method._content), stringify(res.body));
-	});
+	}));
 }
+
 
 /**
  * Get info for every method and write them all to disk
