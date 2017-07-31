@@ -2,8 +2,9 @@
 
 var fs = require('fs');
 var path = require('path');
-var auth = require('../plugins/api-key');
-var request = require('../request')(auth(process.env.FLICKR_API_KEY));
+var limit = require('p-limit')(2); // concurrency
+var spinner = require('ora')();
+var flickr = require('..')(process.env.FLICKR_API_KEY);
 
 /**
  * Get the destination filename for `method`
@@ -32,23 +33,32 @@ function stringify(obj) {
  */
 
 function info(method) {
-	return request('GET', 'flickr.reflection.getMethodInfo')
-		.query('method_name=' + method._content)
-		.then(function (res) {
-			fs.writeFileSync(filename(method._content), stringify(res.body));
-		});
+	return limit(() => flickr.reflection.getMethodInfo({
+		method_name: method._content
+	}).on('request', function (req) {
+	  spinner.text = method._content;
+	}).then(function (res) {
+		fs.writeFileSync(filename(method._content), stringify(res.body));
+	}));
 }
+
+/**
+ * Start the spinner
+ */
+
+spinner.start();
 
 /**
  * Get info for every method and write them all to disk
  */
 
-request('GET', 'flickr.reflection.getMethods').then(function (res) {
+flickr.reflection.getMethods().then(function (res) {
 	return res.body.methods.method;
 }).then(function (methods) {
 	return Promise.all(methods.map(info));
+}).then(function () {
+	spinner.succeed('All methods have been updated!');
 }).catch(function (err) {
-	// eslint-disable-next-line no-console
-	console.error(err);
+	spinner.fail(err.message);
 	process.exit(err.code || 1);
 });
