@@ -367,6 +367,9 @@ plugin suitable for use with the REST and Upload services.
 You need to [register an application](https://www.flickr.com/services/apps/create/)
 to obtain your `consumerKey` and `consumerSecret`.
 
+> **OAuth 1.0 requires your consumer secret to sign calls,
+> and you should never expose secrets to the browser.**
+
 
 | Param | Type | Description |
 | --- | --- | --- |
