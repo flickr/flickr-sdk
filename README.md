@@ -2,13 +2,13 @@
 
 Almost certainly the best Flickr API client in the world for node and the browser
 
-## install
+## Install
 
 ```
 $ npm install flickr-sdk
 ```
 
-## usage
+## Usage
 
 flickr-sdk is based on [superagent][] and all methods that make API calls will return a superagent Request instance configured for the request. This means that you can do anything with Flickr requests that you can do with superagent.
 
@@ -711,7 +711,7 @@ Returns a list of recent comments that have been commented on by a given person.
 
 
 
-## license
+## License
 
 Code licensed under the MIT license. See LICENSE file for terms.
 
