@@ -3,7 +3,7 @@
 var fs = require('fs');
 var path = require('path');
 var limit = require('p-limit')(2); // concurrency
-var spinner = require('ora')();
+var spinner = require('ora')(require('./fun/spinner'));
 var flickr = require('..')(process.env.FLICKR_API_KEY);
 
 /**
