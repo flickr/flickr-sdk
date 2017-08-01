@@ -18,6 +18,7 @@ The Flickr API is divided into several services:
 - The [OAuth][services/oauth] service, which authenticates users via OAuth 1.0
 - The [Feeds][services/feeds] service, which provides feeds of public Flickr data
 - The [Upload][services/upload] service, where you can upload photos!
+- The [Replace][services/replace] service, where you can replace photos you previously uploaded
 
 **Example**
 
@@ -719,6 +720,7 @@ Code licensed under the MIT license. See LICENSE file for terms.
 [services/oauth]: https://www.flickr.com/services/api/auth.oauth.html
 [services/feeds]: https://www.flickr.com/services/feeds/
 [services/upload]: https://www.flickr.com/services/api/upload.api.html
+[services/replace]: https://www.flickr.com/services/api/replace.api.html
 [flickr.photos.getInfo]: https://www.flickr.com/services/api/flickr.photos.getInfo.html
 [flickr.photos.search]: https://www.flickr.com/services/api/flickr.photos.search.html
 [superagent]: https://github.com/visionmedia/superagent/
