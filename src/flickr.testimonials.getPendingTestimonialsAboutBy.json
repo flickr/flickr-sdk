@@ -1,0 +1,18 @@
+{
+  "method": {
+    "name": "flickr.testimonials.getPendingTestimonialsAboutBy",
+    "requiredperms": "1"
+  },
+  "arguments": {
+    "argument": [
+      {
+        "name": "api_key",
+        "optional": 0
+      },
+      {
+        "name": "user_id",
+        "optional": "0"
+      }
+    ]
+  }
+}
