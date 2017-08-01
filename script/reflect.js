@@ -3,6 +3,7 @@
 var fs = require('fs');
 var path = require('path');
 var limit = require('p-limit')(2); // concurrency
+var prune = require('dotprune').prune;
 var spinner = require('ora')(require('./fun/spinner'));
 var flickr = require('..')(process.env.FLICKR_API_KEY);
 
@@ -27,6 +28,21 @@ function stringify(obj) {
 }
 
 /**
+ * Returns only the properties of `obj` that we want to store.
+ * @param {Object} obj
+ * @returns {Object}
+ */
+
+function filter(obj) {
+	return prune(obj, [
+		'method.name',
+		'method.requiredperms',
+		'arguments.argument.name',
+		'arguments.argument.optional'
+	]);
+}
+
+/**
  * Get the method info for `method` and write it to disk
  * @param {Object} method
  * @returns {Promise}
@@ -38,7 +54,7 @@ function info(method) {
 	}).on('request', function (req) {
 	  spinner.text = method._content;
 	}).then(function (res) {
-		fs.writeFileSync(filename(method._content), stringify(res.body));
+		fs.writeFileSync(filename(method._content), stringify(filter(res.body)));
 	}));
 }
 
