@@ -14,6 +14,9 @@ var oauth = require('../plugins/oauth');
  * You need to [register an application](https://www.flickr.com/services/apps/create/)
  * to obtain your `consumerKey` and `consumerSecret`.
  *
+ * > **OAuth 1.0 requires your consumer secret to sign calls,
+ * > and you should never expose secrets to the browser.**
+ *
  * @class
  * @param {String} consumerKey - The application's API key
  * @param {String} consumerSecret - The application's API secret
