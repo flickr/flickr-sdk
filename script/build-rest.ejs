@@ -129,7 +129,7 @@ function createClient(auth, opts) {
  * | --- | --- | --- |
 <%_ namespaces.forEach(function (ns) { _%>
 <%_ getMethodsByNamespace(ns).forEach(function (method) { _%>
- * | [<%= method %>](<%= getDocsURL(method) %>) | `<%= getPerms(method) %>` | <%= getRequiredArguments(method).map(s => '`' + s + '`').join(', ') %> |
+ * | [<%= method %>](<%= getDocsURL(method) %>) | `<%= getPerms(method) %>` <%= getPermsEmoji(method) %> | <%= getRequiredArguments(method).map(s => '`' + s + '`').join(', ') %> |
 <%_ }); _%>
 <%_ }); _%>
  */

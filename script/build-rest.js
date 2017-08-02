@@ -141,6 +141,25 @@ ejs.renderFile(__dirname + '/build-rest.ejs', {
 	},
 
 	/**
+	 * Returns the perms emoji for this method.
+	 * @param {String} method
+	 * @returns {String}
+	 */
+
+	getPermsEmoji: function (method) {
+		switch (this.getPerms(method)) {
+		case 'read':
+			return ':eyes:';
+		case 'write':
+			return ':pencil2:';
+		case 'delete':
+			return ':boom:';
+		default:
+			return '';
+		}
+	},
+
+	/**
 	 * Returns the HTTP verb for this method info. If the method
 	 * needs either "write" or "delete" perms, the verb is POST.
 	 * Otherwise, the verb is GET.
