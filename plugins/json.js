@@ -33,6 +33,13 @@ function parseFlickr(res, fn) {
 	});
 }
 
+/**
+ * Superagent plugin-style function to request and parse
+ * JSON responses from the Flickr REST API.
+ * @param {Request} req
+ * @returns {undefined}
+ */
+
 module.exports = function (req) {
 	req.query({ format: 'json' });
 	req.query({ nojsoncallback: 1 });
