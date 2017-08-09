@@ -4,6 +4,7 @@
  */
 
 var Request = require('../lib/request').Request;
+var xml = require('../plugins/xml');
 
 /**
  * Creates a new Replace service instance. Since the Replace API only
@@ -61,6 +62,7 @@ function Replace(auth, photoID, file, args) {
 	this.attach('photo', file);
 	this.field('photo_id', photoID);
 	this.field(args);
+	this.use(xml);
 	this.use(auth);
 }
 

@@ -35,7 +35,7 @@ var replace = new Flickr.Replace(auth, photoID, __dirname + '/replace.png', {
 // to kick off the request.
 
 replace.then(function (res) {
-	console.log('res', res);
+	console.log('res', res.body);
 }).catch(function (err) {
 	console.log('err', err);
 });
