@@ -45,7 +45,6 @@
     "node": ">= 4"
   },
   "publishConfig": {
-    "tag": "next",
     "registry": "https://registry.npmjs.org"
   },
   "devDependencies": {
