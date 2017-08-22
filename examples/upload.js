@@ -29,7 +29,7 @@ var upload = new Flickr.Upload(auth, __dirname + '/upload.png', {
 // to kick off the request.
 
 upload.then(function (res) {
-	console.log('res', res);
+	console.log('res', res.body);
 }).catch(function (err) {
 	console.log('err', err);
 });

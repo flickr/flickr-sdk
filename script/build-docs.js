@@ -30,5 +30,5 @@ jsdoc.render({
 }).then(function (str) {
 	process.stdout.write(str);
 }).catch(function (err) {
-	console.error(err);
+	console.error(err); // eslint-disable-line no-console
 });

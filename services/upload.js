@@ -4,6 +4,7 @@
  */
 
 var Request = require('../lib/request').Request;
+var xml = require('../plugins/xml');
 
 /**
  * Creates a new Upload service instance. Since the Upload API only
@@ -55,6 +56,7 @@ function Upload(auth, file, args) {
 
 	this.attach('photo', file);
 	this.field(args);
+	this.use(xml);
 	this.use(auth);
 }
 

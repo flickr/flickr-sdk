@@ -7,7 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-Nothing yet!
+#### Changed
+
+- [#104] Upload/Replace services now parse the response body. ([@jeremyruppel])
 
 ## [3.0.0-alpha.6] - 2017-08-08
 
@@ -107,6 +109,7 @@ This "release" marks the start of a complete rewrite of the Flickr SDK. Once the
 [#85]: https://github.com/flickr/flickr-sdk/pull/85
 [#90]: https://github.com/flickr/flickr-sdk/pull/90
 [#94]: https://github.com/flickr/flickr-sdk/pull/94
+[#104]: https://github.com/flickr/flickr-sdk/pull/104
 
 <!-- other links -->
 
