@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 Nothing yet!
 
+## [3.1.1] - 2017-08-22
+
+Forgot to remove the "next" tag and npm makes it __SUPER DIFFICULT__ to unpublish modules, so here's a patch release that removes the tag and makes this the go-forward default release track!
+
 ## [3.1.0] - 2017-08-22
 
 #### Changed
@@ -96,7 +100,8 @@ This "release" marks the start of a complete rewrite of the Flickr SDK. Once the
 [3.0.0-alpha.5]: https://github.com/flickr/flickr-sdk/compare/v3.0.0-alpha.4...v3.0.0-alpha.5
 [3.0.0-alpha.6]: https://github.com/flickr/flickr-sdk/compare/v3.0.0-alpha.5...v3.0.0-alpha.6
 [3.1.0]: https://github.com/flickr/flickr-sdk/compare/v3.0.0-alpha.6...v3.1.0
-[Unreleased]: https://github.com/flickr/flickr-sdk/compare/v3.1.0...master
+[3.1.0]: https://github.com/flickr/flickr-sdk/compare/v3.1.0...v3.1.1
+[Unreleased]: https://github.com/flickr/flickr-sdk/compare/v3.1.1...master
 
 <!-- pull requests -->
 
