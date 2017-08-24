@@ -66,3 +66,4 @@ typings/
 
 # Generated files
 services/rest.js
+flickr-sdk.js

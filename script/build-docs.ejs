@@ -25,6 +25,12 @@ The Flickr API is divided into several services:
 ``` js
 var Flickr = require('<%= package.name %>');
 ```
+
+### Browser Usage
+
+Since OAuth 1.0 requires your application's key and secret to sign requests, <%= package.name %> does not support this authentication method in the browser. Upload, Replace, and REST API calls that require authentication will not work without a valid OAuth signature. You can still use <%= package.name %> to call REST API methods that don't require authentication or to get public feeds.
+
+<%= package.name %> has been tested with [browserify][] but should work with other client-side module bundlers like [webpack][] and [rollup][]. If you need a standalone browser-ready version of <%= package.name %>, each release on [npm](https://www.npmjs.com/package/<%= package.name %>) will contain a browserified version of this module at `node_modules/flickr-sdk/flickr-sdk.js`. It is not minified.
 <%- docs %>
 
 ## License
@@ -40,3 +46,6 @@ Code licensed under the MIT license. See LICENSE file for terms.
 [flickr.photos.getInfo]: https://www.flickr.com/services/api/flickr.photos.getInfo.html
 [flickr.photos.search]: https://www.flickr.com/services/api/flickr.photos.search.html
 [superagent]: https://github.com/visionmedia/superagent/
+[browserify]: http://browserify.org/
+[webpack]: https://webpack.github.io/
+[rollup]: https://rollupjs.org/
