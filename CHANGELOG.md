@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+Nothing yet!
+
+## [v3.2.0] - 2017-08-24
+
+Starting with this release, there will be a browser-ready `flickr-sdk.js` file in the module root that can be used out-of-the-box. This file is not minified and does not support OAuth authentication for Upload, Replace, or REST API calls. If you need any further customization for your client-side app, we recommend using the client-side module bundler of your choice.
+
+#### Added
+
 - [#109] Build a standalone version for the browser with each new npm release. ([@jeremyruppel])
 
 ## [v3.1.1] - 2017-08-22
@@ -101,7 +109,8 @@ This "release" marks the start of a complete rewrite of the Flickr SDK. Once the
 [v3.0.0-alpha.6]: https://github.com/flickr/flickr-sdk/compare/v3.0.0-alpha.5...v3.0.0-alpha.6
 [v3.1.0]: https://github.com/flickr/flickr-sdk/compare/v3.0.0-alpha.6...v3.1.0
 [v3.1.1]: https://github.com/flickr/flickr-sdk/compare/v3.1.0...v3.1.1
-[Unreleased]: https://github.com/flickr/flickr-sdk/compare/v3.1.1...master
+[v3.2.0]: https://github.com/flickr/flickr-sdk/compare/v3.1.1...v3.2.0
+[Unreleased]: https://github.com/flickr/flickr-sdk/compare/v3.2.0...master
 
 <!-- pull requests -->
 
@@ -120,6 +129,7 @@ This "release" marks the start of a complete rewrite of the Flickr SDK. Once the
 [#90]: https://github.com/flickr/flickr-sdk/pull/90
 [#94]: https://github.com/flickr/flickr-sdk/pull/94
 [#104]: https://github.com/flickr/flickr-sdk/pull/104
+[#109]: https://github.com/flickr/flickr-sdk/pull/109
 
 <!-- other links -->
 
