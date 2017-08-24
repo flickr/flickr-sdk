@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-Nothing yet!
+- [#109] Build a standalone version for the browser with each new npm release. ([@jeremyruppel])
 
 ## [v3.1.1] - 2017-08-22
 
