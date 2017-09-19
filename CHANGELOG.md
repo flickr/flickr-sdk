@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+Nothing yet!
+
+## [v3.3.0] - 2017-09-19
+
+We've removed the `X-Flickr-API-Method` header from our REST API client because it doesn't work in the browser. Our bad!
+
 #### Removed
 
 - [#110] Removed the `X-Flickr-API-Method` introduced in [#64]. ([@jeremyruppel])
@@ -112,7 +118,8 @@ This "release" marks the start of a complete rewrite of the Flickr SDK. Once the
 [v3.1.0]: https://github.com/flickr/flickr-sdk/compare/v3.0.0-alpha.6...v3.1.0
 [v3.1.1]: https://github.com/flickr/flickr-sdk/compare/v3.1.0...v3.1.1
 [v3.2.0]: https://github.com/flickr/flickr-sdk/compare/v3.1.1...v3.2.0
-[Unreleased]: https://github.com/flickr/flickr-sdk/compare/v3.2.0...master
+[v3.3.0]: https://github.com/flickr/flickr-sdk/compare/v3.2.0...v3.3.0
+[Unreleased]: https://github.com/flickr/flickr-sdk/compare/v3.3.0...master
 
 <!-- pull requests -->
 
