@@ -7,7 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-Nothing yet!
+#### Removed
+
+- [#110] Removed the `X-Flickr-API-Method` introduced in [#64]. ([@jeremyruppel])
 
 ## [v3.2.0] - 2017-08-24
 
@@ -130,6 +132,7 @@ This "release" marks the start of a complete rewrite of the Flickr SDK. Once the
 [#94]: https://github.com/flickr/flickr-sdk/pull/94
 [#104]: https://github.com/flickr/flickr-sdk/pull/104
 [#109]: https://github.com/flickr/flickr-sdk/pull/109
+[#110]: https://github.com/flickr/flickr-sdk/pull/110
 
 <!-- other links -->
 
