@@ -50,16 +50,6 @@ describe('services/rest', function () {
 		assert.equal(url.host, 'www.flickr.com');
 	});
 
-	it('adds default request headers', function () {
-		var req = subject._('GET', 'flickr.test.echo').request();
-
-		/*
-			TODO user-agent
-		*/
-
-		assert.equal(req.getHeader('x-flickr-api-method'), 'flickr.test.echo');
-	});
-
 	it('uses the correct path', function () {
 		var req = subject._('GET', 'flickr.test.echo');
 		var url = parse(req.url);
