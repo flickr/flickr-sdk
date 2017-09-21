@@ -15,7 +15,7 @@
       },
       {
         "name": "user_id",
-        "optional": "0"
+        "optional": "1"
       },
       {
         "name": "extras",
