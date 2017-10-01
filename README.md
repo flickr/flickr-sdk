@@ -734,5 +734,5 @@ Code licensed under the MIT license. See LICENSE file for terms.
 [flickr.photos.search]: https://www.flickr.com/services/api/flickr.photos.search.html
 [superagent]: https://github.com/visionmedia/superagent/
 [browserify]: http://browserify.org/
-[webpack]: https://webpack.github.io/
+[webpack]: https://webpack.js.org/
 [rollup]: https://rollupjs.org/
