@@ -7,9 +7,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+Nothing yet!
+
+## [v3.4.0] - 2017-10-04
+
+**Huge** shout out to [@ebisbe] for letting us know that the REST client was [super broken in the browser][https://github.com/flickr/flickr-sdk/issues/111]. This release fixes that!
+
 #### Fixed
 
 - [#113] Updated link to webpack site ([@christianhg])
+- [#116] Fixed extremely broken REST API parser for the browser ([@jeremyruppel])
 
 ## [v3.3.0] - 2017-09-19
 
@@ -108,6 +115,7 @@ This "release" marks the start of a complete rewrite of the Flickr SDK. Once the
 [@jeremyruppel]: https://github.com/jeremyruppel
 [@smoogly]: https://github.com/smoogly
 [@christianhg]: https://github.com/christianhg
+[@ebisbe]: https://github.com/ebisbe
 
 <!-- releases -->
 
@@ -122,6 +130,7 @@ This "release" marks the start of a complete rewrite of the Flickr SDK. Once the
 [v3.1.1]: https://github.com/flickr/flickr-sdk/compare/v3.1.0...v3.1.1
 [v3.2.0]: https://github.com/flickr/flickr-sdk/compare/v3.1.1...v3.2.0
 [v3.3.0]: https://github.com/flickr/flickr-sdk/compare/v3.2.0...v3.3.0
+[v3.3.0]: https://github.com/flickr/flickr-sdk/compare/v3.3.0...v3.4.0
 [Unreleased]: https://github.com/flickr/flickr-sdk/compare/v3.3.0...master
 
 <!-- pull requests -->
@@ -144,6 +153,7 @@ This "release" marks the start of a complete rewrite of the Flickr SDK. Once the
 [#109]: https://github.com/flickr/flickr-sdk/pull/109
 [#110]: https://github.com/flickr/flickr-sdk/pull/110
 [#113]: https://github.com/flickr/flickr-sdk/pull/113
+[#116]: https://github.com/flickr/flickr-sdk/pull/116
 
 <!-- other links -->
 
