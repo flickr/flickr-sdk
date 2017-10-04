@@ -11,7 +11,7 @@ Nothing yet!
 
 ## [v3.4.0] - 2017-10-04
 
-**Huge** shout out to [@ebisbe] for letting us know that the REST client was [super broken in the browser][https://github.com/flickr/flickr-sdk/issues/111]. This release fixes that!
+**Huge** shout out to [@ebisbe] for letting us know that the REST client was [super broken in the browser](https://github.com/flickr/flickr-sdk/issues/111). This release fixes that!
 
 #### Fixed
 
@@ -130,7 +130,7 @@ This "release" marks the start of a complete rewrite of the Flickr SDK. Once the
 [v3.1.1]: https://github.com/flickr/flickr-sdk/compare/v3.1.0...v3.1.1
 [v3.2.0]: https://github.com/flickr/flickr-sdk/compare/v3.1.1...v3.2.0
 [v3.3.0]: https://github.com/flickr/flickr-sdk/compare/v3.2.0...v3.3.0
-[v3.3.0]: https://github.com/flickr/flickr-sdk/compare/v3.3.0...v3.4.0
+[v3.4.0]: https://github.com/flickr/flickr-sdk/compare/v3.3.0...v3.4.0
 [Unreleased]: https://github.com/flickr/flickr-sdk/compare/v3.3.0...master
 
 <!-- pull requests -->
