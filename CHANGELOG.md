@@ -7,7 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-Nothing yet!
+#### Fixed
+
+- [#113] Updated link to webpack site ([@christianhg])
 
 ## [v3.3.0] - 2017-09-19
 
@@ -105,6 +107,7 @@ This "release" marks the start of a complete rewrite of the Flickr SDK. Once the
 
 [@jeremyruppel]: https://github.com/jeremyruppel
 [@smoogly]: https://github.com/smoogly
+[@christianhg]: https://github.com/christianhg
 
 <!-- releases -->
 
@@ -140,6 +143,7 @@ This "release" marks the start of a complete rewrite of the Flickr SDK. Once the
 [#104]: https://github.com/flickr/flickr-sdk/pull/104
 [#109]: https://github.com/flickr/flickr-sdk/pull/109
 [#110]: https://github.com/flickr/flickr-sdk/pull/110
+[#113]: https://github.com/flickr/flickr-sdk/pull/113
 
 <!-- other links -->
 
