@@ -139,7 +139,8 @@ This "release" marks the start of a complete rewrite of the Flickr SDK. Once the
 [v3.2.0]: https://github.com/flickr/flickr-sdk/compare/v3.1.1...v3.2.0
 [v3.3.0]: https://github.com/flickr/flickr-sdk/compare/v3.2.0...v3.3.0
 [v3.4.0]: https://github.com/flickr/flickr-sdk/compare/v3.3.0...v3.4.0
-[Unreleased]: https://github.com/flickr/flickr-sdk/compare/v3.3.0...master
+[v3.5.0]: https://github.com/flickr/flickr-sdk/compare/v3.4.0...v3.5.0
+[Unreleased]: https://github.com/flickr/flickr-sdk/compare/v3.5.0...master
 
 <!-- pull requests -->
 
