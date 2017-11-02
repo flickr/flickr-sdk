@@ -7,6 +7,9 @@ describe('plugins/json', function () {
 
 	function createMockResponse() {
 		return nock('https://api.flickr.com')
+			.defaultReplyHeaders({
+				'content-type': 'application/json'
+			})
 			.get('/services/rest')
 			.query({
 				format: 'json',
@@ -54,6 +57,25 @@ describe('plugins/json', function () {
 				assert(api.isDone(), 'Expected mock to have been called');
 				assert.equal(err.message, 'Invalid API Key (Key has invalid format)');
 				assert.equal(err.code, 100);
+				assert.equal(err.stat, 'fail');
+				assert.ok(err.response);
+			});
+
+	});
+
+	it('yields an error if the API returns a bad response', function () {
+		var api = createMockResponse().reply(500, '', {
+			'content-type': 'text/html; charset=UTF-8'
+		});
+
+		return request('GET', 'https://api.flickr.com/services/rest')
+			.use(subject)
+			.then(function () {
+				throw new Error('Expected errback');
+			}, function (err) {
+				assert(api.isDone(), 'Expected mock to have been called');
+				assert.equal(err.message, 'Internal Server Error');
+				assert.ok(err.response);
 			});
 
 	});
