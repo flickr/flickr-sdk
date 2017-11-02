@@ -3,34 +3,31 @@
  * Licensed under the terms of the MIT license. Please see LICENSE file in the project root for terms.
  */
 
-var parseJSON = require('superagent/lib/node/parsers/json');
-
 /**
  * Custom response parser routine to handle Flickr API-style
  * error responses. The Flickr API has a whole bunch of client
  * error codes, but they all come back as HTTP 200 responses.
- * Here, we extend the normal JSON response parser and check
+ * Here, we add in additional logic to accommodate this and check
  * for a Flickr API error. If we find one, craft a new error
- * out of that and yield it.
+ * out of that and throw it.
  * @param {Response} res
- * @param {Function} fn
- * @returns {null}
+ * @returns {Boolean}
+ * @throws {Error}
  */
 
-function parseFlickr(res, fn) {
-	parseJSON(res, function (err, body) {
-		if (err) {
-			return fn(err, body);
-		}
+function parseFlickr(res) {
+	var body = res.body;
+	var err;
 
-		if (body.stat === 'fail') {
-			err = new Error(body.message);
-			err.stat = body.stat;
-			err.code = body.code;
-		}
+	if (body && body.stat === 'fail') {
+		err = new Error(body.message);
+		err.stat = body.stat;
+		err.code = body.code;
 
-		fn(err, body);
-	});
+		throw err;
+	}
+
+	return res.status >= 200 && res.status < 300;
 }
 
 /**
@@ -43,5 +40,6 @@ function parseFlickr(res, fn) {
 module.exports = function (req) {
 	req.query({ format: 'json' });
 	req.query({ nojsoncallback: 1 });
-	req.parse(parseFlickr);
+	req.type('json');
+	req.ok(parseFlickr);
 };
