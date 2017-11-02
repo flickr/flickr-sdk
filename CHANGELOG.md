@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 Nothing yet!
 
+## [v3.5.0] - 2017-11-02
+
+Yay open source! This release upgrades superagent to [v3.8.0](https://github.com/visionmedia/superagent/releases/tag/v3.8.0), which includes [a patch](https://github.com/visionmedia/superagent/pull/1291) to allow for more control over response errors.
+
+#### Removed
+
+- [#118] Removed custom JSON parsers in favor of throwing in superagent's `.ok()` callback ([@jeremyruppel])
+
 ## [v3.4.0] - 2017-10-04
 
 **Huge** shout out to [@ebisbe] for letting us know that the REST client was [super broken in the browser](https://github.com/flickr/flickr-sdk/issues/111). This release fixes that!
@@ -154,6 +162,7 @@ This "release" marks the start of a complete rewrite of the Flickr SDK. Once the
 [#110]: https://github.com/flickr/flickr-sdk/pull/110
 [#113]: https://github.com/flickr/flickr-sdk/pull/113
 [#116]: https://github.com/flickr/flickr-sdk/pull/116
+[#118]: https://github.com/flickr/flickr-sdk/pull/118
 
 <!-- other links -->
 
