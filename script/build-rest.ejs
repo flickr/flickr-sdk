@@ -56,6 +56,8 @@ function createClient(auth, opts) {
 		// array we should join it
 		if (Array.isArray(args.extras)) {
 			args.extras = args.extras.join(',');
+		} else if (args.extras instanceof Set) {
+			args.extras = Array.from(args.extras).join(',');
 		}
 
 		return request(verb, 'https://' + host + '/services/rest')

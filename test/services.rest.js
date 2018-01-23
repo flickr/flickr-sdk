@@ -111,4 +111,21 @@ describe('services/rest', function () {
 		assert.equal(url.query.extras, 'foo,bar,baz');
 	});
 
+	it('joins "extras" if passed as a set', function () {
+		var req = subject._('GET', 'flickr.test.echo', {
+			extras: new Set([
+				'foo',
+				'bar',
+				'baz'
+			])
+		}).request();
+
+		var url = parse(req.path, true);
+
+		assert.equal(url.query.method, 'flickr.test.echo');
+		assert.equal(url.query.format, 'json');
+		assert.equal(url.query.nojsoncallback, '1');
+		assert.equal(url.query.extras, 'foo,bar,baz');
+	});
+
 });
