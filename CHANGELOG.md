@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 Nothing yet!
 
+## [v3.6.0] - 2018-01-23
+
+This release adds support for passing in `extras` as a Set, which is semantically exactly what the Flickr REST API expects.
+
+#### Added
+
+- [#119] `extras` can now be passed in as a Set ([@pdokas])
+
 ## [v3.5.0] - 2017-11-02
 
 Yay open source! This release upgrades superagent to [v3.8.0](https://github.com/visionmedia/superagent/releases/tag/v3.8.0), which includes [a patch](https://github.com/visionmedia/superagent/pull/1291) to allow for more control over response errors.
@@ -121,6 +129,7 @@ This "release" marks the start of a complete rewrite of the Flickr SDK. Once the
 <!-- contributors -->
 
 [@jeremyruppel]: https://github.com/jeremyruppel
+[@pdokas]: https://github.com/pdokas
 [@smoogly]: https://github.com/smoogly
 [@christianhg]: https://github.com/christianhg
 [@ebisbe]: https://github.com/ebisbe
@@ -140,7 +149,8 @@ This "release" marks the start of a complete rewrite of the Flickr SDK. Once the
 [v3.3.0]: https://github.com/flickr/flickr-sdk/compare/v3.2.0...v3.3.0
 [v3.4.0]: https://github.com/flickr/flickr-sdk/compare/v3.3.0...v3.4.0
 [v3.5.0]: https://github.com/flickr/flickr-sdk/compare/v3.4.0...v3.5.0
-[Unreleased]: https://github.com/flickr/flickr-sdk/compare/v3.5.0...master
+[v3.6.0]: https://github.com/flickr/flickr-sdk/compare/v3.5.0...v3.6.0
+[Unreleased]: https://github.com/flickr/flickr-sdk/compare/v3.6.0...master
 
 <!-- pull requests -->
 
@@ -164,6 +174,7 @@ This "release" marks the start of a complete rewrite of the Flickr SDK. Once the
 [#113]: https://github.com/flickr/flickr-sdk/pull/113
 [#116]: https://github.com/flickr/flickr-sdk/pull/116
 [#118]: https://github.com/flickr/flickr-sdk/pull/118
+[#119]: https://github.com/flickr/flickr-sdk/pull/119
 
 <!-- other links -->
 
