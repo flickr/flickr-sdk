@@ -16,7 +16,9 @@ var json = require('../plugins/json');
  */
 
 function createAPIKeyPlugin(str) {
-	return req => req.query({ api_key: str });
+	return function (req) {
+		return req.query({ api_key: str });
+	};
 }
 
 /**
