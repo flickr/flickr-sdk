@@ -23,6 +23,7 @@ describe('flickr.testimonials.approveTestimonial', function () {
 		assert.equal(req.qs.format, 'json');
 		assert.equal(req.qs.nojsoncallback, '1');
 		assert.equal(req.qs.method, 'flickr.testimonials.approveTestimonial');
+		assert.equal(req.header['Content-Type'], 'text/plain');
 		assert.equal(req.qs.testimonial_id, '_');
 	});
 

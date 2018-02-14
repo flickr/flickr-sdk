@@ -92,6 +92,7 @@ describe('flickr.photos.geo.setPerms', function () {
 		assert.equal(req.qs.format, 'json');
 		assert.equal(req.qs.nojsoncallback, '1');
 		assert.equal(req.qs.method, 'flickr.photos.geo.setPerms');
+		assert.equal(req.header['Content-Type'], 'text/plain');
 		assert.equal(req.qs.is_public, '_');
 		assert.equal(req.qs.is_contact, '_');
 		assert.equal(req.qs.is_friend, '_');

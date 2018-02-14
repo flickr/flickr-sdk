@@ -38,6 +38,7 @@ describe('flickr.photosets.editMeta', function () {
 		assert.equal(req.qs.format, 'json');
 		assert.equal(req.qs.nojsoncallback, '1');
 		assert.equal(req.qs.method, 'flickr.photosets.editMeta');
+		assert.equal(req.header['Content-Type'], 'text/plain');
 		assert.equal(req.qs.photoset_id, '_');
 		assert.equal(req.qs.title, '_');
 	});

@@ -38,6 +38,7 @@ describe('flickr.photos.geo.photosForLocation', function () {
 		assert.equal(req.qs.format, 'json');
 		assert.equal(req.qs.nojsoncallback, '1');
 		assert.equal(req.qs.method, 'flickr.photos.geo.photosForLocation');
+		assert.equal(req.header['Content-Type'], 'text/plain');
 		assert.equal(req.qs.lat, '_');
 		assert.equal(req.qs.lon, '_');
 	});

@@ -32,7 +32,9 @@ function parseFlickr(res) {
 
 /**
  * Superagent plugin-style function to request and parse
- * JSON responses from the Flickr REST API.
+ * JSON responses from the Flickr REST API. We need to
+ * specify content-type: text/plain here to appease CORS
+ * since the API does not accept application/json.
  * @param {Request} req
  * @returns {undefined}
  */
@@ -40,6 +42,6 @@ function parseFlickr(res) {
 module.exports = function (req) {
 	req.query({ format: 'json' });
 	req.query({ nojsoncallback: 1 });
-	req.type('json');
+	req.type('text/plain');
 	req.ok(parseFlickr);
 };

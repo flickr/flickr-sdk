@@ -23,6 +23,7 @@ describe('flickr.galleries.getPhotos', function () {
 		assert.equal(req.qs.format, 'json');
 		assert.equal(req.qs.nojsoncallback, '1');
 		assert.equal(req.qs.method, 'flickr.galleries.getPhotos');
+		assert.equal(req.header['Content-Type'], 'text/plain');
 		assert.equal(req.qs.gallery_id, '_');
 	});
 

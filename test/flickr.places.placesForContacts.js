@@ -11,6 +11,7 @@ describe('flickr.places.placesForContacts', function () {
 		assert.equal(req.qs.format, 'json');
 		assert.equal(req.qs.nojsoncallback, '1');
 		assert.equal(req.qs.method, 'flickr.places.placesForContacts');
+		assert.equal(req.header['Content-Type'], 'text/plain');
 	});
 
 });

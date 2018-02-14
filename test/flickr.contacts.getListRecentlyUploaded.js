@@ -11,6 +11,7 @@ describe('flickr.contacts.getListRecentlyUploaded', function () {
 		assert.equal(req.qs.format, 'json');
 		assert.equal(req.qs.nojsoncallback, '1');
 		assert.equal(req.qs.method, 'flickr.contacts.getListRecentlyUploaded');
+		assert.equal(req.header['Content-Type'], 'text/plain');
 	});
 
 });

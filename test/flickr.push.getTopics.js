@@ -11,6 +11,7 @@ describe('flickr.push.getTopics', function () {
 		assert.equal(req.qs.format, 'json');
 		assert.equal(req.qs.nojsoncallback, '1');
 		assert.equal(req.qs.method, 'flickr.push.getTopics');
+		assert.equal(req.header['Content-Type'], 'text/plain');
 	});
 
 });

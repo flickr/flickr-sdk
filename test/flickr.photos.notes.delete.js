@@ -23,6 +23,7 @@ describe('flickr.photos.notes.delete', function () {
 		assert.equal(req.qs.format, 'json');
 		assert.equal(req.qs.nojsoncallback, '1');
 		assert.equal(req.qs.method, 'flickr.photos.notes.delete');
+		assert.equal(req.header['Content-Type'], 'text/plain');
 		assert.equal(req.qs.note_id, '_');
 	});
 
