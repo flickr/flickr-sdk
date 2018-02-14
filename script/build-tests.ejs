@@ -23,6 +23,7 @@ describe('<%= method %>', function () {
 		assert.equal(req.qs.format, 'json');
 		assert.equal(req.qs.nojsoncallback, '1');
 		assert.equal(req.qs.method, '<%= method %>');
+		assert.equal(req.header['Content-Type'], 'text/plain');
 		<%_ Object.keys(args).forEach(function (arg) { _%>
 		assert.equal(req.qs.<%= arg %>, '<%= args[arg] %>');
 		<%_ }); _%>

@@ -38,6 +38,7 @@ describe('flickr.galleries.addPhoto', function () {
 		assert.equal(req.qs.format, 'json');
 		assert.equal(req.qs.nojsoncallback, '1');
 		assert.equal(req.qs.method, 'flickr.galleries.addPhoto');
+		assert.equal(req.header['Content-Type'], 'text/plain');
 		assert.equal(req.qs.gallery_id, '_');
 		assert.equal(req.qs.photo_id, '_');
 	});

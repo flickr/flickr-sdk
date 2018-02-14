@@ -11,6 +11,7 @@ describe('flickr.testimonials.getAllTestimonialsBy', function () {
 		assert.equal(req.qs.format, 'json');
 		assert.equal(req.qs.nojsoncallback, '1');
 		assert.equal(req.qs.method, 'flickr.testimonials.getAllTestimonialsBy');
+		assert.equal(req.header['Content-Type'], 'text/plain');
 	});
 
 });

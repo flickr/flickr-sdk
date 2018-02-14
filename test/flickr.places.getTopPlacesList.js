@@ -23,6 +23,7 @@ describe('flickr.places.getTopPlacesList', function () {
 		assert.equal(req.qs.format, 'json');
 		assert.equal(req.qs.nojsoncallback, '1');
 		assert.equal(req.qs.method, 'flickr.places.getTopPlacesList');
+		assert.equal(req.header['Content-Type'], 'text/plain');
 		assert.equal(req.qs.place_type_id, '_');
 	});
 

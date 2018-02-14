@@ -38,6 +38,7 @@ describe('flickr.stats.getCollectionStats', function () {
 		assert.equal(req.qs.format, 'json');
 		assert.equal(req.qs.nojsoncallback, '1');
 		assert.equal(req.qs.method, 'flickr.stats.getCollectionStats');
+		assert.equal(req.header['Content-Type'], 'text/plain');
 		assert.equal(req.qs.date, '_');
 		assert.equal(req.qs.collection_id, '_');
 	});

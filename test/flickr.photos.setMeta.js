@@ -23,6 +23,7 @@ describe('flickr.photos.setMeta', function () {
 		assert.equal(req.qs.format, 'json');
 		assert.equal(req.qs.nojsoncallback, '1');
 		assert.equal(req.qs.method, 'flickr.photos.setMeta');
+		assert.equal(req.header['Content-Type'], 'text/plain');
 		assert.equal(req.qs.photo_id, '_');
 	});
 

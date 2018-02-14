@@ -38,6 +38,7 @@ describe('flickr.photosets.getContext', function () {
 		assert.equal(req.qs.format, 'json');
 		assert.equal(req.qs.nojsoncallback, '1');
 		assert.equal(req.qs.method, 'flickr.photosets.getContext');
+		assert.equal(req.header['Content-Type'], 'text/plain');
 		assert.equal(req.qs.photo_id, '_');
 		assert.equal(req.qs.photoset_id, '_');
 	});
