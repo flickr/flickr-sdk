@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 Nothing yet!
 
+## [v3.7.0] - 2018-02-14
+
+This release fixes a bug in the client-side build of the SDK where CORS preflight requests weren't being honored by the Flickr API. Big ups to [@ebisbe] and [@baohouse] for their help uncovering this issue in our client.
+
+#### Fixed
+
+- [#121] Browser REST client should request `text/plain` even though it gets back `application/json` ([@jeremyruppel])
+
 ## [v3.6.0] - 2018-01-23
 
 This release adds support for passing in `extras` as a Set, which is semantically exactly what the Flickr REST API expects.
@@ -133,6 +141,7 @@ This "release" marks the start of a complete rewrite of the Flickr SDK. Once the
 [@smoogly]: https://github.com/smoogly
 [@christianhg]: https://github.com/christianhg
 [@ebisbe]: https://github.com/ebisbe
+[@baohouse]: https://github.com/baohouse
 
 <!-- releases -->
 
@@ -175,6 +184,7 @@ This "release" marks the start of a complete rewrite of the Flickr SDK. Once the
 [#116]: https://github.com/flickr/flickr-sdk/pull/116
 [#118]: https://github.com/flickr/flickr-sdk/pull/118
 [#119]: https://github.com/flickr/flickr-sdk/pull/119
+[#121]: https://github.com/flickr/flickr-sdk/pull/121
 
 <!-- other links -->
 
