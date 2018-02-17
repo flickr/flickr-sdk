@@ -94,6 +94,32 @@ describe('services/rest', function () {
 		assert.equal(url.query.api_key, 'abcd1234');
 	});
 
+	it('supports "extras" if passed as an string', function () {
+		var req = subject._('GET', 'flickr.test.echo', {
+			extras: 'foo,bar,baz'
+		}).request();
+
+		var url = parse(req.path, true);
+
+		assert.equal(url.query.method, 'flickr.test.echo');
+		assert.equal(url.query.format, 'json');
+		assert.equal(url.query.nojsoncallback, '1');
+		assert.equal(url.query.extras, 'foo,bar,baz');
+	});
+
+	it('dedupes "extras" if passed as an string', function () {
+		var req = subject._('GET', 'flickr.test.echo', {
+			extras: 'foo,bar,foo'
+		}).request();
+
+		var url = parse(req.path, true);
+
+		assert.equal(url.query.method, 'flickr.test.echo');
+		assert.equal(url.query.format, 'json');
+		assert.equal(url.query.nojsoncallback, '1');
+		assert.equal(url.query.extras, 'foo,bar');
+	});
+
 	it('joins "extras" if passed as an array', function () {
 		var req = subject._('GET', 'flickr.test.echo', {
 			extras: [
@@ -109,6 +135,23 @@ describe('services/rest', function () {
 		assert.equal(url.query.format, 'json');
 		assert.equal(url.query.nojsoncallback, '1');
 		assert.equal(url.query.extras, 'foo,bar,baz');
+	});
+
+	it('dedupes "extras" if passed as an array', function () {
+		var req = subject._('GET', 'flickr.test.echo', {
+			extras: [
+				'foo',
+				'foo',
+				'bar'
+			]
+		}).request();
+
+		var url = parse(req.path, true);
+
+		assert.equal(url.query.method, 'flickr.test.echo');
+		assert.equal(url.query.format, 'json');
+		assert.equal(url.query.nojsoncallback, '1');
+		assert.equal(url.query.extras, 'foo,bar');
 	});
 
 	it('joins "extras" if passed as a set', function () {
