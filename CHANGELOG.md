@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-- [#122] Dedupe items in the "extras" param if passed as a string, array, or set.
+- [#122] Dedupe items in the "extras" param if passed as a string, array, or set. ([@pdokas])
 
 ## [v3.7.0] - 2018-02-14
 
