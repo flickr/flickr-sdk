@@ -171,4 +171,13 @@ describe('services/rest', function () {
 		assert.equal(url.query.extras, 'foo,bar,baz');
 	});
 
+	it('throws if "extras" as an invalid type', function () {
+
+		assert.throws(function () {
+			subject._('GET', 'flickr.test.echo', {
+				extras: { wat: 'NaNNaNNaNNaNNaNNaNNaN Batman!' }
+			}).request();
+		}, 'Invalid type for argument "extras"');
+	});
+
 });

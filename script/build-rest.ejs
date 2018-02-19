@@ -30,6 +30,14 @@ function createAPIKeyPlugin(str) {
  */
 
 function processExtras(extras) {
+	if (
+		typeof extras !== 'string' &&
+		!Array.isArray(extras) &&
+		!(extras instanceof Set)
+	) {
+		throw new Error('Invalid type for argument "extras"');
+	}
+
 	if (typeof extras === 'string') {
 		extras = extras.split(',');
 	}
