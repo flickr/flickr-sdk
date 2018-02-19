@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-Nothing yet!
+- [#122] Dedupe items in the "extras" param if passed as a string, array, or set.
 
 ## [v3.7.0] - 2018-02-14
 
@@ -186,6 +186,7 @@ This "release" marks the start of a complete rewrite of the Flickr SDK. Once the
 [#118]: https://github.com/flickr/flickr-sdk/pull/118
 [#119]: https://github.com/flickr/flickr-sdk/pull/119
 [#121]: https://github.com/flickr/flickr-sdk/pull/121
+[#122]: https://github.com/flickr/flickr-sdk/pull/122
 
 <!-- other links -->
 
