@@ -49,7 +49,7 @@ This example demonstrates how to use the OAuth service to obtain an OAuth token 
 
 ```
 $ export FLICKR_CONSUMER_KEY=# your application's key
-$ export FLICKR_CONSUMER_KEY=# your application's secret
+$ export FLICKR_CONSUMER_SECRET=# your application's secret
 $ node examples/oauth.js
 ```
 
@@ -59,7 +59,7 @@ This example demonstrates how to upload a photo on behalf of a user.
 
 ```
 $ export FLICKR_CONSUMER_KEY=# your application's key
-$ export FLICKR_CONSUMER_KEY=# your application's secret
+$ export FLICKR_CONSUMER_SECRET=# your application's secret
 $ export FLICKR_OAUTH_TOKEN=# a verified oauth token
 $ export FLICKR_OAUTH_TOKEN_SECRET=# a verified oauth token secret
 $ node examples/upload.js
@@ -73,7 +73,7 @@ This example demonstrates how to replace a photo on behalf of a user.
 
 ```
 $ export FLICKR_CONSUMER_KEY=# your application's key
-$ export FLICKR_CONSUMER_KEY=# your application's secret
+$ export FLICKR_CONSUMER_SECRET=# your application's secret
 $ export FLICKR_OAUTH_TOKEN=# a verified oauth token
 $ export FLICKR_OAUTH_TOKEN_SECRET=# a verified oauth token secret
 $ node examples/replace.js <your photo id>
