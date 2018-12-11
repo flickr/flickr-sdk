@@ -114,6 +114,16 @@ describe('oauth', function () {
 			);
 		});
 
+		it('cleans undefined params', function () {
+			assert.equal(
+				subject.baseString('GET', 'http://www.example.com', {
+					foo: '123',
+					bar: undefined // should be removed
+				}),
+				'GET&http%3A%2F%2Fwww.example.com&foo%3D123'
+			);
+		});
+
 	});
 
 	describe('#signature', function () {
