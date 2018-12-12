@@ -11,6 +11,8 @@ Nothing yet!
 
 ## [v3.8.0] - 2018-12-12
 
+### Fixed
+
 - [#122] Dedupe items in the "extras" param if passed as a string, array, or set. ([@pdokas])
 - [#129] Clean `undefined` oauth params from the base string. ([@jeremyruppel])
 
