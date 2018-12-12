@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+Nothing yet!
+
+## [v3.8.0] - 2018-12-12
+
 - [#122] Dedupe items in the "extras" param if passed as a string, array, or set. ([@pdokas])
 - [#129] Clean `undefined` oauth params from the base string. ([@jeremyruppel])
 
@@ -161,7 +165,8 @@ This "release" marks the start of a complete rewrite of the Flickr SDK. Once the
 [v3.5.0]: https://github.com/flickr/flickr-sdk/compare/v3.4.0...v3.5.0
 [v3.6.0]: https://github.com/flickr/flickr-sdk/compare/v3.5.0...v3.6.0
 [v3.7.0]: https://github.com/flickr/flickr-sdk/compare/v3.6.0...v3.7.0
-[Unreleased]: https://github.com/flickr/flickr-sdk/compare/v3.7.0...master
+[v3.8.0]: https://github.com/flickr/flickr-sdk/compare/v3.7.0...v3.8.0
+[Unreleased]: https://github.com/flickr/flickr-sdk/compare/v3.8.0...master
 
 <!-- pull requests -->
 
