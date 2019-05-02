@@ -63,7 +63,7 @@ function processExtras(extras) {
  */
 
 function createClient(auth, opts) {
-	var host;
+	var host, port;
 
 	// allow passing just an api key instead of a function
 	if (typeof auth === 'string') {
@@ -77,6 +77,7 @@ function createClient(auth, opts) {
 	// options
 	opts = opts || {};
 	host = opts.host || 'api.flickr.com';
+	port = opts.port || '443';
 
 	return function (verb, method, args) {
 		if (typeof args === 'undefined') {
@@ -87,7 +88,7 @@ function createClient(auth, opts) {
 			args.extras = processExtras(args.extras);
 		}
 
-		return request(verb, 'https://' + host + '/services/rest')
+		return request(verb, 'https://' + host + ':' + port + '/services/rest')
 			.query({ method: method })
 			.query(args)
 			.use(json)

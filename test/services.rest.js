@@ -50,6 +50,19 @@ describe('services/rest', function () {
 		assert.equal(url.host, 'www.flickr.com');
 	});
 
+	it('can provide the port as an option', function () {
+		var req, url;
+
+		subject = new Subject(auth, {
+			port: '3337'
+		});
+
+		req = subject._('GET', 'flickr.test.echo');
+		url = parse(req.url);
+
+		assert.equal(url.port, '3337');
+	});
+
 	it('uses the correct path', function () {
 		var req = subject._('GET', 'flickr.test.echo');
 		var url = parse(req.url);
@@ -62,6 +75,13 @@ describe('services/rest', function () {
 		var url = parse(req.url);
 
 		assert.equal(url.host, 'api.flickr.com');
+	});
+
+	it('defaults to port 443', function () {
+		var req = subject._('GET', 'flickr.test.echo');
+		var url = parse(req.url);
+
+		assert.equal(url.port, '443');
 	});
 
 	it('adds default query string arguments', function () {
