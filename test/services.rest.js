@@ -77,13 +77,6 @@ describe('services/rest', function () {
 		assert.equal(url.host, 'api.flickr.com');
 	});
 
-	it('defaults to port 443', function () {
-		var req = subject._('GET', 'flickr.test.echo');
-		var url = parse(req.url);
-
-		assert.equal(url.port, '443');
-	});
-
 	it('adds default query string arguments', function () {
 		var req = subject._('GET', 'flickr.test.echo').request();
 		var url = parse(req.path, true);
