@@ -78,6 +78,10 @@ function createClient(auth, opts) {
 	opts = opts || {};
 	host = opts.host || 'api.flickr.com';
 
+	if (opts.port) {
+		host += ':' + opts.port;
+	}
+
 	return function (verb, method, args) {
 		if (typeof args === 'undefined') {
 			args = {};
