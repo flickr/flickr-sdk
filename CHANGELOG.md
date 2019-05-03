@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 Nothing yet!
 
+## [v3.9.0] - 2019-05-03
+
+#### Added
+
+- [#131] Add support for overriding a port when making a rest request ([@bwg])
+
 ## [v3.8.0] - 2018-12-12
 
 ### Fixed
@@ -149,6 +155,7 @@ This "release" marks the start of a complete rewrite of the Flickr SDK. Once the
 [@christianhg]: https://github.com/christianhg
 [@ebisbe]: https://github.com/ebisbe
 [@baohouse]: https://github.com/baohouse
+[@bwg]: https://github.com/bwg
 
 <!-- releases -->
 
@@ -168,7 +175,8 @@ This "release" marks the start of a complete rewrite of the Flickr SDK. Once the
 [v3.6.0]: https://github.com/flickr/flickr-sdk/compare/v3.5.0...v3.6.0
 [v3.7.0]: https://github.com/flickr/flickr-sdk/compare/v3.6.0...v3.7.0
 [v3.8.0]: https://github.com/flickr/flickr-sdk/compare/v3.7.0...v3.8.0
-[Unreleased]: https://github.com/flickr/flickr-sdk/compare/v3.8.0...master
+[v3.9.0]: https://github.com/flickr/flickr-sdk/compare/v3.8.0...v3.9.0
+[Unreleased]: https://github.com/flickr/flickr-sdk/compare/v3.9.0...master
 
 <!-- pull requests -->
 
@@ -196,6 +204,7 @@ This "release" marks the start of a complete rewrite of the Flickr SDK. Once the
 [#121]: https://github.com/flickr/flickr-sdk/pull/121
 [#122]: https://github.com/flickr/flickr-sdk/pull/122
 [#129]: https://github.com/flickr/flickr-sdk/pull/129
+[#131]: https://github.com/flickr/flickr-sdk/pull/131
 
 <!-- other links -->
 
