@@ -38,9 +38,9 @@
     "url": "git+ssh://git@github.com/flickr/flickr-sdk.git"
   },
   "author": [
-    "Jeremy Ruppel <ruppel@yahoo-inc.com>",
-    "Alex Seville <seville@yahoo-inc.com>",
-    "Phil Dokas <pdokas@yahoo-inc.com>"
+    "Jeremy Ruppel",
+    "Alex Seville",
+    "Phil Dokas"
   ],
   "license": "MIT",
   "engines": {
