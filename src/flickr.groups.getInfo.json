@@ -11,7 +11,7 @@
       },
       {
         "name": "group_id",
-        "optional": "0"
+        "optional": "1"
       },
       {
         "name": "group_path_alias",
