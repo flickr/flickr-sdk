@@ -190,7 +190,7 @@ describe('services/rest', function () {
 			subject._('GET', 'flickr.test.echo', {
 				extras: { wat: 'NaNNaNNaNNaNNaNNaNNaN Batman!' }
 			}).request();
-		}, 'Invalid type for argument "extras"');
+		}, /Invalid type for argument "extras"/);
 	});
 
 });
