@@ -5,69 +5,58 @@ Before using these examples, sign up for an app here: https://www.flickr.com/ser
 
 These examples assume you have set the following environment variables:
 
-| Variable | Value |
-| --- | --- |
-| `FLICKR_API_KEY` | Your application's API key<sup>*</sup> |
-| `FLICKR_CONSUMER_KEY` | Your application's API key<sup>†</sup> |
-| `FLICKR_CONSUMER_SECRET` | Your application's API secret<sup>†</sup> |
-| `FLICKR_OAUTH_TOKEN` | A verified OAuth token<sup>‡</sup> |
+| Variable                    | Value                                     |
+| --------------------------- | ----------------------------------------- |
+| `FLICKR_API_KEY`            | Your application's API key<sup>*</sup>    |
+| `FLICKR_CONSUMER_KEY`       | Your application's API key<sup>†</sup>    |
+| `FLICKR_CONSUMER_SECRET`    | Your application's API secret<sup>†</sup> |
+| `FLICKR_OAUTH_TOKEN`        | A verified OAuth token<sup>‡</sup>        |
 | `FLICKR_OAUTH_TOKEN_SECRET` | A verified OAuth token secret<sup>‡</sup> |
 
 - <sup>*</sup> Required for public REST API methods
 - <sup>†</sup> Required for obtaining an OAuth token
 - <sup>‡</sup> Required for OAuth signing
 
-### flickr.photos.getInfo
+### feeds.js
+
+This example demonstrates how to retrieve public Flickr Feed data.
+
+```
+$ node ./feeds.js
+```
+
+### flickr.photos.getInfo.js
 
 This example demonstrates how to use the Flickr REST API to retrieve public information about a photo.
 
 ```
 $ export FLICKR_API_KEY=# your api key
-$ node examples/flickr.photos.getInfo.js
+$ node ./flickr.photos.getInfo.js
 ```
 
-### flickr.photos.search
+### flickr.photos.search.js
 
 This example demonstrates how to use the Flickr REST API to search for photos.
 
 ```
 $ export FLICKR_API_KEY=# your api key
-$ node examples/flickr.photos.search.js
+$ node ./flickr.photos.search.js
 ```
 
-### Feeds
-
-This example demonstrates how to retrieve public Flickr Feed data.
-
-```
-$ node examples/feeds.js
-```
-
-### OAuth
+### oauth.js
 
 This example demonstrates how to use the OAuth service to obtain an OAuth token and secret to make requests on behalf of a user.
 
+OAuth callback URLs **must be https**, so this example's server needs an SSL cert to run. Generate a self-signed cert by running `make` in this directory.
+
 ```
+$ make
 $ export FLICKR_CONSUMER_KEY=# your application's key
 $ export FLICKR_CONSUMER_SECRET=# your application's secret
-$ node examples/oauth.js
+$ node ./oauth.js
 ```
 
-### Upload
-
-This example demonstrates how to upload a photo on behalf of a user.
-
-```
-$ export FLICKR_CONSUMER_KEY=# your application's key
-$ export FLICKR_CONSUMER_SECRET=# your application's secret
-$ export FLICKR_OAUTH_TOKEN=# a verified oauth token
-$ export FLICKR_OAUTH_TOKEN_SECRET=# a verified oauth token secret
-$ node examples/upload.js
-```
-
-> 💡 Tip: Use the OAuth example to obtain an OAuth token and secret
-
-### Replace
+### replace.js
 
 This example demonstrates how to replace a photo on behalf of a user.
 
@@ -76,10 +65,24 @@ $ export FLICKR_CONSUMER_KEY=# your application's key
 $ export FLICKR_CONSUMER_SECRET=# your application's secret
 $ export FLICKR_OAUTH_TOKEN=# a verified oauth token
 $ export FLICKR_OAUTH_TOKEN_SECRET=# a verified oauth token secret
-$ node examples/replace.js <your photo id>
+$ node ./replace.js <your photo id>
 ```
 
 > 💡 Tip: Use the Upload example to upload a photo to replace
+
+### upload.js
+
+This example demonstrates how to upload a photo on behalf of a user.
+
+```
+$ export FLICKR_CONSUMER_KEY=# your application's key
+$ export FLICKR_CONSUMER_SECRET=# your application's secret
+$ export FLICKR_OAUTH_TOKEN=# a verified oauth token
+$ export FLICKR_OAUTH_TOKEN_SECRET=# a verified oauth token secret
+$ node ./upload.js
+```
+
+> 💡 Tip: Use the OAuth example to obtain an OAuth token and secret
 
 ### Credits
 

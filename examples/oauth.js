@@ -1,5 +1,7 @@
 var Flickr = require('..');
-var http = require('http');
+var https = require('https');
+var path = require('path');
+var fs = require('fs');
 var parse = require('url').parse;
 
 /**
@@ -31,7 +33,7 @@ var db = {
 // token verifier, which you will exchange for the real oauth token.
 
 function getRequestToken(req, res) {
-	oauth.request('http://localhost:3000/oauth/callback').then(function (_res) {
+	oauth.request('https://localhost:3000/oauth/callback').then(function (_res) {
 		var requestToken = _res.body.oauth_token;
 		var requestTokenSecret = _res.body.oauth_token_secret;
 
@@ -99,7 +101,28 @@ function verifyRequestToken(req, res, query) {
 
 // create a simple server to handle incoming requests.
 
-http.createServer(function (req, res) {
+function getcert(filename) {
+	try {
+		return fs.readFileSync(path.join(__dirname, filename));
+	} catch (err) {
+		err.message = `${err.message}
+
+    OAuth callback URLs **must be https**, so this example's server needs an SSL cert to run.
+    Generate a self-signed cert by running \`make\` in this directory:
+
+    $ cd ${__dirname} && make
+`;
+		throw err;
+	}
+}
+
+// eslint-disable-next-line vars-on-top
+var options = {
+	key: getcert('key.pem'),
+	cert: getcert('cert.pem')
+};
+
+https.createServer(options, function (req, res) {
 	var url = parse(req.url, true);
 
 	switch (url.pathname) {
@@ -112,5 +135,5 @@ http.createServer(function (req, res) {
 		res.end();
 	}
 }).listen(3000, function () {
-	console.log('Open your browser to http://localhost:3000');
+	console.log('Open your browser to https://localhost:3000');
 });
