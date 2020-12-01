@@ -9,6 +9,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 Nothing yet!
 
+## [v3.10.0] - 2020-11-30
+
+#### Fixed
+
+- [#138] Use https for oauth example server ([@oluc])
+- [#139] Use a default filename when uploading a buffer ([@blakecallens])
+
 ## [v3.9.0] - 2019-05-03
 
 #### Added
@@ -17,7 +24,7 @@ Nothing yet!
 
 ## [v3.8.0] - 2018-12-12
 
-### Fixed
+#### Fixed
 
 - [#122] Dedupe items in the "extras" param if passed as a string, array, or set. ([@pdokas])
 - [#129] Clean `undefined` oauth params from the base string. ([@jeremyruppel])
@@ -156,6 +163,8 @@ This "release" marks the start of a complete rewrite of the Flickr SDK. Once the
 [@ebisbe]: https://github.com/ebisbe
 [@baohouse]: https://github.com/baohouse
 [@bwg]: https://github.com/bwg
+[@oluc]: https://github.com/oluc
+[@blakecallens]: https://github.com/blakecallens
 
 <!-- releases -->
 
@@ -205,6 +214,8 @@ This "release" marks the start of a complete rewrite of the Flickr SDK. Once the
 [#122]: https://github.com/flickr/flickr-sdk/pull/122
 [#129]: https://github.com/flickr/flickr-sdk/pull/129
 [#131]: https://github.com/flickr/flickr-sdk/pull/131
+[#138]: https://github.com/flickr/flickr-sdk/pull/138
+[#139]: https://github.com/flickr/flickr-sdk/pull/139
 
 <!-- other links -->
 
