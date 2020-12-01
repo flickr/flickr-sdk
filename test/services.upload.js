@@ -65,6 +65,18 @@ describe('services/upload', function () {
 		sinon.restore(spy);
 	});
 
+	it('uses a default filename if upload is not a file', function () {
+		var spy = sinon.spy(Request.prototype, 'attach');
+		var buf = Buffer.from('');
+		var req = new Subject(auth, buf);
+
+		sinon.assert.calledOnce(spy);
+		sinon.assert.calledWith(spy, 'photo', buf, 'flickr-sdk.jpg');
+		sinon.assert.calledOn(spy, req);
+
+		sinon.restore(spy);
+	});
+
 	it('adds optional arguments as fields', function () {
 		var spy = sinon.stub(Request.prototype, 'field');
 		var obj = { title: 'Works on MY machine!' };
