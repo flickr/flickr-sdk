@@ -54,7 +54,13 @@ function Upload(auth, file, args) {
 		args = {};
 	}
 
-	this.attach('photo', file);
+	// superagent and form-data try to assume the filename from the file value
+	// given, but expect it to be passed explicitly if given a Buffer, so we'll
+	// just make one up. Leave it falsy so that that we don't change
+	// superagent's default behavior
+	let filename = Buffer.isBuffer(file) ? 'flickr-sdk.jpg' : undefined;
+
+	this.attach('photo', file, filename);
 	this.field(args);
 	this.use(xml);
 	this.use(auth);
