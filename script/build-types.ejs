@@ -1,0 +1,35 @@
+<%_ function printMethods(map, prefix){ _%>
+	<%_ Object.entries(map).forEach(([key, value]) => { _%>
+		<%_ if (typeof value === 'string') { _%>
+<%= prefix %>/** [Flickr docs](<%= getDocsURL(value) %>) - Permissions: `<%= getPerms(value) %>` */
+<%= prefix %><%= key _%>(options: {
+			<%_ getArguments(value).filter(({ name }) => name !== 'api_key').forEach(({ name, optional }) => { _%>
+<%= prefix %>	<%= name %><%= parseInt(optional, 10) ? '?' : '' %>: string | number;
+			<%_ }); _%>
+<%= prefix %>}): FlickrResponse;
+		<%_ } else { _%>
+<%= prefix %><%= key _%>: {
+<%= printMethods(value, `${prefix}\t`) _%>
+<%= prefix %>};
+		<%_ } _%>
+	<%_ }); _%>
+<%_ } _%>
+
+// not comprehensive
+type FlickrResponse = Promise<{
+	body: any;
+	ok: boolean;
+}>;
+
+declare class Flickr {
+	constructor(auth: string);
+<%= printMethods(methodTree, '\t') _%>
+
+	// TODO: define static classes
+	OAuth: any;
+	Feeds: any;
+	Upload: any;
+	Replace: any;
+}
+
+export = Flickr;
