@@ -9,6 +9,19 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 Nothing yet!
 
+## [v4.0.0] - 2021-11-08
+
+This release drops support for node 11.x and below, mostly due to dependencies
+moving to esmodules.
+
+#### Fixed
+
+- [#144] Upgraded dev dependencies and superagent ([@jeremyruppel])
+
+#### Removed
+
+- [#144] Removed support for node 12.0 ([@jeremyruppel])
+
 ## [v3.10.0] - 2020-11-30
 
 #### Fixed
@@ -186,7 +199,8 @@ This "release" marks the start of a complete rewrite of the Flickr SDK. Once the
 [v3.8.0]: https://github.com/flickr/flickr-sdk/compare/v3.7.0...v3.8.0
 [v3.9.0]: https://github.com/flickr/flickr-sdk/compare/v3.8.0...v3.9.0
 [v3.10.0]: https://github.com/flickr/flickr-sdk/compare/v3.9.0...v3.10.0
-[Unreleased]: https://github.com/flickr/flickr-sdk/compare/v3.9.0...master
+[v4.0.0]: https://github.com/flickr/flickr-sdk/compare/v3.10.0...v4.0.0
+[Unreleased]: https://github.com/flickr/flickr-sdk/compare/v4.0.0...master
 
 <!-- pull requests -->
 
@@ -217,6 +231,7 @@ This "release" marks the start of a complete rewrite of the Flickr SDK. Once the
 [#131]: https://github.com/flickr/flickr-sdk/pull/131
 [#138]: https://github.com/flickr/flickr-sdk/pull/138
 [#139]: https://github.com/flickr/flickr-sdk/pull/139
+[#144]: https://github.com/flickr/flickr-sdk/pull/144
 
 <!-- other links -->
 
