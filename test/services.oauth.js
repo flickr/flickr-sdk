@@ -10,7 +10,7 @@ describe('services/oauth', function () {
 
 	beforeEach(function () {
 		subject = new Subject('consumer key', 'consumer secret');
-		sandbox = sinon.sandbox.create();
+		sandbox = sinon.createSandbox();
 		sandbox.stub(OAuth.prototype, 'timestamp').returns(499166400);
 		sandbox.stub(OAuth.prototype, 'nonce').returns('p2m2bnHdXVIsQH0FUv0oN9XrJU57ak7dSSpHU36mn4k=');
 	});

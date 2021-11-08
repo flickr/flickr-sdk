@@ -70,6 +70,7 @@ OAuth.prototype.request = function (oauthCallback) {
 	return request('GET', 'https://www.flickr.com/services/oauth/request_token')
 		.query({ oauth_callback: oauthCallback })
 		.parse(this.parse)
+		.buffer(true)
 		.use(oauth(this.consumerKey, this.consumerSecret, false, false));
 
 	/*
@@ -142,6 +143,7 @@ OAuth.prototype.verify = function (oauthToken, oauthVerifier, tokenSecret) {
 	return request('GET', 'https://www.flickr.com/services/oauth/access_token')
 		.query({ oauth_verifier: oauthVerifier })
 		.parse(this.parse)
+		.buffer(true)
 		.use(oauth(this.consumerKey, this.consumerSecret, oauthToken, tokenSecret));
 
 	/*
