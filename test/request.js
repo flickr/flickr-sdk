@@ -25,7 +25,7 @@ describe('lib/request', function () {
 		sinon.assert.calledOnce(end);
 		sinon.assert.calledWith(end, spy);
 
-		sinon.restore(end);
+		end.restore();
 	});
 
 	it('supports request(url)', function () {
@@ -61,7 +61,7 @@ describe('lib/request', function () {
 		});
 
 		afterEach(function () {
-			sinon.restore(Request.prototype.query);
+			Request.prototype.query.restore();
 		});
 
 		it('adds a query string to the params hash', function () {
@@ -99,7 +99,7 @@ describe('lib/request', function () {
 		});
 
 		afterEach(function () {
-			sinon.restore(Request.prototype.field);
+			Request.prototype.field.restore();
 		});
 
 		it('adds a key/value to the params hash', function () {

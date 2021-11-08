@@ -62,7 +62,7 @@ describe('services/upload', function () {
 		sinon.assert.calledWith(spy, 'photo', 'fnord.png');
 		sinon.assert.calledOn(spy, req);
 
-		sinon.restore(spy);
+		spy.restore();
 	});
 
 	it('uses a default filename if upload is not a file', function () {
@@ -74,7 +74,7 @@ describe('services/upload', function () {
 		sinon.assert.calledWith(spy, 'photo', buf, 'flickr-sdk.jpg');
 		sinon.assert.calledOn(spy, req);
 
-		sinon.restore(spy);
+		spy.restore();
 	});
 
 	it('adds optional arguments as fields', function () {
@@ -86,7 +86,7 @@ describe('services/upload', function () {
 		sinon.assert.calledWith(spy, obj);
 		sinon.assert.calledOn(spy, req);
 
-		sinon.restore(spy);
+		spy.restore();
 	});
 
 });
