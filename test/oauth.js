@@ -34,7 +34,7 @@ describe('oauth', function () {
 	describe('#timestamp', function () {
 
 		beforeEach(function () {
-			sinon.restore(subject.timestamp);
+			subject.timestamp.restore();
 		});
 
 		it('returns the current system time in seconds', function () {
@@ -46,7 +46,7 @@ describe('oauth', function () {
 	describe('#nonce', function () {
 
 		beforeEach(function () {
-			sinon.restore(subject.nonce);
+			subject.nonce.restore();
 		});
 
 		it('returns a string', function () {

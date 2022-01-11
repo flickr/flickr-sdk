@@ -1,6 +1,6 @@
 {
   "name": "flickr-sdk",
-  "version": "3.10.0",
+  "version": "4.0.0",
   "description": "Almost certainly the best Flickr API client in the world for node and the browser",
   "keywords": [
     "flickr",
@@ -55,24 +55,24 @@
   "devDependencies": {
     "browserify": "^14.4.0",
     "chalk": "^2.0.1",
-    "dotprune": "^0.1.10",
+    "dotprune": "^0.1.0",
     "ejs": "~2.5.2",
-    "eslint": "^4.2.0",
+    "eslint": "^8.2.0",
     "eslint-config-flickr": "~1.3.1",
-    "eslint-plugin-header": "^1.0.0",
+    "eslint-plugin-header": "^3.1.1",
     "indent-string": "^3.1.0",
-    "jsdoc-to-markdown": "^3.0.0",
-    "mocha": "~3.0.2",
-    "nock": "~8.0.0",
-    "nyc": "^10.3.2",
+    "jsdoc-to-markdown": "^7.1.0",
+    "mocha": "^9.1.3",
+    "nock": "^13.2.0",
+    "nyc": "^15.1.0",
     "ora": "^1.3.0",
     "p-limit": "^1.1.0",
     "require-dir": "~0.3.1",
-    "sinon": "~1.17.6",
+    "sinon": "^12.0.1",
     "stringify-object": "^3.2.0"
   },
   "dependencies": {
-    "superagent": "^3.8.0",
+    "superagent": "^6.1.0",
     "xml2js": "^0.4.17"
   },
   "bugs": {

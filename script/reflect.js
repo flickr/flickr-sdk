@@ -1,5 +1,3 @@
-/* global Promise */
-
 var fs = require('fs');
 var path = require('path');
 var limit = require('p-limit')(2); // concurrency
