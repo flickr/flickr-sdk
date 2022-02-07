@@ -51,13 +51,13 @@ describe('flickr.blogs.postPhoto', function () {
 
 		assert.equal(req.method, 'POST');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');
-		assert.equal(req.qs.format, 'json');
-		assert.equal(req.qs.nojsoncallback, '1');
-		assert.equal(req.qs.method, 'flickr.blogs.postPhoto');
+		assert.equal(req.params.format, 'json');
+		assert.equal(req.params.nojsoncallback, '1');
+		assert.equal(req.params.method, 'flickr.blogs.postPhoto');
 		assert.equal(req.header['Content-Type'], 'text/plain');
-		assert.equal(req.qs.photo_id, '_');
-		assert.equal(req.qs.title, '_');
-		assert.equal(req.qs.description, '_');
+		assert.equal(req.params.photo_id, '_');
+		assert.equal(req.params.title, '_');
+		assert.equal(req.params.description, '_');
 	});
 
 });

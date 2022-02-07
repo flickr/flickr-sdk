@@ -20,11 +20,11 @@ describe('flickr.people.findByUsername', function () {
 
 		assert.equal(req.method, 'GET');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');
-		assert.equal(req.qs.format, 'json');
-		assert.equal(req.qs.nojsoncallback, '1');
-		assert.equal(req.qs.method, 'flickr.people.findByUsername');
+		assert.equal(req.params.format, 'json');
+		assert.equal(req.params.nojsoncallback, '1');
+		assert.equal(req.params.method, 'flickr.people.findByUsername');
 		assert.equal(req.header['Content-Type'], 'text/plain');
-		assert.equal(req.qs.username, '_');
+		assert.equal(req.params.username, '_');
 	});
 
 });

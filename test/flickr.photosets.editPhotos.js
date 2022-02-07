@@ -51,13 +51,13 @@ describe('flickr.photosets.editPhotos', function () {
 
 		assert.equal(req.method, 'POST');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');
-		assert.equal(req.qs.format, 'json');
-		assert.equal(req.qs.nojsoncallback, '1');
-		assert.equal(req.qs.method, 'flickr.photosets.editPhotos');
+		assert.equal(req.params.format, 'json');
+		assert.equal(req.params.nojsoncallback, '1');
+		assert.equal(req.params.method, 'flickr.photosets.editPhotos');
 		assert.equal(req.header['Content-Type'], 'text/plain');
-		assert.equal(req.qs.photoset_id, '_');
-		assert.equal(req.qs.primary_photo_id, '_');
-		assert.equal(req.qs.photo_ids, '_');
+		assert.equal(req.params.photoset_id, '_');
+		assert.equal(req.params.primary_photo_id, '_');
+		assert.equal(req.params.photo_ids, '_');
 	});
 
 });

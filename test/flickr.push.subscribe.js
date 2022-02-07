@@ -51,13 +51,13 @@ describe('flickr.push.subscribe', function () {
 
 		assert.equal(req.method, 'GET');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');
-		assert.equal(req.qs.format, 'json');
-		assert.equal(req.qs.nojsoncallback, '1');
-		assert.equal(req.qs.method, 'flickr.push.subscribe');
+		assert.equal(req.params.format, 'json');
+		assert.equal(req.params.nojsoncallback, '1');
+		assert.equal(req.params.method, 'flickr.push.subscribe');
 		assert.equal(req.header['Content-Type'], 'text/plain');
-		assert.equal(req.qs.topic, '_');
-		assert.equal(req.qs.callback, '_');
-		assert.equal(req.qs.verify, '_');
+		assert.equal(req.params.topic, '_');
+		assert.equal(req.params.callback, '_');
+		assert.equal(req.params.verify, '_');
 	});
 
 });
