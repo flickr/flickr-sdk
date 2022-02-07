@@ -20,11 +20,11 @@ describe('flickr.people.findByEmail', function () {
 
 		assert.equal(req.method, 'GET');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');
-		assert.equal(req.qs.format, 'json');
-		assert.equal(req.qs.nojsoncallback, '1');
-		assert.equal(req.qs.method, 'flickr.people.findByEmail');
+		assert.equal(req.params.format, 'json');
+		assert.equal(req.params.nojsoncallback, '1');
+		assert.equal(req.params.method, 'flickr.people.findByEmail');
 		assert.equal(req.header['Content-Type'], 'text/plain');
-		assert.equal(req.qs.find_email, '_');
+		assert.equal(req.params.find_email, '_');
 	});
 
 });

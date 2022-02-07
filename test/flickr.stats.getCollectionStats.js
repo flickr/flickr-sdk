@@ -35,12 +35,12 @@ describe('flickr.stats.getCollectionStats', function () {
 
 		assert.equal(req.method, 'GET');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');
-		assert.equal(req.qs.format, 'json');
-		assert.equal(req.qs.nojsoncallback, '1');
-		assert.equal(req.qs.method, 'flickr.stats.getCollectionStats');
+		assert.equal(req.params.format, 'json');
+		assert.equal(req.params.nojsoncallback, '1');
+		assert.equal(req.params.method, 'flickr.stats.getCollectionStats');
 		assert.equal(req.header['Content-Type'], 'text/plain');
-		assert.equal(req.qs.date, '_');
-		assert.equal(req.qs.collection_id, '_');
+		assert.equal(req.params.date, '_');
+		assert.equal(req.params.collection_id, '_');
 	});
 
 });

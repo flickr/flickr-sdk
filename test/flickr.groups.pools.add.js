@@ -35,12 +35,12 @@ describe('flickr.groups.pools.add', function () {
 
 		assert.equal(req.method, 'POST');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');
-		assert.equal(req.qs.format, 'json');
-		assert.equal(req.qs.nojsoncallback, '1');
-		assert.equal(req.qs.method, 'flickr.groups.pools.add');
+		assert.equal(req.params.format, 'json');
+		assert.equal(req.params.nojsoncallback, '1');
+		assert.equal(req.params.method, 'flickr.groups.pools.add');
 		assert.equal(req.header['Content-Type'], 'text/plain');
-		assert.equal(req.qs.photo_id, '_');
-		assert.equal(req.qs.group_id, '_');
+		assert.equal(req.params.photo_id, '_');
+		assert.equal(req.params.group_id, '_');
 	});
 
 });
