@@ -134,21 +134,6 @@ Feeds.prototype.forum = function (args) {
 };
 
 /**
- * Returns a list of recent comments on photostream and sets belonging to a given user.
- *
- * @param {Object} args
- * @param {Number|String} args.user_id The user ID to fetch recent activity for.
- * @returns {Request}
- * @see https://www.flickr.com/services/feeds/docs/activity/
- */
-
-Feeds.prototype.recentActivity = function (args) {
-	validate(args, 'user_id');
-
-	return this._('activity', args);
-};
-
-/**
  * Returns a list of recent comments that have been commented on by a given person.
  *
  * @param {Object} args
