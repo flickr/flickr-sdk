@@ -189,29 +189,6 @@ describe('services/feeds', function () {
 
 	});
 
-	describe('#recentActivity', function () {
-
-		it('requires "user_id"', function () {
-			assert.throws(function () {
-				subject.recentActivity();
-			}, function (err) {
-				return err.message === 'Missing required argument "user_id"';
-			});
-		});
-
-		it('returns a Request instance', function () {
-			var req = subject.recentActivity({ user_id: '1234' });
-
-			assert(req instanceof Request);
-			assert.equal(req.method, 'GET');
-			assert.equal(req.url, 'https://www.flickr.com/services/feeds/activity.gne');
-			assert.equal(req.params.format, 'json');
-			assert.equal(req.params.nojsoncallback, '1');
-			assert.equal(req.params.user_id, '1234');
-		});
-
-	});
-
 	describe('#recentComments', function () {
 
 		it('requires "user_id"', function () {
