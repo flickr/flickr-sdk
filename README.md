@@ -288,7 +288,6 @@ docs for the full list of methods and their supported arguments.
         * [.groupDiscussions(args)](#Flickr.Feeds+groupDiscussions) ⇒ <code>Request</code>
         * [.groupPool(args)](#Flickr.Feeds+groupPool) ⇒ <code>Request</code>
         * [.forum([args])](#Flickr.Feeds+forum) ⇒ <code>Request</code>
-        * [.recentActivity(args)](#Flickr.Feeds+recentActivity) ⇒ <code>Request</code>
         * [.recentComments(args)](#Flickr.Feeds+recentComments) ⇒ <code>Request</code>
 
 <a name="new_Flickr_new"></a>
@@ -596,7 +595,6 @@ replace.then(function (res) {
     * [.groupDiscussions(args)](#Flickr.Feeds+groupDiscussions) ⇒ <code>Request</code>
     * [.groupPool(args)](#Flickr.Feeds+groupPool) ⇒ <code>Request</code>
     * [.forum([args])](#Flickr.Feeds+forum) ⇒ <code>Request</code>
-    * [.recentActivity(args)](#Flickr.Feeds+recentActivity) ⇒ <code>Request</code>
     * [.recentComments(args)](#Flickr.Feeds+recentComments) ⇒ <code>Request</code>
 
 <a name="new_Flickr.Feeds_new"></a>
@@ -691,19 +689,6 @@ Returns a list of recent topics from the forum.
 | Param | Type |
 | --- | --- |
 | [args] | <code>Object</code> | 
-
-<a name="Flickr.Feeds+recentActivity"></a>
-
-#### feeds.recentActivity(args) ⇒ <code>Request</code>
-Returns a list of recent comments on photostream and sets belonging to a given user.
-
-**Kind**: instance method of [<code>Feeds</code>](#Flickr.Feeds)  
-**See**: https://www.flickr.com/services/feeds/docs/activity/  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| args | <code>Object</code> |  |
-| args.user_id | <code>Number</code> \| <code>String</code> | The user ID to fetch recent activity for. |
 
 <a name="Flickr.Feeds+recentComments"></a>
 
