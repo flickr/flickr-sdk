@@ -9,6 +9,23 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 Nothing yet!
 
+## [v6.0.0] - 2022-03-03
+
+This release removes the old recent activity feed.
+
+#### Removed
+
+- [#149] Remove recentActivity feed ([@jeremyruppel])
+
+## [v5.0.0] - 2022-02-07
+
+As of this version we will now put params in the POST body instead of the query
+string for methods that need it.
+
+#### Changed
+
+- [#147] Use params for REST API client ([@jeremyruppel])
+
 ## [v4.0.0] - 2021-11-08
 
 This release drops support for node 11.x and below, mostly due to dependencies
@@ -200,7 +217,9 @@ This "release" marks the start of a complete rewrite of the Flickr SDK. Once the
 [v3.9.0]: https://github.com/flickr/flickr-sdk/compare/v3.8.0...v3.9.0
 [v3.10.0]: https://github.com/flickr/flickr-sdk/compare/v3.9.0...v3.10.0
 [v4.0.0]: https://github.com/flickr/flickr-sdk/compare/v3.10.0...v4.0.0
-[Unreleased]: https://github.com/flickr/flickr-sdk/compare/v4.0.0...master
+[v5.0.0]: https://github.com/flickr/flickr-sdk/compare/v4.0.0...v5.0.0
+[v6.0.0]: https://github.com/flickr/flickr-sdk/compare/v5.0.0...v6.0.0
+[Unreleased]: https://github.com/flickr/flickr-sdk/compare/v6.0.0...master
 
 <!-- pull requests -->
 
@@ -232,6 +251,8 @@ This "release" marks the start of a complete rewrite of the Flickr SDK. Once the
 [#138]: https://github.com/flickr/flickr-sdk/pull/138
 [#139]: https://github.com/flickr/flickr-sdk/pull/139
 [#144]: https://github.com/flickr/flickr-sdk/pull/144
+[#147]: https://github.com/flickr/flickr-sdk/pull/147
+[#149]: https://github.com/flickr/flickr-sdk/pull/149
 
 <!-- other links -->
 

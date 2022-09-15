@@ -58,5 +58,6 @@ function parseXML(res, fn) {
  */
 
 module.exports = function (req) {
+	req.buffer(true);
 	req.parse(parseXML);
 };

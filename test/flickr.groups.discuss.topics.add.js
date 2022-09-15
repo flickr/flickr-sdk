@@ -51,13 +51,13 @@ describe('flickr.groups.discuss.topics.add', function () {
 
 		assert.equal(req.method, 'POST');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');
-		assert.equal(req.qs.format, 'json');
-		assert.equal(req.qs.nojsoncallback, '1');
-		assert.equal(req.qs.method, 'flickr.groups.discuss.topics.add');
+		assert.equal(req.params.format, 'json');
+		assert.equal(req.params.nojsoncallback, '1');
+		assert.equal(req.params.method, 'flickr.groups.discuss.topics.add');
 		assert.equal(req.header['Content-Type'], 'text/plain');
-		assert.equal(req.qs.group_id, '_');
-		assert.equal(req.qs.subject, '_');
-		assert.equal(req.qs.message, '_');
+		assert.equal(req.params.group_id, '_');
+		assert.equal(req.params.subject, '_');
+		assert.equal(req.params.message, '_');
 	});
 
 });

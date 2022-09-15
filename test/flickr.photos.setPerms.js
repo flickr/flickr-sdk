@@ -69,14 +69,14 @@ describe('flickr.photos.setPerms', function () {
 
 		assert.equal(req.method, 'POST');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');
-		assert.equal(req.qs.format, 'json');
-		assert.equal(req.qs.nojsoncallback, '1');
-		assert.equal(req.qs.method, 'flickr.photos.setPerms');
+		assert.equal(req.params.format, 'json');
+		assert.equal(req.params.nojsoncallback, '1');
+		assert.equal(req.params.method, 'flickr.photos.setPerms');
 		assert.equal(req.header['Content-Type'], 'text/plain');
-		assert.equal(req.qs.photo_id, '_');
-		assert.equal(req.qs.is_public, '_');
-		assert.equal(req.qs.is_friend, '_');
-		assert.equal(req.qs.is_family, '_');
+		assert.equal(req.params.photo_id, '_');
+		assert.equal(req.params.is_public, '_');
+		assert.equal(req.params.is_friend, '_');
+		assert.equal(req.params.is_family, '_');
 	});
 
 });

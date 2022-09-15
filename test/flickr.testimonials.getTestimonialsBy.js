@@ -20,11 +20,11 @@ describe('flickr.testimonials.getTestimonialsBy', function () {
 
 		assert.equal(req.method, 'GET');
 		assert.equal(req.url, 'https://api.flickr.com/services/rest');
-		assert.equal(req.qs.format, 'json');
-		assert.equal(req.qs.nojsoncallback, '1');
-		assert.equal(req.qs.method, 'flickr.testimonials.getTestimonialsBy');
+		assert.equal(req.params.format, 'json');
+		assert.equal(req.params.nojsoncallback, '1');
+		assert.equal(req.params.method, 'flickr.testimonials.getTestimonialsBy');
 		assert.equal(req.header['Content-Type'], 'text/plain');
-		assert.equal(req.qs.user_id, '_');
+		assert.equal(req.params.user_id, '_');
 	});
 
 });
