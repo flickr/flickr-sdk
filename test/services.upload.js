@@ -28,11 +28,12 @@ describe('services/upload', function () {
 		});
 	});
 
-	/*
-		TODO user-agent
-	*/
+	it('adds default request headers', function () {
+		const req = new Subject(auth, 41234567890);
 
-	it('adds default request headers');
+		assert.strictEqual(req.get('user-agent'),
+			'flickr-sdk/' + process.env.npm_package_version);
+	});
 
 	it('uses the correct method', function () {
 		var req = new Subject(auth);
