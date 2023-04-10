@@ -9,6 +9,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 Nothing yet!
 
+## [v6.1.1] - 2023-04-10
+
+This release upgrades
+xml2js@[0.5.0](https://github.com/Leonidas-from-XIV/node-xml2js/releases/tag/0.5.0) as the previous version is succeptible to
+prototype pollution.
+
+## [v6.1.0] - 2023-03-23
+
+This release adds an explicit `user-agent` header to API requests.
+
 ## [v6.0.0] - 2022-03-03
 
 This release removes the old recent activity feed.
