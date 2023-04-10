@@ -15,7 +15,10 @@
     "flickr-sdk.js",
     "lib",
     "plugins",
-    "services"
+    "services",
+    "CHANGELOG.md",
+    "LICENSE",
+    "README.md"
   ],
   "browser": {
     "./plugins/oauth.js": "./plugins/oauth-browser.js",
