@@ -1,3 +1,4 @@
+import type { Request } from './lib/request';
 import type { Response } from 'superagent;
 import type OAuth from './services/oauth';
 import type Feeds from './services/feeds';
@@ -8,7 +9,7 @@ import type Replace from './services/replace';
 	<%_ Object.entries(map).forEach(([key, value]) => { _%>
 		<%_ if (typeof value === 'string') { _%>
 <%= prefix %>/** [Flickr docs](<%= getDocsURL(value) %>) - Permissions: `<%= getPerms(value) %>` */
-<%= prefix %><%= key _%>(options: {
+<%= prefix %><%= key _%>(params: {
 			<%_ getArguments(value).filter(({ name }) => name !== 'api_key').forEach(({ name, optional }) => { _%>
 <%= prefix %>	<%= name %><%= parseInt(optional, 10) ? '?' : '' %>: string | number;
 			<%_ }); _%>
@@ -27,7 +28,7 @@ declare class Flickr {
 	static Upload = Upload;
 	static Replace = Replace;
 
-	constructor(auth: string);
+	constructor(auth: string | ((req: Request) => void));
 <%= printMethods(methodTree, '\t') _%>
 }
 
