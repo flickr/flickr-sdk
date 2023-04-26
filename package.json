@@ -10,8 +10,10 @@
     "search"
   ],
   "main": "index.js",
+  "types": "flickr-sdk.d.ts",
   "files": [
     "index.js",
+    "flickr-sdk.d.ts",
     "flickr-sdk.js",
     "lib",
     "plugins",
@@ -29,8 +31,9 @@
     "build-rest": "node script/build-rest > services/rest.js",
     "build-tests": "node script/build-tests",
     "build-docs": "node script/build-docs > README.md",
+    "build-types": "node script/build-types > flickr-sdk.d.ts",
     "build-client": "browserify -s Flickr $npm_package_main > flickr-sdk.js",
-    "build": "npm run build-rest && npm run build-docs && npm run build-client",
+    "build": "npm run build-rest && npm run build-docs && npm run build-types && npm run build-client",
     "lint": "eslint .",
     "test": "mocha",
     "coverage": "nyc mocha",
