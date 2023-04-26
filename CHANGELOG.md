@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 Nothing yet!
 
+## [v6.2.0] - 2023-04-26
+
+- [#141] Adds types! Big thanks to [@seleb] for contributing this!
+
 ## [v6.1.1] - 2023-04-10
 
 This release upgrades
@@ -205,6 +209,7 @@ This "release" marks the start of a complete rewrite of the Flickr SDK. Once the
 [@bwg]: https://github.com/bwg
 [@oluc]: https://github.com/oluc
 [@blakecallens]: https://github.com/blakecallens
+[@seleb]: https://github.com/seleb
 
 <!-- releases -->
 
@@ -229,7 +234,24 @@ This "release" marks the start of a complete rewrite of the Flickr SDK. Once the
 [v4.0.0]: https://github.com/flickr/flickr-sdk/compare/v3.10.0...v4.0.0
 [v5.0.0]: https://github.com/flickr/flickr-sdk/compare/v4.0.0...v5.0.0
 [v6.0.0]: https://github.com/flickr/flickr-sdk/compare/v5.0.0...v6.0.0
-[Unreleased]: https://github.com/flickr/flickr-sdk/compare/v6.0.0...master
+[v6.1.0]: https://github.com/flickr/flickr-sdk/compare/v6.0.0...v6.1.0
+[v6.1.1]: https://github.com/flickr/flickr-sdk/compare/v6.1.0...v6.1.1
+[v6.2.0]: https://github.com/flickr/flickr-sdk/compare/v6.1.1...v6.2.0
+[Unreleased]: https://github.com/flickr/flickr-sdk/compare/v6.2.0...master
+
+## [v6.2.0] - 2023-04-26
+
+- [#141] Adds types! Big thanks to [@seleb] for contributing this!
+
+## [v6.1.1] - 2023-04-10
+
+This release upgrades
+xml2js@[0.5.0](https://github.com/Leonidas-from-XIV/node-xml2js/releases/tag/0.5.0) as the previous version is succeptible to
+prototype pollution.
+
+## [v6.1.0] - 2023-03-23
+
+This release adds an explicit `user-agent` header to API requests.
 
 <!-- pull requests -->
 
@@ -256,10 +278,9 @@ This "release" marks the start of a complete rewrite of the Flickr SDK. Once the
 [#119]: https://github.com/flickr/flickr-sdk/pull/119
 [#121]: https://github.com/flickr/flickr-sdk/pull/121
 [#122]: https://github.com/flickr/flickr-sdk/pull/122
-[#129]: https://github.com/flickr/flickr-sdk/pull/129
-[#131]: https://github.com/flickr/flickr-sdk/pull/131
 [#138]: https://github.com/flickr/flickr-sdk/pull/138
 [#139]: https://github.com/flickr/flickr-sdk/pull/139
+[#141]: https://github.com/flickr/flickr-sdk/pull/141
 [#144]: https://github.com/flickr/flickr-sdk/pull/144
 [#147]: https://github.com/flickr/flickr-sdk/pull/147
 [#149]: https://github.com/flickr/flickr-sdk/pull/149

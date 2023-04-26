@@ -23,7 +23,13 @@ The Flickr API is divided into several services:
 **Example**
 
 ``` js
-var Flickr = require('flickr-sdk');
+const Flickr = require('flickr-sdk');
+
+const flickr = new Flickr(process.env.FLICKR_API_KEY);
+
+const { body } = await flickr.photos.getInfo({
+  photo_id: 'your photo id here',
+})
 ```
 
 ### Browser Usage
