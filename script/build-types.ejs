@@ -1,3 +1,9 @@
+import type { Response } from 'superagent;
+import type OAuth from './services/oauth';
+import type Feeds from './services/feeds';
+import type Upload from './services/upload';
+import type Replace from './services/replace';
+
 <%_ function printMethods(map, prefix){ _%>
 	<%_ Object.entries(map).forEach(([key, value]) => { _%>
 		<%_ if (typeof value === 'string') { _%>
@@ -6,7 +12,7 @@
 			<%_ getArguments(value).filter(({ name }) => name !== 'api_key').forEach(({ name, optional }) => { _%>
 <%= prefix %>	<%= name %><%= parseInt(optional, 10) ? '?' : '' %>: string | number;
 			<%_ }); _%>
-<%= prefix %>}): FlickrResponse;
+<%= prefix %>}): Promise<Response>;
 		<%_ } else { _%>
 <%= prefix %><%= key _%>: {
 <%= printMethods(value, `${prefix}\t`) _%>
@@ -15,21 +21,14 @@
 	<%_ }); _%>
 <%_ } _%>
 
-// not comprehensive
-type FlickrResponse = Promise<{
-	body: any;
-	ok: boolean;
-}>;
-
 declare class Flickr {
+	static OAuth = OAuth;
+	static Feeds = Feeds;
+	static Upload = Upload;
+	static Replace = Replace;
+
 	constructor(auth: string);
 <%= printMethods(methodTree, '\t') _%>
-
-	// TODO: define static classes
-	OAuth: any;
-	Feeds: any;
-	Upload: any;
-	Replace: any;
 }
 
 export = Flickr;
