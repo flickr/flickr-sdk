@@ -1,9 +1,5 @@
 import type { Request } from './lib/request';
-import type { Response } from 'superagent;
-import type OAuth from './services/oauth';
-import type Feeds from './services/feeds';
-import type Upload from './services/upload';
-import type Replace from './services/replace';
+import type { Response } from 'superagent';
 
 <%_ function printMethods(map, prefix){ _%>
 	<%_ Object.entries(map).forEach(([key, value]) => { _%>
@@ -23,10 +19,10 @@ import type Replace from './services/replace';
 <%_ } _%>
 
 declare class Flickr {
-	static OAuth = OAuth;
-	static Feeds = Feeds;
-	static Upload = Upload;
-	static Replace = Replace;
+	static OAuth: any;
+	static Feeds: any;
+	static Upload: any;
+	static Replace: any;
 
 	constructor(auth: string | ((req: Request) => void));
 <%= printMethods(methodTree, '\t') _%>

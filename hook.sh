@@ -7,5 +7,6 @@ npm run build-rest
 npm run build-docs
 npm run build-tests
 npm run build-client
+npm run tsc
 npm run lint
 npm run test
