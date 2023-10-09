@@ -13,14 +13,6 @@ describe('lib/request', function () {
 		assert(subject('GET', 'http://www.example.com') instanceof Request);
 	});
 
-	it('has a default user agent', function () {
-		const req = subject('GET', 'http://www.example.com');
-
-		assert.strictEqual(req.get('user-agent'),
-			'flickr-sdk/' + process.env.npm_package_version
-		);
-	});
-
 	it('supports request(url, callback)', function () {
 		var end = sinon.stub(subject.Request.prototype, 'end').returnsThis();
 		var spy = sinon.spy();

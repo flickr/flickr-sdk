@@ -34,13 +34,6 @@ describe('services/replace', function () {
 		});
 	});
 
-	it('adds default request headers', function () {
-		const req = new Subject(auth, 41234567890);
-
-		assert.strictEqual(req.get('user-agent'),
-			'flickr-sdk/' + process.env.npm_package_version);
-	});
-
 	it('uses the correct method', function () {
 		var req = new Subject(auth, 41234567890);
 

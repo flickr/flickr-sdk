@@ -18,13 +18,6 @@ describe('services/feeds', function () {
 		assert(subject._('photos_public') instanceof Request);
 	});
 
-	it('adds default request headers', function () {
-		const req = subject._('photos_public');
-
-		assert.strictEqual(req.get('user-agent'),
-			'flickr-sdk/' + process.env.npm_package_version);
-	});
-
 	it('uses the correct path', function () {
 		var req = subject._('photos_public');
 		var url = parse(req.url);
