@@ -34,7 +34,7 @@
     "build-types": "node script/build-types > flickr-sdk.d.ts && npm run tsc",
     "build-client": "browserify -s Flickr $npm_package_main > flickr-sdk.js",
     "build": "npm run build-rest && npm run build-docs && npm run build-types && npm run build-client",
-    "tsc": "npx tsc",
+    "tsc": "npx -p typescript@4.x -c tsc",
     "lint": "eslint .",
     "test": "mocha",
     "coverage": "nyc mocha",
