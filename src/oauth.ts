@@ -1,5 +1,5 @@
-import { createHmac, pseudoRandomBytes } from "node:crypto"
-import { stringify } from "node:querystring"
+import { createHmac, pseudoRandomBytes } from "./shims/crypto"
+import { stringify } from "./shims/querystring"
 
 /**
  * A hashmap of characters that also need to be encoded per RFC3986.

@@ -1,6 +1,6 @@
 {
   "name": "flickr-sdk",
-  "version": "7.0.0-beta.1",
+  "version": "7.0.0-beta.2",
   "description": "Almost certainly the best Flickr API client in the world for node and the browser",
   "keywords": [
     "flickr",
@@ -9,8 +9,23 @@
     "photos",
     "search"
   ],
-  "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "default": "./dist/index.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "browser": {
+    "./dist/index.mjs": "./dist/index.js",
+    "./src/oauth": "./src/oauth-browser",
+    "./src/shims/fs-promises": "./src/shims/fs-promises-browser",
+    "./src/shims/querystring": "./src/shims/querystring-browser",
+    "./src/shims/url": "./src/shims/url-browser"
+  },
   "files": [
     "dist",
     "LICENSE",
@@ -18,7 +33,10 @@
   ],
   "scripts": {
     "tsc": "tsc",
-    "build": "esbuild --bundle --outdir=dist --platform=node src/index.ts && npm run tsc",
+    "build": "npm run tsc && npm run build-cjs && npm run build-esm && npm run build-browser",
+    "build-cjs": "esbuild --bundle --outfile=dist/index.cjs --platform=node --format=cjs src/index.ts",
+    "build-esm": "esbuild --bundle --outfile=dist/index.mjs --platform=node --format=esm src/index.ts",
+    "build-browser": "esbuild --bundle --outfile=dist/index.js --format=esm src/index.ts",
     "reflect": "node --env-file .env script/reflect.mjs",
     "test": "node --test"
   },
@@ -33,7 +51,7 @@
   ],
   "license": "MIT",
   "engines": {
-    "node": ">= 4"
+    "node": ">= 16"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
@@ -45,6 +63,8 @@
   "devDependencies": {
     "@types/node": "^20.8.4",
     "esbuild": "^0.19.4",
+    "min-qs": "^1.4.0",
+    "min-url": "^1.5.0",
     "prettier": "^3.0.3",
     "typescript": "^5.2.2"
   },

@@ -1,6 +1,6 @@
 import type { Auth, Transport } from "../types"
 import { POST } from "../params"
-import { readFile } from "fs/promises"
+import { readFile } from "../shims/fs-promises"
 import { XMLParser } from "../parser/xml"
 
 export interface ReplaceFail {

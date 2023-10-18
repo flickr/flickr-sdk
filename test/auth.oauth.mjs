@@ -1,7 +1,7 @@
 // @ts-check
-import { OAuthAuth } from "../dist/index.js"
-import * as assert from "node:assert"
 import { describe, it, mock } from "node:test"
+import * as assert from "node:assert"
+import { OAuthAuth } from "../dist/index.mjs"
 
 describe("auth/oauth", function () {
   it("validates arguments", function () {

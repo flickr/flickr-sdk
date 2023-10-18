@@ -1,7 +1,7 @@
 // @ts-check
 import { describe, it } from "node:test"
-import { ReplaceService } from "../dist/index.js"
-import assert from "node:assert"
+import * as assert from "node:assert"
+import { ReplaceService } from "../dist/index.mjs"
 
 class MockTransport {
   constructor(response) {

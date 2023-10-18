@@ -1,5 +1,5 @@
 import type { Parser } from "../types"
-import { parse } from "querystring"
+import { parse } from "../shims/querystring"
 
 export class FormParser implements Parser {
   async parse(res: Response) {

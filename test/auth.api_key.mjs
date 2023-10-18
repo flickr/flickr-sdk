@@ -1,7 +1,7 @@
 // @ts-check
-import { APIKeyAuth } from "../dist/index.js"
-import * as assert from "node:assert"
 import { describe, it } from "node:test"
+import * as assert from "node:assert"
+import { APIKeyAuth } from "../dist/index.mjs"
 
 describe("auth/api_key", function () {
   describe("#sign", function () {

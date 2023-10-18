@@ -1,7 +1,7 @@
 // @ts-check
-import assert from "node:assert"
-import { JSONParser } from "../dist/index.js"
 import { describe, it } from "node:test"
+import * as assert from "node:assert"
+import { JSONParser } from "../dist/index.mjs"
 
 describe("JSONParser", function () {
   describe(".parse", function () {

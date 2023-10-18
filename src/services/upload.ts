@@ -1,6 +1,6 @@
 import type { Auth, Transport } from "../types"
 import { POST } from "../params"
-import { readFile } from "fs/promises"
+import { readFile } from "../shims/fs-promises"
 import { XMLParser } from "../parser/xml"
 
 export interface UploadParams {
@@ -112,7 +112,6 @@ export class UploadService {
     const rsp: UploadResponse = await parser.parse(res)
 
     if (rsp.stat !== "ok") {
-      console.log(rsp)
       // @ts-expect-error
       throw new Error(rsp.err.msg, {
         cause: res,
@@ -127,7 +126,7 @@ export class UploadService {
   }
 
   async getBlob(file: string | File) {
-    if (typeof file === "string") {
+    if (typeof window === "undefined" && typeof file === "string") {
       return new File([await readFile(file)], file)
     } else {
       return file

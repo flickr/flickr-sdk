@@ -1,7 +1,7 @@
 // @ts-check
-import { FetchTransport } from "../dist/index.js"
-import * as assert from "node:assert"
 import { afterEach, describe, it } from "node:test"
+import * as assert from "node:assert"
+import { FetchTransport } from "../dist/index.mjs"
 import { createServer } from "node:http"
 import { once } from "node:events"
 

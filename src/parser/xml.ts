@@ -13,7 +13,6 @@ export class XMLParser implements Parser {
   async parse(res: Response) {
     const xml = await res.text()
 
-    console.log("xml", xml)
     const ast = parseXml(this.clean(xml))
 
     // the document should have one root node named "rsp"

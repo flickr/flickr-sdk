@@ -1,6 +1,7 @@
-import assert from "node:assert"
-import { GET, POST } from "../dist/index.js"
+// @ts-check
 import { describe, it } from "node:test"
+import * as assert from "node:assert"
+import { GET, POST } from "../dist/index.mjs"
 
 describe("GET", function () {
   describe(".entries", function () {

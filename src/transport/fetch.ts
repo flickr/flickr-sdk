@@ -1,6 +1,6 @@
 import type { Transport } from "../types"
 import { GET, POST } from "../params"
-import { format, parse } from "url"
+import { format, parse } from "../shims/url"
 
 export class FetchTransport implements Transport {
   private async fetch(req: Request) {
