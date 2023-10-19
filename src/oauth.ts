@@ -1,4 +1,4 @@
-import { createHmac, pseudoRandomBytes } from "./shims/crypto"
+import { createHmac, randomBytes } from "./shims/crypto"
 import { stringify } from "./shims/querystring"
 
 /**
@@ -112,12 +112,12 @@ export class OAuth {
   }
 
   /**
-   * Generates a pseudo-random string. OAuth 1.0 defines a
+   * Generates a random string. OAuth 1.0 defines a
    * nonce as a value unique within a given timestamp in seconds.
    * @see https://oauth.net/core/1.0a/#nonce
    */
   nonce() {
-    return pseudoRandomBytes(32).toString("base64")
+    return randomBytes(32).toString("base64")
   }
 
   /**

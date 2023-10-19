@@ -1,1 +1,1 @@
-export { createHmac, pseudoRandomBytes } from "node:crypto"
+export { createHmac, randomBytes } from "node:crypto"
