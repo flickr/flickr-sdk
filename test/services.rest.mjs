@@ -1,24 +1,7 @@
 // @ts-check
 import { describe, it, mock } from "node:test"
 import * as assert from "node:assert"
-import { FlickrService } from "flickr-sdk"
-
-class MockTransport {
-  constructor(response) {
-    this.response = response
-  }
-
-  async get(url, params) {
-    return new Response(JSON.stringify(this.response))
-  }
-  async post(url, params) {
-    return new Response(JSON.stringify(this.response))
-  }
-}
-
-class MockAuth {
-  async sign(req, params) {}
-}
+import { FlickrService, MockTransport, NullAuth } from "flickr-sdk"
 
 describe("FlickrService", function () {
   describe(".request", function () {
@@ -27,7 +10,7 @@ describe("FlickrService", function () {
         stat: "ok",
       })
 
-      const auth = new MockAuth()
+      const auth = new NullAuth()
 
       const service = new FlickrService(transport, auth)
 
@@ -42,7 +25,7 @@ describe("FlickrService", function () {
         message: "Invalid API Key (Key has invalid format)",
       })
 
-      const auth = new MockAuth()
+      const auth = new NullAuth()
 
       const service = new FlickrService(transport, auth)
 
@@ -56,7 +39,7 @@ describe("FlickrService", function () {
     })
 
     it("makes a GET request for a read method", async function () {
-      const auth = new MockAuth()
+      const auth = new NullAuth()
 
       const transport = new MockTransport({
         stat: "ok",
@@ -71,7 +54,7 @@ describe("FlickrService", function () {
     })
 
     it("makes a POST request for a write method", async function () {
-      const auth = new MockAuth()
+      const auth = new NullAuth()
 
       const transport = new MockTransport({
         stat: "ok",
@@ -86,7 +69,7 @@ describe("FlickrService", function () {
     })
 
     it("makes a POST request for a delete method", async function () {
-      const auth = new MockAuth()
+      const auth = new NullAuth()
       const transport = new MockTransport({
         stat: "ok",
       })
@@ -99,6 +82,4 @@ describe("FlickrService", function () {
       assert.strictEqual(post.mock.callCount(), 1)
     })
   })
-
-  describe(".getHTTPMethod", function () {})
 })

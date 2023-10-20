@@ -1,25 +1,7 @@
 // @ts-check
 import { describe, it } from "node:test"
 import * as assert from "node:assert"
-import { UploadService } from "flickr-sdk"
-
-class MockTransport {
-  constructor(response) {
-    this.response = response
-  }
-
-  async get() {
-    return new Response(this.response)
-  }
-
-  async post() {
-    return new Response(this.response)
-  }
-}
-
-class MockAuth {
-  async sign() {}
-}
+import { MockTransport, NullAuth, UploadService } from "flickr-sdk"
 
 describe("UploadService", function () {
   describe(".upload", function () {
@@ -31,7 +13,7 @@ describe("UploadService", function () {
 </rsp>`,
       )
 
-      const auth = new MockAuth()
+      const auth = new NullAuth()
 
       const service = new UploadService(transport, auth)
 
@@ -54,7 +36,7 @@ describe("UploadService", function () {
 </rsp>`,
       )
 
-      const auth = new MockAuth()
+      const auth = new NullAuth()
 
       const service = new UploadService(transport, auth)
 

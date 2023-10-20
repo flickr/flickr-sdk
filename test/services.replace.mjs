@@ -1,25 +1,7 @@
 // @ts-check
 import { describe, it } from "node:test"
 import * as assert from "node:assert"
-import { ReplaceService } from "flickr-sdk"
-
-class MockTransport {
-  constructor(response) {
-    this.response = response
-  }
-
-  async get() {
-    return new Response(this.response)
-  }
-
-  async post() {
-    return new Response(this.response)
-  }
-}
-
-class MockAuth {
-  async sign() {}
-}
+import { ReplaceService, NullAuth, MockTransport } from "flickr-sdk"
 
 describe("ReplaceService", function () {
   describe(".replace", function () {
@@ -31,7 +13,7 @@ describe("ReplaceService", function () {
 </rsp>`,
       )
 
-      const auth = new MockAuth()
+      const auth = new NullAuth()
 
       const service = new ReplaceService(transport, auth)
 
@@ -52,7 +34,7 @@ describe("ReplaceService", function () {
 </rsp>`,
       )
 
-      const auth = new MockAuth()
+      const auth = new NullAuth()
 
       const service = new ReplaceService(transport, auth)
 
