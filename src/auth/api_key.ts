@@ -2,13 +2,19 @@ import type { Auth } from "../types"
 import type { Params } from "../params"
 
 export class APIKeyAuth implements Auth {
-  constructor(private apiKey: string) {
+  constructor(
+    private apiKey: string | (() => string) | (() => Promise<string>),
+  ) {
     if (typeof apiKey === "undefined") {
       throw new Error("apiKey must be provided")
     }
   }
 
   async sign(req: Request, params: Params) {
-    params.set("api_key", this.apiKey)
+    params.set("api_key", await this.getAPIKey())
+  }
+
+  async getAPIKey() {
+    return typeof this.apiKey === "string" ? this.apiKey : await this.apiKey()
   }
 }

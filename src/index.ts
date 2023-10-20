@@ -1,3 +1,4 @@
+import type { API } from "./services/rest/api"
 import type { Auth, Transport } from "./types"
 import { APIKeyAuth } from "./auth/api_key"
 import { OAuthAuth, OAuthConfig } from "./auth/oauth"
@@ -7,31 +8,31 @@ import { Upload, UploadService } from "./services/upload"
 import { Replace, ReplaceService } from "./services/replace"
 import { FetchTransport } from "./transport/fetch"
 
-interface FlickrServices {
-  flickr: Flickr
+interface FlickrServices<T> {
+  flickr: Flickr<T>
   upload: Upload
   replace: Replace
 }
 
-interface FlickrServicesWithOAuth extends FlickrServices {
+interface FlickrServicesWithOAuth<T> extends FlickrServices<T> {
   // oauth is only defined if the auth method is oauth
   oauth: OAuthService
 }
 
-export function createFlickr(
+export function createFlickr<T = API>(
   apiKey: string,
   transport?: Transport,
-): FlickrServices
+): FlickrServices<T>
 
-export function createFlickr(
+export function createFlickr<T = API>(
   oauthConfig: OAuthConfig,
   transport?: Transport,
-): FlickrServicesWithOAuth
+): FlickrServicesWithOAuth<T>
 
-export function createFlickr<A extends Auth>(
+export function createFlickr<T = API, A extends Auth = Auth>(
   auth: A,
   transport?: Transport,
-): A extends OAuthAuth ? FlickrServicesWithOAuth : FlickrServices
+): A extends OAuthAuth ? FlickrServicesWithOAuth<T> : FlickrServices<T>
 
 export function createFlickr(
   auth: string | OAuthConfig | Auth,
@@ -103,6 +104,7 @@ export {
   OAuthAuth,
   OAuthService,
 }
+export { API }
 // exports for tests
 export { OAuth } from "./oauth"
 export { Params, GET, POST } from "./params"
