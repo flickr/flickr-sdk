@@ -1,6 +1,5 @@
 // @ts-check
-/// <reference types="../dist/index.d.ts" />
-import { createFlickr } from "../dist/index.js"
+import { createFlickr } from "flickr-sdk"
 import { ok } from "node:assert"
 
 /**

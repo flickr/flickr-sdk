@@ -1,4 +1,5 @@
 /**
+ * This file was auto-generated on 2023-10-20T16:36:46.747Z
  * flickr.photos.search
  * Return a list of photos matching some criteria. Only photos visible to the calling user will be returned. To return private or semi-private photos, the caller must be authenticated with 'read' permissions, and have permission to view the photos. Unauthenticated calls will only return public photos.
  */

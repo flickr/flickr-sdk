@@ -1,4 +1,5 @@
 /**
+ * This file was auto-generated on 2023-10-20T16:36:46.724Z
  * flickr.photos.getContactsPublicPhotos
  * Fetch a list of recent public photos from a users' contacts.
  */

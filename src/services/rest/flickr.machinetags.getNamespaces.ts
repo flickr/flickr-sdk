@@ -1,4 +1,5 @@
 /**
+ * This file was auto-generated on 2023-10-20T16:36:46.695Z
  * flickr.machinetags.getNamespaces
  * Return a list of unique namespaces, optionally limited by a given predicate, in alphabetical order.
  */

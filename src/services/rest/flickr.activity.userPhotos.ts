@@ -1,4 +1,5 @@
 /**
+ * This file was auto-generated on 2023-10-20T16:36:46.641Z
  * flickr.activity.userPhotos
  * Returns a list of recent activity on photos belonging to the calling user. <b>Do not poll this method more than once an hour</b>.
  */

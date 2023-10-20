@@ -1,4 +1,5 @@
 /**
+ * This file was auto-generated on 2023-10-20T16:36:46.655Z
  * flickr.collections.getInfo
  * Returns information for a single collection.  Currently can only be called by the collection owner, this may change.		
 				Note that the response values of `iconlarge` and `iconsmall` are defunct and will now return empty mosaic grids. For more information on how to 

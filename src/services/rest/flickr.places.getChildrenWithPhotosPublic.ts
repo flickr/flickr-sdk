@@ -1,4 +1,5 @@
 /**
+ * This file was auto-generated on 2023-10-20T16:36:46.778Z
  * flickr.places.getChildrenWithPhotosPublic
  * Return a list of locations with public photos that are parented by a Where on Earth (WOE) or Places ID.
  */

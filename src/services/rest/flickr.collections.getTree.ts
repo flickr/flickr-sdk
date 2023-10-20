@@ -1,4 +1,5 @@
 /**
+ * This file was auto-generated on 2023-10-20T16:36:46.657Z
  * flickr.collections.getTree
  * Returns a tree (or sub tree) of collections belonging to a given user.
 				Note that the response values of `iconlarge` and `iconsmall` are defunct and will now return empty mosaic grids. For more information on how to 

@@ -1,4 +1,5 @@
 /**
+ * This file was auto-generated on 2023-10-20T16:36:46.798Z
  * flickr.stats.getPhotostreamDomains
  * Get a list of referring domains for a photostream
  */

@@ -1,7 +1,7 @@
 // @ts-check
 import { describe, it, beforeEach, mock } from "node:test"
 import * as assert from "node:assert"
-import { OAuth } from "../dist/index.mjs"
+import { OAuth } from "flickr-sdk"
 
 describe("OAuth", function () {
   let oauth

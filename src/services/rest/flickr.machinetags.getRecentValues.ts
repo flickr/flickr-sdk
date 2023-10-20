@@ -1,4 +1,5 @@
 /**
+ * This file was auto-generated on 2023-10-20T16:36:46.697Z
  * flickr.machinetags.getRecentValues
  * Fetch recently used (or created) machine tags values.
  */

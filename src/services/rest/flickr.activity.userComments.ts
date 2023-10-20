@@ -1,4 +1,5 @@
 /**
+ * This file was auto-generated on 2023-10-20T16:36:46.532Z
  * flickr.activity.userComments
  * Returns a list of recent activity on photos commented on by the calling user. <b>Do not poll this method more than once an hour</b>.
  */

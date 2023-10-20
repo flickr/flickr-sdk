@@ -1,4 +1,5 @@
 /**
+ * This file was auto-generated on 2023-10-20T16:36:46.807Z
  * flickr.testimonials.editTestimonial
  * Change the text of a testimonial. The loggedin user must be the author of the existing testimonial. Editing a testimonial will mark it as pending and will require it to be re-approved by the recipient before appearing on their profile
  */

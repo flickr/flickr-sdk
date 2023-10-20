@@ -1,3 +1,6 @@
+/**
+ * This file was auto-generated on 2023-10-20T16:36:46.816Z
+ */
 import type { FlickrActivityUserCommentsParams } from "./flickr.activity.userComments"
 import type { FlickrActivityUserPhotosParams } from "./flickr.activity.userPhotos"
 import type { FlickrAuthCheckTokenParams } from "./flickr.auth.checkToken"
@@ -447,6 +450,9 @@ export type API = {
   "flickr.urls.lookupGroup": FlickrUrlsLookupGroupParams
   "flickr.urls.lookupUser": FlickrUrlsLookupUserParams
 }
+
+export const POST_REGEXP =
+  /(^flickr.(g(alleries.(addPhoto$|create$|edit(Meta$|Photo($|s$))|removePhoto$)|roups.(discuss.(replies.(add$|delete$|edit$)|topics.add$)|join($|Request$)|leave$|pools.(add$|remove$)))|blogs.postPhoto$|favorites.(add$|remove$)|photos(.(s(et(ContentType$|Dates$|Meta$|Perms$|SafetyLevel$|Tags$)|uggestions.(approveSuggestion$|re(jectSuggestion$|moveSuggestion$)|suggestLocation$))|addTags$|comments.(addComment$|deleteComment$|editComment$)|delete$|geo.(batchCorrectLocation$|correctLocation$|removeLocation$|set(Context$|Location$|Perms$))|licenses.setLicense$|notes.(add$|delete$|edit$)|people.(add$|delete($|Coords$)|editCoords$)|removeTag$|transform.rotate$)|ets.(c(omments.(addComment$|deleteComment$|editComment$)|reate$)|addPhoto$|delete$|edit(Meta$|Photos$)|orderSets$|re(movePhoto($|s$)|orderPhotos$)|setPrimaryPhoto$))|testimonials.(a(ddTestimonial$|pproveTestimonial$)|deleteTestimonial$|editTestimonial$)))/
 
 export {
   FlickrActivityUserCommentsParams,

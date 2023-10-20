@@ -1,7 +1,7 @@
 // @ts-check
 import { describe, it } from "node:test"
 import * as assert from "node:assert"
-import { GET, POST } from "../dist/index.mjs"
+import { GET, POST } from "flickr-sdk"
 
 describe("GET", function () {
   describe(".entries", function () {

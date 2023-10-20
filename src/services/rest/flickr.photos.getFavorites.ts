@@ -1,4 +1,5 @@
 /**
+ * This file was auto-generated on 2023-10-20T16:36:46.728Z
  * flickr.photos.getFavorites
  * Returns the list of people who have favorited a given photo.
  */

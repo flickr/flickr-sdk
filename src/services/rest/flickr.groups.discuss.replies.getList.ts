@@ -1,4 +1,5 @@
 /**
+ * This file was auto-generated on 2023-10-20T16:36:46.682Z
  * flickr.groups.discuss.replies.getList
  * Get a list of replies from a group discussion topic.
  */

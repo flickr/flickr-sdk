@@ -1,4 +1,5 @@
 /**
+ * This file was auto-generated on 2023-10-20T16:36:46.693Z
  * flickr.groups.search
  * Search for groups. 18+ groups will only be returned for authenticated calls where the authenticated user is over 18.
  */

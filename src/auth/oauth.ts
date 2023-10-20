@@ -2,6 +2,13 @@ import type { Auth } from "../types"
 import { OAuth } from "../oauth"
 import { Params } from "../params"
 
+export interface OAuthConfig {
+  consumerKey: string
+  consumerSecret: string
+  oauthToken: string | false
+  oauthTokenSecret: string | false
+}
+
 export interface OAuthAuthParams {
   oauth_nonce: string
   oauth_timestamp: string
@@ -63,5 +70,16 @@ export class OAuthAuth implements Auth {
     return this.oauthTokenSecret === false
       ? this.oauth.signature(method, url, params)
       : this.oauth.signature(method, url, params, this.oauthTokenSecret)
+  }
+
+  static isOAuthConfig(config: any): config is OAuthConfig {
+    return (
+      typeof config === "object" &&
+      typeof config.consumerKey === "string" &&
+      typeof config.consumerSecret === "string" &&
+      (typeof config.oauthToken === "string" || config.oauthToken === false) &&
+      (typeof config.oauthTokenSecret === "string" ||
+        config.oauthTokenSecret === false)
+    )
   }
 }

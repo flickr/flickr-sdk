@@ -1,7 +1,6 @@
 // @ts-check
-/// <reference types="../dist/index.d.ts" />
 import { resolve } from "node:path"
-import { createFlickr } from "../dist/index.js"
+import { createFlickr } from "flickr-sdk"
 import { ok } from "node:assert"
 
 ok(process.env.FLICKR_CONSUMER_KEY, "FLICKR_CONSUMER_KEY is required")

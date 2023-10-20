@@ -37,7 +37,6 @@
     "build-cjs": "esbuild --bundle --outfile=dist/index.cjs --platform=node --format=cjs src/index.ts",
     "build-esm": "esbuild --bundle --outfile=dist/index.mjs --platform=node --format=esm src/index.ts",
     "build-browser": "esbuild --bundle --outfile=dist/index.js --format=esm src/index.ts",
-    "reflect": "node --env-file .env script/reflect.mjs",
     "test": "node --test"
   },
   "repository": {
@@ -61,11 +60,13 @@
   },
   "homepage": "https://github.com/flickr/flickr-sdk#readme",
   "devDependencies": {
+    "flickr-sdk": "file:.",
     "@types/node": "^20.8.4",
     "esbuild": "^0.19.4",
     "min-qs": "^1.4.0",
     "min-url": "^1.5.0",
     "prettier": "^3.0.3",
+    "stringlist-regexp": "^1.0.2",
     "typescript": "^5.2.2"
   },
   "dependencies": {

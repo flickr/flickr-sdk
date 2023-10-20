@@ -1,7 +1,7 @@
 // @ts-check
 import { describe, it } from "node:test"
 import * as assert from "node:assert"
-import { createFlickr } from "../dist/index.mjs"
+import { createFlickr } from "flickr-sdk"
 
 describe("flickr", function () {
   it("throws an error if no api key is provided", function () {

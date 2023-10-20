@@ -1,4 +1,5 @@
 /**
+ * This file was auto-generated on 2023-10-20T16:36:46.696Z
  * flickr.machinetags.getPairs
  * Return a list of unique namespace and predicate pairs, optionally limited by predicate or namespace, in alphabetical order.
  */

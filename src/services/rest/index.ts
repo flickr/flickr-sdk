@@ -1,6 +1,6 @@
 import type { Auth, Transport } from "../../types"
-import type { API } from "./api"
-import { GET } from "../../params"
+import { POST_REGEXP, API } from "./api"
+import { GET, POST, Params } from "../../params"
 import { JSONParser } from "../../parser/json"
 
 export interface Flickr {
@@ -14,11 +14,13 @@ export class FlickrService {
   ) {}
 
   async call(method: string, params: Record<string, string>): Promise<any> {
+    const httpMethod = this.getHTTPMethod(method)
+
     const req = new Request("https://api.flickr.com/services/rest", {
-      method: "GET",
+      method: this.getHTTPMethod(method),
     })
 
-    const payload = new GET()
+    const payload = httpMethod === "POST" ? new POST() : new GET()
 
     // method params
     for (const [key, value] of Object.entries(params)) {
@@ -32,7 +34,8 @@ export class FlickrService {
 
     await this.auth.sign(req, payload)
 
-    const res = await this.transport.get(req.url, payload)
+    const res = await this.request(req, payload)
+
     const parser = new JSONParser()
 
     const json = await parser.parse(res)
@@ -45,5 +48,19 @@ export class FlickrService {
     }
 
     return json
+  }
+
+  private getHTTPMethod(method: string) {
+    return POST_REGEXP.test(method) ? "POST" : "GET"
+  }
+
+  private request(req: Request, payload: Params) {
+    if (payload instanceof POST) {
+      return this.transport.post(req.url, payload)
+    }
+    if (payload instanceof GET) {
+      return this.transport.get(req.url, payload)
+    }
+    throw new Error("Invalid payload")
   }
 }

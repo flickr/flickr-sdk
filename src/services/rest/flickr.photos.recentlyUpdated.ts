@@ -1,4 +1,5 @@
 /**
+ * This file was auto-generated on 2023-10-20T16:36:46.746Z
  * flickr.photos.recentlyUpdated
  * <p>Return a list of your photos that have been recently created or which have been recently modified.</p>
 

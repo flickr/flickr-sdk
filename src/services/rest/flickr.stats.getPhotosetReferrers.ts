@@ -1,4 +1,5 @@
 /**
+ * This file was auto-generated on 2023-10-20T16:36:46.796Z
  * flickr.stats.getPhotosetReferrers
  * Get a list of referrers from a given domain to a photoset
  */

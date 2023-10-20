@@ -1,4 +1,5 @@
 /**
+ * This file was auto-generated on 2023-10-20T16:36:46.661Z
  * flickr.contacts.getListRecentlyUploaded
  * Return a list of contacts for a user who have recently uploaded photos along with the total count of photos uploaded.<br /><br />
 

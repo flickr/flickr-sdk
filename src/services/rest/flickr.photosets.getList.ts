@@ -1,4 +1,5 @@
 /**
+ * This file was auto-generated on 2023-10-20T16:36:46.774Z
  * flickr.photosets.getList
  * Returns the photosets belonging to the specified user.
  */

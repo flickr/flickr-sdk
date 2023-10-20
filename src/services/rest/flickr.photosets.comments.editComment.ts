@@ -1,4 +1,5 @@
 /**
+ * This file was auto-generated on 2023-10-20T16:36:46.760Z
  * flickr.photosets.comments.editComment
  * Edit the text of a comment as the currently authenticated user.
  */

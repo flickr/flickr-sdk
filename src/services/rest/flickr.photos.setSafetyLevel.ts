@@ -1,4 +1,5 @@
 /**
+ * This file was auto-generated on 2023-10-20T16:36:46.752Z
  * flickr.photos.setSafetyLevel
  * Set the safety level of a photo.
  */

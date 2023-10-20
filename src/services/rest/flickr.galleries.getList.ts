@@ -1,4 +1,5 @@
 /**
+ * This file was auto-generated on 2023-10-20T16:36:46.675Z
  * flickr.galleries.getList
  * Return the list of galleries created by a user.  Sorted from newest to oldest.
  */

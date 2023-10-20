@@ -1,7 +1,7 @@
 // @ts-check
 import { describe, it } from "node:test"
 import * as assert from "node:assert"
-import { FormParser } from "../dist/index.mjs"
+import { FormParser } from "flickr-sdk"
 
 describe("FormParser", function () {
   describe(".parse", function () {

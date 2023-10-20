@@ -1,30 +1,63 @@
 import type { Auth, Transport } from "./types"
 import { APIKeyAuth } from "./auth/api_key"
-import { OAuthAuth } from "./auth/oauth"
+import { OAuthAuth, OAuthConfig } from "./auth/oauth"
 import { FlickrService, Flickr } from "./services/rest"
 import { OAuthService } from "./services/oauth"
 import { Upload, UploadService } from "./services/upload"
 import { Replace, ReplaceService } from "./services/replace"
 import { FetchTransport } from "./transport/fetch"
 
-/**
- * Create a new Flickr client.
- */
-export function createFlickr(apiKey: string): {
+interface FlickrServices {
   flickr: Flickr
   upload: Upload
   replace: Replace
 }
-export function createFlickr(config: OAuthConfig): {
-  flickr: Flickr
-  upload: Upload
-  replace: Replace
+
+interface FlickrServicesWithOAuth extends FlickrServices {
   // oauth is only defined if the auth method is oauth
   oauth: OAuthService
 }
-export function createFlickr(config: string | OAuthConfig) {
-  const auth = detemineAuth(config)
-  const transport = determineTransport()
+
+export function createFlickr(
+  apiKey: string,
+  transport?: Transport,
+): FlickrServices
+
+export function createFlickr(
+  oauthConfig: OAuthConfig,
+  transport?: Transport,
+): FlickrServicesWithOAuth
+
+export function createFlickr<A extends Auth>(
+  auth: A,
+  transport?: Transport,
+): A extends OAuthAuth ? FlickrServicesWithOAuth : FlickrServices
+
+export function createFlickr<A extends Auth>(
+  auth: string | OAuthConfig | A,
+  transport: Transport = new FetchTransport(),
+) {
+  if (!auth) {
+    throw new Error("Invalid auth config")
+  }
+
+  // shorthand for API key auth
+  if (typeof auth === "string") {
+    return createFlickr(new APIKeyAuth(auth), transport)
+  }
+
+  // shorthand for OAuth auth
+  if (OAuthAuth.isOAuthConfig(auth)) {
+    return createFlickr(
+      new OAuthAuth(
+        auth.consumerKey,
+        auth.consumerSecret,
+        auth.oauthToken,
+        auth.oauthTokenSecret,
+      ),
+      transport,
+    )
+  }
 
   // REST API
   const flickr: Flickr = async (method, params) => {
@@ -44,12 +77,10 @@ export function createFlickr(config: string | OAuthConfig) {
     return service.replace(id, file)
   }
 
-  // OAuth API
-  const oauth = new OAuthService(transport, auth)
-
-  // TODO Feeds API
-
   if (auth instanceof OAuthAuth) {
+    // OAuth API
+    const oauth = new OAuthService(transport, auth)
+
     return {
       flickr,
       upload,
@@ -60,35 +91,6 @@ export function createFlickr(config: string | OAuthConfig) {
   } else {
     return { flickr, upload, replace }
   }
-}
-
-export interface OAuthConfig {
-  consumerKey: string
-  consumerSecret: string
-  oauthToken: string | false
-  oauthTokenSecret: string | false
-}
-
-function detemineAuth(config: string | OAuthConfig): Auth {
-  switch (typeof config) {
-    case "string":
-      return new APIKeyAuth(config)
-    case "object":
-      const { consumerKey, consumerSecret, oauthToken, oauthTokenSecret } =
-        config
-      return new OAuthAuth(
-        consumerKey,
-        consumerSecret,
-        oauthToken,
-        oauthTokenSecret,
-      )
-    default:
-      throw new Error("Invalid auth config")
-  }
-}
-
-function determineTransport(): Transport {
-  return new FetchTransport()
 }
 
 export type { Flickr, Auth, Transport }

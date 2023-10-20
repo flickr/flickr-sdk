@@ -1,4 +1,5 @@
 /**
+ * This file was auto-generated on 2023-10-20T16:36:46.727Z
  * flickr.photos.getCounts
  * Gets a list of photo counts for the given date ranges for the calling user.
  */

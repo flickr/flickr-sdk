@@ -1,4 +1,5 @@
 /**
+ * This file was auto-generated on 2023-10-20T16:36:46.780Z
  * flickr.places.getShapeHistory
  * Return an historical list of all the shape data generated for a Places or Where on Earth (WOE) ID.
  */

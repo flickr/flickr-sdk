@@ -1,4 +1,5 @@
 /**
+ * This file was auto-generated on 2023-10-20T16:36:46.705Z
  * flickr.people.getPhotosOf
  * Returns a list of photos containing a particular Flickr member.
  */

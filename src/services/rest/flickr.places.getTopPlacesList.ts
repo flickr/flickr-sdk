@@ -1,4 +1,5 @@
 /**
+ * This file was auto-generated on 2023-10-20T16:36:46.781Z
  * flickr.places.getTopPlacesList
  * Return the top 100 most geotagged places for a day.
  */

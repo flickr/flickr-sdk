@@ -1,4 +1,5 @@
 /**
+ * This file was auto-generated on 2023-10-20T16:36:46.793Z
  * flickr.stats.getCollectionStats
  * Get the number of views on a collection for a given date.
  */

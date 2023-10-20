@@ -1,4 +1,5 @@
 /**
+ * This file was auto-generated on 2023-10-20T16:36:46.684Z
  * flickr.groups.discuss.topics.getInfo
  * Get information about a group discussion topic.
  */

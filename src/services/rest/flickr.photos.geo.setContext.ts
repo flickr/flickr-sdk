@@ -1,4 +1,5 @@
 /**
+ * This file was auto-generated on 2023-10-20T16:36:46.719Z
  * flickr.photos.geo.setContext
  * Indicate the state of a photo's geotagginess beyond latitude and longitude.<br /><br />
 Note : photos passed to this method must already be geotagged (using the <q>flickr.photos.geo.setLocation</q> method).

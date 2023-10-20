@@ -1,4 +1,5 @@
 /**
+ * This file was auto-generated on 2023-10-20T16:36:46.692Z
  * flickr.groups.pools.getPhotos
  * Returns a list of pool photos for a given group, based on the permissions of the group and the user logged in (if any).
  */

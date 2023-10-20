@@ -1,6 +1,5 @@
 // @ts-check
-/// <reference types="../dist/index.d.ts" />
-import { createFlickr } from "../dist/index.js"
+import { createFlickr } from "flickr-sdk"
 import { resolve } from "node:path"
 import { readFileSync } from "node:fs"
 import { createServer } from "node:https"

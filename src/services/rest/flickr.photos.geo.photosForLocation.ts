@@ -1,4 +1,5 @@
 /**
+ * This file was auto-generated on 2023-10-20T16:36:46.715Z
  * flickr.photos.geo.photosForLocation
  * Return a list of photos for the calling user at a specific latitude, longitude and accuracy
  */

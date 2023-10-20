@@ -1,7 +1,7 @@
 // @ts-check
 import { describe, it } from "node:test"
 import * as assert from "node:assert"
-import { UploadService } from "../dist/index.mjs"
+import { UploadService } from "flickr-sdk"
 
 class MockTransport {
   constructor(response) {

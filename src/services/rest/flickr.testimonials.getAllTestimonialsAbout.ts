@@ -1,4 +1,5 @@
 /**
+ * This file was auto-generated on 2023-10-20T16:36:46.808Z
  * flickr.testimonials.getAllTestimonialsAbout
  * Get all testimonials (pending and approved) written about the given user
  */

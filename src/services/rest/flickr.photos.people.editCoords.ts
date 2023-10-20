@@ -1,4 +1,5 @@
 /**
+ * This file was auto-generated on 2023-10-20T16:36:46.744Z
  * flickr.photos.people.editCoords
  * Edit the bounding box of an existing person on a photo.
  */

@@ -1,4 +1,5 @@
 /**
+ * This file was auto-generated on 2023-10-20T16:36:46.711Z
  * flickr.photos.comments.getRecentForContacts
  * Return the list of photos belonging to your contacts that have been commented on recently.
  */

@@ -1,4 +1,5 @@
 /**
+ * This file was auto-generated on 2023-10-20T16:36:46.801Z
  * flickr.tags.getHotList
  * Returns a list of hot tags for the given period.
  */

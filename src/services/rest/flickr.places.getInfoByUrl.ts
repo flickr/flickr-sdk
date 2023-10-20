@@ -1,4 +1,5 @@
 /**
+ * This file was auto-generated on 2023-10-20T16:36:46.779Z
  * flickr.places.getInfoByUrl
  * Lookup information about a place, by its flickr.com/places URL.
  */

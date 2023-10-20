@@ -1,4 +1,5 @@
 /**
+ * This file was auto-generated on 2023-10-20T16:36:46.722Z
  * flickr.photos.geo.setPerms
  * Set the permission for who may view the geo data associated with a photo.
  */

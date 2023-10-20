@@ -1,4 +1,5 @@
 /**
+ * This file was auto-generated on 2023-10-20T16:36:46.756Z
  * flickr.photos.suggestions.removeSuggestion
  * Remove a suggestion, made by the calling user, from a photo.
  */

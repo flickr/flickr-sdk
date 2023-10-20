@@ -1,4 +1,5 @@
 /**
+ * This file was auto-generated on 2023-10-20T16:36:46.713Z
  * flickr.photos.geo.batchCorrectLocation
  * Correct the places hierarchy for all the photos for a user at a given latitude, longitude and accuracy.<br /><br />
 

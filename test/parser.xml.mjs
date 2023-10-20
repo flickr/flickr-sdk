@@ -1,7 +1,7 @@
 // @ts-check
 import { describe, it } from "node:test"
 import * as assert from "node:assert"
-import { XMLParser } from "../dist/index.mjs"
+import { XMLParser } from "flickr-sdk"
 
 describe("XMLParser", function () {
   describe(".parse", function () {
@@ -13,7 +13,6 @@ describe("XMLParser", function () {
       )
 
       const { stat, photoid } = await parser.parse(res)
-      console.log("OK", stat, photoid)
 
       assert.strictEqual(stat, "ok")
       assert.strictEqual(photoid.secret, "abcdef")

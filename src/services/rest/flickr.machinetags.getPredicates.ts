@@ -1,4 +1,5 @@
 /**
+ * This file was auto-generated on 2023-10-20T16:36:46.697Z
  * flickr.machinetags.getPredicates
  * Return a list of unique predicates, optionally limited by a given namespace.
  */

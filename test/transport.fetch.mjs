@@ -1,7 +1,7 @@
 // @ts-check
 import { afterEach, describe, it } from "node:test"
 import * as assert from "node:assert"
-import { FetchTransport } from "../dist/index.mjs"
+import { FetchTransport } from "flickr-sdk"
 import { createServer } from "node:http"
 import { once } from "node:events"
 

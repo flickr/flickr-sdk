@@ -1,20 +1,23 @@
 // @ts-check
-import { describe, it } from "node:test"
+import { describe, it, mock } from "node:test"
 import * as assert from "node:assert"
-import { FlickrService } from "../dist/index.mjs"
+import { FlickrService } from "flickr-sdk"
 
 class MockTransport {
   constructor(response) {
     this.response = response
   }
 
-  get(url, params) {
+  async get(url, params) {
+    return new Response(JSON.stringify(this.response))
+  }
+  async post(url, params) {
     return new Response(JSON.stringify(this.response))
   }
 }
 
 class MockAuth {
-  sign(req, params) {}
+  async sign(req, params) {}
 }
 
 describe("FlickrService", function () {
@@ -51,5 +54,51 @@ describe("FlickrService", function () {
         },
       )
     })
+
+    it("makes a GET request for a read method", async function () {
+      const auth = new MockAuth()
+
+      const transport = new MockTransport({
+        stat: "ok",
+      })
+
+      const get = mock.method(transport, "get")
+
+      const service = new FlickrService(transport, auth)
+      await service.call("flickr.test.echo", { foo: "bar" })
+
+      assert.strictEqual(get.mock.callCount(), 1)
+    })
+
+    it("makes a POST request for a write method", async function () {
+      const auth = new MockAuth()
+
+      const transport = new MockTransport({
+        stat: "ok",
+      })
+
+      const post = mock.method(transport, "post")
+
+      const service = new FlickrService(transport, auth)
+      await service.call("flickr.photosets.editPhotos", { foo: "bar" })
+
+      assert.strictEqual(post.mock.callCount(), 1)
+    })
+
+    it("makes a POST request for a delete method", async function () {
+      const auth = new MockAuth()
+      const transport = new MockTransport({
+        stat: "ok",
+      })
+
+      const post = mock.method(transport, "post")
+
+      const service = new FlickrService(transport, auth)
+      await service.call("flickr.photosets.delete", { foo: "bar" })
+
+      assert.strictEqual(post.mock.callCount(), 1)
+    })
   })
+
+  describe(".getHTTPMethod", function () {})
 })

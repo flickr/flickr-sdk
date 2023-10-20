@@ -1,4 +1,5 @@
 /**
+ * This file was auto-generated on 2023-10-20T16:36:46.659Z
  * flickr.contacts.getList
  * Get a list of contacts for the calling user.
  */

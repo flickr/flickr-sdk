@@ -1,4 +1,5 @@
 /**
+ * This file was auto-generated on 2023-10-20T16:36:46.743Z
  * flickr.photos.people.delete
  * Remove a person from a photo.
  */

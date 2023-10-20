@@ -1,4 +1,5 @@
 /**
+ * This file was auto-generated on 2023-10-20T16:36:46.786Z
  * flickr.places.tagsForPlace
  * Return a list of the top 100 unique tags for a Flickr Places or Where on Earth (WOE) ID
  */

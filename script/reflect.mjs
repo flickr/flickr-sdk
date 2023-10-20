@@ -1,8 +1,9 @@
 // @ts-check
-import { createFlickr } from "../dist/index.js"
+import { createFlickr } from "flickr-sdk"
 import * as prettier from "prettier"
 import { resolve } from "path"
 import { writeFile } from "fs/promises"
+import compileRegexp from "stringlist-regexp"
 
 /**
  * @typedef FlickrReflectionGetMethodInfoResponse
@@ -10,7 +11,7 @@ import { writeFile } from "fs/promises"
  * @property {string} method.name
  * @property {string} method.needslogin
  * @property {string} method.needssigning
- * @property {string} method.requiredperms
+ * @property {'1' | '2' | '3' | 1 | 2 | 3} method.requiredperms
  * @property {Object} method.description
  * @property {string} method.description._content
  * @property {Object} method.response
@@ -31,33 +32,76 @@ import { writeFile } from "fs/promises"
  * @property {string} explanation._content
  */
 
-const { flickr } = createFlickr(process.env.FLICKR_API_KEY)
+/**
+ * @param {FlickrReflectionGetMethodInfoResponse} res
+ * @returns {'read' | 'write' | 'delete' | 'none'}
+ */
+const getPerms = ({ method }) => {
+  switch (String(method.requiredperms)) {
+    case "1":
+      return "read"
+    case "2":
+      return "write"
+    case "3":
+      return "delete"
+    default:
+      return "none"
+  }
+}
+
+/**
+ * @param {FlickrReflectionGetMethodInfoResponse} res
+ * @returns {'GET' | 'POST'}
+ */
+const getHTTPVerb = (res) => {
+  switch (getPerms(res)) {
+    case "write":
+    case "delete":
+      return "POST"
+    default:
+      return "GET"
+  }
+}
 
 async function main() {
+  // @ts-expect-error
+  const { flickr } = createFlickr(process.env.FLICKR_API_KEY)
+
   // get all available methods
   const {
     methods: { method },
   } = await flickr("flickr.reflection.getMethods", {})
 
   // extract all of the method names
-  const methods = method.map(({ _content }) => _content)
+  const methodNames = method.map(({ _content }) => _content)
 
-  console.log("Reflecting on %s methods", methods.length)
+  console.log("Reflecting on %s methods", methodNames.length)
+
+  // keep track of all of the POST methods
+  /** @type {FlickrReflectionGetMethodInfoResponse[]} */
+  const methods = []
+
+  // get info for the each method
+  for (const method of methodNames) {
+    console.log(".", method)
+
+    /** @type {FlickrReflectionGetMethodInfoResponse} */
+    const res = await flickr("flickr.reflection.getMethodInfo", {
+      method_name: method,
+    })
+
+    // add the response to our collection of methods
+    methods.push(res)
+  }
+
+  for (const res of methods) {
+    const name = res.method.name
+    // write out the type definition for this method
+    await typedef(resolve(`src/services/rest/${name}.ts`), res)
+  }
 
   // write out the type index file
   await index(resolve("src/services/rest/api.ts"), methods)
-
-  // get info for the each method
-  for (const method_name of methods) {
-    console.log(".", method_name)
-
-    const res = await flickr("flickr.reflection.getMethodInfo", {
-      method_name,
-    })
-
-    // write out the type definition
-    await typedef(resolve(`src/services/rest/${method_name}.ts`), res)
-  }
 }
 
 /**
@@ -80,6 +124,7 @@ async function typedef(filepath, { method, arguments: args }) {
   const params = (args?.argument ?? []).filter(({ name }) => name !== "api_key")
 
   const source = `/**
+ * This file was auto-generated on ${new Date().toISOString()}
  * ${method.name}
  * ${method.description?._content}
  */
@@ -108,30 +153,46 @@ ${name}${isOptional(optional) ? "?" : ""}: ${type}`,
 /**
  * Writes out the type index file
  * @param {string} filepath
- * @param {string[]} methods
+ * @param {FlickrReflectionGetMethodInfoResponse[]} methods
  */
 async function index(filepath, methods) {
   const imports = methods
+    .map((method) => method.method.name)
     .map((method) => {
       return `import type { ${titleize(method)}Params } from "./${method}"`
     })
     .join("\n")
 
   const typemap = methods
+    .map((method) => method.method.name)
     .map((method) => {
       return `"${method}": ${titleize(method)}Params`
     })
     .join("\n")
 
   const exports = methods
+    .map((method) => method.method.name)
     .map((method) => {
       return `${titleize(method)}Params`
     })
     .join(", ")
 
-  const source = `${imports}
+  const POSTs = methods
+    .filter((method) => getHTTPVerb(method) === "POST")
+    .map((method) => method.method.name)
+
+  // @ts-expect-error
+  const regexp = compileRegexp(POSTs, true, true)
+
+  const source = `
+/**
+ * This file was auto-generated on ${new Date().toISOString()}
+ */
+${imports}
 
 export type API = { ${typemap} }
+
+export const POST_REGEXP = /${regexp}/
 
 export {${exports}}
 `

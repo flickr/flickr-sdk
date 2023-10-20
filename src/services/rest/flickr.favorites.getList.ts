@@ -1,4 +1,5 @@
 /**
+ * This file was auto-generated on 2023-10-20T16:36:46.665Z
  * flickr.favorites.getList
  * Returns a list of the user's favorite photos. Only photos which the calling user has permission to see are returned.
  */

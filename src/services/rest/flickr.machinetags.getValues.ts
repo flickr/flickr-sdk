@@ -1,4 +1,5 @@
 /**
+ * This file was auto-generated on 2023-10-20T16:36:46.698Z
  * flickr.machinetags.getValues
  * Return a list of unique values for a namespace and predicate.
  */

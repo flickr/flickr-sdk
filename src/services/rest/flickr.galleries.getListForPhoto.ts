@@ -1,4 +1,5 @@
 /**
+ * This file was auto-generated on 2023-10-20T16:36:46.676Z
  * flickr.galleries.getListForPhoto
  * Return the list of galleries to which a photo has been added.  Galleries are returned sorted by date which the photo was added to the gallery.
  */

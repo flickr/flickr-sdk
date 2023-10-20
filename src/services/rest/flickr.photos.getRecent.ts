@@ -1,4 +1,5 @@
 /**
+ * This file was auto-generated on 2023-10-20T16:36:46.732Z
  * flickr.photos.getRecent
  * Returns a list of the latest public photos uploaded to flickr.
  */

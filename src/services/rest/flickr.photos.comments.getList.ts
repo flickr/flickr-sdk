@@ -1,4 +1,5 @@
 /**
+ * This file was auto-generated on 2023-10-20T16:36:46.710Z
  * flickr.photos.comments.getList
  * Returns the comments for a photo
  */

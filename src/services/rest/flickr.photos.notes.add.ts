@@ -1,4 +1,5 @@
 /**
+ * This file was auto-generated on 2023-10-20T16:36:46.741Z
  * flickr.photos.notes.add
  * Add a note to a photo. Coordinates and sizes are in pixels, based on the 500px image size shown on individual photo pages.
  */

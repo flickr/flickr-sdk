@@ -1,4 +1,5 @@
 /**
+ * This file was auto-generated on 2023-10-20T16:36:46.799Z
  * flickr.stats.getPopularPhotos
  * List the photos with the most views, comments or favorites
  */

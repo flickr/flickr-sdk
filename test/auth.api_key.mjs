@@ -1,7 +1,7 @@
 // @ts-check
 import { describe, it } from "node:test"
 import * as assert from "node:assert"
-import { APIKeyAuth } from "../dist/index.mjs"
+import { APIKeyAuth } from "flickr-sdk"
 
 describe("auth/api_key", function () {
   describe("#sign", function () {

@@ -1,4 +1,5 @@
 /**
+ * This file was auto-generated on 2023-10-20T16:36:46.797Z
  * flickr.stats.getPhotoStats
  * Get the number of views, comments and favorites on a photo for a given date.
  */

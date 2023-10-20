@@ -1,4 +1,5 @@
 /**
+ * This file was auto-generated on 2023-10-20T16:36:46.729Z
  * flickr.photos.getInfo
  * Get information about a photo. The calling user must have permission to view the photo.
  */

@@ -1,4 +1,5 @@
 /**
+ * This file was auto-generated on 2023-10-20T16:36:46.802Z
  * flickr.tags.getListPhoto
  * Get the tag list for a given photo.
  */

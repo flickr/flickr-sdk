@@ -1,4 +1,5 @@
 /**
+ * This file was auto-generated on 2023-10-20T16:36:46.720Z
  * flickr.photos.geo.setLocation
  * Sets the geo data (latitude and longitude and, optionally, the accuracy level) for a photo.
 
