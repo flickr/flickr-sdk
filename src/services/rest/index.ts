@@ -17,7 +17,7 @@ export class FlickrService {
     const httpMethod = this.getHTTPMethod(method)
 
     const req = new Request("https://api.flickr.com/services/rest", {
-      method: this.getHTTPMethod(method),
+      method: httpMethod,
     })
 
     const payload = httpMethod === "POST" ? new POST() : new GET()
@@ -34,7 +34,10 @@ export class FlickrService {
 
     await this.auth.sign(req, payload)
 
-    const res = await this.request(req, payload)
+    const res =
+      payload instanceof POST
+        ? await this.transport.post(req.url, payload)
+        : await this.transport.get(req.url, payload)
 
     const parser = new JSONParser()
 
@@ -52,15 +55,5 @@ export class FlickrService {
 
   private getHTTPMethod(method: string) {
     return POST_REGEXP.test(method) ? "POST" : "GET"
-  }
-
-  private request(req: Request, payload: Params) {
-    if (payload instanceof POST) {
-      return this.transport.post(req.url, payload)
-    }
-    if (payload instanceof GET) {
-      return this.transport.get(req.url, payload)
-    }
-    throw new Error("Invalid payload")
   }
 }

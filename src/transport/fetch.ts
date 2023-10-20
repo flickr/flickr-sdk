@@ -3,8 +3,10 @@ import { GET, POST } from "../params"
 import { format, parse } from "../shims/url"
 
 export class FetchTransport implements Transport {
-  private async fetch(req: Request) {
-    const res = await fetch(req)
+  constructor(private init: RequestInit = {}) {}
+
+  async fetch(url: string, init: RequestInit) {
+    const res = await fetch(url, init)
 
     // handle http errors
     if (!res.ok) {
@@ -29,20 +31,22 @@ export class FetchTransport implements Transport {
     })
 
     const init: RequestInit = {
+      ...this.init,
       method: "GET",
     }
 
-    return this.fetch(new Request(urlWithQueryParams, init))
+    return this.fetch(urlWithQueryParams, init)
   }
 
   async post(url: string, params: POST = new POST()) {
     const body = params.getFormData()
 
     const init: RequestInit = {
+      ...this.init,
       method: "POST",
       body,
     }
 
-    return this.fetch(new Request(url, init))
+    return this.fetch(url, init)
   }
 }

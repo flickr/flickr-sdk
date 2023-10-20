@@ -73,5 +73,45 @@ const { upload } = createFlickr({
 > 💡 Use `examples/oauth.mjs` to quickly set up an OAuth flow and obtain a
 > set of credentials
 
+## advanced
+
+#### configuring fetch
+
+```ts
+import { createFlickr, FetchTransport } from 'flickr-sdk'
+
+const transport = new FetchTransport({
+    headers: {
+        'user-agent': 'foo',
+    }
+})
+
+const { flickr } = createFlickr('<your api key', transport)
+```
+
+#### testing
+
+```ts
+import { createFlickr, MockTransport, NullAuth } from 'flickr-sdk'
+import * as assert from 'node:assert'
+
+// mock transport returns the response you pass in the constructor
+const transport = new MockTransport({
+    stat: 'ok',
+})
+
+// null auth does nothing
+const auth = NullAuth()
+
+const { flickr } = createFlickr(auth, transport)
+
+// makes no network request
+const res = await flickr('flickr.photos.getInfo', {
+    photo_id: '1234',
+})
+
+assert.deepStrictEqual(res, { stat: 'ok', foo: 'bar' })
+```
+
 [api key]: https://www.flickr.com/services/apps/create/
 [oauth]: https://www.flickr.com/services/api/auth.oauth.html
