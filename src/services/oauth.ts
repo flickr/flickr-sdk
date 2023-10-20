@@ -25,7 +25,12 @@ export class OAuthService {
     const res = await this.transport.get(req.url, params)
     const parser = new FormParser()
 
-    return parser.parse(res)
+    const { oauth_token, oauth_token_secret } = await parser.parse(res)
+
+    return {
+      requestToken: oauth_token,
+      requestTokenSecret: oauth_token_secret,
+    }
   }
 
   async verify(oauthVerifier: string) {
@@ -45,7 +50,14 @@ export class OAuthService {
     const res = await this.transport.get(req.url, params)
     const parser = new FormParser()
 
-    return parser.parse(res)
+    const { user_nsid, oauth_token, oauth_token_secret } =
+      await parser.parse(res)
+
+    return {
+      nsid: user_nsid,
+      oauthToken: oauth_token,
+      oauthTokenSecret: oauth_token_secret,
+    }
   }
 
   // this should return a string ready to be dropped into a location header

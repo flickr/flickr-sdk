@@ -33,8 +33,8 @@ export function createFlickr<A extends Auth>(
   transport?: Transport,
 ): A extends OAuthAuth ? FlickrServicesWithOAuth : FlickrServices
 
-export function createFlickr<A extends Auth>(
-  auth: string | OAuthConfig | A,
+export function createFlickr(
+  auth: string | OAuthConfig | Auth,
   transport: Transport = new FetchTransport(),
 ) {
   if (!auth) {

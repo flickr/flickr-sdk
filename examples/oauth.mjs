@@ -50,10 +50,9 @@ async function getRequestToken(req, res) {
 
   try {
     // request an oauth token and secret, supplying a callback url
-    const {
-      oauth_token: requestToken,
-      oauth_token_secret: requestTokenSecret,
-    } = await oauth.request("https://localhost:3000/oauth/callback")
+    const { requestToken, requestTokenSecret } = await oauth.request(
+      "https://localhost:3000/oauth/callback",
+    )
 
     // store the request token and secret in the database
     db.oauth.set(requestToken, requestTokenSecret)
@@ -91,14 +90,11 @@ async function verifyRequestToken(req, res, searchParams) {
   })
 
   try {
-    const {
-      user_nsid: userNsid,
-      oauth_token: oauthToken,
-      oauth_token_secret: oauthTokenSecret,
-    } = await oauth.verify(oauthVerifier)
+    const { nsid, oauthToken, oauthTokenSecret } =
+      await oauth.verify(oauthVerifier)
 
     // store the oauth token and secret in the database
-    db.users.set(userNsid, {
+    db.users.set(nsid, {
       oauthToken: oauthToken,
       oauthTokenSecret: oauthTokenSecret,
     })

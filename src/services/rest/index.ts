@@ -1,6 +1,6 @@
 import type { Auth, Transport } from "../../types"
 import { POST_REGEXP, API } from "./api"
-import { GET, POST, Params } from "../../params"
+import { GET, POST } from "../../params"
 import { JSONParser } from "../../parser/json"
 
 export interface Flickr {
