@@ -17,7 +17,7 @@ $ npm install flickr-sdk
 ```js
 import { createFlickr } from "flickr-sdk"
 
-const { flickr } = createFlickr("<your FLickr API key>")
+const { flickr } = createFlickr("<your Flickr API key>")
 
 const res = await flickr("flickr.photos.getInfo", {
     photo_id: '12345',
