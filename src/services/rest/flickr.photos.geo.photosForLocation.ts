@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.715Z
+ * This file was auto-generated on 2023-10-24T15:44:49.797Z
  * flickr.photos.geo.photosForLocation
  * Return a list of photos for the calling user at a specific latitude, longitude and accuracy
+ * Permissions required: read
  */
-export interface FlickrPhotosGeoPhotosForLocationParams {
+export type FlickrPhotosGeoPhotosForLocationParams = {
   /**
    * The latitude whose valid range is -90 to 90. Anything more than 6 decimal places will be truncated.
    */

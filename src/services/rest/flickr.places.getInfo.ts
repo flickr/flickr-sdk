@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.779Z
+ * This file was auto-generated on 2023-10-24T15:44:49.868Z
  * flickr.places.getInfo
  * Get informations about a place.
+ * Permissions required: none
  */
-export interface FlickrPlacesGetInfoParams {
+export type FlickrPlacesGetInfoParams = {
   /**
    * A Flickr Places ID. <span style="font-style:italic;">(While optional, you must pass either a valid Places ID or a WOE ID.)</span>
    */

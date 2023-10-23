@@ -1,6 +1,7 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.707Z
+ * This file was auto-generated on 2023-10-24T15:44:49.777Z
  * flickr.people.getUploadStatus
  * Returns information for the calling user related to photo uploads.
+ * Permissions required: read
  */
-export interface FlickrPeopleGetUploadStatusParams {}
+export type FlickrPeopleGetUploadStatusParams = {}

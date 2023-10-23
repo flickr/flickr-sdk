@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.683Z
+ * This file was auto-generated on 2023-10-24T15:44:49.729Z
  * flickr.groups.discuss.topics.add
  * Post a new discussion topic to a group.
+ * Permissions required: write
  */
-export interface FlickrGroupsDiscussTopicsAddParams {
+export type FlickrGroupsDiscussTopicsAddParams = {
   /**
  * The NSID or path alias of the group to add a topic to.
 

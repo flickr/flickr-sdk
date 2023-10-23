@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.759Z
+ * This file was auto-generated on 2023-10-24T15:44:49.850Z
  * flickr.photosets.comments.addComment
  * Add a comment to a photoset.
+ * Permissions required: write
  */
-export interface FlickrPhotosetsCommentsAddCommentParams {
+export type FlickrPhotosetsCommentsAddCommentParams = {
   /**
    * The id of the photoset to add a comment to.
    */

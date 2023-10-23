@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.723Z
+ * This file was auto-generated on 2023-10-24T15:44:49.803Z
  * flickr.photos.getContactsPhotos
  * Fetch a list of recent photos from the calling users' contacts.
+ * Permissions required: read
  */
-export interface FlickrPhotosGetContactsPhotosParams {
+export type FlickrPhotosGetContactsPhotosParams = {
   /**
    * Number of photos to return. Defaults to 10, maximum 50. This is only used if <code>single_photo</code> is not passed.
    */

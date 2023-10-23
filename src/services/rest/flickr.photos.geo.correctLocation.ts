@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.713Z
+ * This file was auto-generated on 2023-10-24T15:44:49.787Z
  * flickr.photos.geo.correctLocation
  *
+ * Permissions required: write
  */
-export interface FlickrPhotosGeoCorrectLocationParams {
+export type FlickrPhotosGeoCorrectLocationParams = {
   /**
    * The ID of the photo whose WOE location is being corrected.
    */

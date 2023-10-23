@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.755Z
+ * This file was auto-generated on 2023-10-24T15:44:49.844Z
  * flickr.photos.suggestions.rejectSuggestion
  * Reject a suggestion for a photo.
+ * Permissions required: write
  */
-export interface FlickrPhotosSuggestionsRejectSuggestionParams {
+export type FlickrPhotosSuggestionsRejectSuggestionParams = {
   /**
    * The unique ID of the suggestion to reject.
    */

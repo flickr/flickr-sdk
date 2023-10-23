@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.807Z
+ * This file was auto-generated on 2023-10-24T15:44:49.927Z
  * flickr.testimonials.editTestimonial
  * Change the text of a testimonial. The loggedin user must be the author of the existing testimonial. Editing a testimonial will mark it as pending and will require it to be re-approved by the recipient before appearing on their profile
+ * Permissions required: write
  */
-export interface FlickrTestimonialsEditTestimonialParams {
+export type FlickrTestimonialsEditTestimonialParams = {
   /**
    * The NSID of the user the testimonial is about
    */

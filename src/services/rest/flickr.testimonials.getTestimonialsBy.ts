@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.812Z
+ * This file was auto-generated on 2023-10-24T15:44:49.935Z
  * flickr.testimonials.getTestimonialsBy
  * Get approved testimonials written by the given user
+ * Permissions required: none
  */
-export interface FlickrTestimonialsGetTestimonialsByParams {
+export type FlickrTestimonialsGetTestimonialsByParams = {
   /**
    * ID of the user to get testimonials written by
    */

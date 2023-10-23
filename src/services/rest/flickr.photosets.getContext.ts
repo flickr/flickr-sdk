@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.773Z
+ * This file was auto-generated on 2023-10-24T15:44:49.856Z
  * flickr.photosets.getContext
  * Returns next and previous photos for a photo in a set.
+ * Permissions required: none
  */
-export interface FlickrPhotosetsGetContextParams {
+export type FlickrPhotosetsGetContextParams = {
   /**
    * The id of the photo to fetch the context for.
    */

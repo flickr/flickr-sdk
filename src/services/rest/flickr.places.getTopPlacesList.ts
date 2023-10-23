@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.781Z
+ * This file was auto-generated on 2023-10-24T15:44:49.872Z
  * flickr.places.getTopPlacesList
  * Return the top 100 most geotagged places for a day.
+ * Permissions required: none
  */
-export interface FlickrPlacesGetTopPlacesListParams {
+export type FlickrPlacesGetTopPlacesListParams = {
   /**
  * The numeric ID for a specific place type to cluster photos by. <br /><br />
 

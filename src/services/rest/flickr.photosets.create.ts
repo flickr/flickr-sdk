@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.761Z
+ * This file was auto-generated on 2023-10-24T15:44:49.853Z
  * flickr.photosets.create
  * Create a new photoset for the calling user.
+ * Permissions required: write
  */
-export interface FlickrPhotosetsCreateParams {
+export type FlickrPhotosetsCreateParams = {
   /**
    * A title for the photoset.
    */

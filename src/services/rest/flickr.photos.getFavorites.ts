@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.728Z
+ * This file was auto-generated on 2023-10-24T15:44:49.808Z
  * flickr.photos.getFavorites
  * Returns the list of people who have favorited a given photo.
+ * Permissions required: none
  */
-export interface FlickrPhotosGetFavoritesParams {
+export type FlickrPhotosGetFavoritesParams = {
   /**
    * The ID of the photo to fetch the favoriters list for.
    */

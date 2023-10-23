@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.664Z
+ * This file was auto-generated on 2023-10-24T15:44:49.699Z
  * flickr.favorites.getContext
  * Returns next and previous favorites for a photo in a user's favorites.
+ * Permissions required: none
  */
-export interface FlickrFavoritesGetContextParams {
+export type FlickrFavoritesGetContextParams = {
   /**
    * The id of the photo to fetch the context for.
    */

@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.752Z
+ * This file was auto-generated on 2023-10-24T15:44:49.842Z
  * flickr.photos.setTags
  * Set the tags for a photo.
+ * Permissions required: write
  */
-export interface FlickrPhotosSetTagsParams {
+export type FlickrPhotosSetTagsParams = {
   /**
  * The id of the photo to set tags for.
 

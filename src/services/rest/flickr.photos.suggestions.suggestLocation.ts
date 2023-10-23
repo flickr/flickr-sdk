@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.756Z
+ * This file was auto-generated on 2023-10-24T15:44:49.846Z
  * flickr.photos.suggestions.suggestLocation
  * Suggest a geotagged location for a photo.
+ * Permissions required: write
  */
-export interface FlickrPhotosSuggestionsSuggestLocationParams {
+export type FlickrPhotosSuggestionsSuggestLocationParams = {
   /**
    * The photo whose location you are suggesting.
    */

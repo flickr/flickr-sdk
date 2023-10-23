@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.758Z
+ * This file was auto-generated on 2023-10-24T15:44:49.849Z
  * flickr.photosets.addPhoto
  * Add a photo to the end of an existing photoset.
+ * Permissions required: write
  */
-export interface FlickrPhotosetsAddPhotoParams {
+export type FlickrPhotosetsAddPhotoParams = {
   /**
    * The id of the photoset to add a photo to.
    */

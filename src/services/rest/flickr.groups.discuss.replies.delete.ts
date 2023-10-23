@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.680Z
+ * This file was auto-generated on 2023-10-24T15:44:49.723Z
  * flickr.groups.discuss.replies.delete
  * Delete a reply from a group topic.
+ * Permissions required: delete
  */
-export interface FlickrGroupsDiscussRepliesDeleteParams {
+export type FlickrGroupsDiscussRepliesDeleteParams = {
   /**
    * Pass in the group id to where the topic belongs. Can be NSID or group alias. Making this parameter optional for legacy reasons, but it is highly recommended to pass this in to get faster performance.
    */

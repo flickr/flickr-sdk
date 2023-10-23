@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.667Z
+ * This file was auto-generated on 2023-10-24T15:44:49.704Z
  * flickr.favorites.getPublicList
  * Returns a list of favorite public photos for the given user.
+ * Permissions required: none
  */
-export interface FlickrFavoritesGetPublicListParams {
+export type FlickrFavoritesGetPublicListParams = {
   /**
    * The user to fetch the favorites list for.
    */

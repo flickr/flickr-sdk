@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.665Z
+ * This file was auto-generated on 2023-10-24T15:44:49.702Z
  * flickr.favorites.getList
  * Returns a list of the user's favorite photos. Only photos which the calling user has permission to see are returned.
+ * Permissions required: none
  */
-export interface FlickrFavoritesGetListParams {
+export type FlickrFavoritesGetListParams = {
   /**
    * The NSID of the user to fetch the favorites list for. If this argument is omitted, the favorites list for the calling user is returned.
    */

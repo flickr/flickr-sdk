@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.799Z
+ * This file was auto-generated on 2023-10-24T15:44:49.906Z
  * flickr.stats.getPopularPhotos
  * List the photos with the most views, comments or favorites
+ * Permissions required: read
  */
-export interface FlickrStatsGetPopularPhotosParams {
+export type FlickrStatsGetPopularPhotosParams = {
   /**
  * Stats will be returned for this date. This should be in either be in YYYY-MM-DD or unix timestamp format.
 

@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.800Z
+ * This file was auto-generated on 2023-10-24T15:44:49.908Z
  * flickr.tags.getClusterPhotos
  * Returns the first 24 photos for a given tag cluster
+ * Permissions required: none
  */
-export interface FlickrTagsGetClusterPhotosParams {
+export type FlickrTagsGetClusterPhotosParams = {
   /**
    * The tag that this cluster belongs to.
    */

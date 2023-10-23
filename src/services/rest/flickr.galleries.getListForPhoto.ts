@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.676Z
+ * This file was auto-generated on 2023-10-24T15:44:49.718Z
  * flickr.galleries.getListForPhoto
  * Return the list of galleries to which a photo has been added.  Galleries are returned sorted by date which the photo was added to the gallery.
+ * Permissions required: none
  */
-export interface FlickrGalleriesGetListForPhotoParams {
+export type FlickrGalleriesGetListForPhotoParams = {
   /**
    * The ID of the photo to fetch a list of galleries for.
    */

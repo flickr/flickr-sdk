@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.677Z
+ * This file was auto-generated on 2023-10-24T15:44:49.719Z
  * flickr.galleries.getPhotos
  * Return the list of photos for a gallery
+ * Permissions required: none
  */
-export interface FlickrGalleriesGetPhotosParams {
+export type FlickrGalleriesGetPhotosParams = {
   /**
    * The ID of the gallery of photos to return
    */

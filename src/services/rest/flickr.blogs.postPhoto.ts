@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.652Z
+ * This file was auto-generated on 2023-10-24T15:44:49.682Z
  * flickr.blogs.postPhoto
  *
+ * Permissions required: write
  */
-export interface FlickrBlogsPostPhotoParams {
+export type FlickrBlogsPostPhotoParams = {
   /**
    * The id of the blog to post to.
    */

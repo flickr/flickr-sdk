@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.796Z
+ * This file was auto-generated on 2023-10-24T15:44:49.901Z
  * flickr.stats.getPhotosetReferrers
  * Get a list of referrers from a given domain to a photoset
+ * Permissions required: read
  */
-export interface FlickrStatsGetPhotosetReferrersParams {
+export type FlickrStatsGetPhotosetReferrersParams = {
   /**
  * Stats will be returned for this date. This should be in either be in YYYY-MM-DD or unix timestamp format.
 

@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.792Z
+ * This file was auto-generated on 2023-10-24T15:44:49.895Z
  * flickr.stats.getCollectionReferrers
  * Get a list of referrers from a given domain to a collection
+ * Permissions required: read
  */
-export interface FlickrStatsGetCollectionReferrersParams {
+export type FlickrStatsGetCollectionReferrersParams = {
   /**
  * Stats will be returned for this date. This should be in either be in YYYY-MM-DD or unix timestamp format.
 

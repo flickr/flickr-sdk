@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.673Z
+ * This file was auto-generated on 2023-10-24T15:44:49.713Z
  * flickr.galleries.editPhotos
  * Modify the photos in a gallery. Use this method to add, remove and re-order photos.
+ * Permissions required: write
  */
-export interface FlickrGalleriesEditPhotosParams {
+export type FlickrGalleriesEditPhotosParams = {
   /**
    * The id of the gallery to modify. The gallery must belong to the calling user.
    */

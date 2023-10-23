@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.708Z
+ * This file was auto-generated on 2023-10-24T15:44:49.780Z
  * flickr.photos.comments.addComment
  * Add comment to a photo as the currently authenticated user.
+ * Permissions required: write
  */
-export interface FlickrPhotosCommentsAddCommentParams {
+export type FlickrPhotosCommentsAddCommentParams = {
   /**
    * The id of the photo to add a comment to.
    */

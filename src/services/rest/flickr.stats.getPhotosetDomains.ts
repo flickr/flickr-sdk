@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.796Z
+ * This file was auto-generated on 2023-10-24T15:44:49.900Z
  * flickr.stats.getPhotosetDomains
  * Get a list of referring domains for a photoset
+ * Permissions required: read
  */
-export interface FlickrStatsGetPhotosetDomainsParams {
+export type FlickrStatsGetPhotosetDomainsParams = {
   /**
  * Stats will be returned for this date. This should be in either be in YYYY-MM-DD or unix timestamp format.
 

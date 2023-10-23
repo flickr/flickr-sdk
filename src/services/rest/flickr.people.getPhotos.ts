@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.703Z
+ * This file was auto-generated on 2023-10-24T15:44:49.770Z
  * flickr.people.getPhotos
  * Return photos from the given user's photostream. Only photos visible to the calling user will be returned. This method must be authenticated; to return public photos for a user, use <a href="/services/api/flickr.people.getPublicPhotos.html">flickr.people.getPublicPhotos</a>.
+ * Permissions required: none
  */
-export interface FlickrPeopleGetPhotosParams {
+export type FlickrPeopleGetPhotosParams = {
   /**
    * The NSID of the user who's photos to return. A value of "me" will return the calling user's photos.
    */

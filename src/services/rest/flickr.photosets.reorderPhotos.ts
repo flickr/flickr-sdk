@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.776Z
+ * This file was auto-generated on 2023-10-24T15:44:49.864Z
  * flickr.photosets.reorderPhotos
  *
+ * Permissions required: write
  */
-export interface FlickrPhotosetsReorderPhotosParams {
+export type FlickrPhotosetsReorderPhotosParams = {
   /**
    * The id of the photoset to reorder. The photoset must belong to the calling user.
    */

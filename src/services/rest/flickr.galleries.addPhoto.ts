@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.668Z
+ * This file was auto-generated on 2023-10-24T15:44:49.706Z
  * flickr.galleries.addPhoto
  * Add a photo to a gallery.
+ * Permissions required: write
  */
-export interface FlickrGalleriesAddPhotoParams {
+export type FlickrGalleriesAddPhotoParams = {
   /**
    * The ID of the gallery to add a photo to.  Note: this is the compound ID returned in methods like <a href="/services/api/flickr.galleries.getList.html">flickr.galleries.getList</a>, and <a href="/services/api/flickr.galleries.getListForPhoto.html">flickr.galleries.getListForPhoto</a>.
    */

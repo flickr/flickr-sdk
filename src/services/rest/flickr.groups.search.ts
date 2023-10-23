@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.693Z
+ * This file was auto-generated on 2023-10-24T15:44:49.750Z
  * flickr.groups.search
  * Search for groups. 18+ groups will only be returned for authenticated calls where the authenticated user is over 18.
+ * Permissions required: none
  */
-export interface FlickrGroupsSearchParams {
+export type FlickrGroupsSearchParams = {
   /**
    * The text to search for.
    */

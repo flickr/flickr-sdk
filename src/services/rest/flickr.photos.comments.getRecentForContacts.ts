@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.711Z
+ * This file was auto-generated on 2023-10-24T15:44:49.784Z
  * flickr.photos.comments.getRecentForContacts
  * Return the list of photos belonging to your contacts that have been commented on recently.
+ * Permissions required: read
  */
-export interface FlickrPhotosCommentsGetRecentForContactsParams {
+export type FlickrPhotosCommentsGetRecentForContactsParams = {
   /**
  * Limits the resultset to photos that have been commented on since this date. The date should be in the form of a Unix timestamp.<br /><br />
 The default, and maximum, offset is (1) hour.

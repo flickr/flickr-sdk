@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.771Z
+ * This file was auto-generated on 2023-10-24T15:44:49.855Z
  * flickr.photosets.editMeta
  * Modify the meta-data for a photoset.
+ * Permissions required: write
  */
-export interface FlickrPhotosetsEditMetaParams {
+export type FlickrPhotosetsEditMetaParams = {
   /**
    * The id of the photoset to modify.
    */

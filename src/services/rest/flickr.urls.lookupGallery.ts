@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.814Z
+ * This file was auto-generated on 2023-10-24T15:44:49.938Z
  * flickr.urls.lookupGallery
  * Returns gallery info, by url.
+ * Permissions required: none
  */
-export interface FlickrUrlsLookupGalleryParams {
+export type FlickrUrlsLookupGalleryParams = {
   /**
    * The gallery's URL.
    */

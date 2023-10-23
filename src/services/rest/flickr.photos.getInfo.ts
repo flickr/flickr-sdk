@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.729Z
+ * This file was auto-generated on 2023-10-24T15:44:49.809Z
  * flickr.photos.getInfo
  * Get information about a photo. The calling user must have permission to view the photo.
+ * Permissions required: none
  */
-export interface FlickrPhotosGetInfoParams {
+export type FlickrPhotosGetInfoParams = {
   /**
    * The id of the photo to get information for.
    */

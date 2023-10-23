@@ -1,11 +1,12 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.790Z
+ * This file was auto-generated on 2023-10-24T15:44:49.891Z
  * flickr.push.unsubscribe
  * Why would you want to do this?
 <br><br>
 <i>(this method is experimental and may change)</i>
+ * Permissions required: read
  */
-export interface FlickrPushUnsubscribeParams {
+export type FlickrPushUnsubscribeParams = {
   /**
    * The type of subscription. See <a href="http://www.flickr.com/services/api/flickr.push.getTopics.htm">flickr.push.getTopics</a>.
    */

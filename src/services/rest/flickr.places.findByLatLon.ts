@@ -1,5 +1,5 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.778Z
+ * This file was auto-generated on 2023-10-24T15:44:49.866Z
  * flickr.places.findByLatLon
  * Return a place ID for a latitude, longitude and accuracy triple.<br /><br />
 The flickr.places.findByLatLon method is not meant to be a (reverse) geocoder in the traditional sense. It is designed to allow users to find photos for "places" and will round up to the nearest place type to which corresponding place IDs apply.<br /><br />
@@ -7,8 +7,9 @@ For example, if you pass it a street level coordinate it will return the city th
 It will also truncate latitudes and longitudes to three decimal points.
 
 
+ * Permissions required: none
  */
-export interface FlickrPlacesFindByLatLonParams {
+export type FlickrPlacesFindByLatLonParams = {
   /**
    * The latitude whose valid range is -90 to 90. Anything more than 4 decimal places will be truncated.
    */

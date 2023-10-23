@@ -1,11 +1,12 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.699Z
+ * This file was auto-generated on 2023-10-24T15:44:49.761Z
  * flickr.panda.getPhotos
  * Ask the <a href="http://www.flickr.com/explore/panda">Flickr Pandas</a> for a list of recent public (and "safe") photos.
 <br/><br/>
 More information about the pandas can be found on the <a href="http://code.flickr.com/blog/2009/03/03/panda-tuesday-the-history-of-the-panda-new-apis-explore-and-you/">dev blog</a>.
+ * Permissions required: none
  */
-export interface FlickrPandaGetPhotosParams {
+export type FlickrPandaGetPhotosParams = {
   /**
  * The name of the panda to ask for photos from. There are currently three pandas named:<br /><br />
 

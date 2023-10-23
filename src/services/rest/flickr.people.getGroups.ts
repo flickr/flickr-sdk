@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.702Z
+ * This file was auto-generated on 2023-10-24T15:44:49.766Z
  * flickr.people.getGroups
  * Returns the list of groups a user is a member of.
+ * Permissions required: read
  */
-export interface FlickrPeopleGetGroupsParams {
+export type FlickrPeopleGetGroupsParams = {
   /**
    * The NSID of the user to fetch groups for.
    */

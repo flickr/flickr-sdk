@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.777Z
+ * This file was auto-generated on 2023-10-24T15:44:49.865Z
  * flickr.photosets.setPrimaryPhoto
  * Set photoset primary photo
+ * Permissions required: write
  */
-export interface FlickrPhotosetsSetPrimaryPhotoParams {
+export type FlickrPhotosetsSetPrimaryPhotoParams = {
   /**
    * The id of the photoset to set primary photo to.
    */

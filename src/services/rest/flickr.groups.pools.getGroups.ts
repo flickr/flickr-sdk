@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.691Z
+ * This file was auto-generated on 2023-10-24T15:44:49.741Z
  * flickr.groups.pools.getGroups
  * Returns a list of groups to which you can add photos.
+ * Permissions required: read
  */
-export interface FlickrGroupsPoolsGetGroupsParams {
+export type FlickrGroupsPoolsGetGroupsParams = {
   /**
    * The page of results to return. If this argument is omitted, it defaults to 1.
    */

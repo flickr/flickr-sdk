@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.694Z
+ * This file was auto-generated on 2023-10-24T15:44:49.752Z
  * flickr.interestingness.getList
  * Returns the list of interesting photos for the most recent day or a user-specified date.
+ * Permissions required: none
  */
-export interface FlickrInterestingnessGetListParams {
+export type FlickrInterestingnessGetListParams = {
   /**
    * A specific date, formatted as YYYY-MM-DD, to return interesting photos for.
    */

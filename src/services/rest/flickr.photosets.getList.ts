@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.774Z
+ * This file was auto-generated on 2023-10-24T15:44:49.859Z
  * flickr.photosets.getList
  * Returns the photosets belonging to the specified user.
+ * Permissions required: none
  */
-export interface FlickrPhotosetsGetListParams {
+export type FlickrPhotosetsGetListParams = {
   /**
    * The NSID of the user to get a photoset list for. If none is specified, the calling user is assumed.
    */

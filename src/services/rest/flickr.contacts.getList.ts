@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.659Z
+ * This file was auto-generated on 2023-10-24T15:44:49.692Z
  * flickr.contacts.getList
  * Get a list of contacts for the calling user.
+ * Permissions required: read
  */
-export interface FlickrContactsGetListParams {
+export type FlickrContactsGetListParams = {
   /**
  * An optional filter of the results. The following values are valid:<br />
 &nbsp;

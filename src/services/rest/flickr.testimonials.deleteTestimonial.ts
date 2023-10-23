@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.807Z
+ * This file was auto-generated on 2023-10-24T15:44:49.927Z
  * flickr.testimonials.deleteTestimonial
  * Permanently delete a testimonial. The loggedin user must be either the author or recipient of the testimonial
+ * Permissions required: write
  */
-export interface FlickrTestimonialsDeleteTestimonialParams {
+export type FlickrTestimonialsDeleteTestimonialParams = {
   /**
    *
    */

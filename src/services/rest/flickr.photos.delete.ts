@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.712Z
+ * This file was auto-generated on 2023-10-24T15:44:49.785Z
  * flickr.photos.delete
  * Delete a photo from flickr.
+ * Permissions required: delete
  */
-export interface FlickrPhotosDeleteParams {
+export type FlickrPhotosDeleteParams = {
   /**
    * The id of the photo to delete.
    */

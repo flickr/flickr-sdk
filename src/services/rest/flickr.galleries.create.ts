@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.669Z
+ * This file was auto-generated on 2023-10-24T15:44:49.708Z
  * flickr.galleries.create
  * Create a new gallery for the calling user.
+ * Permissions required: write
  */
-export interface FlickrGalleriesCreateParams {
+export type FlickrGalleriesCreateParams = {
   /**
    * The name of the gallery
    */

@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.732Z
+ * This file was auto-generated on 2023-10-24T15:44:49.817Z
  * flickr.photos.getSizes
  * Returns the available sizes for a photo.  The calling user must have permission to view the photo.
+ * Permissions required: none
  */
-export interface FlickrPhotosGetSizesParams {
+export type FlickrPhotosGetSizesParams = {
   /**
    * The id of the photo to fetch size information for.
    */

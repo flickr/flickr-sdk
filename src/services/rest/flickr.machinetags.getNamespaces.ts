@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.695Z
+ * This file was auto-generated on 2023-10-24T15:44:49.753Z
  * flickr.machinetags.getNamespaces
  * Return a list of unique namespaces, optionally limited by a given predicate, in alphabetical order.
+ * Permissions required: none
  */
-export interface FlickrMachinetagsGetNamespacesParams {
+export type FlickrMachinetagsGetNamespacesParams = {
   /**
    * Limit the list of namespaces returned to those that have the following predicate.
    */

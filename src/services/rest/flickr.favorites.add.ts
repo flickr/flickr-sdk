@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.664Z
+ * This file was auto-generated on 2023-10-24T15:44:49.698Z
  * flickr.favorites.add
  * Adds a photo to a user's favorites list.
+ * Permissions required: write
  */
-export interface FlickrFavoritesAddParams {
+export type FlickrFavoritesAddParams = {
   /**
    * The id of the photo to add to the user's favorites.
    */

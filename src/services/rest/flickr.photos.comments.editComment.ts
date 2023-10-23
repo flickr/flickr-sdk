@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.709Z
+ * This file was auto-generated on 2023-10-24T15:44:49.782Z
  * flickr.photos.comments.editComment
  * Edit the text of a comment as the currently authenticated user.
+ * Permissions required: write
  */
-export interface FlickrPhotosCommentsEditCommentParams {
+export type FlickrPhotosCommentsEditCommentParams = {
   /**
    * The id of the comment to edit.
    */

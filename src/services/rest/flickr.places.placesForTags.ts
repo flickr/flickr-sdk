@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.783Z
+ * This file was auto-generated on 2023-10-24T15:44:49.875Z
  * flickr.places.placesForTags
  * Return a list of the top 100 unique places clustered by a given placetype for set of tags or machine tags.
+ * Permissions required: none
  */
-export interface FlickrPlacesPlacesForTagsParams {
+export type FlickrPlacesPlacesForTagsParams = {
   /**
  * The numeric ID for a specific place type to cluster photos by. <br /><br />
 

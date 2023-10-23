@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.702Z
+ * This file was auto-generated on 2023-10-24T15:44:49.767Z
  * flickr.people.getInfo
  * Get information about a user.
+ * Permissions required: none
  */
-export interface FlickrPeopleGetInfoParams {
+export type FlickrPeopleGetInfoParams = {
   /**
    * The NSID of the user to fetch information about.
    */

@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.689Z
+ * This file was auto-generated on 2023-10-24T15:44:49.737Z
  * flickr.groups.members.getList
  * Get a list of the members of a group.  The call must be signed on behalf of a Flickr member, and the ability to see the group membership will be determined by the Flickr member's group privileges.
+ * Permissions required: read
  */
-export interface FlickrGroupsMembersGetListParams {
+export type FlickrGroupsMembersGetListParams = {
   /**
    * Return a list of members for this group.  The group must be viewable by the Flickr member on whose behalf the API call is made.
    */

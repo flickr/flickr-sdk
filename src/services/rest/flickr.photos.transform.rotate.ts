@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.757Z
+ * This file was auto-generated on 2023-10-24T15:44:49.847Z
  * flickr.photos.transform.rotate
  * Rotate a photo.
+ * Permissions required: write
  */
-export interface FlickrPhotosTransformRotateParams {
+export type FlickrPhotosTransformRotateParams = {
   /**
    * The id of the photo to rotate.
    */

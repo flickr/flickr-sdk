@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.753Z
+ * This file was auto-generated on 2023-10-24T15:44:49.843Z
  * flickr.photos.suggestions.getList
  * Return a list of suggestions for a user that are pending approval.
+ * Permissions required: read
  */
-export interface FlickrPhotosSuggestionsGetListParams {
+export type FlickrPhotosSuggestionsGetListParams = {
   /**
    * Only show suggestions for a single photo.
    */

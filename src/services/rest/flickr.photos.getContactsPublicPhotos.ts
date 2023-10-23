@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.724Z
+ * This file was auto-generated on 2023-10-24T15:44:49.804Z
  * flickr.photos.getContactsPublicPhotos
  * Fetch a list of recent public photos from a users' contacts.
+ * Permissions required: none
  */
-export interface FlickrPhotosGetContactsPublicPhotosParams {
+export type FlickrPhotosGetContactsPublicPhotosParams = {
   /**
    * The NSID of the user to fetch photos for.
    */

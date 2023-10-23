@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.706Z
+ * This file was auto-generated on 2023-10-24T15:44:49.774Z
  * flickr.people.getPublicPhotos
  * Get a list of public photos for the given user.
+ * Permissions required: none
  */
-export interface FlickrPeopleGetPublicPhotosParams {
+export type FlickrPeopleGetPublicPhotosParams = {
   /**
    * The NSID of the user who's photos to return.
    */

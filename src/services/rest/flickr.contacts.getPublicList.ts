@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.662Z
+ * This file was auto-generated on 2023-10-24T15:44:49.695Z
  * flickr.contacts.getPublicList
  * Get the contact list for a user.
+ * Permissions required: none
  */
-export interface FlickrContactsGetPublicListParams {
+export type FlickrContactsGetPublicListParams = {
   /**
    * The NSID of the user to fetch the contact list for.
    */

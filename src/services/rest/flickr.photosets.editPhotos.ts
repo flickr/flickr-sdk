@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.772Z
+ * This file was auto-generated on 2023-10-24T15:44:49.855Z
  * flickr.photosets.editPhotos
  * Modify the photos in a photoset. Use this method to add, remove and re-order photos.
+ * Permissions required: write
  */
-export interface FlickrPhotosetsEditPhotosParams {
+export type FlickrPhotosetsEditPhotosParams = {
   /**
    * The id of the photoset to modify. The photoset must belong to the calling user.
    */

@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.750Z
+ * This file was auto-generated on 2023-10-24T15:44:49.839Z
  * flickr.photos.setMeta
  * Set the meta information for a photo.
+ * Permissions required: write
  */
-export interface FlickrPhotosSetMetaParams {
+export type FlickrPhotosSetMetaParams = {
   /**
    * The id of the photo to set information for.
    */

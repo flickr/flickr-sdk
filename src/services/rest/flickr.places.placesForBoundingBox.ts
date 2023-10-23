@@ -1,5 +1,5 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.781Z
+ * This file was auto-generated on 2023-10-24T15:44:49.873Z
  * flickr.places.placesForBoundingBox
  * Return all the locations of a matching place type for a bounding box.<br /><br />
 
@@ -13,8 +13,9 @@ The maximum allowable size of a bounding box (the distance between the SW and NE
 <li><strong>country</strong>: 500km (310mi)</li>
 <li><strong>continent</strong>: 1500km (932mi)</li>
 </ul>
+ * Permissions required: none
  */
-export interface FlickrPlacesPlacesForBoundingBoxParams {
+export type FlickrPlacesPlacesForBoundingBoxParams = {
   /**
    * A comma-delimited list of 4 values defining the Bounding Box of the area that will be searched. The 4 values represent the bottom-left corner of the box and the top-right corner, minimum_longitude, minimum_latitude, maximum_longitude, maximum_latitude.
    */

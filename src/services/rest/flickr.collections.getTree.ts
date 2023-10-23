@@ -1,11 +1,12 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.657Z
+ * This file was auto-generated on 2023-10-24T15:44:49.689Z
  * flickr.collections.getTree
  * Returns a tree (or sub tree) of collections belonging to a given user.
 				Note that the response values of `iconlarge` and `iconsmall` are defunct and will now return empty mosaic grids. For more information on how to 
 				use the new style of collection mosaics, go <a href="https://www.flickr.com/services/api/misc.collections.html">here</a>.
+ * Permissions required: none
  */
-export interface FlickrCollectionsGetTreeParams {
+export type FlickrCollectionsGetTreeParams = {
   /**
    * The ID of the collection to fetch a tree for, or zero to fetch the root collection. Defaults to zero.
    */

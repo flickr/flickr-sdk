@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.809Z
+ * This file was auto-generated on 2023-10-24T15:44:49.931Z
  * flickr.testimonials.getPendingTestimonialsAbout
  * Get all pending testimonials written about the given user
+ * Permissions required: read
  */
-export interface FlickrTestimonialsGetPendingTestimonialsAboutParams {
+export type FlickrTestimonialsGetPendingTestimonialsAboutParams = {
   /**
    * Page number. Default is 0
    */

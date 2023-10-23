@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.697Z
+ * This file was auto-generated on 2023-10-24T15:44:49.755Z
  * flickr.machinetags.getPredicates
  * Return a list of unique predicates, optionally limited by a given namespace.
+ * Permissions required: none
  */
-export interface FlickrMachinetagsGetPredicatesParams {
+export type FlickrMachinetagsGetPredicatesParams = {
   /**
    * Limit the list of predicates returned to those that have the following namespace.
    */

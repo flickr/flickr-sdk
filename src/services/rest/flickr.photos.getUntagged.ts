@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.733Z
+ * This file was auto-generated on 2023-10-24T15:44:49.818Z
  * flickr.photos.getUntagged
  * Returns a list of your photos with no tags.
+ * Permissions required: read
  */
-export interface FlickrPhotosGetUntaggedParams {
+export type FlickrPhotosGetUntaggedParams = {
   /**
    * Minimum upload date. Photos with an upload date greater than or equal to this value will be returned. The date can be in the form of a unix timestamp or mysql datetime.
    */

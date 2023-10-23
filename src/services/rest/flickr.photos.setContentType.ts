@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.749Z
+ * This file was auto-generated on 2023-10-24T15:44:49.837Z
  * flickr.photos.setContentType
  * Set the content type of a photo.
+ * Permissions required: write
  */
-export interface FlickrPhotosSetContentTypeParams {
+export type FlickrPhotosSetContentTypeParams = {
   /**
    * The id of the photo to set the content type of.
    */

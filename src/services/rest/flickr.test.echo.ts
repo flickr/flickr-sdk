@@ -1,6 +1,7 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.805Z
+ * This file was auto-generated on 2023-10-24T15:44:49.922Z
  * flickr.test.echo
  * A testing method which echo's all parameters back in the response.
+ * Permissions required: none
  */
-export interface FlickrTestEchoParams {}
+export type FlickrTestEchoParams = {}

@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.738Z
+ * This file was auto-generated on 2023-10-24T15:44:49.820Z
  * flickr.photos.getWithoutGeoData
  * Returns a list of your photos which haven't been geo-tagged.
+ * Permissions required: read
  */
-export interface FlickrPhotosGetWithoutGeoDataParams {
+export type FlickrPhotosGetWithoutGeoDataParams = {
   /**
    * Maximum upload date. Photos with an upload date less than or equal to this value will be returned. The date should be in the form of a unix timestamp.
    */

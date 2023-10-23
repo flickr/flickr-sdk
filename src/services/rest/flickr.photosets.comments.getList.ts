@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.760Z
+ * This file was auto-generated on 2023-10-24T15:44:49.852Z
  * flickr.photosets.comments.getList
  * Returns the comments for a photoset.
+ * Permissions required: none
  */
-export interface FlickrPhotosetsCommentsGetListParams {
+export type FlickrPhotosetsCommentsGetListParams = {
   /**
    * The id of the photoset to fetch comments for.
    */

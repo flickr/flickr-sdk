@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.690Z
+ * This file was auto-generated on 2023-10-24T15:44:49.738Z
  * flickr.groups.pools.add
  * Add a photo to a group's pool.
+ * Permissions required: write
  */
-export interface FlickrGroupsPoolsAddParams {
+export type FlickrGroupsPoolsAddParams = {
   /**
    * The id of the photo to add to the group pool. The photo must belong to the calling user.
    */

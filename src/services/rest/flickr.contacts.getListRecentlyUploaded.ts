@@ -1,11 +1,12 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.661Z
+ * This file was auto-generated on 2023-10-24T15:44:49.694Z
  * flickr.contacts.getListRecentlyUploaded
  * Return a list of contacts for a user who have recently uploaded photos along with the total count of photos uploaded.<br /><br />
 
 This method is still considered experimental. We don't plan for it to change or to go away but so long as this notice is present you should write your code accordingly.
+ * Permissions required: read
  */
-export interface FlickrContactsGetListRecentlyUploadedParams {
+export type FlickrContactsGetListRecentlyUploadedParams = {
   /**
  * Limits the resultset to contacts that have uploaded photos since this date. The date should be in the form of a Unix timestamp.
 

@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.692Z
+ * This file was auto-generated on 2023-10-24T15:44:49.747Z
  * flickr.groups.pools.getPhotos
  * Returns a list of pool photos for a given group, based on the permissions of the group and the user logged in (if any).
+ * Permissions required: none
  */
-export interface FlickrGroupsPoolsGetPhotosParams {
+export type FlickrGroupsPoolsGetPhotosParams = {
   /**
    * The id of the group who's pool you which to get the photo list for.
    */

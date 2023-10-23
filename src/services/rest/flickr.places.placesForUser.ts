@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.784Z
+ * This file was auto-generated on 2023-10-24T15:44:49.877Z
  * flickr.places.placesForUser
  * Return a list of the top 100 unique places clustered by a given placetype for a user.
+ * Permissions required: read
  */
-export interface FlickrPlacesPlacesForUserParams {
+export type FlickrPlacesPlacesForUserParams = {
   /**
  * The numeric ID for a specific place type to cluster photos by. <br /><br />
 

@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.731Z
+ * This file was auto-generated on 2023-10-24T15:44:49.815Z
  * flickr.photos.getPopular
  * Returns a list of popular photos
+ * Permissions required: none
  */
-export interface FlickrPhotosGetPopularParams {
+export type FlickrPhotosGetPopularParams = {
   /**
    * The NSID of the user to get a galleries list for. If none is specified, the calling user is assumed.
    */

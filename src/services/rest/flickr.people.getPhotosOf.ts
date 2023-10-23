@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.705Z
+ * This file was auto-generated on 2023-10-24T15:44:49.772Z
  * flickr.people.getPhotosOf
  * Returns a list of photos containing a particular Flickr member.
+ * Permissions required: none
  */
-export interface FlickrPeopleGetPhotosOfParams {
+export type FlickrPeopleGetPhotosOfParams = {
   /**
    * The NSID of the user you want to find photos of. A value of "me" will search against photos of the calling user, for authenticated calls.
    */

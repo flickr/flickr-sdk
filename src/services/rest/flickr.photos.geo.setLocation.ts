@@ -1,11 +1,12 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.720Z
+ * This file was auto-generated on 2023-10-24T15:44:49.800Z
  * flickr.photos.geo.setLocation
  * Sets the geo data (latitude and longitude and, optionally, the accuracy level) for a photo.
 
 Before users may assign location data to a photo they must define who, by default, may view that information. Users can edit this preference at <a href="http://www.flickr.com/account/geo/privacy/">http://www.flickr.com/account/geo/privacy/</a>. If a user has not set this preference, the API method will return an error.
+ * Permissions required: write
  */
-export interface FlickrPhotosGeoSetLocationParams {
+export type FlickrPhotosGeoSetLocationParams = {
   /**
    * The id of the photo to set location data for.
    */

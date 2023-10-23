@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.751Z
+ * This file was auto-generated on 2023-10-24T15:44:49.840Z
  * flickr.photos.setPerms
  * Set permissions for a photo.
+ * Permissions required: write
  */
-export interface FlickrPhotosSetPermsParams {
+export type FlickrPhotosSetPermsParams = {
   /**
    * The id of the photo to set permissions for.
    */

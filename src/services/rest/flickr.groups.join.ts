@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.686Z
+ * This file was auto-generated on 2023-10-24T15:44:49.734Z
  * flickr.groups.join
  * Join a public group as a member.
+ * Permissions required: write
  */
-export interface FlickrGroupsJoinParams {
+export type FlickrGroupsJoinParams = {
   /**
    * The NSID of the Group in question
    */

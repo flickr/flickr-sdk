@@ -1,6 +1,7 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.788Z
+ * This file was auto-generated on 2023-10-24T15:44:49.886Z
  * flickr.prefs.getSafetyLevel
  * Returns the default safety level preference for the user.
+ * Permissions required: read
  */
-export interface FlickrPrefsGetSafetyLevelParams {}
+export type FlickrPrefsGetSafetyLevelParams = {}

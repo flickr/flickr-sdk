@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.739Z
+ * This file was auto-generated on 2023-10-24T15:44:49.822Z
  * flickr.photos.licenses.setLicense
  * Sets the license for a photo.
+ * Permissions required: write
  */
-export interface FlickrPhotosLicensesSetLicenseParams {
+export type FlickrPhotosLicensesSetLicenseParams = {
   /**
    * The photo to update the license for.
    */

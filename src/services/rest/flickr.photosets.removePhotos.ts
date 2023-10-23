@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.776Z
+ * This file was auto-generated on 2023-10-24T15:44:49.863Z
  * flickr.photosets.removePhotos
  * Remove multiple photos from a photoset.
+ * Permissions required: write
  */
-export interface FlickrPhotosetsRemovePhotosParams {
+export type FlickrPhotosetsRemovePhotosParams = {
   /**
    * The id of the photoset to remove photos from.
    */

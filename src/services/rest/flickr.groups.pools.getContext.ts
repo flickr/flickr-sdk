@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.690Z
+ * This file was auto-generated on 2023-10-24T15:44:49.740Z
  * flickr.groups.pools.getContext
  * Returns next and previous photos for a photo in a group pool.
+ * Permissions required: none
  */
-export interface FlickrGroupsPoolsGetContextParams {
+export type FlickrGroupsPoolsGetContextParams = {
   /**
    * The id of the photo to fetch the context for.
    */

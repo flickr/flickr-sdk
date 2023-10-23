@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.674Z
+ * This file was auto-generated on 2023-10-24T15:44:49.714Z
  * flickr.galleries.getInfo
  *
+ * Permissions required: none
  */
-export interface FlickrGalleriesGetInfoParams {
+export type FlickrGalleriesGetInfoParams = {
   /**
    * The gallery ID you are requesting information for.
    */

@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.697Z
+ * This file was auto-generated on 2023-10-24T15:44:49.756Z
  * flickr.machinetags.getRecentValues
  * Fetch recently used (or created) machine tags values.
+ * Permissions required: none
  */
-export interface FlickrMachinetagsGetRecentValuesParams {
+export type FlickrMachinetagsGetRecentValuesParams = {
   /**
    * A namespace that all values should be restricted to.
    */

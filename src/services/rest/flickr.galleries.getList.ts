@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.675Z
+ * This file was auto-generated on 2023-10-24T15:44:49.716Z
  * flickr.galleries.getList
  * Return the list of galleries created by a user.  Sorted from newest to oldest.
+ * Permissions required: none
  */
-export interface FlickrGalleriesGetListParams {
+export type FlickrGalleriesGetListParams = {
   /**
    * The NSID of the user to get a galleries list for. If none is specified, the calling user is assumed.
    */

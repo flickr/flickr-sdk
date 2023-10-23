@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.743Z
+ * This file was auto-generated on 2023-10-24T15:44:49.827Z
  * flickr.photos.people.add
  * Add a person to a photo. Coordinates and sizes of boxes are optional; they are measured in pixels, based on the 500px image size shown on individual photo pages.
+ * Permissions required: write
  */
-export interface FlickrPhotosPeopleAddParams {
+export type FlickrPhotosPeopleAddParams = {
   /**
    * The id of the photo to add a person to.
    */

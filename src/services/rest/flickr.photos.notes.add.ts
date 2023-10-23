@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.741Z
+ * This file was auto-generated on 2023-10-24T15:44:49.824Z
  * flickr.photos.notes.add
  * Add a note to a photo. Coordinates and sizes are in pixels, based on the 500px image size shown on individual photo pages.
+ * Permissions required: write
  */
-export interface FlickrPhotosNotesAddParams {
+export type FlickrPhotosNotesAddParams = {
   /**
    * The id of the photo to add a note to
    */

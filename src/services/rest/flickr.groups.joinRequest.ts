@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.687Z
+ * This file was auto-generated on 2023-10-24T15:44:49.735Z
  * flickr.groups.joinRequest
  * Request to join a group that is invitation-only.
+ * Permissions required: write
  */
-export interface FlickrGroupsJoinRequestParams {
+export type FlickrGroupsJoinRequestParams = {
   /**
    * The NSID of the group to request joining.
    */

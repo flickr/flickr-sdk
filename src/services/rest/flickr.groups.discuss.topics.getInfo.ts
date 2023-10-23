@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.684Z
+ * This file was auto-generated on 2023-10-24T15:44:49.730Z
  * flickr.groups.discuss.topics.getInfo
  * Get information about a group discussion topic.
+ * Permissions required: none
  */
-export interface FlickrGroupsDiscussTopicsGetInfoParams {
+export type FlickrGroupsDiscussTopicsGetInfoParams = {
   /**
    * NSID or group alias of the group to which the topic belongs. Making this parameter optional for legacy reasons, but it is highly recommended to pass this in to get better performance.
    */

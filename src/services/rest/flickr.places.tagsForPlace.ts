@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.786Z
+ * This file was auto-generated on 2023-10-24T15:44:49.880Z
  * flickr.places.tagsForPlace
  * Return a list of the top 100 unique tags for a Flickr Places or Where on Earth (WOE) ID
+ * Permissions required: none
  */
-export interface FlickrPlacesTagsForPlaceParams {
+export type FlickrPlacesTagsForPlaceParams = {
   /**
  * A Where on Earth identifier to use to filter photo clusters.<br /><br />
 <span style="font-style:italic;">(While optional, you must pass either a valid Places ID or a WOE ID.)</span>

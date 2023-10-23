@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.774Z
+ * This file was auto-generated on 2023-10-24T15:44:49.860Z
  * flickr.photosets.getPhotos
  * Get the list of photos in a set.
+ * Permissions required: none
  */
-export interface FlickrPhotosetsGetPhotosParams {
+export type FlickrPhotosetsGetPhotosParams = {
   /**
    * The id of the photoset to return the photos for.
    */

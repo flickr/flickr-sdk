@@ -1,11 +1,12 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.746Z
+ * This file was auto-generated on 2023-10-24T15:44:49.833Z
  * flickr.photos.recentlyUpdated
  * <p>Return a list of your photos that have been recently created or which have been recently modified.</p>
 
 <p>Recently modified may mean that the photo's metadata (title, description, tags) may have been changed or a comment has been added (or just modified somehow :-)</p>
+ * Permissions required: read
  */
-export interface FlickrPhotosRecentlyUpdatedParams {
+export type FlickrPhotosRecentlyUpdatedParams = {
   /**
    * A Unix timestamp or any English textual datetime description indicating the date from which modifications should be compared.
    */

@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.684Z
+ * This file was auto-generated on 2023-10-24T15:44:49.731Z
  * flickr.groups.discuss.topics.getList
  * Get a list of discussion topics in a group.
+ * Permissions required: none
  */
-export interface FlickrGroupsDiscussTopicsGetListParams {
+export type FlickrGroupsDiscussTopicsGetListParams = {
   /**
    * The NSID or path alias of the group to fetch information for.
    */

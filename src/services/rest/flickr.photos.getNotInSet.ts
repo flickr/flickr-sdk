@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.729Z
+ * This file was auto-generated on 2023-10-24T15:44:49.810Z
  * flickr.photos.getNotInSet
  * Returns a list of your photos that are not part of any sets.
+ * Permissions required: read
  */
-export interface FlickrPhotosGetNotInSetParams {
+export type FlickrPhotosGetNotInSetParams = {
   /**
    * Maximum upload date. Photos with an upload date less than or equal to this value will be returned. The date can be in the form of a unix timestamp or mysql datetime.
    */

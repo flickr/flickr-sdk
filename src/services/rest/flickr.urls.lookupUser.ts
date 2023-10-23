@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.815Z
+ * This file was auto-generated on 2023-10-24T15:44:49.940Z
  * flickr.urls.lookupUser
  * Returns a user NSID, given the url to a user's photos or profile.
+ * Permissions required: none
  */
-export interface FlickrUrlsLookupUserParams {
+export type FlickrUrlsLookupUserParams = {
   /**
    * The url to the user's profile or photos page.
    */

@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.696Z
+ * This file was auto-generated on 2023-10-24T15:44:49.754Z
  * flickr.machinetags.getPairs
  * Return a list of unique namespace and predicate pairs, optionally limited by predicate or namespace, in alphabetical order.
+ * Permissions required: none
  */
-export interface FlickrMachinetagsGetPairsParams {
+export type FlickrMachinetagsGetPairsParams = {
   /**
    * Limit the list of pairs returned to those that have the following namespace.
    */

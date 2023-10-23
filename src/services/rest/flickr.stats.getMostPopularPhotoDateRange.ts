@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.794Z
+ * This file was auto-generated on 2023-10-24T15:44:49.897Z
  * flickr.stats.getMostPopularPhotoDateRange
  * Get the most popular photo for each day given a day range
+ * Permissions required: read
  */
-export interface FlickrStatsGetMostPopularPhotoDateRangeParams {
+export type FlickrStatsGetMostPopularPhotoDateRangeParams = {
   /**
    * The date until which the data should be fetched from, in the YYYY-MM-DD format
    */

@@ -1,9 +1,10 @@
 /**
- * This file was auto-generated on 2023-10-20T16:36:46.782Z
+ * This file was auto-generated on 2023-10-24T15:44:49.874Z
  * flickr.places.placesForContacts
  * Return a list of the top 100 unique places clustered by a given placetype for a user's contacts.
+ * Permissions required: read
  */
-export interface FlickrPlacesPlacesForContactsParams {
+export type FlickrPlacesPlacesForContactsParams = {
   /**
  * A specific place type to cluster photos by. <br /><br />
 
