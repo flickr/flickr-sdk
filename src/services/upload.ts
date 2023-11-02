@@ -69,7 +69,7 @@ export type UploadResponse = UploadFail | UploadOK
 
 export interface Upload {
   (
-    file: string | File,
+    file: string | Blob,
     params: UploadParams,
   ): Promise<{
     id: string
@@ -85,7 +85,7 @@ export class UploadService {
   ) {}
 
   async upload(
-    file: string | File,
+    file: string | Blob,
     params: Record<string, string> = {},
   ): ReturnType<Upload> {
     const url = "https://up.flickr.com/services/upload"
@@ -122,7 +122,7 @@ export class UploadService {
     }
   }
 
-  async getBlob(file: string | File) {
+  async getBlob(file: string | Blob) {
     if (typeof window === "undefined" && typeof file === "string") {
       return new File([await readFile(file)], file)
     } else {

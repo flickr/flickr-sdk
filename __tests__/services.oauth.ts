@@ -1,5 +1,5 @@
+import { describe, it } from "@jest/globals"
 import { MockTransport, NullAuth, OAuthService } from "flickr-sdk"
-import { describe, it } from "node:test"
 import * as assert from "node:assert"
 
 describe("OAuthService", function () {
@@ -34,7 +34,6 @@ describe("OAuthService", function () {
 
       const { nsid, oauthToken, oauthTokenSecret } =
         await service.verify("1234")
-      console.log(await service.verify("1234"))
 
       assert.strictEqual(nsid, "1234@N01")
       assert.strictEqual(oauthToken, "1234")

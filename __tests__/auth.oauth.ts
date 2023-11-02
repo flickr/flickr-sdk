@@ -1,5 +1,4 @@
-// @ts-check
-import { describe, it, mock } from "node:test"
+import { jest, describe, it } from "@jest/globals"
 import * as assert from "node:assert"
 import { OAuthAuth } from "flickr-sdk"
 
@@ -78,18 +77,21 @@ describe("auth/oauth", function () {
         "oauth token secret",
       )
 
-      mock.method(
-        // @ts-expect-error
-        auth.oauth,
-        "timestamp",
-        () => "499166400",
-      )
-      mock.method(
-        // @ts-expect-error
-        auth.oauth,
-        "nonce",
-        () => "p2m2bnHdXVIsQH0FUv0oN9XrJU57ak7dSSpHU36mn4k=",
-      )
+      jest
+        .spyOn(
+          // @ts-expect-error
+          auth.oauth,
+          "timestamp",
+        )
+        .mockReturnValue("499166400")
+
+      jest
+        .spyOn(
+          // @ts-expect-error
+          auth.oauth,
+          "nonce",
+        )
+        .mockReturnValue("p2m2bnHdXVIsQH0FUv0oN9XrJU57ak7dSSpHU36mn4k=")
 
       const params = new Map()
 

@@ -25,7 +25,7 @@ export type ReplaceResponse = ReplaceFail | ReplaceOK
 export interface Replace {
   (
     id: string,
-    file: string | File,
+    file: string | Blob,
   ): Promise<{
     id: string
     secret: string
@@ -39,7 +39,7 @@ export class ReplaceService {
     private auth: Auth,
   ) {}
 
-  async replace(id: string, file: string | File): ReturnType<Replace> {
+  async replace(id: string, file: string | Blob): ReturnType<Replace> {
     const url = "https://up.flickr.com/services/replace"
 
     const payload = new POST()
@@ -73,7 +73,7 @@ export class ReplaceService {
     }
   }
 
-  async getBlob(file: string | File) {
+  async getBlob(file: string | Blob) {
     if (typeof file === "string") {
       return new File([await readFile(file)], file)
     } else {

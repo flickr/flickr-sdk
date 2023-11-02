@@ -37,7 +37,7 @@
     "build-cjs": "esbuild --bundle --outfile=dist/index.cjs --platform=node --format=cjs src/index.ts",
     "build-esm": "esbuild --bundle --outfile=dist/index.mjs --platform=node --format=esm src/index.ts",
     "build-browser": "esbuild --bundle --outfile=dist/index.js --format=esm src/index.ts",
-    "test": "node --test"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -60,9 +60,12 @@
   },
   "homepage": "https://github.com/flickr/flickr-sdk#readme",
   "devDependencies": {
-    "flickr-sdk": "file:.",
+    "@jest/globals": "^29.7.0",
     "@types/node": "^20.8.4",
     "esbuild": "^0.19.4",
+    "esbuild-jest": "^0.5.0",
+    "flickr-sdk": "file:.",
+    "jest": "^29.7.0",
     "min-qs": "^1.4.0",
     "min-url": "^1.5.0",
     "prettier": "^3.0.3",

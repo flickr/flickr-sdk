@@ -1,5 +1,4 @@
-// @ts-check
-import { describe, it, mock } from "node:test"
+import { jest, describe, it } from "@jest/globals"
 import * as assert from "node:assert"
 import { FlickrService, MockTransport, NullAuth } from "flickr-sdk"
 
@@ -45,12 +44,12 @@ describe("FlickrService", function () {
         stat: "ok",
       })
 
-      const get = mock.method(transport, "get")
+      const get = jest.spyOn(transport, "get")
 
       const service = new FlickrService(transport, auth)
       await service.call("flickr.test.echo", { foo: "bar" })
 
-      assert.strictEqual(get.mock.callCount(), 1)
+      assert.strictEqual(get.mock.calls.length, 1)
     })
 
     it("makes a POST request for a write method", async function () {
@@ -60,12 +59,12 @@ describe("FlickrService", function () {
         stat: "ok",
       })
 
-      const post = mock.method(transport, "post")
+      const post = jest.spyOn(transport, "post")
 
       const service = new FlickrService(transport, auth)
       await service.call("flickr.photosets.editPhotos", { foo: "bar" })
 
-      assert.strictEqual(post.mock.callCount(), 1)
+      assert.strictEqual(post.mock.calls.length, 1)
     })
 
     it("makes a POST request for a delete method", async function () {
@@ -74,12 +73,12 @@ describe("FlickrService", function () {
         stat: "ok",
       })
 
-      const post = mock.method(transport, "post")
+      const post = jest.spyOn(transport, "post")
 
       const service = new FlickrService(transport, auth)
       await service.call("flickr.photosets.delete", { foo: "bar" })
 
-      assert.strictEqual(post.mock.callCount(), 1)
+      assert.strictEqual(post.mock.calls.length, 1)
     })
   })
 })

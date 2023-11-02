@@ -1,5 +1,4 @@
-// @ts-check
-import { describe, it, beforeEach, mock } from "node:test"
+import { jest, describe, it, beforeEach } from "@jest/globals"
 import * as assert from "node:assert"
 import { OAuth } from "flickr-sdk"
 
@@ -8,13 +7,11 @@ describe("OAuth", function () {
 
   beforeEach(function () {
     oauth = new OAuth("consumer key", "consumer secret")
-    mock.method(oauth, "timestamp", () => "499166400")
+    jest.spyOn(oauth, "timestamp").mockReturnValue("499166400")
 
-    mock.method(
-      oauth,
-      "nonce",
-      () => "p2m2bnHdXVIsQH0FUv0oN9XrJU57ak7dSSpHU36mn4k=",
-    )
+    jest
+      .spyOn(oauth, "nonce")
+      .mockReturnValue("p2m2bnHdXVIsQH0FUv0oN9XrJU57ak7dSSpHU36mn4k=")
   })
 
   it('requires "consumerKey" and "consumerSecret"', function () {
@@ -47,7 +44,7 @@ describe("OAuth", function () {
 
   describe("#timestamp", function () {
     beforeEach(function () {
-      mock.restoreAll()
+      jest.restoreAllMocks()
     })
 
     it("returns the current system time in seconds", function () {
@@ -57,7 +54,7 @@ describe("OAuth", function () {
 
   describe("#nonce", function () {
     beforeEach(function () {
-      mock.restoreAll()
+      jest.restoreAllMocks()
     })
 
     it("returns a string", function () {

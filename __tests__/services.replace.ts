@@ -1,5 +1,4 @@
-// @ts-check
-import { describe, it } from "node:test"
+import { describe, it } from "@jest/globals"
 import * as assert from "node:assert"
 import { ReplaceService, NullAuth, MockTransport } from "flickr-sdk"
 
@@ -17,7 +16,7 @@ describe("ReplaceService", function () {
 
       const service = new ReplaceService(transport, auth)
 
-      const file = new File([], "test.jpg")
+      const file = new Blob([])
 
       const res = await service.replace("1234", file)
 
@@ -38,7 +37,7 @@ describe("ReplaceService", function () {
 
       const service = new ReplaceService(transport, auth)
 
-      const file = new File([], "test.jpg")
+      const file = new Blob([])
 
       await assert.rejects(() => service.replace("1234", file), {
         name: "Error",
