@@ -1,7 +1,7 @@
 import type { GET, POST, Params } from "./params"
 
 export interface Auth {
-  sign(req: Request, params: Params): Promise<void>
+  sign(method: "GET" | "POST", url: string, params: Params): Promise<void>
 }
 
 export interface Transport {

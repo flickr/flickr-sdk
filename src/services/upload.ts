@@ -88,10 +88,7 @@ export class UploadService {
     file: string | File,
     params: Record<string, string> = {},
   ): ReturnType<Upload> {
-    const req = new Request("https://up.flickr.com/services/upload", {
-      method: "POST",
-    })
-
+    const url = "https://up.flickr.com/services/upload"
     const payload = new POST()
 
     // upload params
@@ -100,12 +97,12 @@ export class UploadService {
     }
 
     // sign the transaction before adding the photo
-    await this.auth.sign(req, payload)
+    await this.auth.sign("POST", url, payload)
 
     // ok now add the photo
     payload.set("photo", await this.getBlob(file))
 
-    const res = await this.transport.post(req.url, payload)
+    const res = await this.transport.post(url, payload)
 
     const parser = new XMLParser()
 

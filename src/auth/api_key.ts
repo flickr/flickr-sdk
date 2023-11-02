@@ -10,7 +10,7 @@ export class APIKeyAuth implements Auth {
     }
   }
 
-  async sign(req: Request, params: Params) {
+  async sign(method: "GET" | "POST", url: string, params: Params) {
     params.set("api_key", await this.getAPIKey())
   }
 

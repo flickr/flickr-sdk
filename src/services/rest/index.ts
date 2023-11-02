@@ -14,11 +14,8 @@ export class FlickrService {
   ) {}
 
   async call(method: string, params: Record<string, string>): Promise<any> {
+    const url = "https://api.flickr.com/services/rest"
     const httpMethod = this.getHTTPMethod(method)
-
-    const req = new Request("https://api.flickr.com/services/rest", {
-      method: httpMethod,
-    })
 
     const payload = httpMethod === "POST" ? new POST() : new GET()
 
@@ -32,12 +29,12 @@ export class FlickrService {
     payload.set("format", "json")
     payload.set("nojsoncallback", "1")
 
-    await this.auth.sign(req, payload)
+    await this.auth.sign(httpMethod, url, payload)
 
     const res =
       payload instanceof POST
-        ? await this.transport.post(req.url, payload)
-        : await this.transport.get(req.url, payload)
+        ? await this.transport.post(url, payload)
+        : await this.transport.get(url, payload)
 
     const parser = new JSONParser()
 

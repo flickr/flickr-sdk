@@ -44,7 +44,11 @@ export class OAuthAuth implements Auth {
     }
   }
 
-  async sign(req: Request, params: Params): Promise<void> {
+  async sign(
+    method: "GET" | "POST",
+    url: string,
+    params: Params,
+  ): Promise<void> {
     // oauth required params
     for (const [key, value] of Object.entries(this.oauth.params())) {
       params.set(key, value)
@@ -58,7 +62,7 @@ export class OAuthAuth implements Auth {
     // finally, the oauth signature with all of the above
     params.set(
       "oauth_signature",
-      this.signature(req.method, req.url, Object.fromEntries(params.entries())),
+      this.signature(method, url, Object.fromEntries(params.entries())),
     )
   }
 

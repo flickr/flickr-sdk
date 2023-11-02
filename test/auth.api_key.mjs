@@ -7,10 +7,9 @@ describe("auth/api_key", function () {
   describe("#sign", function () {
     it("adds the API key to a URL", async function () {
       const auth = new APIKeyAuth("abcd1234")
-      const req = new Request("https://api.flickr.com/services/rest")
       const params = new Map()
 
-      await auth.sign(req, params)
+      await auth.sign("GET", "https://api.flickr.com/services/rest", params)
 
       assert.strictEqual(params.get("api_key"), "abcd1234")
     })
@@ -20,16 +19,15 @@ describe("auth/api_key", function () {
 
       const auth = new APIKeyAuth(() => apiKey)
 
-      const req = new Request("https://api.flickr.com/services/rest")
       const params = new Map()
 
-      await auth.sign(req, params)
+      await auth.sign("GET", "https://api.flickr.com/services/rest", params)
 
       assert.strictEqual(params.get("api_key"), "abcd1234")
 
       apiKey = "efgh5678"
 
-      await auth.sign(req, params)
+      await auth.sign("GET", "https://api.flickr.com/services/rest", params)
 
       assert.strictEqual(params.get("api_key"), "efgh5678")
     })
@@ -39,16 +37,15 @@ describe("auth/api_key", function () {
 
       const auth = new APIKeyAuth(async () => apiKey)
 
-      const req = new Request("https://api.flickr.com/services/rest")
       const params = new Map()
 
-      await auth.sign(req, params)
+      await auth.sign("GET", "https://api.flickr.com/services/rest", params)
 
       assert.strictEqual(params.get("api_key"), "abcd1234")
 
       apiKey = "efgh5678"
 
-      await auth.sign(req, params)
+      await auth.sign("GET", "https://api.flickr.com/services/rest", params)
 
       assert.strictEqual(params.get("api_key"), "efgh5678")
     })

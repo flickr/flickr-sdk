@@ -40,9 +40,7 @@ export class ReplaceService {
   ) {}
 
   async replace(id: string, file: string | File): ReturnType<Replace> {
-    const req = new Request("https://up.flickr.com/services/replace", {
-      method: "POST",
-    })
+    const url = "https://up.flickr.com/services/replace"
 
     const payload = new POST()
 
@@ -50,12 +48,12 @@ export class ReplaceService {
     payload.set("photo_id", id)
 
     // sign the transaction before adding the photo
-    await this.auth.sign(req, payload)
+    await this.auth.sign("POST", url, payload)
 
     // ok now add the photo
     payload.set("photo", await this.getBlob(file))
 
-    const res = await this.transport.post(req.url, payload)
+    const res = await this.transport.post(url, payload)
 
     const parser = new XMLParser()
 

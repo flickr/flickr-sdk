@@ -9,20 +9,15 @@ export class OAuthService {
   ) {}
 
   async request(callbackUrl: string) {
-    const req = new Request(
-      "https://www.flickr.com/services/oauth/request_token",
-      {
-        method: "GET",
-      },
-    )
+    const url = "https://www.flickr.com/services/oauth/request_token"
 
     const params = new GET()
 
     params.set("oauth_callback", callbackUrl)
 
-    await this.auth.sign(req, params)
+    await this.auth.sign("GET", url, params)
 
-    const res = await this.transport.get(req.url, params)
+    const res = await this.transport.get(url, params)
     const parser = new FormParser()
 
     const { oauth_token, oauth_token_secret } = await parser.parse(res)
@@ -34,20 +29,15 @@ export class OAuthService {
   }
 
   async verify(oauthVerifier: string) {
-    const req = new Request(
-      "https://www.flickr.com/services/oauth/access_token",
-      {
-        method: "GET",
-      },
-    )
+    const url = "https://www.flickr.com/services/oauth/access_token"
 
     const params = new GET()
 
     params.set("oauth_verifier", oauthVerifier)
 
-    await this.auth.sign(req, params)
+    await this.auth.sign("GET", url, params)
 
-    const res = await this.transport.get(req.url, params)
+    const res = await this.transport.get(url, params)
     const parser = new FormParser()
 
     const { user_nsid, oauth_token, oauth_token_secret } =

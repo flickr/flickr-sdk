@@ -91,16 +91,12 @@ describe("auth/oauth", function () {
         () => "p2m2bnHdXVIsQH0FUv0oN9XrJU57ak7dSSpHU36mn4k=",
       )
 
-      const req = new Request("https://api.flickr.com/services/rest", {
-        method: "GET",
-      })
-
       const params = new Map()
 
       params.set("method", "flickr.test.echo")
       params.set("foo", "bar")
 
-      await auth.sign(req, params)
+      await auth.sign("GET", "https://api.flickr.com/services/rest", params)
 
       assert.strictEqual(
         params.get("oauth_nonce"),
