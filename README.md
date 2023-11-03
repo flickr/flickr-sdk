@@ -53,7 +53,7 @@ The Flickr SDK currently supports the following auth methods:
 This is the simplest way to use the SDK. Just provide your API key as a string:
 
 ```js
-const { flickr } = createFlickr("<your api key>")
+const { flickr } = createFlickr("<your API key>")
 ```
 #### OAuth 1.0
 
@@ -85,7 +85,7 @@ const transport = new FetchTransport({
     }
 })
 
-const { flickr } = createFlickr('<your api key', transport)
+const { flickr } = createFlickr('<your API key>', transport)
 ```
 
 #### testing
@@ -106,7 +106,7 @@ const { flickr } = createFlickr(auth, transport)
 
 // makes no network request
 const res = await flickr('flickr.photos.getInfo', {
-    photo_id: '1234',
+    photo_id: '12345',
 })
 
 assert.deepStrictEqual(res, { stat: 'ok', foo: 'bar' })
