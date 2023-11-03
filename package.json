@@ -14,7 +14,14 @@
   "module": "./dist/index.mjs",
   "exports": {
     ".": {
-      "import": "./dist/index.mjs",
+      "import": {
+        "default": "./dist/index.mjs",
+        "types": "./dist/index.d.ts"
+      },
+      "require": {
+        "default": "./dist/index.cjs",
+        "types": "./dist/index.d.ts"
+      },
       "default": "./dist/index.cjs"
     },
     "./package.json": "./package.json"
