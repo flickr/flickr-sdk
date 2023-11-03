@@ -4,6 +4,8 @@ Almost certainly the best Flickr API client in the world for node and the browse
 
 This SDK provides methods and type definitions for all methods listed on https://www.flickr.com/services/api/
 
+To use this SDK, sign up for an API key [here][api key]
+
 ## install
 
 ```
@@ -53,9 +55,6 @@ This is the simplest way to use the SDK. Just provide your API key as a string:
 ```js
 const { flickr } = createFlickr("<your api key>")
 ```
-
-> 💡 Sign up for an API key [here][api key]
-
 #### OAuth 1.0
 
 OAuth lets users grant your application access and then you may act on their
