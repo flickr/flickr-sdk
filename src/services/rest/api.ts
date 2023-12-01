@@ -448,11 +448,7 @@ import type { FlickrUrlsLookupGroupResponse } from "./flickr.urls.lookupGroup.re
 import type { FlickrUrlsLookupUserParams } from "./flickr.urls.lookupUser"
 import type { FlickrUrlsLookupUserResponse } from "./flickr.urls.lookupUser.response"
 
-export type APIShape = {
-  [key: string]: [params: any, response: any]
-}
-
-export type API = APIShape & {
+export type API = {
   "flickr.activity.userComments": [
     FlickrActivityUserCommentsParams,
     FlickrActivityUserCommentsResponse,

@@ -1,4 +1,3 @@
-import type { API, APIShape } from "./services/rest/api"
 import type { Auth, Transport } from "./types"
 import { APIKeyAuth } from "./auth/api_key"
 import { OAuthAuth, OAuthConfig } from "./auth/oauth"
@@ -8,34 +7,33 @@ import { Upload, UploadService } from "./services/upload"
 import { Replace, ReplaceService } from "./services/replace"
 import { FetchTransport } from "./transport/fetch"
 
-export interface FlickrServices<T extends APIShape> {
-  flickr: Flickr<T>
+export interface FlickrServices {
+  flickr: Flickr
   upload: Upload
   replace: Replace
 }
 
-export interface FlickrServicesWithOAuth<T extends APIShape>
-  extends FlickrServices<T> {
+export interface FlickrServicesWithOAuth extends FlickrServices {
   // oauth is only defined if the auth method is oauth
   oauth: OAuthService
 }
 
-export function createFlickr<T extends APIShape = API>(
+export function createFlickr(
   apiKey: string,
   transport?: Transport,
-): FlickrServices<T>
+): FlickrServices
 
-export function createFlickr<T extends APIShape = API>(
+export function createFlickr(
   oauthConfig: OAuthConfig,
   transport?: Transport,
-): FlickrServicesWithOAuth<T>
+): FlickrServicesWithOAuth
 
-export function createFlickr<T extends APIShape = API, A extends Auth = Auth>(
+export function createFlickr<A extends Auth = Auth>(
   auth: A,
   transport?: Transport,
-): A extends OAuthAuth ? FlickrServicesWithOAuth<T> : FlickrServices<T>
+): A extends OAuthAuth ? FlickrServicesWithOAuth : FlickrServices
 
-export function createFlickr<T extends APIShape = API>(
+export function createFlickr(
   auth: string | OAuthConfig | Auth,
   transport: Transport = new FetchTransport(),
 ) {
@@ -62,7 +60,7 @@ export function createFlickr<T extends APIShape = API>(
   }
 
   // REST API
-  const flickr: Flickr<T> = async (method, params) => {
+  const flickr: Flickr = async (method, params) => {
     const service = new FlickrService(transport, auth)
     return service.call(method as string, params as Record<string, string>)
   }

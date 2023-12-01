@@ -1,10 +1,10 @@
 import type { Auth, Transport } from "../../types"
-import { POST_REGEXP, API, APIShape } from "./api"
+import { POST_REGEXP, API } from "./api"
 import { GET, POST } from "../../params"
 import { JSONParser } from "../../parser/json"
 
-export interface Flickr<A extends APIShape = API> {
-  <T extends keyof A>(method: T, params: A[T][0]): Promise<A[T][1]>
+export interface Flickr {
+  <T extends keyof API>(method: T, params: API[T][0]): Promise<API[T][1]>
 }
 
 export class FlickrService {

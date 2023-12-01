@@ -72,11 +72,30 @@ const { upload } = createFlickr({
 > 💡 Use `examples/oauth.mjs` to quickly set up an OAuth flow and obtain a
 > set of credentials
 
+## migrating from previous versions
+
+Previous versions of this SDK depended on [superagent][superagent] for http
+requests. This version of the SDK uses node's native `fetch` instead, so ou now
+only receive the response body back from an API call. This means **the return
+value of an API call will only be the response body, not a superagent Request**
+
+Migrating existin code looks like this:
+
+```js
+//  old
+const res = await flickr.test.login()
+console.log(res.body)
+
+// new
+const body = await flickr('flickr.test.login')
+console.log(body)
+```
+
 ## advanced
 
 #### configuring fetch
 
-```ts
+```js
 import { createFlickr, FetchTransport } from 'flickr-sdk'
 
 const transport = new FetchTransport({
@@ -90,7 +109,7 @@ const { flickr } = createFlickr('<your API key>', transport)
 
 #### testing
 
-```ts
+```js
 import { createFlickr, MockTransport, NullAuth } from 'flickr-sdk'
 import * as assert from 'node:assert'
 
