@@ -75,11 +75,11 @@ const { upload } = createFlickr({
 ## migrating from previous versions
 
 Previous versions of this SDK depended on [superagent][superagent] for http
-requests. This version of the SDK uses node's native `fetch` instead, so ou now
+requests. This version of the SDK uses node's native `fetch` instead, so you now
 only receive the response body back from an API call. This means **the return
 value of an API call will only be the response body, not a superagent Request**
 
-Migrating existin code looks like this:
+Migrating existing code looks like this:
 
 ```js
 //  old
@@ -133,3 +133,4 @@ assert.deepStrictEqual(res, { stat: 'ok', foo: 'bar' })
 
 [api key]: https://www.flickr.com/services/apps/create/
 [oauth]: https://www.flickr.com/services/api/auth.oauth.html
+[superagent]: https://github.com/ladjs/superagent/
