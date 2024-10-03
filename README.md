@@ -87,7 +87,7 @@ const res = await flickr.test.login()
 console.log(res.body)
 
 // new
-const body = await flickr('flickr.test.login')
+const body = await flickr('flickr.test.login', {})
 console.log(body)
 ```
 
@@ -116,6 +116,7 @@ import * as assert from 'node:assert'
 // mock transport returns the response you pass in the constructor
 const transport = new MockTransport({
     stat: 'ok',
+    foo: 'bar'
 })
 
 // null auth does nothing
