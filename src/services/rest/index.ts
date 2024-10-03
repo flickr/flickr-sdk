@@ -43,7 +43,7 @@ export class FlickrService {
     if (json.stat === "fail") {
       // @ts-expect-error
       throw new Error(json.message, {
-        cause: res,
+        cause: json,
       })
     }
 
