@@ -1,6 +1,6 @@
 {
   "name": "flickr-sdk",
-  "version": "7.0.0-beta.8",
+  "version": "7.0.0-beta.9",
   "description": "Almost certainly the best Flickr API client in the world for node and the browser",
   "keywords": [
     "flickr",
