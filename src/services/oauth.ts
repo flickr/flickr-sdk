@@ -40,13 +40,15 @@ export class OAuthService {
     const res = await this.transport.get(url, params)
     const parser = new FormParser()
 
-    const { user_nsid, oauth_token, oauth_token_secret } =
+    const { user_nsid, oauth_token, oauth_token_secret, fullname, username } =
       await parser.parse(res)
 
     return {
       nsid: user_nsid,
       oauthToken: oauth_token,
       oauthTokenSecret: oauth_token_secret,
+      fullname: fullname,
+      username: username
     }
   }
 
