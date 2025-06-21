@@ -25,19 +25,21 @@ describe("OAuthService", function () {
   describe("#verify", function () {
     it("resolves with the access token, secret, and user nsid", async function () {
       const transport = new MockTransport(
-        "user_nsid=1234@N01&oauth_token=1234&oauth_token_secret=5678",
+        "user_nsid=1234@N01&oauth_token=1234&oauth_token_secret=5678&fullname=Jamal%20Fanaian&username=jamalfanaian",
       )
 
       const auth = new NullAuth()
 
       const service = new OAuthService(transport, auth)
 
-      const { nsid, oauthToken, oauthTokenSecret } =
+      const { nsid, oauthToken, oauthTokenSecret, fullname, username } =
         await service.verify("1234")
 
       assert.strictEqual(nsid, "1234@N01")
       assert.strictEqual(oauthToken, "1234")
       assert.strictEqual(oauthTokenSecret, "5678")
+      assert.strictEqual(fullname, "Jamal Fanaian")
+      assert.strictEqual(username, "jamalfanaian")
     })
   })
 })

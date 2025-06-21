@@ -42,8 +42,8 @@ var db = {
 
 async function getRequestToken(req, res) {
   const { oauth } = createFlickr({
-    consumerKey,
-    consumerSecret,
+    consumerKey: consumerKey,
+    consumerSecret: consumerSecret,
     oauthToken: false,
     oauthTokenSecret: false,
   })
@@ -83,8 +83,8 @@ async function verifyRequestToken(req, res, searchParams) {
   const requestTokenSecret = db.oauth.get(requestToken)
 
   const { oauth } = createFlickr({
-    consumerKey,
-    consumerSecret,
+    consumerKey: consumerKey,
+    consumerSecret: consumerSecret,
     oauthToken: requestToken,
     oauthTokenSecret: requestTokenSecret,
   })
