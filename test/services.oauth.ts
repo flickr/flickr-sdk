@@ -1,4 +1,4 @@
-import { describe, it } from "@jest/globals"
+import { describe, it } from "node:test"
 import { MockTransport, NullAuth, OAuthService } from "flickr-sdk"
 import * as assert from "node:assert"
 
