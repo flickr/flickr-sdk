@@ -1,4 +1,4 @@
-import { describe, it } from "@jest/globals"
+import { describe, it } from "node:test"
 import * as assert from "node:assert"
 import { JSONParser } from "flickr-sdk"
 

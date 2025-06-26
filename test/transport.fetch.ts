@@ -1,4 +1,4 @@
-import { jest, afterEach, describe, it } from "@jest/globals"
+import { afterEach, describe, it, mock } from "node:test"
 import * as assert from "node:assert"
 import { FetchTransport, GET, POST } from "flickr-sdk"
 import { createServer } from "node:http"
@@ -9,9 +9,7 @@ describe("transport/fetch", function () {
     it("makes a GET fetch request", async function () {
       const transport = new FetchTransport()
 
-      const fn = jest
-        .spyOn(transport, "fetch")
-        .mockResolvedValue(new Response())
+      const fn = mock.method(transport, "fetch", async () => new Response())
 
       const params = new GET()
 
@@ -19,9 +17,9 @@ describe("transport/fetch", function () {
 
       await transport.get("http://example.com/foo", params)
 
-      assert.strictEqual(fn.mock.calls.length, 1)
+      assert.strictEqual(fn.mock.callCount(), 1)
 
-      const [url, init] = fn.mock.calls[0]
+      const [url, init] = fn.mock.calls[0].arguments
 
       assert.strictEqual(url, "http://example.com/foo?foo=bar")
       assert.strictEqual(init.method, "GET")
@@ -34,15 +32,13 @@ describe("transport/fetch", function () {
         },
       })
 
-      const fn = jest
-        .spyOn(transport, "fetch")
-        .mockResolvedValue(new Response())
+      const fn = mock.method(transport, "fetch", async () => new Response())
 
       await transport.get("http://example.com/foo")
 
-      assert.strictEqual(fn.mock.calls.length, 1)
+      assert.strictEqual(fn.mock.callCount(), 1)
 
-      const [url, init] = fn.mock.calls[0]
+      const [url, init] = fn.mock.calls[0].arguments
 
       // @ts-ignore
       assert.strictEqual(init.headers.cookie, "foo")
@@ -53,9 +49,7 @@ describe("transport/fetch", function () {
     it("makes a POST fetch request", async function () {
       const transport = new FetchTransport()
 
-      const fn = jest
-        .spyOn(transport, "fetch")
-        .mockResolvedValue(new Response())
+      const fn = mock.method(transport, "fetch", async () => new Response())
 
       const params = new POST()
 
@@ -63,9 +57,9 @@ describe("transport/fetch", function () {
 
       await transport.post("http://example.com/foo", params)
 
-      assert.strictEqual(fn.mock.calls.length, 1)
+      assert.strictEqual(fn.mock.callCount(), 1)
 
-      const [url, init] = fn.mock.calls[0]
+      const [url, init] = fn.mock.calls[0].arguments
 
       assert.strictEqual(url, "http://example.com/foo")
       assert.strictEqual(init.method, "POST")
@@ -80,15 +74,13 @@ describe("transport/fetch", function () {
         },
       })
 
-      const fn = jest
-        .spyOn(transport, "fetch")
-        .mockResolvedValue(new Response())
+      const fn = mock.method(transport, "fetch", async () => new Response())
 
       await transport.post("http://example.com/foo")
 
-      assert.strictEqual(fn.mock.calls.length, 1)
+      assert.strictEqual(fn.mock.callCount(), 1)
 
-      const [url, init] = fn.mock.calls[0]
+      const [_, init] = fn.mock.calls[0].arguments
 
       // @ts-ignore
       assert.strictEqual(init.headers.cookie, "foo")

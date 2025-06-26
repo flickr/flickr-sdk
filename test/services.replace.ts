@@ -1,10 +1,10 @@
-import { describe, it } from "@jest/globals"
+import { describe, it } from "node:test"
 import * as assert from "node:assert"
-import { MockTransport, NullAuth, UploadService } from "flickr-sdk"
+import { ReplaceService, NullAuth, MockTransport } from "flickr-sdk"
 
-describe("UploadService", function () {
-  describe(".upload", function () {
-    it("uploads a photo", async function () {
+describe("ReplaceService", function () {
+  describe(".replace", function () {
+    it("replaces a photo", async function () {
       const transport = new MockTransport(
         `<?xml version="1.0" encoding="utf-8" ?>
 <rsp stat="ok">
@@ -14,13 +14,11 @@ describe("UploadService", function () {
 
       const auth = new NullAuth()
 
-      const service = new UploadService(transport, auth)
+      const service = new ReplaceService(transport, auth)
 
       const file = new Blob([])
 
-      const res = await service.upload(file, {
-        title: "test",
-      })
+      const res = await service.replace("1234", file)
 
       assert.strictEqual(res.id, "1234")
       assert.strictEqual(res.secret, "abcdef")
@@ -37,11 +35,11 @@ describe("UploadService", function () {
 
       const auth = new NullAuth()
 
-      const service = new UploadService(transport, auth)
+      const service = new ReplaceService(transport, auth)
 
-      const file = new Blob(["big ol jpeg"])
+      const file = new Blob([])
 
-      await assert.rejects(() => service.upload(file), {
+      await assert.rejects(() => service.replace("1234", file), {
         name: "Error",
         message: "Invalid API Key (Key has invalid format)",
       })
