@@ -46,6 +46,9 @@
     "build-browser": "esbuild --bundle --outfile=dist/index.js --format=esm src/index.ts",
     "test": "node --import tsx --test test/*.ts"
   },
+  "workspaces": [
+    "packages/*"
+  ],
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/flickr/flickr-sdk.git"
