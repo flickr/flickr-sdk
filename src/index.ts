@@ -1,5 +1,5 @@
-import type { Auth, Transport } from "./types"
-import { APIKeyAuth } from "./auth/api_key"
+import type { Auth, Transport, Parser } from "./types"
+import { APIKeyAuth, APIKeyAuthConfig } from "./auth/api_key"
 import { OAuthAuth, OAuthConfig } from "./auth/oauth"
 import { FlickrService, Flickr } from "./services/rest"
 import { OAuthService } from "./services/oauth"
@@ -93,22 +93,26 @@ export function createFlickr(
   }
 }
 
-export type { Flickr, Auth, Transport }
+export type { Flickr, Auth, Transport, Parser }
 export {
   FlickrService,
   UploadService,
   ReplaceService,
   FetchTransport,
   APIKeyAuth,
+  APIKeyAuthConfig,
   OAuthAuth,
   OAuthService,
+  OAuthConfig,
 }
 export * from "./services/rest/api"
 // exports for tests
+
 export { OAuth } from "./oauth"
 export { Params, GET, POST } from "./params"
 export { XMLParser } from "./parser/xml"
 export { JSONParser } from "./parser/json"
 export { FormParser } from "./parser/form"
 export { NullAuth } from "./auth/null"
+export { API } from "./services/rest"
 export { MockTransport } from "./transport/mock"

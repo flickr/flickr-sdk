@@ -1,0 +1,53 @@
+{
+  "name": "@flickr/flinch",
+  "version": "1.0.0",
+  "description": "Almost certainly the best Typescript type testing library in the  world.",
+  "keywords": [
+    "typescript",
+    "types",
+    "test",
+    "testing",
+    "zero-dependency",
+    "flickr"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc && npm run build-esm",
+    "build-esm": "tsc --module esnext --outDir dist-esm && mv dist-esm/index.js dist/index.mjs",
+    "test": "tsc --noEmit src/test.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github:flickr/flickr-sdk",
+    "directory": "packages/flinch"
+  },
+  "author": "Jeremy Ruppel",
+  "license": "MIT",
+  "engines": {
+    "node": ">= 20"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2"
+  }
+}
+

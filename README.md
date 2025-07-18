@@ -57,10 +57,24 @@ const { flickr } = createFlickr("<your API key>")
 ```
 #### OAuth 1.0
 
-OAuth lets users grant your application access and then you may act on their
-behalf. The OAuth flow is described [here][oauth].
+OAuth lets users grant your application access and then you may act on
+their behalf. The OAuth flow is described [here][oauth].
 
 ```js
+// create a flickr upload flickr without oauth credentials. Use this to
+// obtain a request token and authorize a user
+const { upload } = createFlickr({
+    consumerKey: "<your API key>",
+    consumerSecret: "<your API secret>",
+    oauthToken: "<the oauth token>",
+    oauthTokenSecret: "<the oauth token secret>",
+})
+```
+
+Then, once you have your OAuth token and secret:
+
+```js
+// create a flickr upload client with oauth credentials
 const { upload } = createFlickr({
     consumerKey: "<your API key>",
     consumerSecret: "<your API secret>",

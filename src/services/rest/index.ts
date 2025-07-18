@@ -3,6 +3,8 @@ import { POST_REGEXP, API } from "./api"
 import { GET, POST } from "../../params"
 import { JSONParser } from "../../parser/json"
 
+export type { API }
+
 export interface Flickr {
   <T extends keyof API>(method: T, params: API[T][0]): Promise<API[T][1]>
 }

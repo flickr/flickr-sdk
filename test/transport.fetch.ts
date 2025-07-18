@@ -1,7 +1,7 @@
 import { afterEach, describe, it, mock } from "node:test"
 import * as assert from "node:assert"
 import { FetchTransport, GET, POST } from "flickr-sdk"
-import { createServer } from "node:http"
+import { createServer, type Server, type IncomingMessage } from "node:http"
 import { once } from "node:events"
 
 describe("transport/fetch", function () {
@@ -21,7 +21,9 @@ describe("transport/fetch", function () {
 
       const [url, init] = fn.mock.calls[0].arguments
 
+      assert.ok(url)
       assert.strictEqual(url, "http://example.com/foo?foo=bar")
+      assert.ok(init)
       assert.strictEqual(init.method, "GET")
     })
 
@@ -40,6 +42,8 @@ describe("transport/fetch", function () {
 
       const [url, init] = fn.mock.calls[0].arguments
 
+      assert.ok(url)
+      assert.ok(init)
       // @ts-ignore
       assert.strictEqual(init.headers.cookie, "foo")
     })
@@ -61,7 +65,9 @@ describe("transport/fetch", function () {
 
       const [url, init] = fn.mock.calls[0].arguments
 
+      assert.ok(url)
       assert.strictEqual(url, "http://example.com/foo")
+      assert.ok(init)
       assert.strictEqual(init.method, "POST")
       assert.ok(init.body instanceof FormData)
       assert.strictEqual(init.body.get("foo"), "bar")
@@ -94,8 +100,7 @@ describe("transport/fetch", function () {
         res.end(JSON.stringify(body))
       })
 
-    /** @type {import("http").Server | null} */
-    let server
+    let server: Server | null
 
     afterEach(function () {
       server?.close()
@@ -106,8 +111,7 @@ describe("transport/fetch", function () {
       server = createTestServer(200)
       server.listen(3000)
 
-      /** @type {Promise<[import('http').IncomingMessage]>} */
-      const promise = once(server, "request")
+      const promise: Promise<any> = once(server, "request")
 
       const transport = new FetchTransport()
 

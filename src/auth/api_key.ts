@@ -1,10 +1,10 @@
 import type { Auth } from "../types"
 import type { Params } from "../params"
 
+export type APIKeyAuthConfig = string | (() => string) | (() => Promise<string>)
+
 export class APIKeyAuth implements Auth {
-  constructor(
-    private apiKey: string | (() => string) | (() => Promise<string>),
-  ) {
+  constructor(private apiKey: APIKeyAuthConfig) {
     if (typeof apiKey === "undefined") {
       throw new Error("apiKey must be provided")
     }
