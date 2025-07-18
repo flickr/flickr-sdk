@@ -3,7 +3,7 @@ import * as assert from "node:assert"
 import { OAuth } from "flickr-sdk"
 
 describe("OAuth", function () {
-  let oauth
+  let oauth: OAuth
 
   beforeEach(function () {
     oauth = new OAuth("consumer key", "consumer secret")

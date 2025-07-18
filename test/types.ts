@@ -1,62 +1,73 @@
 import { describe, it } from "node:test"
-import flinch from "flinch"
-import type { Auth, Transport, Parser } from "../src/types"
-import type { GET, POST, Params } from "../src/params"
+import assert, { Equal, Extends, IsTuple, expectTrue } from "@flickr/flinch"
+import type {
+  API,
+  Auth,
+  Transport,
+  Parser,
+  GET,
+  POST,
+  Params,
+  OAuthConfig,
+  FlickrPeopleGetInfoParams,
+  APIKeyAuthConfig,
+  FlickrTestEchoParams,
+} from "flickr-sdk"
 
 describe("flickr-sdk type tests", () => {
   describe("Auth Interface", () => {
     it("should have correct method signature", () => {
       // Verify Auth interface structure
-      flinch.hasProperty<Auth, "sign">()
-      flinch.isFunction<Auth["sign"]>()
+      assert.hasProperty<Auth, "sign">()
+      assert.isFunction<Auth["sign"]>()
 
       // Test the sign method parameters and return type
       type SignMethod = Auth["sign"]
-      flinch.isFunction<SignMethod>()
+      assert.isFunction<SignMethod>()
 
       // The sign method should return a Promise<void>
       type SignReturnType = ReturnType<SignMethod>
-      flinch.extends<SignReturnType, Promise<void>>()
+      assert.extends<SignReturnType, Promise<void>>()
     })
   })
 
   describe("Transport Interface", () => {
     it("should have get and post methods", () => {
-      flinch.hasProperty<Transport, "get">()
-      flinch.hasProperty<Transport, "post">()
+      assert.hasProperty<Transport, "get">()
+      assert.hasProperty<Transport, "post">()
 
-      flinch.isFunction<Transport["get"]>()
-      flinch.isFunction<Transport["post"]>()
+      assert.isFunction<Transport["get"]>()
+      assert.isFunction<Transport["post"]>()
     })
 
     it("should have correct method signatures", () => {
       // Test get method
       type GetMethod = Transport["get"]
       type GetReturnType = ReturnType<GetMethod>
-      flinch.extends<GetReturnType, Promise<Response>>()
+      assert.extends<GetReturnType, Promise<Response>>()
 
       // Test post method
       type PostMethod = Transport["post"]
       type PostReturnType = ReturnType<PostMethod>
-      flinch.extends<PostReturnType, Promise<Response>>()
+      assert.extends<PostReturnType, Promise<Response>>()
     })
   })
 
   describe("Parser Interface", () => {
     it("should have parse method with correct signature", () => {
-      flinch.hasProperty<Parser, "parse">()
-      flinch.isFunction<Parser["parse"]>()
+      assert.hasProperty<Parser, "parse">()
+      assert.isFunction<Parser["parse"]>()
 
       type ParseMethod = Parser["parse"]
       type ParseReturnType = ReturnType<ParseMethod>
-      flinch.extends<ParseReturnType, Promise<any>>()
+      assert.extends<ParseReturnType, Promise<any>>()
     })
   })
 
   describe("Parameter Types", () => {
     it("should verify GET and POST extend Params", () => {
-      flinch.extends<GET, Params>()
-      flinch.extends<POST, Params>()
+      assert.extends<GET, Params>()
+      assert.extends<POST, Params>()
     })
   })
 
@@ -67,9 +78,64 @@ describe("flickr-sdk type tests", () => {
       interface MockTransport extends Transport {}
       interface MockParser extends Parser {}
 
-      flinch.extends<MockAuth, Auth>()
-      flinch.extends<MockTransport, Transport>()
-      flinch.extends<MockParser, Parser>()
+      assert.extends<MockAuth, Auth>()
+      assert.extends<MockTransport, Transport>()
+      assert.extends<MockParser, Parser>()
+    })
+  })
+
+  describe("API", function () {
+    it("has flickr.people.getInfo", () => {
+      assert.hasProperty<API, "flickr.people.getInfo">()
+
+      expectTrue<IsTuple<API["flickr.people.getInfo"]>>()
+      expectTrue<
+        Equal<API["flickr.people.getInfo"][0], FlickrPeopleGetInfoParams>
+      >()
+    })
+
+    it("has flickr.test.echo", () => {
+      assert.hasProperty<API, "flickr.test.echo">()
+
+      expectTrue<IsTuple<API["flickr.test.echo"]>>()
+      expectTrue<Equal<API["flickr.test.echo"][0], FlickrTestEchoParams>>()
+    })
+  })
+
+  describe("APIKeyConfig", () => {
+    it("accepts a string", () => {
+      expectTrue<Extends<string, APIKeyAuthConfig>>()
+      expectTrue<Extends<() => string, APIKeyAuthConfig>>()
+      expectTrue<Extends<() => Promise<string>, APIKeyAuthConfig>>()
+    })
+  })
+
+  describe("OAuthConfig", () => {
+    it("accepts consumer key/secret and oauth token/secret", () => {
+      expectTrue<
+        Extends<
+          {
+            consumerKey: string
+            consumerSecret: string
+            oauthToken: string
+            oauthTokenSecret: string
+          },
+          OAuthConfig
+        >
+      >()
+    })
+    it("can specify false for oauth token/secret", () => {
+      expectTrue<
+        Extends<
+          {
+            consumerKey: string
+            consumerSecret: string
+            oauthToken: false
+            oauthTokenSecret: false
+          },
+          OAuthConfig
+        >
+      >()
     })
   })
 })

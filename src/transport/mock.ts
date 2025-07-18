@@ -1,9 +1,9 @@
 import { Transport } from "../types"
 
 export class MockTransport implements Transport {
-  private responses: string[] = []
+  private responses: any[] = []
 
-  constructor(response?: string) {
+  constructor(response?: any) {
     if (response) {
       this.addMock(response)
     }
@@ -13,7 +13,7 @@ export class MockTransport implements Transport {
     this.responses = []
   }
 
-  addMock(response: string): void {
+  addMock(response: any): void {
     const stringResponse =
       typeof response === "string" ? response : JSON.stringify(response)
     this.responses.push(stringResponse)
