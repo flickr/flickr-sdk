@@ -66,8 +66,8 @@ their behalf. The OAuth flow is described [here][oauth].
 const { upload } = createFlickr({
     consumerKey: "<your API key>",
     consumerSecret: "<your API secret>",
-    oauthToken: "<the oauth token>",
-    oauthTokenSecret: "<the oauth token secret>",
+    oauthToken: false,
+    oauthTokenSecret: false,
 })
 ```
 
