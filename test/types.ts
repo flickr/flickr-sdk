@@ -1,4 +1,10 @@
-import { describe, it } from "node:test"
+/**
+ * Flickr SDK Type Tests
+ *
+ * This file contains compile-time type assertions to verify the correctness
+ * of the Flickr SDK type definitions using the Flinch type testing framework.
+ */
+
 import assert, { Equal, Extends, IsTuple, expectTrue } from "@flickr/flinch"
 import type {
   API,
@@ -14,128 +20,104 @@ import type {
   FlickrTestEchoParams,
 } from "flickr-sdk"
 
-describe("flickr-sdk type tests", () => {
-  describe("Auth Interface", () => {
-    it("should have correct method signature", () => {
-      // Verify Auth interface structure
-      assert.hasProperty<Auth, "sign">()
-      assert.isFunction<Auth["sign"]>()
+// Auth Interface Tests
+// Verify Auth interface structure
+assert.hasProperty<Auth, "sign">()
+assert.isFunction<Auth["sign"]>()
 
-      // Test the sign method parameters and return type
-      type SignMethod = Auth["sign"]
-      assert.isFunction<SignMethod>()
+// Test the sign method parameters and return type
+type SignMethod = Auth["sign"]
+assert.isFunction<SignMethod>()
 
-      // The sign method should return a Promise<void>
-      type SignReturnType = ReturnType<SignMethod>
-      assert.extends<SignReturnType, Promise<void>>()
-    })
-  })
+// The sign method should return a Promise<void>
+type SignReturnType = ReturnType<SignMethod>
+assert.extends<SignReturnType, Promise<void>>()
 
-  describe("Transport Interface", () => {
-    it("should have get and post methods", () => {
-      assert.hasProperty<Transport, "get">()
-      assert.hasProperty<Transport, "post">()
+// Transport Interface Tests
+// Should have get and post methods
+assert.hasProperty<Transport, "get">()
+assert.hasProperty<Transport, "post">()
 
-      assert.isFunction<Transport["get"]>()
-      assert.isFunction<Transport["post"]>()
-    })
+assert.isFunction<Transport["get"]>()
+assert.isFunction<Transport["post"]>()
 
-    it("should have correct method signatures", () => {
-      // Test get method
-      type GetMethod = Transport["get"]
-      type GetReturnType = ReturnType<GetMethod>
-      assert.extends<GetReturnType, Promise<Response>>()
+// Should have correct method signatures
+// Test get method
+type GetMethod = Transport["get"]
+type GetReturnType = ReturnType<GetMethod>
+assert.extends<GetReturnType, Promise<Response>>()
 
-      // Test post method
-      type PostMethod = Transport["post"]
-      type PostReturnType = ReturnType<PostMethod>
-      assert.extends<PostReturnType, Promise<Response>>()
-    })
-  })
+// Test post method
+type PostMethod = Transport["post"]
+type PostReturnType = ReturnType<PostMethod>
+assert.extends<PostReturnType, Promise<Response>>()
 
-  describe("Parser Interface", () => {
-    it("should have parse method with correct signature", () => {
-      assert.hasProperty<Parser, "parse">()
-      assert.isFunction<Parser["parse"]>()
+// Parser Interface Tests
+// Should have parse method with correct signature
+assert.hasProperty<Parser, "parse">()
+assert.isFunction<Parser["parse"]>()
 
-      type ParseMethod = Parser["parse"]
-      type ParseReturnType = ReturnType<ParseMethod>
-      assert.extends<ParseReturnType, Promise<any>>()
-    })
-  })
+type ParseMethod = Parser["parse"]
+type ParseReturnType = ReturnType<ParseMethod>
+assert.extends<ParseReturnType, Promise<any>>()
 
-  describe("Parameter Types", () => {
-    it("should verify GET and POST extend Params", () => {
-      assert.extends<GET, Params>()
-      assert.extends<POST, Params>()
-    })
-  })
+// Parameter Types Tests
+// Should verify GET and POST extend Params
+assert.extends<GET, Params>()
+assert.extends<POST, Params>()
 
-  describe("Integration Type Tests", () => {
-    it("should verify interface compatibility", () => {
-      // Test that implementations would satisfy the interfaces
-      interface MockAuth extends Auth {}
-      interface MockTransport extends Transport {}
-      interface MockParser extends Parser {}
+// Integration Type Tests
+// Test that implementations would satisfy the interfaces
+interface MockAuth extends Auth {}
+interface MockTransport extends Transport {}
+interface MockParser extends Parser {}
 
-      assert.extends<MockAuth, Auth>()
-      assert.extends<MockTransport, Transport>()
-      assert.extends<MockParser, Parser>()
-    })
-  })
+assert.extends<MockAuth, Auth>()
+assert.extends<MockTransport, Transport>()
+assert.extends<MockParser, Parser>()
 
-  describe("API", function () {
-    it("has flickr.people.getInfo", () => {
-      assert.hasProperty<API, "flickr.people.getInfo">()
+// API Tests
+// Should have flickr.people.getInfo
+assert.hasProperty<API, "flickr.people.getInfo">()
 
-      expectTrue<IsTuple<API["flickr.people.getInfo"]>>()
-      expectTrue<
-        Equal<API["flickr.people.getInfo"][0], FlickrPeopleGetInfoParams>
-      >()
-    })
+expectTrue<IsTuple<API["flickr.people.getInfo"]>>()
+expectTrue<Equal<API["flickr.people.getInfo"][0], FlickrPeopleGetInfoParams>>()
 
-    it("has flickr.test.echo", () => {
-      assert.hasProperty<API, "flickr.test.echo">()
+// Should have flickr.test.echo
+assert.hasProperty<API, "flickr.test.echo">()
 
-      expectTrue<IsTuple<API["flickr.test.echo"]>>()
-      expectTrue<Equal<API["flickr.test.echo"][0], FlickrTestEchoParams>>()
-    })
-  })
+expectTrue<IsTuple<API["flickr.test.echo"]>>()
+expectTrue<Equal<API["flickr.test.echo"][0], FlickrTestEchoParams>>()
 
-  describe("APIKeyConfig", () => {
-    it("accepts a string", () => {
-      expectTrue<Extends<string, APIKeyAuthConfig>>()
-      expectTrue<Extends<() => string, APIKeyAuthConfig>>()
-      expectTrue<Extends<() => Promise<string>, APIKeyAuthConfig>>()
-    })
-  })
+// APIKeyConfig Tests
+// Should accept a string
+expectTrue<Extends<string, APIKeyAuthConfig>>()
+expectTrue<Extends<() => string, APIKeyAuthConfig>>()
+expectTrue<Extends<() => Promise<string>, APIKeyAuthConfig>>()
 
-  describe("OAuthConfig", () => {
-    it("accepts consumer key/secret and oauth token/secret", () => {
-      expectTrue<
-        Extends<
-          {
-            consumerKey: string
-            consumerSecret: string
-            oauthToken: string
-            oauthTokenSecret: string
-          },
-          OAuthConfig
-        >
-      >()
-    })
-    it("can specify false for oauth token/secret", () => {
-      expectTrue<
-        Extends<
-          {
-            consumerKey: string
-            consumerSecret: string
-            oauthToken: false
-            oauthTokenSecret: false
-          },
-          OAuthConfig
-        >
-      >()
-    })
-  })
-})
+// OAuthConfig Tests
+// Should accept consumer key/secret and oauth token/secret
+expectTrue<
+  Extends<
+    {
+      consumerKey: string
+      consumerSecret: string
+      oauthToken: string
+      oauthTokenSecret: string
+    },
+    OAuthConfig
+  >
+>()
+
+// Should allow false for oauth token/secret
+expectTrue<
+  Extends<
+    {
+      consumerKey: string
+      consumerSecret: string
+      oauthToken: false
+      oauthTokenSecret: false
+    },
+    OAuthConfig
+  >
+>()
