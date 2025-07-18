@@ -35,6 +35,7 @@ import flinch, {
   isUnion,
   isTuple,
   tupleLength,
+  isNumberLiteral,
 } from "./index"
 
 // Core Type Utilities Tests
@@ -439,6 +440,12 @@ flinch.isOptional<TestInterface, "existingProp">()
 // @ts-expect-error - existingProp is not readonly
 flinch.isReadonly<TestInterface, "existingProp">()
 
+// @ts-expect-error - false is not true
+expectTrue<false>()
+
+// @ts-expect-error - true is not false
+expectFalse<true>()
+
 // Flinch API Validation Tests
 // Test that Flinch can validate its own API
 
@@ -469,3 +476,4 @@ flinch.isFunction<typeof isUnion>()
 flinch.isFunction<typeof isTuple>()
 flinch.isFunction<typeof tupleLength>()
 flinch.isFunction<typeof isStringLiteral>()
+flinch.isFunction<typeof isNumberLiteral>()

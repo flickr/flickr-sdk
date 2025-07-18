@@ -186,7 +186,7 @@ const flinch = {
  * Usage: expectTrue<Equal<string, string>>() // OK
  *        expectTrue<Equal<string, number>>() // TypeScript error
  */
-export function expectTrue<T extends true>(): void {
+export function expectTrue<T extends true>() {
   // Compile-time only assertion
 }
 
@@ -196,7 +196,7 @@ export function expectTrue<T extends true>(): void {
  * Usage: expectFalse<Equal<string, number>>() // OK
  *        expectFalse<Equal<string, string>>() // TypeScript error
  */
-export function expectFalse<T extends false>(): void {
+export function expectFalse<T extends false>() {
   // Compile-time only assertion
 }
 
@@ -207,14 +207,14 @@ export function expectFalse<T extends false>(): void {
 /**
  * Assert that a type is a union type
  */
-export function isUnion<T>(): IsUnion<T> extends true ? void : never {
+export function isUnion<T>() {
   return undefined as IsUnion<T> extends true ? void : never
 }
 
 /**
  * Assert that a type is a tuple (fixed-length array)
  */
-export function isTuple<T>(): IsTuple<T> extends true ? void : never {
+export function isTuple<T>() {
   return undefined as IsTuple<T> extends true ? void : never
 }
 
@@ -224,25 +224,21 @@ export function isTuple<T>(): IsTuple<T> extends true ? void : never {
 export function tupleLength<
   T extends readonly any[],
   N extends number,
->(): TupleLength<T> extends N ? void : never {
+>() {
   return undefined as TupleLength<T> extends N ? void : never
 }
 
 /**
  * Assert that a type is a string literal
  */
-export function isStringLiteral<T>(): IsStringLiteral<T> extends true
-  ? void
-  : never {
+export function isStringLiteral<T>() {
   return undefined as IsStringLiteral<T> extends true ? void : never
 }
 
 /**
  * Assert that a type is a number literal
  */
-export function isNumberLiteral<T>(): IsNumberLiteral<T> extends true
-  ? void
-  : never {
+export function isNumberLiteral<T>() {
   return undefined as IsNumberLiteral<T> extends true ? void : never
 }
 
