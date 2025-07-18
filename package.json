@@ -70,9 +70,9 @@
   },
   "homepage": "https://github.com/flickr/flickr-sdk#readme",
   "devDependencies": {
-    "@types/node": "^20.8.4",
-    "esbuild": "^0.19.4",
     "@flickr/flinch": "file:./packages/flinch",
+    "@types/node": "^20.8.4",
+    "esbuild": "^0.25.7",
     "flickr-sdk": "file:.",
     "min-qs": "^1.4.0",
     "min-url": "^1.5.0",
