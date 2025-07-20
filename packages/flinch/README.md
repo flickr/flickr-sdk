@@ -20,13 +20,13 @@ flinch is a zero-dependency typescript library for compile-time type testing. it
 - [examples](#examples)
 - [license](#license)
 
-## installation 📦
+## installation
 
 ```bash
 npm install @flickr/flinch
 ```
 
-## quick start 🚀
+## quick start
 
 ```typescript
 import flinch, { expectTrue, expectFalse, Equal, Extends } from '@flickr/flinch'
@@ -69,7 +69,7 @@ assert.isOptional<{ a?: string }, 'a'>()
 assert.isReadonly<{ readonly a: string }, 'a'>()
 ```
 
-## core type utilities 🔧
+## core type utilities
 
 ### `Equal<X, Y>`
 tests if two types are exactly equal.
@@ -103,7 +103,7 @@ type Test1 = NotExtends<string, 'hello'> // true
 type Test2 = NotExtends<'hello', string> // false
 ```
 
-## type detection utilities 🔍
+## type detection utilities
 
 ### `IsAny<T>`
 detects if a type is `any`.
@@ -153,7 +153,7 @@ type Test1 = IsObject<{ a: string }> // true
 type Test2 = IsObject<string[]> // false
 ```
 
-## property analysis utilities 🔬
+## property analysis utilities
 
 ### `HasProperty<T, K>`
 checks if a type has a specific property.
@@ -182,7 +182,7 @@ type Test1 = IsReadonly<User, 'id'> // true
 type Test2 = IsReadonly<User, 'name'> // false
 ```
 
-## function type utilities ⚡
+## function type utilities
 
 ### `GetParameters<T>`
 extracts parameter types from a function type.
@@ -200,7 +200,7 @@ type Fn = (a: string) => number
 type Return = GetReturnType<Fn> // number
 ```
 
-## advanced type utilities 🧠
+## advanced type utilities
 
 ### `IsUnion<T>`
 detects if a type is a union type.
@@ -218,7 +218,7 @@ type Union = { a: string } | { b: number }
 type Intersection = UnionToIntersection<Union> // { a: string } & { b: number }
 ```
 
-## tuple and array utilities 📋
+## tuple and array utilities
 
 ### `IsTuple<T>`
 detects if a type is a tuple (fixed-length array).
@@ -249,7 +249,7 @@ gets all elements except the first from a tuple.
 type Rest = Tail<[string, number, boolean]> // [number, boolean]
 ```
 
-## literal type utilities 📝
+## literal type utilities
 
 ### `IsStringLiteral<T>`
 detects if a type is a string literal.
@@ -267,7 +267,7 @@ type Test1 = IsNumberLiteral<42> // true
 type Test2 = IsNumberLiteral<number> // false
 ```
 
-## assertion functions 🎪
+## assertion functions
 
 flinch provides both type-level utilities and runtime assertion functions:
 
@@ -287,7 +287,7 @@ expectFalse<Equal<string, number>>() // ✅ compiles
 expectFalse<Equal<string, string>>() // ❌ compilation error
 ```
 
-## examples 💡
+## examples
 
 ### testing api response types
 
